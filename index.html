@@ -375,7 +375,7 @@
   <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
     <div class="modal-panel">
       <button class="modal-close" id="modalClose" type="button" aria-label="Close project">×</button>
-      <div class="modal-media"><img class="modal-image" id="modalImage" alt="Selected Kevin Cunningham project artwork"><iframe class="modal-video" id="modalVideo" title="Samsung STAR HD MPEG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe></div>
+      <div class="modal-media"><img class="modal-image" id="modalImage" alt="Selected Kevin Cunningham project artwork"><iframe class="modal-video" id="modalVideo" title="Samsung STAR HD MPEG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe><video class="modal-video" id="modalLocalVideo" controls playsinline preload="metadata" hidden></video></div>
       <div class="modal-side">
         <span class="modal-category" id="modalCategory"></span>
         <h2 class="modal-title" id="modalTitle"></h2>
@@ -405,6 +405,7 @@
     var modal=document.getElementById('projectModal');
     var image=document.getElementById('modalImage');
     var video=document.getElementById('modalVideo');
+    var localVideo=document.getElementById('modalLocalVideo');
     var title=document.getElementById('modalTitle');
     var category=document.getElementById('modalCategory');
     var description=document.getElementById('modalDescription');
@@ -460,17 +461,26 @@
       var showingVideo=Boolean(project.video&&index===project.images.length);
       if(showingVideo){
         image.hidden=true;image.removeAttribute('src');
-        video.hidden=false;video.title=project.video.title;video.src=project.video.src;
+        var vSrc=project.video.src;
+        if(vSrc.indexOf('data:video')===0){
+          video.hidden=true;video.removeAttribute('src');
+          if(!project.video._blob){var _b=atob(vSrc.split(',')[1]);var _a=new Uint8Array(_b.length);for(var _i=0;_i<_b.length;_i++)_a[_i]=_b.charCodeAt(_i);project.video._blob=URL.createObjectURL(new Blob([_a],{type:'video/mp4'}));}
+          localVideo.hidden=false;if(localVideo.getAttribute('src')!==project.video._blob)localVideo.src=project.video._blob;
+        }else{
+          localVideo.hidden=true;localVideo.removeAttribute('src');localVideo.pause();
+          video.hidden=false;video.title=project.video.title;video.src=vSrc;
+        }
         count.textContent='Video '+(index+1)+' / '+total;
       }else{
         video.hidden=true;video.removeAttribute('src');
+        localVideo.hidden=true;localVideo.removeAttribute('src');localVideo.pause();
         image.hidden=false;image.src=project.images[index];image.alt=project.alts[index];
         count.textContent='Image '+(index+1)+' / '+total;
       }
       title.textContent=project.title;title.classList.toggle('is-long',project.title.length>40);category.textContent=project.category;description.classList.toggle('is-detailed',Boolean(project.details));if(project.details){description.innerHTML='<p>'+project.description+'</p>'+project.details}else{description.textContent=project.description}if(project.link){link.hidden=false;link.href=project.link}else{link.hidden=true;link.removeAttribute('href')}prev.disabled=index===0;next.disabled=index===total-1;
     }
     function openProject(key,trigger){active=key;index=0;lastTrigger=trigger;projectOpenedAt=Date.now();render();trackEvent('project-open',{project:projects[key].title});modal.hidden=false;document.body.classList.add('modal-open');close.focus()}
-    function closeProject(){if(modal.hidden)return;var projectTitle=projects[active].title;var seconds=Math.round((Date.now()-projectOpenedAt)/1000);trackEvent('project-dwell',{project:projectTitle,seconds:seconds});projectOpenedAt=null;modal.hidden=true;document.body.classList.remove('modal-open');image.removeAttribute('src');video.removeAttribute('src');if(lastTrigger)lastTrigger.focus()}
+    function closeProject(){if(modal.hidden)return;var projectTitle=projects[active].title;var seconds=Math.round((Date.now()-projectOpenedAt)/1000);trackEvent('project-dwell',{project:projectTitle,seconds:seconds});projectOpenedAt=null;modal.hidden=true;document.body.classList.remove('modal-open');image.removeAttribute('src');video.removeAttribute('src');localVideo.pause();localVideo.removeAttribute('src');if(lastTrigger)lastTrigger.focus()}
     document.querySelectorAll('.project').forEach(function(card){var button=card.querySelector('.project-button');button.addEventListener('click',function(){openProject(card.getAttribute('data-project'),button)})});
     close.addEventListener('click',closeProject);prev.addEventListener('click',function(){if(index>0){index--;render()}});next.addEventListener('click',function(){if(index<mediaCount(projects[active])-1){index++;render()}});
     modal.addEventListener('click',function(event){if(event.target===modal)closeProject()});

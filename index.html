@@ -26,12 +26,13 @@
   <script src="assets/img-23.js"></script>
   <script src="assets/img-24.js"></script>
 <script src="assets/vid-00.js"></script>
+  <script src="assets/logos.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:,">
   <title>Kevin Cunningham — Designer &amp; Director</title>
-  <meta name="description" content="Industrial designer Kevin Cunningham — vehicles, collectibles, worlds. Autonomous systems, toy design, and visual development.">
+  <meta name="description" content="Industrial designer Kevin Cunningham — vehicles, collectibles, worlds. From concept through design development toward real-world execution. Autonomous systems, toy design, and visual development.">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -44,15 +45,15 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://blacklab-la.github.io/">
   <meta property="og:title" content="Kevin Cunningham — Designer &amp; Director">
-  <meta property="og:description" content="Industrial designer Kevin Cunningham — vehicles, collectibles, worlds. Autonomous systems, toy design, and visual development.">
-  <meta property="og:image" content="https://blacklab-la.github.io/assets/og-cover-petty.jpg">
+  <meta property="og:description" content="Industrial designer Kevin Cunningham — vehicles, collectibles, worlds. From concept through design development toward real-world execution. Autonomous systems, toy design, and visual development.">
+  <meta property="og:image" content="https://blacklab-la.github.io/assets/og-cover.PNG">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Fantasy Racer Series — '49 Mercury Petty Tribute in front 3/4 view, Petty blue and orange number 43.">
+  <meta property="og:image:alt" content="Kevin Cunningham portfolio homepage featuring the Scream'n Demon vehicle concept.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kevin Cunningham — Designer &amp; Director">
-  <meta name="twitter:description" content="Industrial designer Kevin Cunningham — vehicles, collectibles, worlds. Autonomous systems, toy design, and visual development.">
-  <meta name="twitter:image" content="https://blacklab-la.github.io/assets/og-cover-petty.jpg">
+  <meta name="twitter:description" content="Industrial designer Kevin Cunningham — vehicles, collectibles, worlds. From concept through design development toward real-world execution. Autonomous systems, toy design, and visual development.">
+  <meta name="twitter:image" content="https://blacklab-la.github.io/assets/og-cover.PNG">
   <link rel="canonical" href="https://blacklab-la.github.io/">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="1073405f-afa2-4c0e-9c9e-8061e20ca19b"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,14 +114,21 @@
     .nav-inner .nav-contact::after,.nav-inner .nav-resume::after{display:none}
     .nav-inner .nav-contact:hover,.nav-inner .nav-contact:focus-visible,.nav-inner .nav-resume:hover,.nav-inner .nav-resume:focus-visible{background:var(--amber-hot);color:#090909}
     .hero{position:relative;isolation:isolate;min-height:760px;height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--hero-bg);color:var(--hero-ink)}
-    .hero-media{position:absolute;z-index:-3;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% center;filter:brightness(.7) contrast(1.15) saturate(.62)}
+    .hero-media{position:absolute;z-index:-3;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% center;filter:brightness(.7) contrast(1.15) saturate(.62);animation:heroPan 45s ease-in-out infinite alternate, heroImageFade 1.5s ease backwards}
+    @keyframes heroPan{from{object-position:0% center}to{object-position:100% center}}
+    .hero:hover .hero-media,.hero:focus-within .hero-media{animation-play-state:paused}
+    .hero h1 span{animation:heroLine 5s cubic-bezier(.2,.8,.2,1.3) backwards}.hero h1 span:nth-child(2){animation-delay:.12s}.hero h1 span:nth-child(3){animation-delay:.24s}
+    @keyframes heroLine{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .hero-intro{animation:heroFade 5s ease .45s backwards}.jump{animation:heroFade 5s ease .60s backwards}
+    @keyframes heroFade{from{opacity:0}to{opacity:1}}
+    @keyframes heroImageFade{from{opacity:0}to{opacity:1}}
     .hero-shade{position:absolute;z-index:-2;inset:0;background:linear-gradient(90deg,rgba(2,3,3,.98) 0%,rgba(3,4,4,.88) 31%,rgba(3,4,4,.43) 56%,rgba(3,4,4,.06) 78%),linear-gradient(0deg,rgba(3,4,4,.78),transparent 46%),linear-gradient(180deg,rgba(3,4,4,.48),transparent 30%)}
     .hero::after{content:"";position:absolute;z-index:-1;inset:0;background:repeating-linear-gradient(0deg,transparent 0 4px,rgba(255,255,255,.018) 5px);pointer-events:none}
     .hero-frame{position:absolute;inset:96px 28px 28px;border:1px solid rgba(255,255,255,.18);pointer-events:none}
     .hero-frame::before,.hero-frame::after{content:"";position:absolute;background:var(--amber-hot)}
     .hero-frame::before{left:-1px;top:-1px;width:54px;height:2px}.hero-frame::after{right:-1px;bottom:-1px;width:2px;height:54px}
     .frame-label{position:absolute;right:18px;top:16px;color:rgba(255,255,255,.5);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase}
-    .hero-inner{position:relative;z-index:2;padding:150px 0 94px}
+    .hero-inner{position:relative;z-index:2;padding:120px 0 64px}
     .hero-copy{max-width:970px}
     .hero .eyebrow{margin-bottom:25px}
     .hero h1{display:grid;margin:0;font:900 clamp(5rem,11.2vw,11.3rem)/.68 "Barlow Condensed",sans-serif;letter-spacing:-.052em;text-transform:uppercase}
@@ -133,14 +141,15 @@
     .jump:hover,.jump:focus-visible{background:#fff;color:#090909}.jump:hover svg,.jump:focus-visible svg{transform:translateY(4px)}
     .hero-caption{position:absolute;z-index:3;right:50px;bottom:46px;text-align:right;color:var(--amber-hot);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase}
     .hero-caption span{display:block;color:rgba(255,255,255,.46)}
-    .work{padding:118px 0 138px;background:var(--bg)}
-    .work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:50px;margin-bottom:60px}
+    .work{padding:72px 0 88px;background:var(--bg)}
+    .work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:50px;margin-bottom:40px}
     .work-head p{max-width:420px;margin:0;color:var(--muted);font-size:.78rem;line-height:1.72}
-    .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+    .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;grid-auto-flow:dense}
     .project{position:relative;grid-column:span 4;min-height:520px;overflow:hidden;background:var(--surface);color:#fff}
     .project.wide{grid-column:span 8}.project.tall{min-height:660px}.project.full{grid-column:span 12;min-height:690px}
     .project-button{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:zoom-in;overflow:hidden}
-    .project img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) contrast(1.08) saturate(.78);transition:transform .85s cubic-bezier(.16,.78,.18,1),filter .45s}
+    .project img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) contrast(1.08) saturate(.78);transition:transform .85s cubic-bezier(.16,.78,.18,1),filter .45s;animation:gridPan 80s ease-in-out infinite alternate}
+    @keyframes gridPan{from{object-position:0% center}to{object-position:100% center}}
     .project.full img{object-position:center 54%}
     .project-button::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.55) 27%,transparent 62%),linear-gradient(90deg,rgba(0,0,0,.22),transparent 55%)}
     .project-copy{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:32px 32px 29px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px}
@@ -167,7 +176,7 @@
     .profile-copy p{margin:0 0 24px;color:var(--muted);font-size:.82rem;line-height:1.8}
     .motto{display:grid;grid-template-columns:repeat(3,1fr);margin-top:58px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .motto span{padding:22px 16px;border-right:1px solid var(--line);font:700 clamp(1.6rem,2.8vw,3rem)/1 "Barlow Condensed",sans-serif;text-transform:uppercase}.motto span:last-child{border-right:0;color:var(--amber)}
-    .closing{position:relative;overflow:hidden;padding:72px 0 96px;background:var(--hero-bg);color:var(--hero-ink);scroll-margin-top:0}
+    .closing{position:relative;overflow:hidden;padding:56px 0 72px;background:var(--hero-bg);color:var(--hero-ink);scroll-margin-top:0}
     .closing::before{content:"";position:absolute;inset:auto -10% -55% auto;width:70vw;aspect-ratio:1;border:1px solid rgba(240,100,34,.2);transform:rotate(24deg)}
     .closing h2{max-width:1000px;margin:0;font:900 clamp(4.1rem,9.3vw,9rem)/.82 "Barlow Condensed",sans-serif;letter-spacing:-.045em;text-transform:uppercase}
     .closing h2 span{color:var(--amber-hot)}
@@ -176,7 +185,7 @@
     .contact-copy{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:12px 0}
     .contact-panel{min-width:0}
     .contact-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    .social-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+    .social-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
     .social-link{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:66px;padding:13px 14px;border:1px solid #323432;background:#090a0a;color:#d2d3cf;text-decoration:none;transition:background .25s,color .25s,border-color .25s}
     .social-link::before{content:"";position:absolute;left:-1px;top:-1px;width:28px;height:2px;background:var(--amber-hot)}
     .social-brand{display:flex;align-items:center;gap:10px;min-width:0}
@@ -208,30 +217,71 @@
     .footer-inner{display:flex;justify-content:space-between;gap:24px;font-size:.57rem;letter-spacing:.12em;text-transform:uppercase}
     .modal[hidden]{display:none}
     .modal{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:22px;background:rgba(0,0,0,.94);color:#f2f0eb}
+    .modal-gallery-img{animation:modalImageFade 1.0s ease backwards}
+    @keyframes modalImageFade{from{opacity:0}to{opacity:1}}
+    .modal-gallery-video{animation:modalImageFade 1.0s ease backwards}
+    .modal-side.is-fading .modal-category,.modal-side.is-fading .modal-count,.modal-side.is-fading .modal-link{animation:slideRightFade 0.75s cubic-bezier(.22,1.4,.36,1) 0s backwards}
+    .modal-side.is-fading #modalTitle{animation:slideRightFade 0.75s cubic-bezier(.22,1.4,.36,1) 0s backwards}
+    .modal-side.is-fading #modalDescription,.modal-side.is-fading #sparCaseStudy{animation:slideRightFade 0.75s cubic-bezier(.22,1.4,.36,1) 0.75s backwards}
+    @keyframes slideRightFade{from{opacity:0;transform:translateX(32px) scale(0.97,1.03)}to{opacity:1;transform:translateX(0) scale(1,1)}}
     .modal-panel{position:relative;width:min(1320px,100%);max-height:calc(100dvh - 44px);display:grid;grid-template-columns:minmax(0,1.58fr) minmax(280px,.62fr);background:#0b0c0c;border:1px solid #313332;overflow:hidden}
-    .modal-media{position:relative;min-height:660px;background:#030404;display:grid;place-items:center}
-    .modal-image{width:100%;height:100%;max-height:calc(100dvh - 46px);object-fit:contain}
-    .modal-video{width:100%;aspect-ratio:16/9;border:0;background:#000}
-    #modalLocalVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;aspect-ratio:auto}
+    .modal-media{position:relative;min-height:0;height:calc(100dvh - 44px);background:#030404;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;scrollbar-width:thin;scrollbar-color:var(--amber-hot) #252727}
+    .modal-media::-webkit-scrollbar{width:6px}.modal-media::-webkit-scrollbar-track{background:#252727}.modal-media::-webkit-scrollbar-thumb{background:var(--amber-hot)}
+    .modal-gallery-img{width:100%;height:auto;display:block;margin-bottom:12px}.modal-gallery-img:last-child{margin-bottom:0}
+    .modal-gallery-video{width:100%;aspect-ratio:16/9;display:block;background:#000}
     .modal-close{position:absolute;z-index:4;right:16px;top:16px;width:46px;height:46px;border:1px solid rgba(255,255,255,.4);background:rgba(5,6,6,.78);color:#fff;font-size:1.5rem;cursor:pointer}.modal-close:hover,.modal-close:focus-visible{background:var(--amber-hot);color:#0a0a0a;border-color:var(--amber-hot)}
-    .modal-side{padding:68px 34px 30px;display:flex;flex-direction:column;min-width:0}
-    .modal-category{color:var(--amber-hot);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase}.modal-title{margin:16px 0 18px;font:800 clamp(2.7rem,4vw,4.7rem)/.84 "Barlow Condensed",sans-serif;letter-spacing:-.035em;text-transform:uppercase}.modal-title.is-long{font-size:clamp(2.15rem,3vw,3.35rem);line-height:.86;overflow-wrap:anywhere}.modal-description{margin:0;color:#a4a7a2;font-size:.72rem;line-height:1.76}.modal-description.is-detailed{max-height:min(42vh,370px);overflow-y:auto;padding-right:12px;scrollbar-width:thin;scrollbar-color:var(--amber-hot) #252727}.modal-description.is-detailed::-webkit-scrollbar{width:6px}.modal-description.is-detailed::-webkit-scrollbar-track{background:#252727}.modal-description.is-detailed::-webkit-scrollbar-thumb{background:var(--amber-hot)}.modal-description ul{margin:0;padding-left:1.25rem}.modal-description li{margin:0 0 .62rem}.modal-description strong{color:#d8d9d5;font-weight:500}.modal-description h3{margin:1.18rem 0 .58rem;color:#d8d9d5;font:500 .66rem/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.modal-description .modal-tags{margin:0;color:#8f928e;font-size:.66rem;line-height:1.8;overflow-wrap:anywhere}.modal-spacer{flex:1;min-height:38px}.modal-count{margin-bottom:16px;color:#81847f;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}.modal-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}.modal-controls button{min-height:43px;border:1px solid #383a39;background:transparent;color:#fff;cursor:pointer;text-transform:uppercase;font-size:.58rem;letter-spacing:.12em}.modal-controls button:hover,.modal-controls button:focus-visible{border-color:var(--amber-hot);color:var(--amber-hot)}.modal-controls button:disabled{opacity:.28;cursor:default}.modal-link{margin-top:10px;min-height:46px;display:flex;align-items:center;justify-content:center;background:var(--amber-hot);color:#0a0a0a;text-decoration:none;text-transform:uppercase;font-size:.6rem;font-weight:500;letter-spacing:.12em}.modal-link[hidden]{display:none}.modal-link:hover,.modal-link:focus-visible{background:#fff}
+    .modal-side{padding:68px 34px 30px;display:flex;flex-direction:column;min-width:0;min-height:0;height:calc(100dvh - 44px);overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;scrollbar-width:thin;scrollbar-color:var(--amber-hot) #252727}.modal-side::-webkit-scrollbar{width:6px}.modal-side::-webkit-scrollbar-track{background:#252727}.modal-side::-webkit-scrollbar-thumb{background:var(--amber-hot)}.spar-case-study{margin-top:1.18rem;color:#a4a7a2;font-size:.72rem;line-height:1.76}.spar-case-study h3{margin:1.18rem 0 .58rem;color:#d8d9d5;font:500 .66rem/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.spar-case-study p{margin:0 0 .62rem}.spar-case-study-note{color:#8f928e;font-size:.66rem}
+    .modal-category{color:var(--amber-hot);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase}.modal-title{margin:16px 0 18px;font:800 clamp(2.7rem,4vw,4.7rem)/.84 "Barlow Condensed",sans-serif;letter-spacing:-.035em;text-transform:uppercase}.modal-title.is-long{font-size:clamp(2.15rem,3vw,3.35rem);line-height:.86;overflow-wrap:anywhere}.modal-description{margin:0;color:#a4a7a2;font-size:.72rem;line-height:1.76}.modal-description.is-detailed{max-height:none;overflow:visible;padding-right:0}.modal-description ul{margin:0;padding-left:1.25rem}.modal-description li{margin:0 0 .62rem}.modal-description strong{color:#d8d9d5;font-weight:500}.modal-description h3{margin:1.18rem 0 .58rem;color:#d8d9d5;font:500 .66rem/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.modal-description .modal-tags{margin:0;color:#8f928e;font-size:.66rem;line-height:1.8;overflow-wrap:anywhere}.modal-spacer{flex:1;min-height:38px}.modal-count{margin-bottom:16px;color:#81847f;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}.modal-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}.modal-controls button{min-height:43px;border:1px solid #383a39;background:transparent;color:#fff;cursor:pointer;text-transform:uppercase;font-size:.58rem;letter-spacing:.12em}.modal-controls button:hover,.modal-controls button:focus-visible{border-color:var(--amber-hot);color:var(--amber-hot)}.modal-controls button:disabled{opacity:.28;cursor:default}.modal-link{margin-top:10px;min-height:46px;display:flex;align-items:center;justify-content:center;background:var(--amber-hot);color:#0a0a0a;text-decoration:none;text-transform:uppercase;font-size:.6rem;font-weight:500;letter-spacing:.12em}.modal-link[hidden]{display:none}.modal-link:hover,.modal-link:focus-visible{background:#fff}
+    .lightbox[hidden]{display:none}.lightbox{position:fixed;z-index:200;inset:0;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.96)}.lightbox img{max-width:100%;max-height:100%;object-fit:contain}.lightbox-close{position:absolute;z-index:2;right:16px;top:16px;width:46px;height:46px;border:1px solid rgba(255,255,255,.4);background:rgba(5,6,6,.78);color:#fff;font-size:1.5rem;cursor:pointer}.lightbox-close:hover,.lightbox-close:focus-visible{background:var(--amber-hot);color:#0a0a0a;border-color:var(--amber-hot)}.modal-gallery-img{cursor:zoom-in}
     @media(max-width:1000px){
       .project,.project.wide{grid-column:span 6}.project.full{grid-column:span 12}.project{min-height:500px}.project.tall{min-height:560px}
-      .profile-grid{gap:48px}.modal-panel{grid-template-columns:1fr;overflow:auto}.modal-media{min-height:0;height:min(57dvh,620px)}.modal-image{max-height:none}.modal-side{padding:28px 28px 24px}.modal-spacer{min-height:24px}
+      .profile-grid{gap:48px}.modal-panel{grid-template-columns:1fr;height:calc(100dvh - 44px);overflow:auto;-webkit-overflow-scrolling:touch}.modal-media{min-height:0;height:auto;overflow:visible}.modal-side{padding:28px 28px 24px;overflow:visible;height:auto}.modal-close{position:fixed;right:16px;top:16px;z-index:5}.modal-spacer{min-height:24px}
     }
     @media(max-width:760px){
       .wrap{width:calc(100% - 30px)}.site-nav{position:absolute}.nav-inner{min-height:62px;justify-content:space-between;gap:5px}.nav-inner a{font-size:.55rem;letter-spacing:.06em}.nav-inner .nav-contact,.nav-inner .nav-resume{padding:8px}
-      .hero{min-height:720px}.hero-frame{inset:78px 12px 12px}.frame-label{display:none}.hero-media{height:58%;object-position:64% center}.hero-shade{background:linear-gradient(0deg,rgba(3,4,4,.99) 0%,rgba(3,4,4,.96) 45%,rgba(3,4,4,.2) 78%),linear-gradient(90deg,rgba(3,4,4,.58),transparent)}.hero-inner{padding:114px 0 58px}.hero h1{font-size:clamp(3rem,13vw,5.1rem);line-height:.78}.hero h1 span:nth-child(2),.hero h1 span:nth-child(3){padding-left:0}.hero-bottom{display:block;margin-top:28px}.hero-intro{font-size:.76rem;margin-left:0;max-width:100%;padding-left:0;padding-right:12px}.jump{margin-top:24px}.hero-caption{display:none}
-      .work{padding:82px 0 94px}.work-head{display:block;margin-bottom:38px}.work-head p{margin-top:28px}.section-title{font-size:3.8rem}.project-grid{display:block}.project,.project.wide,.project.full,.project.tall{min-height:0;aspect-ratio:4/5;margin-bottom:12px}.project.full{aspect-ratio:4/5}.project-copy{padding:24px 22px}.project h3{font-size:2.5rem}
+      .hero{min-height:0}.hero-frame{inset:78px 12px 12px}.frame-label{display:none}.hero-media{height:58%;object-position:64% center;animation:heroPanMobile 45s ease-in-out infinite alternate, heroImageFade 1.5s ease backwards}
+      @keyframes heroPanMobile{from{object-position:0% center}to{object-position:100% center}}.hero-shade{background:linear-gradient(0deg,rgba(3,4,4,.99) 0%,rgba(3,4,4,.96) 45%,rgba(3,4,4,.2) 78%),linear-gradient(90deg,rgba(3,4,4,.58),transparent)}.hero-inner{padding:100px 0 36px}.hero h1{font-size:clamp(3rem,13vw,5.1rem);line-height:.78}.hero h1 span:nth-child(2),.hero h1 span:nth-child(3){padding-left:0}.hero-bottom{display:block;margin-top:28px}.hero-intro{font-size:.76rem;margin-left:0;max-width:100%;padding-left:0;padding-right:12px}.jump{margin-top:24px}.hero-caption{display:none}
+      .work{padding:48px 0 64px}.work-head{display:block;margin-bottom:28px}.work-head p{margin-top:28px}.section-title{font-size:3.8rem}.project-grid{display:block}.project,.project.wide,.project.full,.project.tall{min-height:0;aspect-ratio:4/5;margin-bottom:12px}.project.full{aspect-ratio:4/5}.project-copy{padding:24px 22px}.project h3{font-size:2.5rem}
       .process{min-height:auto;padding:72px 0 46px}.process-head{margin-bottom:44px}.process-head .section-title{font-size:3.9rem}.process-list{grid-template-columns:1fr}.phase{min-height:0;padding:24px 18px 28px;border-right:0;border-bottom:1px solid rgba(255,255,255,.24)}.phase:last-child{border-bottom:0}.phase h3{margin:16px 0 9px;font-size:3.3rem}
       .profile{padding:48px 0 44px}.profile-grid{grid-template-columns:1fr;gap:42px}.profile-lead{margin-top:32px}.profile-copy{padding-top:24px}.motto{grid-template-columns:1fr}.motto span{border-right:0;border-bottom:1px solid var(--line);padding:16px 4px}.motto span:last-child{border-bottom:0}
       .closing{padding:52px 0 72px}.closing h2{font-size:4.1rem}.closing-bottom{grid-template-columns:1fr;margin-top:48px}.contact-copy{padding-bottom:8px}.contact-link{min-height:124px;padding:24px 22px}.contact-link strong{font-size:3.1rem}.social-links{grid-template-columns:1fr}.footer-inner{display:grid;gap:8px}
-      .modal{padding:0}.modal-panel{width:100%;max-height:100dvh;height:100dvh;border:0}.modal-media{height:51dvh}.modal-close{right:12px;top:12px}.modal-side{padding:24px 20px 18px}.modal-title{font-size:3rem;margin:10px 0 12px}.modal-title.is-long{font-size:2.3rem}
+      .modal{padding:0}.modal-panel{width:100%;max-height:100dvh;height:100dvh;border:0;-webkit-overflow-scrolling:touch}.modal-media{height:auto;overflow:visible}.modal-close{right:12px;top:12px}.modal-side{padding:24px 20px 18px;overflow:visible;height:auto}.modal-close{position:fixed;right:12px;top:12px;z-index:5}.modal-title{font-size:3rem;margin:10px 0 12px}.modal-title.is-long{font-size:2.3rem}
     }
     @media(max-width:560px){.contact-actions{grid-template-columns:1fr}}
     @media(max-width:390px){.nav-inner a{font-size:.5rem}.hero h1{font-size:2.85rem}.section-title{font-size:3.35rem}.closing h2{font-size:3.6rem}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav-inner a::after,.jump svg,.project img,.contact-link svg{transition:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav-inner a::after,.jump svg,.project img,.contact-link svg{transition:none}.project img{animation:none !important}.hero-media,.hero h1 span,.hero-intro,.jump,.avail-badge i{animation:none !important}.hero-media{transform:none}.hero h1 span,.hero-intro,.jump{opacity:1;transform:none}.modal-gallery-img,.modal-gallery-video,.modal-side.is-fading *,.lightbox img{animation:none !important;opacity:1;transform:none}}
+  
+    .avail-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,128,0,.55);border-radius:999px;padding:9px 18px;font-size:.62rem;letter-spacing:.14em;color:var(--amber-hot);margin:0 0 26px;background:rgba(255,128,0,.07)}
+    .avail-badge i{width:8px;height:8px;border-radius:50%;background:var(--amber-hot);box-shadow:0 0 12px var(--amber-hot);animation:availpulse 2s infinite}
+    @keyframes availpulse{50%{opacity:.4}}
+    .logo-wall{padding:48px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);background:#080808}
+    .logo-group{margin-bottom:20px}
+    .logo-group h5{font-size:.6rem;letter-spacing:.3em;color:#555;margin-bottom:12px;font-weight:500;text-transform:uppercase}
+    .logo-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:center}
+    .logo-cell{height:80px;display:flex;align-items:center;justify-content:center;padding:8px}
+    .logo-row img{width:auto;height:auto;max-width:160px;max-height:64px;object-fit:contain}
+    .logo-row img[data-logo="honda"]{width:70px;height:57px}
+    .logo-row img[data-logo="jeep"]{width:95px;height:38px}
+    .logo-row img[data-logo="generalmotors"]{width:61px;height:61px}
+    .logo-row img[data-logo="nissan"]{width:76px;height:64px}
+    .logo-row img[data-logo="lexus"]{width:75px;height:56px}
+    .logo-row img[data-logo="activision"]{width:111px;height:29px}
+    .logo-row img[data-logo="ea"]{width:81px;height:39px}
+    .logo-row img[data-logo="sega"]{width:115px;height:38px}
+    .logo-row img[data-logo="hasbro"]{width:107px;height:58px}
+    .logo-row img[data-logo="imagineering"]{width:123px;height:53px}
+    .logo-row img[data-logo="boeing"]{width:78px;height:64px}
+    .logo-row img[data-logo="teague"]{width:145px;height:21px}
+    .logo-row img[data-logo="samsung"]{width:133px;height:20px}
+    .logo-row img[data-logo="mcdonalds"]{width:68px;height:60px}
+    .logo-row img[data-logo="virgin"]{width:72px;height:64px}
+    .logo-row img[data-logo="popmech"]{width:108px;height:30px}
+    .logo-row img[data-logo="imaginefx"]{width:150px;height:35px}
+    @media(min-width:761px){.logo-row{grid-template-columns:repeat(5,1fr);gap:20px}.logo-cell{height:88px}}
+    .logo-mark{filter:brightness(0) invert(0.55);opacity:.9}
+    .logo-text{font:700 1.05rem/1.1 "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#8a8d8a;text-align:center}
+    .also{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:.66rem;letter-spacing:.14em;color:#777;line-height:2}
+    .also span{color:var(--amber-hot);letter-spacing:.28em;margin-right:10px}
   </style>
 </head>
 <body>
@@ -245,12 +295,13 @@
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-media" src="" data-asset="22" alt="Blue and orange number 43 '49 Mercury speculative NASCAR stock car tribute in front 3/4 view">
+      <img class="hero-media" src="" data-asset="0" alt="Scream'n Demon custom hot rod concept by Kevin Cunningham">
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-frame" aria-hidden="true"><span class="frame-label">Industrial + Transportation / Los Angeles</span></div>
       <div class="wrap hero-inner">
         <div class="hero-copy">
           <p class="eyebrow">Kevin Cunningham / Designer + Creative Director</p>
+          <div class="avail-badge"><i></i>AVAILABLE FOR INDUSTRIAL DESIGN · TOY DESIGN · VEHICLE DESIGN</div>
           <h1 id="hero-title"><span>Vehicles.</span><span>Collectibles.</span><span>Worlds.</span></h1>
           <div class="hero-bottom">
             <p class="hero-intro">Design leadership grounded in drawing, digital precision, and the work of getting ideas built—from autonomous ground systems to toy shelves to story worlds.</p>
@@ -258,71 +309,71 @@
           </div>
         </div>
       </div>
-      <div class="hero-caption">'49 Mercury Petty Tribute <span>Fantasy Racer Series</span></div>
+      <div class="hero-caption">Scream'n Demon <span>Aces Series</span></div>
     </section>
 
     <section class="work" id="work">
       <div class="wrap">
         <div class="work-head">
           <div><p class="eyebrow">Selected work / 01—10</p><h2 class="section-title">Built across<br>disciplines.</h2></div>
-          <p>One practice, different scales: transportation, autonomous hardware, play systems, hard-surface concepts, and the worlds that give objects meaning. Select any project for the full image set.</p>
+          <p>One practice, different scales: transportation, autonomous hardware, play systems, hard-surface concepts, and the worlds that give objects meaning. Select any project for the full image set.</p><p><strong>Industrial Design · Transportation · Collectibles · Creative Direction</strong><br>From concept through design development toward real-world execution. Case-study notes use only information already on file — no clients, results, or responsibilities invented.</p>
         </div>
         <div class="project-grid">
-          <article class="project full" data-project="demon">
-            <button class="project-button" type="button" aria-label="Open Scream'n Demon project">
-              <img src="" data-asset="0" alt="Scream'n Demon custom hot rod concept in profile">
-              <span class="project-copy"><span><span class="project-meta">Worldbuilding / Hero vehicle / 01</span><h3>Scream'n Demon</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
+<article class="project wide" data-project="spar">
+            <button class="project-button" type="button" aria-label="Open SPAR X2 hybrid UTV project">
+              <img src="" data-asset="4" alt="SPAR X2 hybrid utility terrain vehicle">
+              <span class="project-copy"><span><span class="project-meta">Transportation / 01</span><h3>SPAR X2 Hybrid UTV</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-          <article class="project wide tall" data-project="star">
+<article class="project wide tall" data-project="star">
             <button class="project-button" type="button" aria-label="Open Samsung STAR autonomous UGV project">
               <img src="" data-asset="1" alt="Samsung STAR autonomous unmanned ground vehicle">
               <span class="project-copy"><span><span class="project-meta">Autonomous systems / 02</span><h3>Samsung STAR UGV</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-          <article class="project tall" data-project="crusher">
-            <button class="project-button" type="button" aria-label="Open The Crusher project">
-              <img src="" data-asset="2" alt="The Corps The Crusher heavy armored assault vehicle toy">
-              <span class="project-copy"><span><span class="project-meta">Collectibles / 03</span><h3>The Crusher</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
-            </button>
-          </article>
-          <article class="project" data-project="bomber">
+<article class="project" data-project="bomber">
             <button class="project-button" type="button" aria-label="Open Mad Bomber project">
               <img src="" data-asset="3" alt="Mad Bomber heavy assault ground attack vehicle toy concept">
-              <span class="project-copy"><span><span class="project-meta">Collectibles / 04</span><h3>Mad Bomber</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
+              <span class="project-copy"><span><span class="project-meta">Collectibles / 03</span><h3>Mad Bomber</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-          <article class="project wide" data-project="spar">
-            <button class="project-button" type="button" aria-label="Open SPAR X2 hybrid UTV project">
-              <img src="" data-asset="4" alt="SPAR X2 hybrid utility terrain vehicle">
-              <span class="project-copy"><span><span class="project-meta">Transportation / 05</span><h3>SPAR X2 Hybrid UTV</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
-            </button>
-          </article>
-          <article class="project wide" data-project="m577">
-            <button class="project-button" type="button" aria-label="Open M577 Xenomorph attack battle set project">
-              <img src="" data-asset="5" alt="M577 armored personnel carrier Xenomorph attack battle set">
-              <span class="project-copy"><span><span class="project-meta">Collectible play system / 06</span><h3>M577 Battle Set</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
-            </button>
-          </article>
-          <article class="project" data-project="orion">
-            <button class="project-button" type="button" aria-label="Open Orion Longbow bike design project">
-              <img src="" data-asset="6" alt="Orion Longbow motorcycle design">
-              <span class="project-copy"><span><span class="project-meta">Transportation / 07</span><h3>Orion Longbow</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
-            </button>
-          </article>
-          <article class="project" data-project="gunslinger">
+<article class="project" data-project="gunslinger">
             <button class="project-button" type="button" aria-label="Open Gunslinger project">
               <img src="" data-asset="7" alt="The Corps Gunslinger tactical vehicle concept">
-              <span class="project-copy"><span><span class="project-meta">Concept + kitbash / 08</span><h3>Gunslinger</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
+              <span class="project-copy"><span><span class="project-meta">Concept + kitbash / 04</span><h3>Gunslinger</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-          <article class="project wide" data-project="workflow">
+<article class="project wide" data-project="m577">
+            <button class="project-button" type="button" aria-label="Open M577 Xenomorph attack battle set project">
+              <img src="" data-asset="5" alt="M577 armored personnel carrier Xenomorph attack battle set">
+              <span class="project-copy"><span><span class="project-meta">Collectible play system / 05</span><h3>M577 Battle Set</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
+            </button>
+          </article>
+<article class="project tall" data-project="crusher">
+            <button class="project-button" type="button" aria-label="Open The Crusher project">
+              <img src="" data-asset="2" alt="The Corps The Crusher heavy armored assault vehicle toy">
+              <span class="project-copy"><span><span class="project-meta">Collectibles / 06</span><h3>The Crusher</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
+            </button>
+          </article>
+<article class="project full" data-project="demon">
+            <button class="project-button" type="button" aria-label="Open Scream'n Demon project">
+              <img src="" data-asset="0" alt="Scream'n Demon custom hot rod concept in profile">
+              <span class="project-copy"><span><span class="project-meta">Worldbuilding / Hero vehicle / 07</span><h3>Scream'n Demon</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
+            </button>
+          </article>
+<article class="project" data-project="orion">
+            <button class="project-button" type="button" aria-label="Open Orion Longbow bike design project">
+              <img src="" data-asset="6" alt="Orion Longbow motorcycle design">
+              <span class="project-copy"><span><span class="project-meta">Transportation / 08</span><h3>Orion Longbow</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
+            </button>
+          </article>
+<article class="project wide" data-project="workflow">
             <button class="project-button" type="button" aria-label="Open industrial workflows project">
               <img src="" data-asset="8" alt="Industrial hard-surface vehicle sketch workflow">
               <span class="project-copy"><span><span class="project-meta">Process / 09</span><h3>Industrial Workflows</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-          <article class="project full" data-project="mercury">
+<article class="project full" data-project="mercury">
             <button class="project-button" type="button" aria-label="Open Fantasy Racer Series — '49 Mercury Petty Tribute speculative concept project">
               <img src="" data-asset="22" alt="Blue and orange number 43 '49 Mercury speculative NASCAR stock car tribute in front 3/4 view">
               <span class="project-copy"><span><span class="project-meta">Speculative concept / 10</span><h3>Fantasy Racer Series — '49 Mercury Petty Tribute</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
@@ -332,13 +383,26 @@
       </div>
     </section>
 
+
+    <section class="logo-wall reveal" aria-label="Companies and publications">
+      <div class="wrap">
+        <p class="eyebrow">Trusted by teams at</p>
+        <div class="logo-group"><h5>Automotive</h5><div class="logo-row"><div class="logo-cell"><img src="" data-logo="honda" alt="Honda" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="jeep" alt="Jeep" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="generalmotors" alt="GM" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="nissan" alt="Nissan" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="lexus" alt="Lexus" class="logo-mark"></div></div></div>
+        <div class="logo-group"><h5>Games &amp; Play</h5><div class="logo-row"><div class="logo-cell"><img src="" data-logo="activision" alt="Activision" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="ea" alt="EA" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="sega" alt="Sega" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="hasbro" alt="Hasbro" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="imagineering" alt="Disney Imagineering" class="logo-mark"></div></div></div>
+        <div class="logo-group"><h5>Aerospace &amp; Robotics</h5><div class="logo-row"><div class="logo-cell"><img src="" data-logo="boeing" alt="Boeing" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="teague" alt="Teague" class="logo-mark"></div><div class="logo-cell"><span class="logo-text">Carnegie Mellon Robotics</span></div><div class="logo-cell"><span class="logo-text">Metalcrafters</span></div><div class="logo-cell"><span class="logo-text">Lanard Toys</span></div></div></div>
+        <div class="logo-group"><h5>Brands &amp; Published</h5><div class="logo-row"><div class="logo-cell"><img src="" data-logo="samsung" alt="Samsung" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="mcdonalds" alt="McDonald&apos;s" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="virgin" alt="Virgin" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="popmech" alt="Popular Mechanics" class="logo-mark"></div><div class="logo-cell"><img src="" data-logo="imaginefx" alt="ImagineFX" class="logo-mark"></div></div></div>
+        </div>
+        <div class="also"><span>Also:</span> Carnegie Mellon Robotics · Metalcrafters · Automobile Magazine · Car Styling · Mechanical Engineering · Ballistic Publishing Concept Book</div>
+      </div>
+    </section>
+
     <section class="closing" id="contact" aria-labelledby="contact-title">
       <div class="wrap">
         <h2 class="eyebrow contact-eyebrow" id="contact-title">Contact / New work</h2>
         <div class="closing-bottom">
           <div class="contact-copy">
-            <h3>Have a project in mind?</h3>
-            <p>Available for industrial design, transportation, collectible and toy programs, visual development, and creative direction.</p>
+            <h3>Got a product that needs to exist?</h3>
+            <p>Available for industrial design, transportation, collectible and toy programs, visual development, and creative direction. Studios, brands, and companies looking for design leadership, creative collaboration, or project development — let's talk.</p>
           </div>
           <div class="contact-panel">
             <div class="contact-actions">
@@ -366,6 +430,9 @@
               <a class="social-link" href="https://www.artstation.com/kevincu" target="_blank" rel="noopener noreferrer" aria-label="Kevin Cunningham on ArtStation">
                 <span class="social-brand"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.9 2.8 21.6 19.6h-5l-4.7-8.1-4.7 8.1h-5L11.9 2.8z" fill="currentColor"/><path d="M8.4 18.1h10.9l2.6 4.1H6z" fill="currentColor"/></svg><span class="social-name">ArtStation</span></span><span class="social-arrow" aria-hidden="true">↗</span>
               </a>
+              <a class="social-link" href="https://www.tiktok.com/@vizcom_la" target="_blank" rel="noopener noreferrer" aria-label="TikTok at vizcom_la">
+                <span class="social-brand"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="currentColor"/></svg><span class="social-name">TikTok</span></span><span class="social-arrow" aria-hidden="true">↗</span>
+              </a>
             </nav>
           </div>
         </div>
@@ -373,51 +440,62 @@
     </section>
   </main>
 
+  <div class="sticky-cta"><small>Hiring a designer who ships?</small><a href="#contact">Talk to Kevin →</a></div>
+
   <footer><div class="wrap footer-inner"><span>Kevin Cunningham / Los Angeles</span><span>Industrial + Transportation Design</span></div></footer>
 
   <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
     <div class="modal-panel">
       <button class="modal-close" id="modalClose" type="button" aria-label="Close project">×</button>
-      <div class="modal-media"><img class="modal-image" id="modalImage" alt="Selected Kevin Cunningham project artwork"><iframe class="modal-video" id="modalVideo" title="Samsung STAR HD MPEG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe><video class="modal-video" id="modalLocalVideo" controls playsinline preload="metadata" hidden></video></div>
+      <div class="modal-media" id="modalGallery" tabindex="0" aria-label="Project images"></div>
       <div class="modal-side">
         <span class="modal-category" id="modalCategory"></span>
         <h2 class="modal-title" id="modalTitle"></h2>
         <div class="modal-description" id="modalDescription"></div>
+        <div class="spar-case-study" id="sparCaseStudy" hidden></div>
         <div class="modal-spacer"></div>
         <span class="modal-count" id="modalCount"></span>
-        <div class="modal-controls"><button id="modalPrev" type="button">← Previous</button><button id="modalNext" type="button">Next →</button></div>
         <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">View full project on ArtStation ↗</a>
       </div>
     </div>
   </div>
 
+  <div class="lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Enlarged project image" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
+    <img id="lightboxImage" alt="">
+  </div>
   <script>
   (function(){
     var projects={
-      demon:{title:"Scream'n Demon",category:"Worldbuilding / Hero vehicle",description:"A demonic hot-rod concept developed as both a hero vehicle and a story-world artifact.",images:[__A0],alts:["Scream'n Demon custom hot rod concept in profile"],link:"https://kevincu.artstation.com/projects/NyNB2q"},
-      star:{title:"Samsung STAR UGV",category:"Autonomous ground systems",description:"Autonomous unmanned ground vehicle work developed at Hiero Tech for Samsung Techwin.",details:'<ul><li><strong>Design Narrative:</strong> The Samsung STAR (Surveillance &amp; Terrain Autonomous Robot) is a multi-mission unmanned ground vehicle built for high-stakes industrial surveillance and autonomous perimeter defense — advanced robotics wrapped in a ruggedized, defense-grade aesthetic.</li><li><strong>Funding:</strong> Funded by Samsung Techwin.</li><li><strong>Key Features:</strong> <strong>Center-pivot suspension</strong> — a defining engineering feature; 4-wheel independent hub motors and steering; articulated "wing" shell system protecting internal sensors, with maintenance access and modular payload swaps; high-clearance geometry and suspension travel with a low center of gravity; weather-sealed composite housing; 360° sensor suite; active LED status indicators.</li><li><strong>R&amp;D:</strong> Kevin Cunningham did all the coordinating and R&amp;D research for all the tech.</li><li><strong>Sensors:</strong> SICK LiDARs.</li><li><strong>Suspension:</strong> Reactive suspension research based on the Bose system.</li><li><strong>Bespoke Engineering:</strong> Everything was bespoke, with all technology built custom for the vehicle.</li><li><strong>Process:</strong> Designed by Kevin Cunningham from beginning to end, with full-scale validation from 2D sketching and 3D surfacing through a 1:1 physical prototype built by Metalcrafters — technical assembly coordination, LED signaling integration, and material finish testing.</li><li><strong>Platform:</strong> Autonomous AWD electric drivetrain by Razer.</li><li><strong>Software &amp; hardware integration:</strong> Carnegie Mellon.</li><li><strong>Role:</strong> Surveillance, reconnaissance, and modular payload delivery.</li><li><strong>Scale:</strong> Full scale (1:1).</li><li><strong>Subject Matter:</strong> Concept Art, Vehicles, Robotics.</li><li><strong>Medium:</strong> Digital 2D, Digital 3D.</li></ul><h3>Tags</h3><p class="modal-tags">#VehicleDesign #UGV #Robotics #ConceptArt #AutonomousVehicles #IndustrialDesign #SurveillanceTech #BlackLabLA #SamsungSTAR</p>',images:[__A1,__A11,__A12],alts:["Samsung STAR autonomous UGV in dark studio view","Samsung STAR autonomous UGV design presentation","Samsung STAR autonomous UGV detail view"],link:"https://kevincu.artstation.com/projects/oOG5J"},
-      crusher:{title:"The Crusher",category:"Collectibles / Vehicle toy",description:"Heavy armored assault vehicle concept for The Corps! toy line.",details:'<p>This project features a technical datasheet for The Crusher (Unit: 015), a heavy armored assault vehicle and fortification breaker designed for The Corps! Command. The design focuses on high-impact durability and raw power, featuring a heavy armored chassis and a high-torque V-10 engine.</p><p>The vehicle\'s aggressive profile is defined by oversized monster tires with deep tread and a reinforced swingarm suspension system built to withstand extreme combat environments. Visualized through multiple perspectives—including side, top-down, and 3/4 views—the unit is finished with custom red and black "Crusher" graphics.</p><h3>Software</h3><p>Adobe Photoshop, Photoshop Elements.</p><h3>Tags</h3><p class="modal-tags">#hardsurface #conceptart #hasbro #vehicledesign #industrialdesign #artstation #3dmodeling #DigitalArt #monsterbike #mattel #hotwheels #militarytech #ada #lanard #artcenteralumni #TheCorps #TheCrusher</p>',images:[__A2,__A13],alts:["The Crusher heavy armored assault vehicle toy","The Crusher vehicle toy detail presentation"],link:"https://kevincu.artstation.com/projects/YGm4nX"},
-      bomber:{title:"Mad Bomber",category:"Collectibles / Vehicle toy",description:"Heavy assault ground-attack vehicle concept built around a bold, playable silhouette.",details:'<ul><li><strong>Design Narrative:</strong> Developed as a high-mobility ground attack unit, the Mad Bomber features a custom-built sniper cannon, rear-mounted "La Bombas" ordnance, and an exposed high-performance motor.</li><li><strong>Scale:</strong> 1:18</li><li><strong>Key Features:</strong> Custom side exhaust detailing, integrated light and sound activation, and a weathered desert-ops paint scheme.</li><li><strong>Process:</strong> Concepted and produced by Black Lab LA.</li></ul><h3>Subject Matter &amp; Categorization</h3><ul><li><strong>Subject Matter:</strong> Concept Art, Vehicles, Toys &amp; Collectibles.</li><li><strong>Medium:</strong> Mixed Media, Kitbashing, Digital Illustration (for the technical datasheet presentation).</li><li><strong>Software Used:</strong> Art Studio Pro or Adobe Fresco (for the layout/graphic design).</li></ul><h3>Tags</h3><p class="modal-tags">#Kitbash #DesignerToy #VehicleDesign #ConceptArt #ToyBashing #BlackLabLA #MadBomber #IndustrialDesign #CustomToy #ActionFigurePhotography #118Scale #MilitaryConcept #TheCorps #MadMaxAesthetic</p>',images:[__A3,__A14,__A15],alts:["Mad Bomber heavy assault ground attack vehicle concept","Mad Bomber vehicle toy side view","Mad Bomber vehicle toy presentation board"],link:"https://kevincu.artstation.com/projects/eROOa6"},
-      spar:{title:"SPAR X2 Hybrid UTV",category:"Transportation / Utility",description:"Hybrid utility-terrain vehicle design balancing stance, utility, and rugged field presence.",details:'<ul><li><strong>Design Narrative:</strong> The SPAR X2 is a hybrid UTV concept designed for recreation or security surveillance. A rugged two-seat open-air side-by-side built around an extended-range hybrid powertrain — off-road capability on a forward-thinking utility platform, presented with a "Forward Thinking Solutions" spec panel.</li><li><strong>Key Features:</strong> Extended-range hybrid system; IP66 rated for harsh environmental conditions; large off-road tires; roll-cage styling with tan/gold accent graphics.</li><li><strong>Subject Matter:</strong> Concept Art, Vehicles, Transportation Design.</li><li><strong>Medium:</strong> Digital 3D concept render.</li><li><strong>Software:</strong> 3ds Max, KeyShot.</li></ul><h3>Tags</h3><p class="modal-tags">#VehicleDesign #UTV #ConceptArt #HybridVehicle #OffRoad #IndustrialDesign #TransportationDesign #BlackLabLA #SparX2</p>',images:[__A4,__A16,__A17],alts:["SPAR X2 hybrid utility terrain vehicle","SPAR X2 hybrid UTV side view","SPAR X2 hybrid UTV detail view"],link:"https://kevincu.artstation.com/projects/2x6rK"},
-      m577:{title:"M577 Armored Personnel Carrier - Xenomorph Attack Battle Set",category:"Collectible play system",description:"Armored personnel carrier and Xenomorph attack battle set concept.",details:'<h3>Weyland-Yutani Corp: Building Better Worlds</h3><p>This concept piece reimagines the iconic M577 APC from the Aliens franchise as part of a "Xenomorph Attack" Space Colony Defense battle set. The project explores the intersection of classic cinematic sci-fi and modern toy design aesthetics.</p><p>The model is presented on a technical cutting mat to emphasize the scale and "kit-bash" feel of the assembly. The design maintains the brutalist, low-profile geometry of the original APC while integrating updated surface detailing and weathering consistent with heavy colonial marine deployment.</p><h3>Included in Set:</h3><ul><li><strong>M577 APC:</strong> Featuring a sliding turret track and reinforced hull plating.</li><li><strong>Tactical Gear:</strong> A selection of 1:18 scale (approx.) colonial marine weaponry, including pulse rifles and heavy incinerators.</li><li><strong>Livery:</strong> Authentic USCM (United States Colonial Marines) markings and "Building Better Worlds" corporate branding.</li></ul><h3>Weyland-Yutani Corp: Space Colony Defense - Armament Package</h3><p>This project showcases a high-fidelity visualization of the UA 571-C Sentry Gun system and a suite of advanced infantry weapons. The design aesthetic bridges the gap between classic Aliens cinematic hardware and contemporary toy-line product presentation.</p><p>The focus here is on "ultra-high tension" industrial design, featuring tactical readouts and scale-accurate dimensions for hardware integration.</p><h3>Armament Breakdown:</h3><ul><li><strong>APC</strong> — M577 armored personnel carrier, 6x6 all-terrain</li><li><strong>UA 571-C Sentry Gun:</strong> Features primary sensor integration and ammo housing. (Scale 1:4 for layout).</li><li><strong>Advanced Infantry Suite:</strong></li><li><strong>M56 Smart Gun:</strong> Heavy suppression hardware.</li><li><strong>PYR-0 Power Flamethrower:</strong> (As designed by Lanard).</li><li><strong>M7-P Power Pickaxe:</strong> Tactical excavation and close-quarters tool.</li><li><strong>Standard Issue Shotgun (M3 Model).</strong></li></ul><h3>Medium</h3><p>Digital 2D, Digital 3D, Mixed Media</p><h3>Software</h3><ul><li>Adobe Fresco</li><li>Art Studio Pro</li><li>Adobe Photoshop</li><li>3ds Max</li></ul>',images:[__A5,__A18,__A19],alts:["M577 armored personnel carrier Xenomorph battle set","M577 armored personnel carrier toy detail","M577 Xenomorph attack battle set presentation"],link:"https://kevincu.artstation.com/projects/a0A4d9"},
-      orion:{title:"Orion Longbow",category:"Transportation / Motorcycle",description:"Motorcycle design study for ImagineFX, developed from sketch exploration into a resolved vehicle concept.",images:[__A6],alts:["Orion Longbow motorcycle design presentation"],link:"https://kevincu.artstation.com/projects/Ka0Wy"},
-      gunslinger:{title:"Gunslinger",category:"Collectibles / Concept + kitbash",description:"Tactical kitbash and concept design for The Corps! vehicle line.",details:'<p>A high-fidelity vehicle concept and physical design study for The Corps! line, showcasing the "Gunslinger" (Unit ID: GS-734). This project explores the intersection of digital hard-surface modeling and traditional analog kitbashing, bridging the gap between industrial design and hand-crafted toy prototypes.</p><p>The design utilizes a "Toy Bash" methodology, where traditional handcrafted fabrication techniques are combined with precision digital workflows. By integrating physical components with custom-sculpted elements, the "Gunslinger" achieves a unique, rugged aesthetic while maintaining professional manufacturing standards.</p><h3>Design Highlights:</h3><ul><li><strong>Traditional Craftsmanship:</strong> Modeled after classic kitbashing techniques, featuring hand-applied livery, weathering, and customized hardware integrations.</li><li><strong>Tactical Loadout:</strong> Equipped with a primary turret-mounted V8 Machine Gun and a hood-mounted Harpoon Gun for specialized combat.</li><li><strong>Hard-Surface Engineering:</strong> Detailed digital modeling of the roll cage, stand-up turret base, and "Fuel-Amalgam" power system.</li><li><strong>Styling:</strong> Matte olive drab military finish contrasted with gold-anodized rims and "Gunslinger" unit livery.</li></ul>',images:[__A7,__A20,__A21],alts:["The Corps Gunslinger tactical vehicle concept","Gunslinger tactical vehicle kitbash detail","Gunslinger concept design presentation"],video:{title:"Gunslinger snow run",src:__V0},link:"https://kevincu.artstation.com/projects/BkB4a8"},
-      workflow:{title:"Industrial Workflows",category:"Process / Hard surface + vehicles",description:"Hard-surface and vehicle design workflows across sketch exploration and digital development.",details:'<p>This collection highlights the foundational stages of mechanical and transportation design. These sketches focus on exploring silhouettes, functional architecture, and the complex surfaces of vehicles and industrial hardware. By prioritizing form-finding and technical line work, this gallery showcases the iterative thinking required to translate high-level concepts into grounded, believable designs.</p>',images:[__A8],alts:["Industrial hard-surface vehicle sketch workflow"],link:"https://kevincu.artstation.com/projects/mq6rVv"},
+      demon:{title:"Scream'n Demon",category:"Worldbuilding / Hero vehicle",description:"A demonic hot-rod concept developed as both a hero vehicle and a story-world artifact.",images:["https://cdnb.artstation.com/p/assets/images/images/070/058/477/large/kevin-cunningham-asset.jpg?1701678990"],alts:["Scream'n Demon custom hot rod concept in profile"],link:"https://kevincu.artstation.com/projects/NyNB2q"},
+      star:{title:"Samsung STAR UGV",category:"Autonomous ground systems",description:"Autonomous unmanned ground vehicle work developed at Hiero Tech for Samsung Techwin.",details:'<ul><li><strong>Design Narrative:</strong> The Samsung STAR (Surveillance &amp; Terrain Autonomous Robot) is a multi-mission unmanned ground vehicle built for high-stakes industrial surveillance and autonomous perimeter defense — advanced robotics wrapped in a ruggedized, defense-grade aesthetic.</li><li><strong>Funding:</strong> Funded by Samsung Techwin.</li><li><strong>Key Features:</strong> <strong>Center-pivot suspension</strong> — a defining engineering feature; 4-wheel independent hub motors and steering; articulated "wing" shell system protecting internal sensors, with maintenance access and modular payload swaps; high-clearance geometry and suspension travel with a low center of gravity; weather-sealed composite housing; 360° sensor suite; active LED status indicators.</li><li><strong>R&amp;D:</strong> Kevin Cunningham did all the coordinating and R&amp;D research for all the tech.</li><li><strong>Sensors:</strong> SICK LiDARs.</li><li><strong>Suspension:</strong> Reactive suspension research based on the Bose system.</li><li><strong>Bespoke Engineering:</strong> Everything was bespoke, with all technology built custom for the vehicle.</li><li><strong>Process:</strong> Designed by Kevin Cunningham from beginning to end, with full-scale validation from 2D sketching and 3D surfacing through a 1:1 physical prototype built by Metalcrafters — technical assembly coordination, LED signaling integration, and material finish testing.</li><li><strong>Platform:</strong> Autonomous AWD electric drivetrain by Razer.</li><li><strong>Software &amp; hardware integration:</strong> Carnegie Mellon.</li><li><strong>Role:</strong> Surveillance, reconnaissance, and modular payload delivery.</li><li><strong>Scale:</strong> Full scale (1:1).</li><li><strong>Subject Matter:</strong> Concept Art, Vehicles, Robotics.</li><li><strong>Medium:</strong> Digital 2D, Digital 3D.</li></ul><h3>Tags</h3><p class="modal-tags">#VehicleDesign #UGV #Robotics #ConceptArt #AutonomousVehicles #IndustrialDesign #SurveillanceTech #BlackLabLA #SamsungSTAR</p>',images:["https://cdnb.artstation.com/p/assets/images/images/098/358/259/large/kevin-cunningham-asset.webp?1776845358","https://cdnb.artstation.com/p/assets/images/images/098/386/958/large/kevin-cunningham-asset.webp?1776914135","https://cdnb.artstation.com/p/assets/images/images/098/352/039/large/kevin-cunningham-asset.jpg?1776821751","https://cdnb.artstation.com/p/assets/images/images/098/386/964/large/kevin-cunningham-asset.webp?1776914148","https://cdnb.artstation.com/p/assets/images/images/098/386/961/large/kevin-cunningham-asset.webp?1776914142","https://cdnb.artstation.com/p/assets/images/images/098/354/954/large/kevin-cunningham-asset.webp?1776832624","https://cdnb.artstation.com/p/assets/images/images/098/354/952/large/kevin-cunningham-asset.webp?1776832613","https://cdna.artstation.com/p/assets/images/images/000/262/464/large/kevin-cunningham-build-image-chassis.jpg?1413933184"],alts:["Blue Samsung STAR UGV front view on presentation board","Blue Samsung STAR UGV rear view with sensor mast","Samsung STAR UGV with shell opened, module bay","Tactical UGV system infographic in desert terrain","Full-scale Samsung STAR prototype in workshop","Samsung STAR prototype front view in workshop","Samsung STAR prototype rear view in workshop","Samsung STAR chassis and powertrain, bare tube frame"],link:"https://kevincu.artstation.com/projects/oOG5J"},
+      crusher:{title:"The Crusher",category:"Collectibles / Vehicle toy",description:"Heavy armored assault vehicle concept for The Corps! toy line.",details:'<p>This project features a technical datasheet for The Crusher (Unit: 015), a heavy armored assault vehicle and fortification breaker designed for The Corps! Command. The design focuses on high-impact durability and raw power, featuring a heavy armored chassis and a high-torque V-10 engine.</p><p>The vehicle\'s aggressive profile is defined by oversized monster tires with deep tread and a reinforced swingarm suspension system built to withstand extreme combat environments. Visualized through multiple perspectives—including side, top-down, and 3/4 views—the unit is finished with custom red and black "Crusher" graphics.</p><h3>Software</h3><p>Adobe Photoshop, Photoshop Elements.</p><h3>Tags</h3><p class="modal-tags">#hardsurface #conceptart #hasbro #vehicledesign #industrialdesign #artstation #3dmodeling #DigitalArt #monsterbike #mattel #hotwheels #militarytech #ada #lanard #artcenteralumni #TheCorps #TheCrusher</p>',images:["https://cdnb.artstation.com/p/assets/images/images/099/087/445/large/kevin-cunningham-asset.webp?1778886062","https://cdna.artstation.com/p/assets/images/images/099/087/446/large/kevin-cunningham-asset.webp?1778886067"],alts:["Crusher technical datasheet, four views","Crusher kitbash build close-ups, engine and chassis"],link:"https://kevincu.artstation.com/projects/YGm4nX"},
+      bomber:{title:"Mad Bomber",category:"Collectibles / Vehicle toy",description:"Heavy assault ground-attack vehicle concept built around a bold, playable silhouette.",details:'<ul><li><strong>Design Narrative:</strong> Developed as a high-mobility ground attack unit, the Mad Bomber features a custom-built sniper cannon, rear-mounted "La Bombas" ordnance, and an exposed high-performance motor.</li><li><strong>Scale:</strong> 1:18</li><li><strong>Key Features:</strong> Custom side exhaust detailing, integrated light and sound activation, and a weathered desert-ops paint scheme.</li><li><strong>Process:</strong> Concepted and produced by Black Lab LA.</li></ul><h3>Subject Matter &amp; Categorization</h3><ul><li><strong>Subject Matter:</strong> Concept Art, Vehicles, Toys &amp; Collectibles.</li><li><strong>Medium:</strong> Mixed Media, Kitbashing, Digital Illustration (for the technical datasheet presentation).</li><li><strong>Software Used:</strong> Art Studio Pro or Adobe Fresco (for the layout/graphic design).</li></ul><h3>Tags</h3><p class="modal-tags">#Kitbash #DesignerToy #VehicleDesign #ConceptArt #ToyBashing #BlackLabLA #MadBomber #IndustrialDesign #CustomToy #ActionFigurePhotography #118Scale #MilitaryConcept #TheCorps #MadMaxAesthetic</p>',images:["https://cdnb.artstation.com/p/assets/images/images/098/875/585/large/kevin-cunningham-asset.webp?1778290221","https://cdna.artstation.com/p/assets/images/images/098/990/510/large/kevin-cunningham-asset.webp?1778626415","https://cdnb.artstation.com/p/assets/images/images/098/990/805/large/kevin-cunningham-asset.webp?1778627129","https://cdna.artstation.com/p/assets/images/images/098/875/586/large/kevin-cunningham-asset.jpg?1778290231","https://cdnb.artstation.com/p/assets/images/images/098/992/085/large/kevin-cunningham-asset.webp?1778630868","https://cdna.artstation.com/p/assets/images/images/098/992/200/large/kevin-cunningham-asset.webp?1778631252"],alts:["Mad Bomber technical datasheet, three views","Mad Bomber sniper cannon close-up datasheet","Mad Bomber sniper cannon on gun-shield base","Mad Bomber sniper cannon and twin La Bombas","Twin La Bombas technical datasheet","Mad Bomber finished toy and build photos"],link:"https://kevincu.artstation.com/projects/eROOa6"},
+      spar:{title:"SPAR X2 Hybrid UTV",category:"Transportation / Utility",description:"Hybrid utility-terrain vehicle design balancing stance, utility, and rugged field presence.",details:'<ul><li><strong>Design Narrative:</strong> The SPAR X2 is a hybrid UTV concept designed for recreation or security surveillance. A rugged two-seat open-air side-by-side built around an extended-range hybrid powertrain — off-road capability on a forward-thinking utility platform, presented with a "Forward Thinking Solutions" spec panel.</li><li><strong>Key Features:</strong> Extended-range hybrid system; IP66 rated for harsh environmental conditions; large off-road tires; roll-cage styling with tan/gold accent graphics.</li><li><strong>Subject Matter:</strong> Concept Art, Vehicles, Transportation Design.</li><li><strong>Medium:</strong> Digital 3D concept render.</li><li><strong>Software:</strong> 3ds Max, KeyShot.</li></ul><h3>Tags</h3><p class="modal-tags">#VehicleDesign #UTV #ConceptArt #HybridVehicle #OffRoad #IndustrialDesign #TransportationDesign #BlackLabLA #SparX2</p>',images:["https://cdna.artstation.com/p/assets/images/images/098/389/446/large/kevin-cunningham-asset.webp?1776923850","https://cdnb.artstation.com/p/assets/images/images/098/418/207/large/kevin-cunningham-asset.webp?1776988201","https://cdnb.artstation.com/p/assets/images/images/098/491/839/large/kevin-cunningham-asset.webp?1777229722","https://cdna.artstation.com/p/assets/images/images/098/419/978/large/kevin-cunningham-asset.webp?1776995214","https://cdnb.artstation.com/p/assets/images/images/098/491/841/large/kevin-cunningham-asset.webp?1777229727","https://cdnb.artstation.com/p/assets/images/images/098/420/235/large/kevin-cunningham-asset.webp?1776969174"],alts:["SPAR X2 Forward Thinking Solutions poster","SPAR X2 Gods Eye surveillance poster","SPAR X2 open equipment bay close-up","SPAR X2 engine bay access panel","SPAR X2 multi-function charger in cargo bed","SPAR X2 chassis comparison, dual drive vs all electric"],link:"https://kevincu.artstation.com/projects/2x6rK"},
+      m577:{title:"M577 Armored Personnel Carrier - Xenomorph Attack Battle Set",category:"Collectible play system",description:"Armored personnel carrier and Xenomorph attack battle set concept.",details:'<h3>Weyland-Yutani Corp: Building Better Worlds</h3><p>This concept piece reimagines the iconic M577 APC from the Aliens franchise as part of a "Xenomorph Attack" Space Colony Defense battle set. The project explores the intersection of classic cinematic sci-fi and modern toy design aesthetics.</p><p>The model is presented on a technical cutting mat to emphasize the scale and "kit-bash" feel of the assembly. The design maintains the brutalist, low-profile geometry of the original APC while integrating updated surface detailing and weathering consistent with heavy colonial marine deployment.</p><h3>Included in Set:</h3><ul><li><strong>M577 APC:</strong> Featuring a sliding turret track and reinforced hull plating.</li><li><strong>Tactical Gear:</strong> A selection of 1:18 scale (approx.) colonial marine weaponry, including pulse rifles and heavy incinerators.</li><li><strong>Livery:</strong> Authentic USCM (United States Colonial Marines) markings and "Building Better Worlds" corporate branding.</li></ul><h3>Weyland-Yutani Corp: Space Colony Defense - Armament Package</h3><p>This project showcases a high-fidelity visualization of the UA 571-C Sentry Gun system and a suite of advanced infantry weapons. The design aesthetic bridges the gap between classic Aliens cinematic hardware and contemporary toy-line product presentation.</p><p>The focus here is on "ultra-high tension" industrial design, featuring tactical readouts and scale-accurate dimensions for hardware integration.</p><h3>Armament Breakdown:</h3><ul><li><strong>APC</strong> — M577 armored personnel carrier, 6x6 all-terrain</li><li><strong>UA 571-C Sentry Gun:</strong> Features primary sensor integration and ammo housing. (Scale 1:4 for layout).</li><li><strong>Advanced Infantry Suite:</strong></li><li><strong>M56 Smart Gun:</strong> Heavy suppression hardware.</li><li><strong>PYR-0 Power Flamethrower:</strong> (As designed by Lanard).</li><li><strong>M7-P Power Pickaxe:</strong> Tactical excavation and close-quarters tool.</li><li><strong>Standard Issue Shotgun (M3 Model).</strong></li></ul><h3>Medium</h3><p>Digital 2D, Digital 3D, Mixed Media</p><h3>Software</h3><ul><li>Adobe Fresco</li><li>Art Studio Pro</li><li>Adobe Photoshop</li><li>3ds Max</li></ul>',images:["https://cdna.artstation.com/p/assets/images/images/098/134/320/large/kevin-cunningham-asset.webp?1776218132","https://cdnb.artstation.com/p/assets/images/images/098/136/280/large/kevin-cunningham-asset.webp?1776225623","https://cdnb.artstation.com/p/assets/images/images/098/136/419/large/kevin-cunningham-asset.webp?1776226050","https://cdna.artstation.com/p/assets/images/images/098/136/578/large/kevin-cunningham-asset.webp?1776226557","https://cdnb.artstation.com/p/assets/images/images/098/137/573/large/kevin-cunningham-asset.webp?1776229811"],alts:["M577 APC Xenomorph Attack battle set on cutting mat","M577 APC dimensions spec sheet","UA 571-C sentry gun and infantry weapons package","M24 pyro flamethrower weapon model","UA-571C sentry gun system portrait spec"],link:"https://kevincu.artstation.com/projects/a0A4d9"},
+      orion:{title:"Orion Longbow",category:"Transportation / Motorcycle",description:"Motorcycle design study for ImagineFX, developed from sketch exploration into a resolved vehicle concept.",images:["https://cdnb.artstation.com/p/assets/images/images/000/262/315/large/kevin-cunningham-orion-final.jpg?1413925771"],alts:["Orion Longbow concept motorcycle side profile"],link:"https://kevincu.artstation.com/projects/Ka0Wy"},
+      gunslinger:{title:"Gunslinger",category:"Collectibles / Concept + kitbash",description:"Tactical kitbash and concept design for The Corps! vehicle line.",details:'<p>A high-fidelity vehicle concept and physical design study for The Corps! line, showcasing the "Gunslinger" (Unit ID: GS-734). This project explores the intersection of digital hard-surface modeling and traditional analog kitbashing, bridging the gap between industrial design and hand-crafted toy prototypes.</p><p>The design utilizes a "Toy Bash" methodology, where traditional handcrafted fabrication techniques are combined with precision digital workflows. By integrating physical components with custom-sculpted elements, the "Gunslinger" achieves a unique, rugged aesthetic while maintaining professional manufacturing standards.</p><h3>Design Highlights:</h3><ul><li><strong>Traditional Craftsmanship:</strong> Modeled after classic kitbashing techniques, featuring hand-applied livery, weathering, and customized hardware integrations.</li><li><strong>Tactical Loadout:</strong> Equipped with a primary turret-mounted V8 Machine Gun and a hood-mounted Harpoon Gun for specialized combat.</li><li><strong>Hard-Surface Engineering:</strong> Detailed digital modeling of the roll cage, stand-up turret base, and "Fuel-Amalgam" power system.</li><li><strong>Styling:</strong> Matte olive drab military finish contrasted with gold-anodized rims and "Gunslinger" unit livery.</li></ul>',images:["https://cdna.artstation.com/p/assets/images/images/098/202/626/large/kevin-cunningham-asset.webp?1776384464","https://cdnb.artstation.com/p/assets/images/images/098/202/685/large/kevin-cunningham-asset.webp?1776385070","https://cdnb.artstation.com/p/assets/images/images/098/203/583/large/kevin-cunningham-asset.webp?1776389719","https://cdnb.artstation.com/p/assets/images/images/098/204/951/large/kevin-cunningham-asset.webp?1776395948"],alts:["Gunslinger three views, unit GS-734","Gunslinger power and firepower module","Gunslinger heavy harpoon system module","Gunslinger front grappler system module"],video:{title:"Gunslinger snow run",src:__V0},link:"https://kevincu.artstation.com/projects/BkB4a8"},
+      workflow:{title:"Industrial Workflows",category:"Process / Hard surface + vehicles",description:"Hard-surface and vehicle design workflows across sketch exploration and digital development.",details:'<p>This collection highlights the foundational stages of mechanical and transportation design. These sketches focus on exploring silhouettes, functional architecture, and the complex surfaces of vehicles and industrial hardware. By prioritizing form-finding and technical line work, this gallery showcases the iterative thinking required to translate high-level concepts into grounded, believable designs.</p>',images:["https://cdnb.artstation.com/p/assets/images/images/016/938/885/large/kevin-cunningham-asset.jpg?1554056806"],alts:["Industrial workflows futuristic motorcycle sketch"],link:"https://kevincu.artstation.com/projects/mq6rVv"},
       mercury:{title:"Fantasy Racer Series — '49 Mercury Petty Tribute",category:"Speculative concept / Customized diecast",description:"Speculative design based off two of my favorites — Richard Petty and the '49 Merc — reimagining it as a NASCAR stock car raced by the King.",details:'<h3>Key features</h3><ul><li>Full Petty livery: #43, Petty blue and orange, Richard Petty script</li><li>Gulf hood branding, STP fender logos, OIL TREATMENT rear fender</li><li>Vintage gold NASCAR steel wheels with Goodyear lettering</li><li>Period sponsor decals: Holley, Champion, MOOG, WIX, Edelbrock, Exxon Pegasus</li><li>Black chin spoiler air dam</li></ul><h3>Project details</h3><ul><li><strong>Scale:</strong> 1:18</li><li><strong>Series:</strong> Fantasy Racer Series</li><li><strong>Subject matter:</strong> speculative NASCAR stock car concept, tribute livery</li><li><strong>Medium:</strong> customized diecast, hand-detailed livery</li></ul><h3>Tags</h3><p class="modal-tags">#NASCAR #RichardPetty #liverydesign #49Merc #diecast #speculative #Gulf</p>',images:[__A22,__A23,__A24],alts:["Blue and orange number 43 '49 Mercury speculative NASCAR stock car tribute in front 3/4 view","Blue and orange number 43 '49 Mercury speculative NASCAR stock car tribute in side view","Blue and orange number 43 '49 Mercury speculative NASCAR stock car tribute in rear 3/4 view"]}
     };
     var modal=document.getElementById('projectModal');
-    var image=document.getElementById('modalImage');
-    var video=document.getElementById('modalVideo');
-    var localVideo=document.getElementById('modalLocalVideo');
+    var modalPanel=modal.querySelector('.modal-panel');
+    var gallery=document.getElementById('modalGallery');
+    var lightbox=document.getElementById('imageLightbox');
+    var lightboxImage=document.getElementById('lightboxImage');
+    var lightboxClose=document.getElementById('lightboxClose');
+    var lastEnlargeTrigger=null;
+    function openLightbox(src,alt,trigger){lightboxImage.src=src;lightboxImage.alt=alt||'';lastEnlargeTrigger=trigger;lightbox.hidden=false;lightboxClose.focus()}
+    function closeLightbox(){if(lightbox.hidden)return;lightbox.hidden=true;lightboxImage.removeAttribute('src');if(lastEnlargeTrigger)lastEnlargeTrigger.focus();if(document.activeElement!==lastEnlargeTrigger)gallery.focus()}
     var title=document.getElementById('modalTitle');
     var category=document.getElementById('modalCategory');
     var description=document.getElementById('modalDescription');
+    var caseStudyEl=document.getElementById('sparCaseStudy');
+    var modalSide=document.querySelector('.modal-side');
     var count=document.getElementById('modalCount');
     var link=document.getElementById('modalLink');
     var close=document.getElementById('modalClose');
-    var prev=document.getElementById('modalPrev');
-    var next=document.getElementById('modalNext');
-    var active=null,index=0,lastTrigger=null,projectOpenedAt=null;
+    var active=null,lastTrigger=null,projectOpenedAt=null;
     function trackEvent(name,data){
       if(window.umami&&typeof window.umami.track==='function')window.umami.track(name,data);
     }
@@ -457,43 +535,63 @@
     document.querySelectorAll('a[href*="artstation.com/"]').forEach(function(item){item.addEventListener('click',function(){trackEvent('artstation-click')})});
     document.querySelectorAll('a[href*="instagram.com/"]').forEach(function(item){item.addEventListener('click',function(){trackEvent('instagram-click')})});
     document.querySelectorAll('a[href*="linkedin.com/"]').forEach(function(item){item.addEventListener('click',function(){trackEvent('linkedin-click')})});
+    document.querySelectorAll('a[href*="tiktok.com/"]').forEach(function(item){item.addEventListener('click',function(){trackEvent('tiktok-click')})});
     function mediaCount(project){return project.images.length+(project.video?1:0)}
     function render(){
       var project=projects[active];
-      var total=mediaCount(project);
-      var showingVideo=Boolean(project.video&&index===project.images.length);
-      if(showingVideo){
-        image.hidden=true;image.removeAttribute('src');
+      // Build the full gallery once, in data order, on open only. Clear first so reopen/switch cannot duplicate.
+      gallery.innerHTML='';
+      project.images.forEach(function(src,i){
+        var img=document.createElement('img');
+        img.className='modal-gallery-img';
+        img.src=src;
+        img.alt=project.alts[i]||'';
+        img.loading='eager';
+        img.style.animationDelay=(i*0.3)+'s';
+        img.tabIndex=0;img.addEventListener('click',function(){openLightbox(src,project.alts[i]||'',img)});img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openLightbox(src,project.alts[i]||'',img)}});
+        gallery.appendChild(img);
+      });
+      if(project.video){
+        var vid=document.createElement('video');
+        vid.className='modal-gallery-video';
+        vid.style.animationDelay=(project.images.length*0.3)+'s';
+        vid.controls=true;vid.playsInline=true;vid.preload='metadata';vid.title=project.video.title;
         var vSrc=project.video.src;
         if(vSrc.indexOf('data:video')===0){
-          video.hidden=true;video.removeAttribute('src');
           if(!project.video._blob){var _b=atob(vSrc.split(',')[1]);var _a=new Uint8Array(_b.length);for(var _i=0;_i<_b.length;_i++)_a[_i]=_b.charCodeAt(_i);project.video._blob=URL.createObjectURL(new Blob([_a],{type:'video/mp4'}));}
-          localVideo.hidden=false;if(localVideo.getAttribute('src')!==project.video._blob)localVideo.src=project.video._blob;
-        }else{
-          localVideo.hidden=true;localVideo.removeAttribute('src');localVideo.pause();
-          video.hidden=false;video.title=project.video.title;video.src=vSrc;
-        }
-        count.textContent='Video '+(index+1)+' / '+total;
-      }else{
-        video.hidden=true;video.removeAttribute('src');
-        localVideo.hidden=true;localVideo.removeAttribute('src');localVideo.pause();
-        image.hidden=false;image.src=project.images[index];image.alt=project.alts[index];
-        count.textContent='Image '+(index+1)+' / '+total;
+          vid.src=project.video._blob;
+        }else{vid.src=vSrc;}
+        gallery.appendChild(vid);
       }
-      title.textContent=project.title;title.classList.toggle('is-long',project.title.length>40);category.textContent=project.category;description.classList.toggle('is-detailed',Boolean(project.details));if(project.details){description.innerHTML='<p>'+project.description+'</p>'+project.details}else{description.textContent=project.description}if(project.link){link.hidden=false;link.href=project.link}else{link.hidden=true;link.removeAttribute('href')}prev.disabled=index===0;next.disabled=index===total-1;
+      // Count label, Decision 3: "4 images + video" for Gunslinger, "N images" / "1 image" otherwise.
+      if(project.video){count.textContent=project.images.length+' images + video';}
+      else if(project.images.length===1){count.textContent='1 image';}
+      else{count.textContent=project.images.length+' images';}
+      title.textContent=project.title;title.classList.toggle('is-long',project.title.length>40);category.textContent=project.category;description.classList.toggle('is-detailed',Boolean(project.details));if(project.details){description.innerHTML='<p>'+project.description+'</p>'+project.details}else{description.textContent=project.description}if(project.caseStudy){caseStudyEl.innerHTML=project.caseStudy;caseStudyEl.hidden=false}else{caseStudyEl.innerHTML='';caseStudyEl.hidden=true}if(project.link){link.hidden=false;link.href=project.link}else{link.hidden=true;link.removeAttribute('href')}
     }
-    function openProject(key,trigger){active=key;index=0;lastTrigger=trigger;projectOpenedAt=Date.now();render();trackEvent('project-open',{project:projects[key].title});modal.hidden=false;document.body.classList.add('modal-open');close.focus()}
-    function closeProject(){if(modal.hidden)return;var projectTitle=projects[active].title;var seconds=Math.round((Date.now()-projectOpenedAt)/1000);trackEvent('project-dwell',{project:projectTitle,seconds:seconds});projectOpenedAt=null;modal.hidden=true;document.body.classList.remove('modal-open');image.removeAttribute('src');video.removeAttribute('src');localVideo.pause();localVideo.removeAttribute('src');if(lastTrigger)lastTrigger.focus()}
+    function openProject(key,trigger){active=key;lastTrigger=trigger;modalSide.classList.remove('is-fading');void modalSide.offsetWidth;modalSide.classList.add('is-fading');projectOpenedAt=Date.now();render();trackEvent('project-open',{project:projects[key].title});modal.hidden=false;document.body.classList.add('modal-open');close.focus()}
+    function closeProject(){if(modal.hidden)return;var projectTitle=projects[active].title;var seconds=Math.round((Date.now()-projectOpenedAt)/1000);trackEvent('project-dwell',{project:projectTitle,seconds:seconds});projectOpenedAt=null;modal.hidden=true;modalSide.classList.remove('is-fading');caseStudyEl.innerHTML='';caseStudyEl.hidden=true;document.body.classList.remove('modal-open');closeLightbox();gallery.querySelectorAll('video').forEach(function(v){v.pause()});gallery.innerHTML='';if(lastTrigger)lastTrigger.focus()}
     document.querySelectorAll('.project').forEach(function(card){var button=card.querySelector('.project-button');button.addEventListener('click',function(){openProject(card.getAttribute('data-project'),button)})});
-    close.addEventListener('click',closeProject);prev.addEventListener('click',function(){if(index>0){index--;render()}});next.addEventListener('click',function(){if(index<mediaCount(projects[active])-1){index++;render()}});
+    lightboxClose.addEventListener('click',closeLightbox);
+    lightbox.addEventListener('click',function(event){if(event.target===lightbox)closeLightbox()});
+    close.addEventListener('click',closeProject);
     modal.addEventListener('click',function(event){if(event.target===modal)closeProject()});
     document.addEventListener('keydown',function(event){
-      if(modal.hidden)return;if(event.key==='Escape')closeProject();if(event.key==='ArrowLeft'&&!prev.disabled){index--;render()}if(event.key==='ArrowRight'&&!next.disabled){index++;render()}
+      if(!lightbox.hidden){if(event.key==='Escape')closeLightbox();return}
+      if(modal.hidden)return;if(event.key==='Escape')closeProject()
     });
   })();
   </script>
 <script>
 (function(){function fill(){var els=document.querySelectorAll('[data-asset]');for(var i=0;i<els.length;i++){var el=els[i];var v=window['__A'+el.getAttribute('data-asset')];if(v==null)continue;if(el.tagName==='IMG'){el.src=v;}else{el.setAttribute('content',v);}}}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fill);}else{fill();}})();
+</script>
+
+<script>
+(function(){
+  function fillLogos(){var els=document.querySelectorAll('[data-logo]');for(var i=0;i<els.length;i++){var el=els[i];var v=window.__LOGOS&&window.__LOGOS[el.getAttribute('data-logo')];if(v)el.src=v;}}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fillLogos);}else{fillLogos();}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
+})();
 </script>
 </body>
 </html>

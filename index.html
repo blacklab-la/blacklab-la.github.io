@@ -144,13 +144,15 @@
     .work{padding:72px 0 88px;background:var(--bg)}
     .work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:50px;margin-bottom:40px}
     .work-head p{max-width:420px;margin:0;color:var(--muted);font-size:.78rem;line-height:1.72}
-    .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;grid-auto-flow:dense}
-    .project{position:relative;grid-column:span 4;min-height:520px;overflow:hidden;background:var(--surface);color:#fff}
-    .project.wide{grid-column:span 8}.project.tall{min-height:660px}.project.full{grid-column:span 12;min-height:690px}
+    .project-grid{display:grid;grid-template-columns:1fr;gap:18px;grid-auto-flow:dense}
+    .project{position:relative;grid-column:span 1;min-height:260px;overflow:hidden;background:var(--surface);color:#fff}
+    .project.wide{grid-column:span 1}.project.tall{min-height:260px}.project.full{grid-column:span 1;min-height:260px}
     .project-button{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:zoom-in;overflow:hidden}
-    .project img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) contrast(1.08) saturate(.78);transition:transform .85s cubic-bezier(.16,.78,.18,1),filter .45s;animation:gridPan 80s ease-in-out infinite alternate}
-    @keyframes gridPan{from{object-position:0% center}to{object-position:100% center}}
-    .project.full img{object-position:center 54%}
+    .project img{width:100%;height:100%;object-fit:cover;object-position:center center;filter:brightness(.72) contrast(1.08) saturate(.78);transition:filter .45s}
+    @keyframes gridPanT{from{transform:translateX(-5%)}to{transform:translateX(5%)}}
+    @keyframes gridPanTReverse{from{transform:translateX(5%)}to{transform:translateX(-5%)}}
+    .project.pan-rtl img{animation-name:gridPanTReverse}
+    .project.full img{object-position:center center}
     .project-button::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.55) 27%,transparent 62%),linear-gradient(90deg,rgba(0,0,0,.22),transparent 55%)}
     .project-copy{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:32px 32px 29px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px}
     .project-meta{display:block;margin-bottom:9px;color:var(--amber-hot);font-size:.59rem;letter-spacing:.14em;text-transform:uppercase}
@@ -234,7 +236,7 @@
     .modal-category{color:var(--amber-hot);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase}.modal-title{margin:16px 0 18px;font:800 clamp(2.7rem,4vw,4.7rem)/.84 "Barlow Condensed",sans-serif;letter-spacing:-.035em;text-transform:uppercase}.modal-title.is-long{font-size:clamp(2.15rem,3vw,3.35rem);line-height:.86;overflow-wrap:anywhere}.modal-description{margin:0;color:#a4a7a2;font-size:.72rem;line-height:1.76}.modal-description.is-detailed{max-height:none;overflow:visible;padding-right:0}.modal-description ul{margin:0;padding-left:1.25rem}.modal-description li{margin:0 0 .62rem}.modal-description strong{color:#d8d9d5;font-weight:500}.modal-description h3{margin:1.18rem 0 .58rem;color:#d8d9d5;font:500 .66rem/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.modal-description .modal-tags{margin:0;color:#8f928e;font-size:.66rem;line-height:1.8;overflow-wrap:anywhere}.modal-spacer{flex:1;min-height:38px}.modal-count{margin-bottom:16px;color:#81847f;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}.modal-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}.modal-controls button{min-height:43px;border:1px solid #383a39;background:transparent;color:#fff;cursor:pointer;text-transform:uppercase;font-size:.58rem;letter-spacing:.12em}.modal-controls button:hover,.modal-controls button:focus-visible{border-color:var(--amber-hot);color:var(--amber-hot)}.modal-controls button:disabled{opacity:.28;cursor:default}.modal-link{margin-top:10px;min-height:46px;display:flex;align-items:center;justify-content:center;background:var(--amber-hot);color:#0a0a0a;text-decoration:none;text-transform:uppercase;font-size:.6rem;font-weight:500;letter-spacing:.12em}.modal-link[hidden]{display:none}.modal-link:hover,.modal-link:focus-visible{background:#fff}
     .lightbox[hidden]{display:none}.lightbox{position:fixed;z-index:200;inset:0;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.96)}.lightbox img{max-width:100%;max-height:100%;object-fit:contain}.lightbox-close{position:absolute;z-index:2;right:16px;top:16px;width:46px;height:46px;border:1px solid rgba(255,255,255,.4);background:rgba(5,6,6,.78);color:#fff;font-size:1.5rem;cursor:pointer}.lightbox-close:hover,.lightbox-close:focus-visible{background:var(--amber-hot);color:#0a0a0a;border-color:var(--amber-hot)}.modal-gallery-img{cursor:zoom-in}
     @media(max-width:1000px){
-      .project,.project.wide{grid-column:span 6}.project.full{grid-column:span 12}.project{min-height:500px}.project.tall{min-height:560px}
+      .project,.project.wide{grid-column:span 1}.project.full{grid-column:span 1}.project{min-height:240px}.project.tall{min-height:240px}
       .profile-grid{gap:48px}.modal-panel{grid-template-columns:1fr;height:calc(100dvh - 44px);overflow:auto;-webkit-overflow-scrolling:touch}.modal-media{min-height:0;height:auto;overflow:visible}.modal-side{padding:28px 28px 24px;overflow:visible;height:auto}.modal-close{position:fixed;right:16px;top:16px;z-index:5}.modal-spacer{min-height:24px}
     }
     @media(max-width:760px){
@@ -325,7 +327,7 @@
               <span class="project-copy"><span><span class="project-meta">Transportation / 01</span><h3>SPAR X2 Hybrid UTV</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-<article class="project wide tall" data-project="star">
+<article class="project wide tall pan-rtl" data-project="star">
             <button class="project-button" type="button" aria-label="Open Samsung STAR autonomous UGV project">
               <img src="" data-asset="1" alt="Samsung STAR autonomous unmanned ground vehicle">
               <span class="project-copy"><span><span class="project-meta">Autonomous systems / 02</span><h3>Samsung STAR UGV</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
@@ -337,7 +339,7 @@
               <span class="project-copy"><span><span class="project-meta">Collectibles / 03</span><h3>Mad Bomber</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-<article class="project" data-project="gunslinger">
+<article class="project pan-rtl" data-project="gunslinger">
             <button class="project-button" type="button" aria-label="Open Gunslinger project">
               <img src="" data-asset="7" alt="The Corps Gunslinger tactical vehicle concept">
               <span class="project-copy"><span><span class="project-meta">Concept + kitbash / 04</span><h3>Gunslinger</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
@@ -349,7 +351,7 @@
               <span class="project-copy"><span><span class="project-meta">Collectible play system / 05</span><h3>M577 Battle Set</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-<article class="project tall" data-project="crusher">
+<article class="project tall pan-rtl" data-project="crusher">
             <button class="project-button" type="button" aria-label="Open The Crusher project">
               <img src="" data-asset="2" alt="The Corps The Crusher heavy armored assault vehicle toy">
               <span class="project-copy"><span><span class="project-meta">Collectibles / 06</span><h3>The Crusher</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
@@ -361,13 +363,13 @@
               <span class="project-copy"><span><span class="project-meta">Worldbuilding / Hero vehicle / 07</span><h3>Scream'n Demon</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-<article class="project" data-project="orion">
+<article class="project" data-project="orion" hidden>
             <button class="project-button" type="button" aria-label="Open Orion Longbow bike design project">
               <img src="" data-asset="6" alt="Orion Longbow motorcycle design">
               <span class="project-copy"><span><span class="project-meta">Transportation / 08</span><h3>Orion Longbow</h3></span><span class="project-open" aria-hidden="true">↗</span></span>
             </button>
           </article>
-<article class="project wide" data-project="workflow">
+<article class="project wide pan-rtl" data-project="workflow">
             <button class="project-button" type="button" aria-label="Open industrial workflows project">
               <img src="" data-asset="8" alt="Industrial hard-surface vehicle sketch workflow">
               <span class="project-copy"><span><span class="project-meta">Process / 09</span><h3>Industrial Workflows</h3></span><span class="project-open" aria-hidden="true">↗</span></span>

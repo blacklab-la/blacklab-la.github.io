@@ -538,6 +538,24 @@ function kcAttach(v, path){
     background:#000; cursor:pointer;
   }
   .lb-stage video[hidden]{display:none !important}
+  /* Poster-frame alignment (Nov 18): on a video slide, the poster must
+     sit in EXACTLY the video's frame — as a flex item the video box's
+     aspect broke (width:100% capped by max-height), and iPad Safari
+     painted the poster larger/offset than the video frames, so a second
+     copy of the image peeked out at the edges. While a video slide is
+     live, the video is taken out of flex flow and absolute-filled to
+     the stage (the relative media frame), and the poster — painted by
+     the browser inside that same element box — coincides with the
+     video frame edge for edge. Applies to all three lightboxes
+     (generic, SPAR, Honda), which all share .lb-stage. */
+  .lightbox.video-live .lb-stage video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    max-width:none; max-height:none;
+    aspect-ratio:auto;
+    object-fit:cover;
+    border:0; border-radius:0;
+  }
   /* Big Play gate — a lightbox video slide opens on its poster frame
      with this button centered over it; the file starts loading the
      moment the slide is selected (gallery click or Next / Previous),

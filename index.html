@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
-<link rel="preload" as="script" href="assets/star-a.jpg.js" fetchpriority="high" />
+<link rel="preload" as="script" href="assets/star-a.jpg.js?v=2" fetchpriority="high" />
 <title>Kevin Cunningham Portfolio — Industrial Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,12 +27,26 @@ function kcLoad(path){
   if(window.KC.reg[path]) return Promise.resolve(window.KC.reg[path]);
   if(window.KC.pending[path]) return window.KC.pending[path];
   var src = window.KC.FILES[path] || (path + '.js');
+  /* Wrapper URLs carry a version stamp (?v=2) so no browser can reuse a
+     stale cached response for them — an earlier broken load cached the
+     failure and kept the images missing even after the files were fixed.
+     If a load still fails or arrives without registering its payload,
+     retry once with a one-off cache-buster before giving up. */
   window.KC.pending[path] = new Promise(function(resolve){
-    var s = document.createElement('script');
-    s.src = src; s.async = true;
-    s.onload = function(){ resolve(window.KC.reg[path] || path); };
-    s.onerror = function(){ resolve(path); };
-    (document.head || document.documentElement).appendChild(s);
+    function attempt(url, last){
+      var s = document.createElement('script');
+      s.src = url; s.async = true;
+      s.onload = function(){
+        if(window.KC.reg[path] || last) resolve(window.KC.reg[path] || path);
+        else attempt(src + '?r=' + Date.now(), true);
+      };
+      s.onerror = function(){
+        if(last) resolve(path);
+        else attempt(src + '?r=' + Date.now(), true);
+      };
+      (document.head || document.documentElement).appendChild(s);
+    }
+    attempt(src + '?v=2', false);
   });
   return window.KC.pending[path];
 }

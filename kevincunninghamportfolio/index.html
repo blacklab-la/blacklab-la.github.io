@@ -5,12 +5,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
-<link rel="preload" as="image" href="assets/star-a.jpg" fetchpriority="high" />
+<link rel="preload" as="script" href="assets/star-a.jpg.js" fetchpriority="high" />
 <title>Kevin Cunningham Portfolio — Industrial Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.className += ' js-anim';</script>
+<script>
+/* ---------- Media wrappers — every image and video on this page loads from an
+   inline-carrying TEXT wrapper file: assets/<name>.jpg.js, assets/<name>.mp4.js
+   or assets/<name>.png.js. Each wrapper registers its file as a data URI in
+   window.KC.reg under the file's logical path; the helpers below fetch the
+   wrapper for a path only when the page actually needs that file (hero first,
+   galleries as they near the screen, lightbox media on selection — the same
+   lazy order the page always used) and hand the element a blob URL built from
+   the inline data. No binary asset is ever requested directly, so the page
+   renders identically when only text files are hosted. ---------- */
+window.KC = { reg:{}, pending:{}, blobCache:{}, FILES:{"assets/bomber-a.jpg":"assets/bomber-a.jpg.js","assets/bomber-b.jpg":"assets/bomber-b.jpg.js","assets/bomber-c.jpg":"assets/bomber-c.jpg.js","assets/bomber-d.jpg":"assets/bomber-d.jpg.js","assets/bomber-e.jpg":"assets/bomber-e.jpg.js","assets/bomber-f.jpg":"assets/bomber-f.jpg.js","assets/cat-still-b.jpg":"assets/cat-still-b.jpg.js","assets/cat-ugv-new-poster.jpg":"assets/cat-ugv-new-poster.jpg.js","assets/cat-ugv-poster.jpg":"assets/cat-ugv-poster.jpg.js","assets/cat-ugv.mp4":"assets/cat-ugv.mp4.js","assets/crusher-a.jpg":"assets/crusher-a.jpg.js","assets/crusher-b.jpg":"assets/crusher-b.jpg.js","assets/demon.jpg":"assets/demon.jpg.js","assets/display/bomber-a.jpg":"assets/display/bomber-a.jpg.js","assets/display/bomber-b.jpg":"assets/display/bomber-b.jpg.js","assets/display/bomber-c.jpg":"assets/display/bomber-c.jpg.js","assets/display/bomber-d.jpg":"assets/display/bomber-d.jpg.js","assets/display/bomber-e.jpg":"assets/display/bomber-e.jpg.js","assets/display/bomber-f.jpg":"assets/display/bomber-f.jpg.js","assets/display/cat-still-b.jpg":"assets/display/cat-still-b.jpg.js","assets/display/cat-ugv-new-poster.jpg":"assets/display/cat-ugv-new-poster.jpg.js","assets/display/cat-ugv-poster.jpg":"assets/display/cat-ugv-poster.jpg.js","assets/display/crusher-a.jpg":"assets/display/crusher-a.jpg.js","assets/display/crusher-b.jpg":"assets/display/crusher-b.jpg.js","assets/display/gunslinger-a.jpg":"assets/display/gunslinger-a.jpg.js","assets/display/gunslinger-b.jpg":"assets/display/gunslinger-b.jpg.js","assets/display/gunslinger-c.jpg":"assets/display/gunslinger-c.jpg.js","assets/display/gunslinger-d.jpg":"assets/display/gunslinger-d.jpg.js","assets/display/gunslinger-snow-poster.jpg":"assets/display/gunslinger-snow-poster.jpg.js","assets/display/honda-desert-front-4k.jpg":"assets/display/honda-desert-front-4k.jpg.js","assets/display/honda-salt-flat-side-4k.jpg":"assets/display/honda-salt-flat-side-4k.jpg.js","assets/display/honda-salt-flat-side.jpg":"assets/display/honda-salt-flat-side.jpg.js","assets/display/honda-shot6-rear-day-4k.jpg":"assets/display/honda-shot6-rear-day-4k.jpg.js","assets/display/honda-shot6-rear-night-4k.jpg":"assets/display/honda-shot6-rear-night-4k.jpg.js","assets/display/honda-transporter-poster.jpg":"assets/display/honda-transporter-poster.jpg.js","assets/display/m577-a.jpg":"assets/display/m577-a.jpg.js","assets/display/m577-b.jpg":"assets/display/m577-b.jpg.js","assets/display/m577-c.jpg":"assets/display/m577-c.jpg.js","assets/display/m577-d.jpg":"assets/display/m577-d.jpg.js","assets/display/m577-e.jpg":"assets/display/m577-e.jpg.js","assets/display/orion.jpg":"assets/display/orion.jpg.js","assets/display/spar-a.jpg":"assets/display/spar-a.jpg.js","assets/display/spar-b.jpg":"assets/display/spar-b.jpg.js","assets/display/spar-c.jpg":"assets/display/spar-c.jpg.js","assets/display/spar-d.jpg":"assets/display/spar-d.jpg.js","assets/display/spar-e.jpg":"assets/display/spar-e.jpg.js","assets/display/spar-f.jpg":"assets/display/spar-f.jpg.js","assets/display/star-2.jpg":"assets/display/star-2.jpg.js","assets/display/star-3.jpg":"assets/display/star-3.jpg.js","assets/display/star-4.jpg":"assets/display/star-4.jpg.js","assets/display/star-5.jpg":"assets/display/star-5.jpg.js","assets/display/star-6.jpg":"assets/display/star-6.jpg.js","assets/display/star-7.jpg":"assets/display/star-7.jpg.js","assets/display/star-8.jpg":"assets/display/star-8.jpg.js","assets/display/star-b.jpg":"assets/display/star-b.jpg.js","assets/display/star-c.jpg":"assets/display/star-c.jpg.js","assets/display/star-side-new.jpg":"assets/display/star-side-new.jpg.js","assets/display/workflows.jpg":"assets/display/workflows.jpg.js","assets/gunslinger-a.jpg":"assets/gunslinger-a.jpg.js","assets/gunslinger-b.jpg":"assets/gunslinger-b.jpg.js","assets/gunslinger-c.jpg":"assets/gunslinger-c.jpg.js","assets/gunslinger-d.jpg":"assets/gunslinger-d.jpg.js","assets/gunslinger-snow-poster.jpg":"assets/gunslinger-snow-poster.jpg.js","assets/gunslinger-snow.mp4":"assets/gunslinger-snow.mp4.js","assets/honda-desert-front-4k.jpg":"assets/honda-desert-front-4k.jpg.js","assets/honda-desert-front-display.jpg":"assets/honda-desert-front-display.jpg.js","assets/honda-salt-flat-front-4k.jpg":"assets/honda-salt-flat-front-4k.jpg.js","assets/honda-salt-flat-front-display.jpg":"assets/honda-salt-flat-front-display.jpg.js","assets/honda-salt-flat-front.jpg":"assets/honda-salt-flat-front.jpg.js","assets/honda-salt-flat-side-4k.jpg":"assets/honda-salt-flat-side-4k.jpg.js","assets/honda-salt-flat-side.jpg":"assets/honda-salt-flat-side.jpg.js","assets/honda-shot6-rear-day-4k.jpg":"assets/honda-shot6-rear-day-4k.jpg.js","assets/honda-shot6-rear-day-display.jpg":"assets/honda-shot6-rear-day-display.jpg.js","assets/honda-shot6-rear-night-4k.jpg":"assets/honda-shot6-rear-night-4k.jpg.js","assets/honda-transporter-poster.jpg":"assets/honda-transporter-poster.jpg.js","assets/honda-transporter.mp4":"assets/honda-transporter.mp4.js","assets/logos/activision.png":"assets/logos/activision.png.js","assets/logos/boeing.png":"assets/logos/boeing.png.js","assets/logos/digitaldomain.png":"assets/logos/digitaldomain.png.js","assets/logos/ea.png":"assets/logos/ea.png.js","assets/logos/generalmotors.png":"assets/logos/generalmotors.png.js","assets/logos/hasbro.png":"assets/logos/hasbro.png.js","assets/logos/honda.png":"assets/logos/honda.png.js","assets/logos/imagineering.png":"assets/logos/imagineering.png.js","assets/logos/imaginefx.png":"assets/logos/imaginefx.png.js","assets/logos/jeep.png":"assets/logos/jeep.png.js","assets/logos/lexus.png":"assets/logos/lexus.png.js","assets/logos/mcdonalds.png":"assets/logos/mcdonalds.png.js","assets/logos/nissan.png":"assets/logos/nissan.png.js","assets/logos/popmech.png":"assets/logos/popmech.png.js","assets/logos/samsung.png":"assets/logos/samsung.png.js","assets/logos/teague.png":"assets/logos/teague.png.js","assets/logos/virgin.png":"assets/logos/virgin.png.js","assets/m577-a.jpg":"assets/m577-a.jpg.js","assets/m577-b.jpg":"assets/m577-b.jpg.js","assets/m577-c.jpg":"assets/m577-c.jpg.js","assets/m577-d.jpg":"assets/m577-d.jpg.js","assets/m577-e.jpg":"assets/m577-e.jpg.js","assets/mercury.jpg":"assets/mercury.jpg.js","assets/orion.jpg":"assets/orion.jpg.js","assets/spar-a.jpg":"assets/spar-a.jpg.js","assets/spar-b.jpg":"assets/spar-b.jpg.js","assets/spar-c.jpg":"assets/spar-c.jpg.js","assets/spar-d.jpg":"assets/spar-d.jpg.js","assets/spar-e.jpg":"assets/spar-e.jpg.js","assets/spar-f.jpg":"assets/spar-f.jpg.js","assets/star-1.jpg":"assets/star-1.jpg.js","assets/star-2.jpg":"assets/star-2.jpg.js","assets/star-3.jpg":"assets/star-3.jpg.js","assets/star-4.jpg":"assets/star-4.jpg.js","assets/star-5.jpg":"assets/star-5.jpg.js","assets/star-6.jpg":"assets/star-6.jpg.js","assets/star-7.jpg":"assets/star-7.jpg.js","assets/star-8.jpg":"assets/star-8.jpg.js","assets/star-a.jpg":"assets/star-a.jpg.js","assets/star-b.jpg":"assets/star-b.jpg.js","assets/star-c.jpg":"assets/star-c.jpg.js","assets/star-side-new.jpg":"assets/star-side-new.jpg.js","assets/workflows.jpg":"assets/workflows.jpg.js"} };
+function kcLoad(path){
+  if(!path) return Promise.resolve(null);
+  if(window.KC.reg[path]) return Promise.resolve(window.KC.reg[path]);
+  if(window.KC.pending[path]) return window.KC.pending[path];
+  var src = window.KC.FILES[path] || (path + '.js');
+  window.KC.pending[path] = new Promise(function(resolve){
+    var s = document.createElement('script');
+    s.src = src; s.async = true;
+    s.onload = function(){ resolve(window.KC.reg[path] || path); };
+    s.onerror = function(){ resolve(path); };
+    (document.head || document.documentElement).appendChild(s);
+  });
+  return window.KC.pending[path];
+}
+function kcUrl(path){
+  if(!path) return Promise.resolve(null);
+  if(window.KC.blobCache[path]) return window.KC.blobCache[path];
+  window.KC.blobCache[path] = kcLoad(path).then(function(data){
+    if(typeof data !== 'string' || data.indexOf('data:') !== 0) return data;
+    var comma = data.indexOf(',');
+    var mime = data.slice(5, comma).split(';')[0] || 'application/octet-stream';
+    var bin = atob(data.slice(comma + 1));
+    var bytes = new Uint8Array(bin.length);
+    for(var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return URL.createObjectURL(new Blob([bytes], {type:mime}));
+  });
+  return window.KC.blobCache[path];
+}
+function kcSetImg(img, path){ if(!img || !path) return; kcUrl(path).then(function(u){ if(u) img.src = u; }); }
+function kcSetPoster(el, path){ if(!el || !path) return; kcUrl(path).then(function(u){ if(u) el.poster = u; }); }
+function kcSetDownload(a, path){
+  if(!a || !path) return Promise.resolve();
+  return kcUrl(path).then(function(u){ if(u){ a.href = u; a._kcReady = true; } });
+}
+function kcAttach(v, path){
+  if(!v || !path) return Promise.resolve();
+  if(v.getAttribute('src') && v._kcPath === path) return Promise.resolve();
+  v._kcPath = path;
+  return kcUrl(path).then(function(u){
+    if(!u || v._kcPath !== path) return;
+    v.src = u; v.preload = 'auto';
+    try{ v.load(); }catch(err){}
+  });
+}
+</script>
 <style>
   :root{
     --bg:#0a0a0b;
@@ -882,40 +938,40 @@
 <header class="hero" id="hero" aria-label="Portfolio hero — rotating through four projects: Samsung STAR, Honda Transporter, SPAR and SPAR X2">
   <div class="slides" id="slides">
     <div class="slide active" data-i="0">
-      <div class="slide-inner"><img src="assets/star-a.jpg" alt="Samsung STAR autonomous ground vehicle — clean side view" fetchpriority="high"></div>
+      <div class="slide-inner"><img data-kc="assets/star-a.jpg" alt="Samsung STAR autonomous ground vehicle — clean side view" fetchpriority="high"></div>
     </div>
     <div class="slide" data-i="1">
-      <div class="slide-inner"><img src="assets/star-b.jpg" alt="Samsung STAR autonomous ground vehicle — rear three-quarter view" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/star-b.jpg" alt="Samsung STAR autonomous ground vehicle — rear three-quarter view" loading="lazy"></div>
     </div>
     <div class="slide" data-i="2">
-      <div class="slide-inner"><img src="assets/star-c.jpg" alt="Samsung STAR autonomous ground vehicle — cargo module open, showing the interior" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/star-c.jpg" alt="Samsung STAR autonomous ground vehicle — cargo module open, showing the interior" loading="lazy"></div>
     </div>
     <div class="slide" data-i="3">
-      <div class="slide-inner"><img src="assets/display/honda-desert-front-4k.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/display/honda-desert-front-4k.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset" loading="lazy"></div>
     </div>
     <div class="slide" data-i="4">
-      <div class="slide-inner"><img src="assets/display/honda-salt-flat-side-4k.jpg" alt="Honda Orion transporter — side view at speed on the lake bed" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/display/honda-salt-flat-side-4k.jpg" alt="Honda Orion transporter — side view at speed on the lake bed" loading="lazy"></div>
     </div>
     <div class="slide" data-i="5">
-      <div class="slide-inner"><img src="assets/display/honda-shot6-rear-day-4k.jpg" alt="Honda Orion transporter — Shot 6 rear view in daytime" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/display/honda-shot6-rear-day-4k.jpg" alt="Honda Orion transporter — Shot 6 rear view in daytime" loading="lazy"></div>
     </div>
     <div class="slide" data-i="6">
-      <div class="slide-inner"><img src="assets/display/cat-ugv-new-poster.jpg" alt="CAT UGV for SPAR — front three-quarter view" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/display/cat-ugv-new-poster.jpg" alt="CAT UGV for SPAR — front three-quarter view" loading="lazy"></div>
     </div>
     <div class="slide" data-i="7">
-      <div class="slide-inner"><img src="assets/display/cat-still-b.jpg" alt="CAT UGV for SPAR — rear three-quarter view" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/display/cat-still-b.jpg" alt="CAT UGV for SPAR — rear three-quarter view" loading="lazy"></div>
     </div>
     <div class="slide" data-i="8">
-      <div class="slide-inner"><img src="assets/display/cat-ugv-poster.jpg" alt="CAT UGV for SPAR — front three-quarter still" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/display/cat-ugv-poster.jpg" alt="CAT UGV for SPAR — front three-quarter still" loading="lazy"></div>
     </div>
     <div class="slide" data-i="9">
-      <div class="slide-inner"><img src="assets/spar-a.jpg" alt="SPAR X2 Hybrid UTV — Forward Thinking Solutions poster" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/spar-a.jpg" alt="SPAR X2 Hybrid UTV — Forward Thinking Solutions poster" loading="lazy"></div>
     </div>
     <div class="slide" data-i="10">
-      <div class="slide-inner"><img src="assets/spar-b.jpg" alt="SPAR X2 Hybrid UTV — Gods Eye surveillance poster" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/spar-b.jpg" alt="SPAR X2 Hybrid UTV — Gods Eye surveillance poster" loading="lazy"></div>
     </div>
     <div class="slide" data-i="11">
-      <div class="slide-inner"><img src="assets/spar-c.jpg" alt="SPAR X2 Hybrid UTV — open equipment bay" loading="lazy"></div>
+      <div class="slide-inner"><img data-kc="assets/spar-c.jpg" alt="SPAR X2 Hybrid UTV — open equipment bay" loading="lazy"></div>
     </div>
   </div>
   <div class="hero-shade"></div>
@@ -967,10 +1023,10 @@
       </div>
       <p class="line"><strong>The hero up top.</strong> Autonomous ground vehicle for Samsung Techwin, led as VP of Design at Hiero Tech with partner Rickey Newmayer.</p>
       <div class="gal">
-        <div class="main"><img src="assets/display/star-side-new.jpg" alt="Samsung STAR UGV — clean side view" loading="lazy"></div>
+        <div class="main"><img data-kc="assets/display/star-side-new.jpg" alt="Samsung STAR UGV — clean side view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/display/star-b.jpg" alt="Samsung STAR UGV — rear three-quarter view" loading="lazy"></figure>
-          <figure><img src="assets/display/star-c.jpg" alt="Samsung STAR UGV — cargo module open" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/star-b.jpg" alt="Samsung STAR UGV — rear three-quarter view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/star-c.jpg" alt="Samsung STAR UGV — cargo module open" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -985,8 +1041,7 @@
       <div class="gal">
         <div class="main is-video" id="catClipFigure" data-poster="assets/display/cat-ugv-new-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Play CAT UGV orbit video with sound in a lightbox">
           <div class="video-wrap">
-            <video id="catClip" muted loop playsinline preload="metadata" poster="assets/display/cat-ugv-new-poster.jpg" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface">
-              <source src="assets/cat-ugv.mp4" type="video/mp4">
+            <video id="catClip" data-kc="assets/cat-ugv.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/cat-ugv-new-poster.jpg" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · CAT UGV — Orbit</span>
             <span class="play-badge" aria-hidden="true"><span class="tri">▶</span> Play with sound</span>
@@ -999,8 +1054,8 @@
           </div>
         </div>
         <div class="side">
-          <figure><img src="assets/display/cat-ugv-poster.jpg" alt="CAT UGV — front three-quarter still" loading="lazy"></figure>
-          <figure><img src="assets/display/cat-still-b.jpg" alt="CAT UGV — rear three-quarter still" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/cat-ugv-poster.jpg" alt="CAT UGV — front three-quarter still" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/cat-still-b.jpg" alt="CAT UGV — rear three-quarter still" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1013,10 +1068,10 @@
       </div>
       <p class="line"><strong>The lead vehicle.</strong> A hybrid UTV concept — stance, packaging, and surface worked out as one machine.</p>
       <div class="gal">
-        <div class="main"><img src="assets/display/spar-a.jpg" alt="SPAR X2 Hybrid UTV — main view" loading="lazy"></div>
+        <div class="main"><img data-kc="assets/display/spar-a.jpg" alt="SPAR X2 Hybrid UTV — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/display/spar-b.jpg" alt="SPAR X2 Hybrid UTV — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/display/spar-c.jpg" alt="SPAR X2 Hybrid UTV — detail view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/spar-b.jpg" alt="SPAR X2 Hybrid UTV — alternate view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/spar-c.jpg" alt="SPAR X2 Hybrid UTV — detail view" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1042,8 +1097,7 @@
       <div class="gal">
         <div class="main is-video" id="hondaClipFigure" data-poster="assets/display/honda-transporter-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Honda Transporter video in a lightbox">
           <div class="video-wrap">
-            <video id="hondaClip" muted loop playsinline preload="metadata" poster="assets/display/honda-transporter-poster.jpg" aria-label="Honda transporter concept orbiting on a wet track at night">
-              <source src="assets/honda-transporter.mp4" type="video/mp4">
+            <video id="hondaClip" data-kc="assets/honda-transporter.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/honda-transporter-poster.jpg" aria-label="Honda transporter concept orbiting on a wet track at night">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · Honda Transporter — Orbit</span>
             <span class="play-badge" aria-hidden="true"><span class="tri">▶</span> Open in lightbox</span>
@@ -1056,8 +1110,8 @@
           </div>
         </div>
         <div class="side honda-side">
-          <figure><img src="assets/honda-salt-flat-front-display.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset, purple cab on cracked playa" loading="lazy"><a class="still-dl" href="assets/honda-salt-flat-front-4k.jpg" download aria-label="Download the lake bed front three-quarter 4K final">↓ Lake Bed 4K</a></figure>
-          <figure><img src="assets/display/honda-salt-flat-side.jpg" alt="Honda Orion transporter — side view at speed on the lake bed, salt dust plume behind" loading="lazy"><a class="still-dl" href="assets/honda-salt-flat-side-4k.jpg" download aria-label="Download the lake bed side view 4K final">↓ Side 4K</a></figure>
+          <figure><img data-kc="assets/honda-salt-flat-front-display.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset, purple cab on cracked playa" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-front-4k.jpg" download aria-label="Download the lake bed front three-quarter 4K final">↓ Lake Bed 4K</a></figure>
+          <figure><img data-kc="assets/display/honda-salt-flat-side.jpg" alt="Honda Orion transporter — side view at speed on the lake bed, salt dust plume behind" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-side-4k.jpg" download aria-label="Download the lake bed side view 4K final">↓ Side 4K</a></figure>
           <!-- The gallery is exactly THREE pieces: the big playing
                animation plus these TWO lake bed stills — the front
                3/4 lake bed shot, then the side view lake bed shot —
@@ -1082,8 +1136,7 @@
       <div class="gal">
         <div class="main is-video" id="gunClipFigure" data-poster="assets/display/gunslinger-snow-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Gunslinger snow run video in a lightbox">
           <div class="video-wrap">
-            <video id="gunClip" muted loop playsinline preload="metadata" poster="assets/display/gunslinger-snow-poster.jpg" aria-label="Gunslinger tactical vehicle driving through snow">
-              <source src="assets/gunslinger-snow.mp4" type="video/mp4">
+            <video id="gunClip" data-kc="assets/gunslinger-snow.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/gunslinger-snow-poster.jpg" aria-label="Gunslinger tactical vehicle driving through snow">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · Gunslinger — Snow run</span>
             <span class="play-badge" aria-hidden="true"><span class="tri">▶</span> Open in lightbox</span>
@@ -1096,8 +1149,8 @@
           </div>
         </div>
         <div class="side">
-          <figure><img src="assets/display/gunslinger-b.jpg" alt="Gunslinger — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/display/gunslinger-c.jpg" alt="Gunslinger — detail view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/gunslinger-b.jpg" alt="Gunslinger — alternate view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/gunslinger-c.jpg" alt="Gunslinger — detail view" loading="lazy"></figure>
         </div>
       </div>
       <!-- The snow-run animation is the big main image of this gallery —
@@ -1115,10 +1168,10 @@
       </div>
       <p class="line"><strong>Heavy assault ground attack vehicle</strong> — designed end-to-end as a collectible, concept through final sample.</p>
       <div class="gal">
-        <div class="main"><img src="assets/display/bomber-a.jpg" alt="Mad Bomber heavy assault ground attack vehicle — main view" loading="lazy"></div>
+        <div class="main"><img data-kc="assets/display/bomber-a.jpg" alt="Mad Bomber heavy assault ground attack vehicle — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/display/bomber-b.jpg" alt="Mad Bomber — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/display/bomber-c.jpg" alt="Mad Bomber — detail view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/bomber-b.jpg" alt="Mad Bomber — alternate view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/bomber-c.jpg" alt="Mad Bomber — detail view" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1131,10 +1184,10 @@
       </div>
       <p class="line"><strong>Xenomorph Attack battle set</strong> — the M577 APC as a full playset vehicle, interior and all.</p>
       <div class="gal">
-        <div class="main"><img src="assets/display/m577-a.jpg" alt="M577 Armored Personnel Carrier battle set — main view" loading="lazy"></div>
+        <div class="main"><img data-kc="assets/display/m577-a.jpg" alt="M577 Armored Personnel Carrier battle set — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/display/m577-b.jpg" alt="M577 APC — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/display/m577-c.jpg" alt="M577 APC — detail view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/m577-b.jpg" alt="M577 APC — alternate view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/m577-c.jpg" alt="M577 APC — detail view" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1147,9 +1200,9 @@
       </div>
       <p class="line"><strong>Heavy armored assault vehicle</strong> for The Corps! — the big bruiser of the line.</p>
       <div class="gal">
-        <div class="main"><img src="assets/display/crusher-a.jpg" alt="The Crusher heavy armored assault vehicle — main view" loading="lazy"></div>
+        <div class="main"><img data-kc="assets/display/crusher-a.jpg" alt="The Crusher heavy armored assault vehicle — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/display/crusher-b.jpg" alt="The Crusher — alternate view" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/crusher-b.jpg" alt="The Crusher — alternate view" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1163,7 +1216,7 @@
       </div>
       <p class="line"><strong>Hard surface &amp; vehicles</strong> — the process behind the work: sketch, blockout, surface, resolve. Building digitally and by hand.</p>
       <div class="gal single">
-        <div class="main"><img src="assets/display/workflows.jpg" alt="Industrial workflows — hard surface and vehicle design process" loading="lazy"></div>
+        <div class="main"><img data-kc="assets/display/workflows.jpg" alt="Industrial workflows — hard surface and vehicle design process" loading="lazy"></div>
       </div>
     </article>
 
@@ -1211,10 +1264,10 @@
       <p>Thirty years of badges</p>
     </div>
     <div class="logowall" aria-label="Client logos">
-      <div class="logo-group"><h5>Automotive</h5><div class="logo-row"><div class="logo-cell"><img src="assets/logos/honda.png" data-logo="honda" alt="Honda" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/jeep.png" data-logo="jeep" alt="Jeep" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/generalmotors.png" data-logo="generalmotors" alt="GM" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/nissan.png" data-logo="nissan" alt="Nissan" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/lexus.png" data-logo="lexus" alt="Lexus" loading="lazy"></div></div></div>
-      <div class="logo-group"><h5>Games &amp; Play</h5><div class="logo-row"><div class="logo-cell"><img src="assets/logos/activision.png" data-logo="activision" alt="Activision" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/ea.png" data-logo="ea" alt="EA" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/digitaldomain.png" data-logo="digitaldomain" alt="Digital Domain" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/hasbro.png" data-logo="hasbro" alt="Hasbro" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/imagineering.png" data-logo="imagineering" alt="Disney Imagineering" loading="lazy"></div></div></div>
-      <div class="logo-group"><h5>Aerospace &amp; Robotics</h5><div class="logo-row"><div class="logo-cell"><img src="assets/logos/boeing.png" data-logo="boeing" alt="Boeing" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/teague.png" data-logo="teague" alt="Teague" loading="lazy"></div><div class="logo-cell"><span class="logo-text">Carnegie Mellon Robotics</span></div><div class="logo-cell"><span class="logo-text">Metalcrafters</span></div><div class="logo-cell"><span class="logo-text">Lanard Toys</span></div></div></div>
-      <div class="logo-group"><h5>Brands &amp; Published</h5><div class="logo-row"><div class="logo-cell"><img src="assets/logos/samsung.png" data-logo="samsung" alt="Samsung" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/mcdonalds.png" data-logo="mcdonalds" alt="McDonald&apos;s" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/virgin.png" data-logo="virgin" alt="Virgin" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/popmech.png" data-logo="popmech" alt="Popular Mechanics" loading="lazy"></div><div class="logo-cell"><img src="assets/logos/imaginefx.png" data-logo="imaginefx" alt="ImagineFX" loading="lazy"></div></div></div>
+      <div class="logo-group"><h5>Automotive</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/honda.png" data-logo="honda" alt="Honda" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/jeep.png" data-logo="jeep" alt="Jeep" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/generalmotors.png" data-logo="generalmotors" alt="GM" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/nissan.png" data-logo="nissan" alt="Nissan" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/lexus.png" data-logo="lexus" alt="Lexus" loading="lazy"></div></div></div>
+      <div class="logo-group"><h5>Games &amp; Play</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/activision.png" data-logo="activision" alt="Activision" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/ea.png" data-logo="ea" alt="EA" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/digitaldomain.png" data-logo="digitaldomain" alt="Digital Domain" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/hasbro.png" data-logo="hasbro" alt="Hasbro" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/imagineering.png" data-logo="imagineering" alt="Disney Imagineering" loading="lazy"></div></div></div>
+      <div class="logo-group"><h5>Aerospace &amp; Robotics</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/boeing.png" data-logo="boeing" alt="Boeing" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/teague.png" data-logo="teague" alt="Teague" loading="lazy"></div><div class="logo-cell"><span class="logo-text">Carnegie Mellon Robotics</span></div><div class="logo-cell"><span class="logo-text">Metalcrafters</span></div><div class="logo-cell"><span class="logo-text">Lanard Toys</span></div></div></div>
+      <div class="logo-group"><h5>Brands &amp; Published</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/samsung.png" data-logo="samsung" alt="Samsung" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/mcdonalds.png" data-logo="mcdonalds" alt="McDonald&apos;s" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/virgin.png" data-logo="virgin" alt="Virgin" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/popmech.png" data-logo="popmech" alt="Popular Mechanics" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/imaginefx.png" data-logo="imaginefx" alt="ImagineFX" loading="lazy"></div></div></div>
       <div class="logo-also"><span>Also:</span> Carnegie Mellon Robotics · Metalcrafters · Automobile Magazine · Car Styling · Mechanical Engineering · Ballistic Publishing Concept Book</div>
     </div>
   </section>
@@ -1278,7 +1331,7 @@
   </div>
   <div class="lb-stage" id="lbStage">
     <img id="lbImg" alt="">
-    <video id="lbSlideVideo" hidden playsinline loop preload="none" poster="assets/gunslinger-snow-poster.jpg" aria-label="Gunslinger — snow run video"></video>
+    <video id="lbSlideVideo" hidden playsinline loop preload="none" data-kcposter="assets/gunslinger-snow-poster.jpg" aria-label="Gunslinger — snow run video"></video>
     <button type="button" class="lb-bigplay" id="lbBigPlay" hidden aria-label="Play the Gunslinger snow run video"><span class="bp-tri" aria-hidden="true">▶</span><span class="bp-label">Play</span></button>
   </div>
   <div class="lb-bottom">
@@ -1311,9 +1364,9 @@
     </div>
   </div>
   <div class="lb-stage" id="vlbStage">
-    <video id="lbVideo" data-src="assets/cat-ugv.mp4" poster="assets/cat-ugv-new-poster.jpg" playsinline loop preload="none" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface — with sound"></video>
+    <video id="lbVideo" data-src="assets/cat-ugv.mp4" data-kcposter="assets/cat-ugv-new-poster.jpg" playsinline loop preload="none" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface — with sound"></video>
     <button type="button" class="lb-bigplay" id="vlbBigPlay" hidden aria-label="Play the CAT UGV orbit video"><span class="bp-tri" aria-hidden="true">▶</span><span class="bp-label">Play</span></button>
-    <img id="vlbImg" src="assets/cat-ugv-poster.jpg" alt="" style="display:none">
+    <img id="vlbImg" data-kc="assets/cat-ugv-poster.jpg" alt="" style="display:none">
   </div>
   <div class="lb-bottom">
     <div class="clip-bar clip-bar-lb" id="vlbBar">
@@ -1350,7 +1403,7 @@
     </div>
   </div>
   <div class="lb-stage" id="hlbStage">
-    <video id="hlbVideo" data-src="assets/honda-transporter.mp4" poster="assets/honda-transporter-poster.jpg" playsinline loop preload="none" aria-label="Honda transporter concept orbiting on a wet track at night — with sound"></video>
+    <video id="hlbVideo" data-src="assets/honda-transporter.mp4" data-kcposter="assets/honda-transporter-poster.jpg" playsinline loop preload="none" aria-label="Honda transporter concept orbiting on a wet track at night — with sound"></video>
     <button type="button" class="lb-bigplay" id="hlbBigPlay" hidden aria-label="Play the Honda Transporter video"><span class="bp-tri" aria-hidden="true">▶</span><span class="bp-label">Play</span></button>
     <img id="hlbImg" alt="" style="display:none">
   </div>
@@ -1370,7 +1423,50 @@
     <p class="lb-caption" id="hlbCaption">Honda Transporter — Wet-Track Orbit. Press Play to watch — sound is on, use Mute to turn it off. Tap the video to pause or play.</p>
   </div>
 </div>
-
+<script>
+/* Hydrate the static markup from the media wrappers: hero slides load first,
+   in rotation order; posters (small) right away; every other image as it
+   nears the screen; the two 4K download pills get their real file as they
+   approach — and a tap before that loads the wrapper first, then downloads.
+   Layout is untouched: every box is reserved by the same aspect-ratio CSS. */
+(function(){
+  var heroImgs = Array.prototype.slice.call(document.querySelectorAll('.hero .slide img[data-kc]'));
+  heroImgs.forEach(function(im){ kcSetImg(im, im.getAttribute('data-kc')); });
+  Array.prototype.slice.call(document.querySelectorAll('[data-kcposter]')).forEach(function(el){
+    kcSetPoster(el, el.getAttribute('data-kcposter'));
+  });
+  var rest = Array.prototype.slice.call(document.querySelectorAll('img[data-kc]')).filter(function(im){
+    return heroImgs.indexOf(im) === -1;
+  });
+  var dls = Array.prototype.slice.call(document.querySelectorAll('a[data-kcdl]'));
+  dls.forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(!a._kcReady){
+        e.preventDefault();
+        kcSetDownload(a, a.getAttribute('data-kcdl')).then(function(){ a.click(); });
+      }
+    });
+  });
+  function arm(t){
+    if(t.tagName === 'A') kcSetDownload(t, t.getAttribute('data-kcdl'));
+    else kcSetImg(t, t.getAttribute('data-kc'));
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        arm(en.target);
+        io.unobserve(en.target);
+      });
+    }, {rootMargin:'900px 0px 900px 0px'});
+    rest.forEach(function(im){ io.observe(im); });
+    dls.forEach(function(a){ io.observe(a); });
+  } else {
+    rest.forEach(arm);
+    dls.forEach(arm);
+  }
+})();
+</script>
 <script>
 (function(){
   /* Failsafe: never load in a scroll-locked state (a lightbox class left on <body> freezes scrolling) */
@@ -1766,7 +1862,7 @@
       b.style.setProperty('--fi', pos);
       b.setAttribute('aria-label', 'Show slide ' + (pos+1) + ' of ' + lbGroup.length + ' in ' + item.proj + ': ' + item.view);
       var im = document.createElement('img');
-      im.src = dispSrc(item.type === 'video' ? item.poster : item.src);
+      kcSetImg(im, dispSrc(item.type === 'video' ? item.poster : item.src));
       im.alt = '';
       im.loading = 'lazy';
       b.appendChild(im);
@@ -1808,24 +1904,16 @@
      Called from lbShow the instant a video slide is selected. */
   function lbPreloadVideo(){
     if(!lbVidSrc) return;
-    if(lbVid.getAttribute('src') !== lbVidSrc){
-      lbVid.src = lbVidSrc;
-      lbVid.preload = 'auto';
-      try{ lbVid.load(); }catch(err){}
-    } else if(lbVid.preload !== 'auto'){
-      lbVid.preload = 'auto';
-      try{ lbVid.load(); }catch(err){}
-    }
+    kcAttach(lbVid, lbVidSrc);
   }
   function lbStartVideo(){
     if(!lbVidSrc) return;
     /* Already preloading / loaded from selection time — just play;
        only attach + load() here if the preload somehow did not run,
        so pressing Play never restarts a fetch already in flight. */
-    if(lbVid.getAttribute('src') !== lbVidSrc){
-      lbVid.src = lbVidSrc;
-      lbVid.preload = 'auto';
-      try{ lbVid.load(); }catch(err){}
+    if(!lbVid.getAttribute('src') || lbVid._kcPath !== lbVidSrc){
+      kcAttach(lbVid, lbVidSrc).then(function(){ if(lbVid.getAttribute('src')) lbStartVideo(); });
+      return;
     }
     /* The snow-run file has a real audio track — play it with sound.
        If the browser refuses unmuted playback (the open tap can
@@ -1888,7 +1976,7 @@
       lbImg.style.display = 'none';
       lbVid.hidden = false;
       lbVidSrc = item.src;
-      if(item.poster) lbVid.poster = item.poster;
+      if(item.poster) kcSetPoster(lbVid, item.poster);
       lbPreloadVideo();
       lbGateVideo();
     } else {
@@ -1896,7 +1984,7 @@
       lbVid.hidden = true;
       if(lbBar) lbBar.hidden = true;
       lbImg.style.display = '';
-      lbImg.src = item.src;
+      kcSetImg(lbImg, item.src);
       lbImg.alt = item.alt;
     }
     /* Download follows the slide: every still — the Honda salt-flat
@@ -1906,7 +1994,7 @@
       if(item.type === 'video'){ lbDownload.hidden = true; lbDownload.removeAttribute('href'); }
       else {
         lbDownload.hidden = false;
-        lbDownload.href = item.src;
+        kcSetDownload(lbDownload, item.src);
         lbDownload.setAttribute('aria-label', 'Download this image: ' + item.view);
       }
     }
@@ -1921,8 +2009,8 @@
     if(multi){
       var nextItem = GALLERY[lbGroup[(lbPos+1) % lbGroup.length]];
       var prevItem = GALLERY[lbGroup[(lbPos-1+lbGroup.length) % lbGroup.length]];
-      if(nextItem.type !== 'video'){ var pre1 = new Image(); pre1.src = nextItem.src; }
-      if(prevItem.type !== 'video'){ var pre2 = new Image(); pre2.src = prevItem.src; }
+      if(nextItem.type !== 'video'){ var pre1 = new Image(); kcSetImg(pre1, nextItem.src); }
+      if(prevItem.type !== 'video'){ var pre2 = new Image(); kcSetImg(pre2, prevItem.src); }
     }
     lbRetrigger(lightbox);
   }
@@ -2007,7 +2095,7 @@
   Array.prototype.slice.call(document.querySelectorAll('.gal .main, .gal .side figure')).forEach(function(el){
     var img = el.querySelector('img');
     if(!img) return;
-    var src = img.getAttribute('src');
+    var src = img.getAttribute('data-kc') || img.getAttribute('src');
     if(!(src in srcToIndex)) return;
     el.setAttribute('role','button');
     el.setAttribute('tabindex','0');
@@ -2100,7 +2188,15 @@
   var catUserPaused = false;   /* set only by the SPAR play bar */
   var hondaUserPaused = false; /* set only by the Honda play bar */
   var gunUserPaused = false;   /* set only by the Gunslinger play bar */
-  function clipPlay(v){ if(!v) return; var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+  function clipPlay(v){
+    if(!v) return;
+    var kcPath = v.getAttribute('data-kc');
+    if(kcPath && !v.getAttribute('src')){
+      kcAttach(v, kcPath).then(function(){ var p2 = v.play(); if(p2 && p2.catch) p2.catch(function(){}); });
+      return;
+    }
+    var p = v.play(); if(p && p.catch) p.catch(function(){});
+  }
   if(catClipV) catClipV.muted = true;
   if(hondaClip) hondaClip.muted = true;
   if(gunClipV) gunClipV.muted = true;
@@ -2256,6 +2352,7 @@
              its poster with no metadata loaded (its play bar read
              0:00 / 0:00) and hung. Calling load() starts the fetch
              for real. */
+          kcAttach(v, v.getAttribute('data-kc'));
           try{ v.load(); }catch(err){}
         }
         loadIO.unobserve(v);
@@ -2315,7 +2412,7 @@
            unloaded, start its fetch explicitly before play() so the
            play can never stall on an element with no data behind
            it — the same load() the load promotion above performs. */
-        if(v.readyState === 0 && v.networkState !== 2){ try{ v.load(); }catch(err){} }
+        if(v.readyState === 0 && v.networkState !== 2){ kcAttach(v, v.getAttribute('data-kc')); try{ v.load(); }catch(err){} }
         clipPlay(v);
       }
       else v.pause();
@@ -2456,7 +2553,7 @@
       var probe = new Image();
       probe.onload = go;
       probe.onerror = go;
-      probe.src = poster;
+      kcSetImg(probe, poster);
       if(probe.complete && probe.naturalWidth) go();
     }
     var rvIO = new IntersectionObserver(function(entries){
@@ -2592,7 +2689,7 @@
       b.style.setProperty('--fi', pos);
       b.setAttribute('aria-label', 'Show slide ' + (pos+1) + ' of ' + VLB_SLIDES.length + ' in SPAR: ' + s.view);
       var im = document.createElement('img');
-      im.src = dispSrc(s.type === 'video' ? 'assets/cat-ugv-new-poster.jpg' : s.src);
+      kcSetImg(im, dispSrc(s.type === 'video' ? 'assets/cat-ugv-new-poster.jpg' : s.src));
       im.alt = '';
       im.loading = 'lazy';
       b.appendChild(im);
@@ -2621,22 +2718,14 @@
   /* Start fetching the CAT file NOW, without playing it. Called
      from vlbShow the instant the video slide is selected. */
   function vlbPreloadVideo(){
-    if(!lbVideo.getAttribute('src')){
-      lbVideo.src = lbVideo.getAttribute('data-src');
-      lbVideo.preload = 'auto';
-      try{ lbVideo.load(); }catch(err){}
-    } else if(lbVideo.preload !== 'auto'){
-      lbVideo.preload = 'auto';
-      try{ lbVideo.load(); }catch(err){}
-    }
+    kcAttach(lbVideo, lbVideo.getAttribute('data-src'));
   }
   function vlbStartVideo(){
     /* Already preloading / loaded from selection time — just play;
        only attach + load() here if the preload somehow did not run. */
     if(!lbVideo.getAttribute('src')){
-      lbVideo.src = lbVideo.getAttribute('data-src');
-      lbVideo.preload = 'auto';
-      try{ lbVideo.load(); }catch(err){}
+      kcAttach(lbVideo, lbVideo.getAttribute('data-src')).then(function(){ if(lbVideo.getAttribute('src')) vlbStartVideo(); });
+      return;
     }
     /* Re-apply the sound state immediately before every play, so the
        element can never be stuck silently muted while the button
@@ -2704,7 +2793,7 @@
       var vlbBarEl2 = document.getElementById('vlbBar');
       if(vlbBarEl2) vlbBarEl2.hidden = true;
       vlbImg.style.display = '';
-      vlbImg.src = s.src;
+      kcSetImg(vlbImg, s.src);
       vlbImg.alt = s.alt;
     }
     vlbCounter.innerHTML = '<b>' + String(vlbPos+1).padStart(2,'0') + '</b> / ' + VLB_SLIDES.length;
@@ -2836,7 +2925,7 @@
       b.style.setProperty('--fi', pos);
       b.setAttribute('aria-label', 'Show slide ' + (pos+1) + ' of ' + HLB_SLIDES.length + ' in Honda Transporter: ' + s.view);
       var im = document.createElement('img');
-      im.src = dispSrc(s.type === 'video' ? 'assets/honda-transporter-poster.jpg' : s.src);
+      kcSetImg(im, dispSrc(s.type === 'video' ? 'assets/honda-transporter-poster.jpg' : s.src));
       im.alt = '';
       im.loading = 'lazy';
       b.appendChild(im);
@@ -2865,22 +2954,14 @@
   /* Start fetching the Honda file NOW, without playing it. Called
      from hlbShow the instant the video slide is selected. */
   function hlbPreloadVideo(){
-    if(!hlbVideo.getAttribute('src')){
-      hlbVideo.src = hlbVideo.getAttribute('data-src');
-      hlbVideo.preload = 'auto';
-      try{ hlbVideo.load(); }catch(err){}
-    } else if(hlbVideo.preload !== 'auto'){
-      hlbVideo.preload = 'auto';
-      try{ hlbVideo.load(); }catch(err){}
-    }
+    kcAttach(hlbVideo, hlbVideo.getAttribute('data-src'));
   }
   function hlbStartVideo(){
     /* Already preloading / loaded from selection time — just play;
        only attach + load() here if the preload somehow did not run. */
     if(!hlbVideo.getAttribute('src')){
-      hlbVideo.src = hlbVideo.getAttribute('data-src');
-      hlbVideo.preload = 'auto';
-      try{ hlbVideo.load(); }catch(err){}
+      kcAttach(hlbVideo, hlbVideo.getAttribute('data-src')).then(function(){ if(hlbVideo.getAttribute('src')) hlbStartVideo(); });
+      return;
     }
     hlbVideo.muted = hlbUserMuted;
     hlbVideo.volume = 1;
@@ -2948,11 +3029,11 @@
       if(hlbBarEl2) hlbBarEl2.hidden = true;
       if(hlbDownload){
         hlbDownload.hidden = false;
-        hlbDownload.href = s.src;
+        kcSetDownload(hlbDownload, s.src);
         hlbDownload.setAttribute('aria-label', 'Download this image: ' + s.view);
       }
       hlbImg.style.display = '';
-      hlbImg.src = s.src;
+      kcSetImg(hlbImg, s.src);
       hlbImg.alt = s.alt;
     }
     hlbCounter.innerHTML = '<b>' + String(hlbPos+1).padStart(2,'0') + '</b> / ' + HLB_SLIDES.length;
@@ -2961,8 +3042,8 @@
     hlbStripBtns.forEach(function(d, k){ d.classList.toggle('on', k === hlbPos); });
     var nextSlide = HLB_SLIDES[(hlbPos+1) % HLB_SLIDES.length];
     var prevSlide2 = HLB_SLIDES[(hlbPos-1+HLB_SLIDES.length) % HLB_SLIDES.length];
-    if(nextSlide.type !== 'video'){ var hpre1 = new Image(); hpre1.src = nextSlide.src; }
-    if(prevSlide2.type !== 'video'){ var hpre2 = new Image(); hpre2.src = prevSlide2.src; }
+    if(nextSlide.type !== 'video'){ var hpre1 = new Image(); kcSetImg(hpre1, nextSlide.src); }
+    if(prevSlide2.type !== 'video'){ var hpre2 = new Image(); kcSetImg(hpre2, prevSlide2.src); }
     lbRetrigger(hondaLightbox);
   }
 
@@ -3243,7 +3324,7 @@
       [catClipV, hondaClip, gunClipV].forEach(function(v, i){
         setTimeout(function(){
           if(!v || anyLightboxOpen()) return;
-          if(v.preload !== 'auto'){ v.preload = 'auto'; try{ v.load(); }catch(err){} }
+          if(v.preload !== 'auto'){ v.preload = 'auto'; kcAttach(v, v.getAttribute('data-kc')); try{ v.load(); }catch(err){} }
         }, i * 1400);
       });
     }, 600);

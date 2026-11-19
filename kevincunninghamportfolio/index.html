@@ -1283,7 +1283,7 @@
       <h3>Let’s build <em>something real.</em></h3>
       <p>Vehicle programs, collectibles, or worlds — if it starts as a sketch and ends as a machine, that’s the work. Email is fastest.</p>
       <div class="contact-actions">
-        <button type="button" class="primary" id="copyEmail">Copy email — kevincu@gmail.com</button>
+        <a href="mailto:kevincu@muse.ai?subject=Portfolio%20inquiry" class="primary">Email — kevincu@muse.ai</a>
         <a href="https://drive.google.com/file/d/1Bu6Jvl35d3A5dCeQ7XMOlcF2QJ5ITwER/view?usp=drivesdk" target="_blank" rel="noopener">Résumé <span aria-hidden="true">→</span></a>
         <a href="https://www.linkedin.com/in/kevin-cunningham-49b444" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a>
         <a href="https://www.instagram.com/black_lab_la" target="_blank" rel="noopener">Instagram <span aria-hidden="true">→</span></a>
@@ -2917,23 +2917,6 @@
     if(e.key === 'ArrowLeft') hlbShow(hlbPos-1);
     if(e.key === 'm' || e.key === 'M') hlbSetMuted(!hlbVideo.muted);
   });
-
-  /* Copy email */
-  var copyBtn = document.getElementById('copyEmail');
-  if(copyBtn){
-    copyBtn.addEventListener('click', function(){
-      var email = 'kevincu@gmail.com';
-      function done(){ copyBtn.textContent = 'Copied — kevincu@gmail.com'; setTimeout(function(){ copyBtn.textContent = 'Copy email — kevincu@gmail.com'; }, 2400); }
-      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(email).then(done, function(){ fallback(); }); }
-      else fallback();
-      function fallback(){
-        var ta = document.createElement('textarea');
-        ta.value = email; document.body.appendChild(ta); ta.select();
-        try{ document.execCommand('copy'); done(); }catch(err){}
-        document.body.removeChild(ta);
-      }
-    });
-  }
 
   /* Message Boopy — in-session notes only */
   var fab = document.getElementById('boopyFab');

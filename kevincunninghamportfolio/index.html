@@ -1,77 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script src="assets/star-a.jpg.js"></script>
-<script src="assets/star-b.jpg.js"></script>
-<script src="assets/star-c.jpg.js"></script>
-<script src="assets/star-side-new.jpg.js"></script>
-<script src="assets/cat-ugv-new-poster.jpg.js"></script>
-<script src="assets/cat-ugv.mp4.js"></script>
-<script src="assets/cat-ugv-poster.jpg.js"></script>
-<script src="assets/cat-still-b.jpg.js"></script>
-<script src="assets/spar-a.jpg.js"></script>
-<script src="assets/spar-b.jpg.js"></script>
-<script src="assets/spar-c.jpg.js"></script>
-<script src="assets/honda-transporter-poster.jpg.js"></script>
-<script src="assets/honda-transporter.mp4.js"></script>
-<script src="assets/honda-shot6-rear-day-display.jpg.js"></script>
-<script src="assets/honda-shot6-rear-day-4k.jpg.js"></script>
-<script src="assets/honda-desert-front-display.jpg.js"></script>
-<script src="assets/honda-desert-front-4k.jpg.js"></script>
-<script src="assets/gunslinger-snow-poster.jpg.js"></script>
-<script src="assets/gunslinger-snow.mp4.js"></script>
-<script src="assets/gunslinger-b.jpg.js"></script>
-<script src="assets/gunslinger-c.jpg.js"></script>
-<script src="assets/bomber-a.jpg.js"></script>
-<script src="assets/bomber-b.jpg.js"></script>
-<script src="assets/bomber-c.jpg.js"></script>
-<script src="assets/m577-a.jpg.js"></script>
-<script src="assets/m577-b.jpg.js"></script>
-<script src="assets/m577-c.jpg.js"></script>
-<script src="assets/crusher-a.jpg.js"></script>
-<script src="assets/crusher-b.jpg.js"></script>
-<script src="assets/workflows.jpg.js"></script>
-<script src="assets/logos__honda.png.js"></script>
-<script src="assets/logos__jeep.png.js"></script>
-<script src="assets/logos__generalmotors.png.js"></script>
-<script src="assets/logos__nissan.png.js"></script>
-<script src="assets/logos__lexus.png.js"></script>
-<script src="assets/logos__activision.png.js"></script>
-<script src="assets/logos__ea.png.js"></script>
-<script src="assets/logos__digitaldomain.png.js"></script>
-<script src="assets/logos__hasbro.png.js"></script>
-<script src="assets/logos__imagineering.png.js"></script>
-<script src="assets/logos__boeing.png.js"></script>
-<script src="assets/logos__teague.png.js"></script>
-<script src="assets/logos__samsung.png.js"></script>
-<script src="assets/logos__mcdonalds.png.js"></script>
-<script src="assets/logos__virgin.png.js"></script>
-<script src="assets/logos__popmech.png.js"></script>
-<script src="assets/logos__imaginefx.png.js"></script>
-<script src="assets/spar-d.jpg.js"></script>
-<script src="assets/spar-e.jpg.js"></script>
-<script src="assets/spar-f.jpg.js"></script>
-<script src="assets/star-2.jpg.js"></script>
-<script src="assets/star-3.jpg.js"></script>
-<script src="assets/star-4.jpg.js"></script>
-<script src="assets/star-5.jpg.js"></script>
-<script src="assets/star-6.jpg.js"></script>
-<script src="assets/star-7.jpg.js"></script>
-<script src="assets/star-8.jpg.js"></script>
-<script src="assets/bomber-d.jpg.js"></script>
-<script src="assets/bomber-e.jpg.js"></script>
-<script src="assets/bomber-f.jpg.js"></script>
-<script src="assets/gunslinger-a.jpg.js"></script>
-<script src="assets/gunslinger-d.jpg.js"></script>
-<script src="assets/m577-d.jpg.js"></script>
-<script src="assets/m577-e.jpg.js"></script>
-<script src="assets/honda-shot6-rear-night-4k.jpg.js"></script>
-<script src="assets/honda-salt-flat-side-4k.jpg.js"></script>
-
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
+<link rel="preload" as="image" href="assets/star-a.jpg" fetchpriority="high" />
 <title>Kevin Cunningham Portfolio — Industrial Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,6 +88,25 @@
   .mocktag i{display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--orange); margin-right:7px; vertical-align:1px}
   @media (max-width:560px){ .mocktag{top:68px; right:12px} }
 
+  /* While the page is actually scrolling, blurred surfaces drop their
+     backdrop blur (JS toggles .is-scrolling on <html> during scroll and
+     clears it ~160ms after the last scroll event). Re-blurring the
+     content under the fixed pill nav, the mock tag,
+     the hero bar and the clip bars on EVERY scroll frame is one of the
+     biggest compositor costs on iPad Safari — in both directions, and
+     worst on scroll-up, when the blurred hero bar and hero re-enter.
+     The panels go near-opaque instead, so they read the same at rest
+     and in motion, and the blur returns the moment scrolling stops. */
+  html.is-scrolling .pillnav,
+  html.is-scrolling .mocktag,
+  html.is-scrolling .hero-bar,
+  html.is-scrolling .clip-bar{
+    backdrop-filter:none; -webkit-backdrop-filter:none;
+  }
+  html.is-scrolling .pillnav{ background:rgba(14,14,16,.94); }
+  html.is-scrolling .mocktag{ background:rgba(14,14,16,.94); }
+  html.is-scrolling .hero-bar{ background:rgba(8,8,9,.88); }
+
   /* ---------- HERO — unchanged: fade + pan Kevin approved ---------- */
   .hero{
     position:relative;
@@ -180,22 +133,43 @@
   .slide img{
     width:100%; height:100%; object-fit:cover; display:block;
   }
-  .slide[data-i="0"] .slide-inner{ animation:panA 16s ease-in-out infinite alternate; }
-  .slide[data-i="1"] .slide-inner{ animation:panB 18s ease-in-out infinite alternate; }
-  .slide[data-i="2"] .slide-inner{ animation:panC 17s ease-in-out infinite alternate; }
+  .slide[data-i="0"] .slide-inner{ animation:panA 12s ease-in-out infinite alternate; }
+  .slide[data-i="1"] .slide-inner{ animation:panB 13.5s ease-in-out infinite alternate; }
+  .slide[data-i="2"] .slide-inner{ animation:panC 13s ease-in-out infinite alternate; }
+  /* Rotation slides 3–11 (Honda / SPAR / SPAR X2) cycle the same three pans */
+  .slide[data-i="3"] .slide-inner, .slide[data-i="6"] .slide-inner, .slide[data-i="9"] .slide-inner{ animation:panA 12s ease-in-out infinite alternate; }
+  .slide[data-i="4"] .slide-inner, .slide[data-i="7"] .slide-inner, .slide[data-i="10"] .slide-inner{ animation:panB 13.5s ease-in-out infinite alternate; }
+  .slide[data-i="5"] .slide-inner, .slide[data-i="8"] .slide-inner, .slide[data-i="11"] .slide-inner{ animation:panC 13s ease-in-out infinite alternate; }
+  /* Project title swap — the hero text block fades out briefly while its
+     kicker / title / sub / meta are replaced with the incoming project's,
+     then fades back in, in sync with the slide crossfade. */
+  .hero-content{transition:opacity .19s ease}
+  .hero-content.txt-swap{opacity:0}
+  /* Title zoom — while a project plays, its title breathes with a SLIGHT
+     zoom (scale only, no directional drift), in the same spirit as the
+     image pans: one gentle push across the project's whole turn
+     (3 slides × 6.2s), easing back on the alternate pass. JS adds .tz
+     after the entrance rise and restarts it on every title swap, and
+     the hero's pause state freezes it with the pans. */
+  h1.hero-title.tz{animation:titleZoom 18.6s ease-in-out infinite alternate; transform-origin:0% 100%}
+  @keyframes titleZoom{ from{transform:scale(1)} to{transform:scale(1.05)} }
+  .hero.paused h1.hero-title.tz{animation-play-state:paused}
   @keyframes panA{
-    from{ transform:scale(1.14) translate(-1.6%, 0.4%); }
-    to  { transform:scale(1.20) translate( 1.6%, -0.9%); }
+    from{ transform:scale(1.13) translate(-1.8%, 0.5%); }
+    to  { transform:scale(1.24) translate( 1.8%, -1.0%); }
   }
   @keyframes panB{
-    from{ transform:scale(1.20) translate( 1.5%, -0.6%); }
-    to  { transform:scale(1.14) translate(-1.5%,  0.7%); }
+    from{ transform:scale(1.24) translate( 1.7%, -0.7%); }
+    to  { transform:scale(1.13) translate(-1.7%,  0.8%); }
   }
   @keyframes panC{
-    from{ transform:scale(1.15) translate(0.4%,  1.4%); }
-    to  { transform:scale(1.21) translate(-0.9%, -1.3%); }
+    from{ transform:scale(1.14) translate(0.5%,  1.6%); }
+    to  { transform:scale(1.25) translate(-1.0%, -1.5%); }
   }
   .paused .slide-inner{ animation-play-state:paused !important; }
+  /* Only the visible hero slide pans — the two hidden slides sit still
+     instead of burning compositor frames underneath the active one. */
+  .slide:not(.active) .slide-inner{ animation-play-state:paused; }
 
   .hero-shade{
     position:absolute; inset:0; z-index:2; pointer-events:none;
@@ -347,7 +321,7 @@
     position:absolute; left:12px; top:12px; z-index:2;
     display:inline-flex; align-items:center; gap:8px;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--orange); background:rgba(8,8,9,.78); backdrop-filter:blur(8px);
+    color:var(--orange); background:rgba(8,8,9,.88);
     border:1px solid rgba(255,128,0,.45); border-radius:999px; padding:8px 12px;
     pointer-events:none;
   }
@@ -379,7 +353,7 @@
      for its full 4K. All four Honda stills live in the one Honda
      lightbox set: the rear night still and the salt-flat side view
      are NOT displayed in the grid — they are reached by Next /
-     Previous (day into night keeps its 0.75s crossfade), each with
+     Previous, each with
      its download in the lightbox. The sunset front 3/4 image appears
      exactly once in the set, as the desert front slide. There is no
      row underneath the gallery and no separate section below it. */
@@ -399,7 +373,7 @@
   .gal .side figure .still-dl{
     position:absolute; left:10px; bottom:10px; z-index:2;
     height:44px; min-height:44px; padding:0 14px; border-radius:999px;
-    border:1px solid var(--line-strong); background:rgba(8,8,9,.78); backdrop-filter:blur(8px); color:#fff;
+    border:1px solid var(--line-strong); background:rgba(8,8,9,.88); color:#fff;
     display:inline-flex; align-items:center;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
     transition:color .2s, border-color .2s;
@@ -414,9 +388,6 @@
     transition:color .2s, border-color .2s;
   }
   .blend-dl:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
-  /* Lightbox crossfade — Shot 6 rear day <-> night fades over 0.75s */
-  .lb-stage img.lb-xfade{transition:opacity .75s ease}
-  @media (prefers-reduced-motion: reduce){ .lb-stage img.lb-xfade{transition:none} }
 
   /* CAT clip is clickable — opens the video lightbox with sound */
   .motion-clip.clickable{cursor:pointer; position:relative}
@@ -426,7 +397,7 @@
     position:absolute; right:12px; bottom:12px; z-index:2;
     display:inline-flex; align-items:center; gap:8px;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-    color:#fff; background:rgba(8,8,9,.78); backdrop-filter:blur(8px);
+    color:#fff; background:rgba(8,8,9,.88);
     border:1px solid var(--line-strong); border-radius:999px; padding:9px 13px;
     pointer-events:none;
   }
@@ -468,7 +439,7 @@
   .clip-bar-lb{
     align-self:stretch; border:1px solid var(--line); border-top:1px solid var(--line);
     border-radius:999px; padding:6px 16px 6px 6px;
-    background:rgba(14,14,16,.78); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    background:rgba(14,14,16,.94);
     box-shadow:0 10px 26px rgba(0,0,0,.4);
   }
   .clip-play, .clip-restart{
@@ -519,8 +490,7 @@
   .lb-bigplay{
     position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:5;
     width:104px; height:104px; min-width:104px; min-height:104px; border-radius:50%;
-    border:1.5px solid rgba(255,128,0,.85); background:rgba(8,8,9,.74);
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    border:1.5px solid rgba(255,128,0,.85); background:rgba(8,8,9,.9);
     color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
     box-shadow:0 18px 44px rgba(0,0,0,.55);
     transition:border-color .2s, background .2s, transform .2s;
@@ -575,12 +545,12 @@
   .thumb.sel{outline:2px solid var(--orange); outline-offset:-2px}
 
   /* project images open the lightbox too */
-  .gal .main, .gal .side figure{cursor:zoom-in; position:relative}
+  .gal .main, .gal .side figure{cursor:pointer; position:relative}
   .gal .main:focus-visible, .gal .side figure:focus-visible{outline:2px solid var(--orange); outline-offset:3px}
   .gal .main::after, .gal .side figure::after{
     content:"⤢  View"; position:absolute; right:10px; bottom:10px;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-    color:#fff; background:rgba(8,8,9,.72); backdrop-filter:blur(8px);
+    color:#fff; background:rgba(8,8,9,.85);
     border:1px solid var(--line-strong); border-radius:999px; padding:7px 11px;
     opacity:0; transition:opacity .2s; pointer-events:none;
   }
@@ -665,38 +635,22 @@
     flex:none; padding:8px clamp(14px, 3vw, 28px) calc(16px + env(safe-area-inset-bottom));
     display:flex; flex-direction:column; align-items:center; gap:10px;
   }
-  /* Lightbox entrance — fade + slight scale/slide on the media, caption words
-     slide in word by word, and the controls arrive in order: Previous, then
-     Close, then Next. JS re-triggers this on EVERY open and EVERY slide
-     change by removing/re-adding .lb-play with a forced reflow between, so
-     it never depends on an observer and nothing is ever hidden by default —
-     without .lb-play everything rests at its natural, fully visible state. */
-  .lightbox.lb-play .lb-stage img,
-  .lightbox.lb-play .lb-stage video{animation:lbMediaIn .5s cubic-bezier(.32,.72,0,1) both}
-  @keyframes lbMediaIn{
-    from{opacity:0; transform:translateY(16px) scale(.965)}
-    to{opacity:1; transform:translateY(0) scale(1)}
-  }
-  .lightbox.lb-play .lb-caption .w{display:inline-block; animation:lbWordIn .45s cubic-bezier(.32,.72,0,1) both; animation-delay:calc(.14s + var(--wi, 0) * 30ms)}
-  @keyframes lbWordIn{
-    from{opacity:0; transform:translateY(10px)}
-    to{opacity:1; transform:translateY(0)}
-  }
-  .lightbox.lb-play .lb-controls .lb-nav.prev{animation:lbCtlIn .45s cubic-bezier(.32,.72,0,1) .10s both}
-  .lightbox.lb-play .lb-controls .lb-close{animation:lbCtlIn .45s cubic-bezier(.32,.72,0,1) .22s both}
-  .lightbox.lb-play .lb-controls .lb-nav.next{animation:lbCtlIn .45s cubic-bezier(.32,.72,0,1) .34s both}
-  @keyframes lbCtlIn{
-    from{opacity:0; transform:translateY(14px)}
-    to{opacity:1; transform:translateY(0)}
-  }
+  /* NO per-element entrance animations inside the lightbox: the stage
+     media used to run its own scale/translate entrance, and Prev / Close /
+     Next, the caption words and the filmstrip thumbs each ran their own
+     staggered opacity+transform animations UNDER the chrome group's
+     opacity fade, so the buttons stuttered instead of gliding. Now slide
+     changes are direct swaps, and the chrome (top bar, play bar /
+     timeline, filmstrip, buttons, caption) fades as ONE group — see
+     .chrome-on below. Everything rests fully visible; .lb-play is still
+     toggled by JS but animates nothing. */
   .lb-caption{margin:0; color:var(--muted); font-size:14px; line-height:1.45; text-align:center; max-width:640px}
   /* Filmstrip — one theme in every lightbox: a row of thumbnails directly
      above Previous / Close / Next, so you can always see which slide you
      are on and when the set loops. The current thumb is lit and slightly
-     larger; the rest sit dimmed. On open the thumbs arrive one at a time
-     — a small rise with a whisper of scale and swirl, staggered 55ms
-     apart on a soft Apple-style spring (gentle overshoot, quick settle);
-     on slide change only the highlight glides to the next thumb. */
+     larger; the rest sit dimmed. The strip is part of the chrome group
+     and arrives with its single opacity fade; on slide change only the
+     highlight glides to the next thumb. */
   .lb-filmstrip{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; max-width:640px}
   .lb-filmstrip .fst{
     position:relative; width:58px; height:38px; min-width:58px; min-height:38px; padding:0;
@@ -712,16 +666,10 @@
   }
   .lb-filmstrip .fst:hover{opacity:.85; border-color:rgba(255,128,0,.55)}
   .lb-filmstrip .fst.on{opacity:1; border-color:var(--orange); transform:scale(1.08)}
-  .lb-filmstrip.strip-in .fst{animation:fstIn .55s cubic-bezier(.34,1.3,.64,1) both; animation-delay:calc(var(--fi, 0) * 55ms)}
-  .lb-filmstrip.strip-in .fst.on{animation-name:fstInOn}
-  @keyframes fstIn{
-    from{opacity:0; transform:translateY(14px) scale(.8) rotate(-2.5deg)}
-    to{opacity:.5; transform:translateY(0) scale(1) rotate(0deg)}
-  }
-  @keyframes fstInOn{
-    from{opacity:0; transform:translateY(14px) scale(.8) rotate(-2.5deg)}
-    to{opacity:1; transform:translateY(0) scale(1.08) rotate(0deg)}
-  }
+  /* No strip-in animation: the thumbs are part of the chrome group and
+     arrive with its single opacity fade (see .chrome-on below). The
+     .strip-in class is still toggled by JS but animates nothing, so the
+     thumbs never scale/rotate against the group fade. */
   @media (max-width:640px){ .lb-filmstrip .fst{width:50px; height:33px; min-width:50px; min-height:33px} }
   body.lb-open{overflow:hidden}
 
@@ -819,48 +767,36 @@
   .contact .phone{margin-top:20px; font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
   .contact .phone b{color:#e8e8ea; font-weight:500}
 
-  footer{padding:56px 0 110px; color:var(--muted2); font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-align:center; line-height:2}
+  footer{padding:56px 0 64px; color:var(--muted2); font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-align:center; line-height:2}
 
-  /* ---------- Message Boopy ---------- */
-  .boopy-fab{
-    position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom)); z-index:60;
-    display:flex; align-items:center; gap:9px;
-    background:rgba(16,16,18,.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-    border:1px solid var(--line-strong); color:#fff; border-radius:999px; padding:0 18px 0 12px; height:50px;
-    font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:600;
-    box-shadow:0 14px 34px rgba(0,0,0,.5);
+  /* Lightbox chrome NEVER pops — the top bar (counter, title, download /
+     mute) and the bottom block (filmstrip, play bar, Previous / Close /
+     Next, caption) fade as one group: in when the lightbox opens and on
+     any interaction, out after ~2.5s idle, and out as a close begins.
+     Opacity + pointer-events only, so the fade is what the eye sees —
+     per-slide show/hide flips underneath happen while the group is
+     transparent. (The lightbox itself opens and closes plainly — a
+     simple backdrop fade, no zoom flight in or out.) */
+  .lightbox .lb-top, .lightbox .lb-bottom{
+    opacity:0; pointer-events:none;
+    transition:opacity .45s cubic-bezier(.32,.72,0,1);
+    will-change:opacity; transform:translateZ(0);
+    -webkit-backface-visibility:hidden; backface-visibility:hidden;
   }
-  .boopy-fab:hover{border-color:rgba(255,128,0,.65); color:var(--orange)}
-  .boopy-fab .dot{width:26px; height:26px; border-radius:50%; background:var(--orange); color:#111; display:grid; place-items:center; font-size:13px; letter-spacing:0}
-  .boopy-panel{
-    position:fixed; right:16px; bottom:calc(78px + env(safe-area-inset-bottom)); z-index:61;
-    width:min(360px, calc(100vw - 32px));
-    background:rgba(18,18,20,.96); backdrop-filter:blur(16px);
-    border:1px solid var(--line-strong); border-radius:18px; overflow:hidden;
-    box-shadow:0 24px 60px rgba(0,0,0,.6);
-    display:none;
+  .lightbox.chrome-on .lb-top, .lightbox.chrome-on .lb-bottom{opacity:1; pointer-events:auto}
+  .lb-bigplay:not([hidden]){animation:bpIn .3s ease both}
+  @keyframes bpIn{ from{opacity:0} to{opacity:1} }
+  @media (prefers-reduced-motion: reduce){
+    .lightbox .lb-top, .lightbox .lb-bottom{transition:none}
+    .lb-bigplay:not([hidden]){animation:none}
   }
-  .boopy-panel.open{display:block}
-  .boopy-panel header{padding:16px 18px 12px; border-bottom:1px solid var(--line)}
-  .boopy-panel header h3{margin:0; font-family:"Barlow Condensed", sans-serif; font-size:22px; text-transform:uppercase; letter-spacing:.04em}
-  .boopy-panel header p{margin:4px 0 0; color:var(--muted); font-size:13px; line-height:1.45}
-  .boopy-panel .ctx{margin:12px 18px 0; font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border:1px dashed var(--line-strong); border-radius:10px; padding:9px 11px; line-height:1.6}
-  .boopy-panel .ctx b{color:var(--orange); font-weight:500}
-  .boopy-msgs{padding:12px 18px; max-height:180px; overflow:auto; display:flex; flex-direction:column; gap:8px}
-  .boopy-msgs:empty{display:none}
-  .bmsg{background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:12px; padding:9px 12px; font-size:14px; line-height:1.45}
-  .boopy-form{padding:0 18px 18px; display:flex; flex-direction:column; gap:10px}
-  .boopy-form textarea{
-    width:100%; min-height:74px; resize:vertical; border-radius:12px; border:1px solid var(--line-strong);
-    background:#0d0d0f; color:#fff; padding:12px; font-family:inherit; font-size:15px;
-  }
-  .boopy-form textarea:focus{outline:2px solid rgba(255,128,0,.6); outline-offset:1px}
-  .boopy-actions{display:flex; gap:8px}
-  .boopy-actions button{flex:1; border-radius:999px; height:46px; font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:600}
-  .btn-add{background:#fff; color:#0a0a0b; border:1px solid #fff}
-  .btn-copy{background:transparent; color:#fff; border:1px solid var(--line-strong)}
-  .btn-copy:hover, .btn-add:hover{color:var(--orange); border-color:rgba(255,128,0,.6); background:transparent}
-  .boopy-note{font-size:12px; color:var(--muted2); margin:0; line-height:1.4}
+  .lb-stage video{will-change:transform}
+  /* Smooth playback on iPad: while a lightbox animation is the live item,
+     the entrance animation is killed on the stage media so the ONLY thing
+     animating on the video surface is the video itself (plus transforms). */
+  .lightbox.video-live.lb-play .lb-stage img,
+  .lightbox.video-live.lb-play .lb-stage video{animation:none !important}
+
 
   /* ---------- entrance motion — CapCut-style slide-up, on open + on scroll ---------- */
   .js-anim .hero-kicker{animation:riseIn .8s cubic-bezier(.32,.72,0,1) .05s both}
@@ -939,8 +875,11 @@
 </div>
 <div class="mocktag"><i></i>Full site mockup — not live</div>
 
-<!-- ============ HERO — exactly as approved ============ -->
-<header class="hero" id="hero" aria-label="Samsung STAR hero — fading through three views">
+<!-- ============ HERO — four-project rotation: Samsung STAR first,
+     Honda Transporter second, then SPAR (3 images) and SPAR X2
+     (3 images), looping. The on-screen title block swaps to match
+     whichever project is playing. ============ -->
+<header class="hero" id="hero" aria-label="Portfolio hero — rotating through four projects: Samsung STAR, Honda Transporter, SPAR and SPAR X2">
   <div class="slides" id="slides">
     <div class="slide active" data-i="0">
       <div class="slide-inner"><img src="assets/star-a.jpg" alt="Samsung STAR autonomous ground vehicle — clean side view" fetchpriority="high"></div>
@@ -950,6 +889,33 @@
     </div>
     <div class="slide" data-i="2">
       <div class="slide-inner"><img src="assets/star-c.jpg" alt="Samsung STAR autonomous ground vehicle — cargo module open, showing the interior" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="3">
+      <div class="slide-inner"><img src="assets/display/honda-desert-front-4k.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="4">
+      <div class="slide-inner"><img src="assets/display/honda-salt-flat-side-4k.jpg" alt="Honda Orion transporter — side view at speed on the lake bed" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="5">
+      <div class="slide-inner"><img src="assets/display/honda-shot6-rear-day-4k.jpg" alt="Honda Orion transporter — Shot 6 rear view in daytime" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="6">
+      <div class="slide-inner"><img src="assets/display/cat-ugv-new-poster.jpg" alt="CAT UGV for SPAR — front three-quarter view" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="7">
+      <div class="slide-inner"><img src="assets/display/cat-still-b.jpg" alt="CAT UGV for SPAR — rear three-quarter view" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="8">
+      <div class="slide-inner"><img src="assets/display/cat-ugv-poster.jpg" alt="CAT UGV for SPAR — front three-quarter still" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="9">
+      <div class="slide-inner"><img src="assets/spar-a.jpg" alt="SPAR X2 Hybrid UTV — Forward Thinking Solutions poster" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="10">
+      <div class="slide-inner"><img src="assets/spar-b.jpg" alt="SPAR X2 Hybrid UTV — Gods Eye surveillance poster" loading="lazy"></div>
+    </div>
+    <div class="slide" data-i="11">
+      <div class="slide-inner"><img src="assets/spar-c.jpg" alt="SPAR X2 Hybrid UTV — open equipment bay" loading="lazy"></div>
     </div>
   </div>
   <div class="hero-shade"></div>
@@ -961,7 +927,7 @@
     <div class="hero-meta">
       <span>Role <b>VP of Design, Hiero Tech</b></span>
       <span>Partner <b>Rickey Newmayer</b></span>
-      <span>Hero <b>3 views, fading</b></span>
+      <span>Hero <b>4 projects, rotating</b></span>
     </div>
   </div>
 
@@ -970,13 +936,14 @@
     <div class="hero-bar-in">
       <button class="iconbtn" id="playBtn" aria-label="Pause the slideshow">❚❚</button>
       <div class="view-label">
-        <span class="n" id="viewCount">View 01 / 03 — Auto-fading</span>
+        <span class="n" id="viewCount">Project 01 / 04 — Auto-rotating</span>
         <span class="t" id="viewName">Clean side view</span>
       </div>
-      <div class="seg" role="group" aria-label="Choose hero view">
-        <button data-go="0" class="on" aria-label="Show side view">01</button>
-        <button data-go="1" aria-label="Show rear three-quarter view">02</button>
-        <button data-go="2" aria-label="Show open module view">03</button>
+      <div class="seg" role="group" aria-label="Choose hero project">
+        <button data-go="0" class="on" aria-label="Show Samsung STAR UGV">STAR</button>
+        <button data-go="3" aria-label="Show Honda Transporter">Honda</button>
+        <button data-go="6" aria-label="Show SPAR">SPAR</button>
+        <button data-go="9" aria-label="Show SPAR X2 Hybrid UTV">X2</button>
       </div>
       <button class="iconbtn" id="nextBtn" aria-label="Next view">→</button>
     </div>
@@ -1000,10 +967,10 @@
       </div>
       <p class="line"><strong>The hero up top.</strong> Autonomous ground vehicle for Samsung Techwin, led as VP of Design at Hiero Tech with partner Rickey Newmayer.</p>
       <div class="gal">
-        <div class="main"><img src="assets/star-side-new.jpg" alt="Samsung STAR UGV — clean side view" loading="lazy"></div>
+        <div class="main"><img src="assets/display/star-side-new.jpg" alt="Samsung STAR UGV — clean side view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/star-b.jpg" alt="Samsung STAR UGV — rear three-quarter view" loading="lazy"></figure>
-          <figure><img src="assets/star-c.jpg" alt="Samsung STAR UGV — cargo module open" loading="lazy"></figure>
+          <figure><img src="assets/display/star-b.jpg" alt="Samsung STAR UGV — rear three-quarter view" loading="lazy"></figure>
+          <figure><img src="assets/display/star-c.jpg" alt="Samsung STAR UGV — cargo module open" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1016,9 +983,9 @@
       </div>
       <p class="line"><strong>The Caterpillar UGV, in motion.</strong> The orbit animation takes the main slot, with stills from the same turntable stacked alongside.</p>
       <div class="gal">
-        <div class="main is-video" id="catClipFigure" data-poster="assets/cat-ugv-new-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Play CAT UGV orbit video with sound in a lightbox">
+        <div class="main is-video" id="catClipFigure" data-poster="assets/display/cat-ugv-new-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Play CAT UGV orbit video with sound in a lightbox">
           <div class="video-wrap">
-            <video id="catClip" muted loop playsinline preload="none" poster="assets/cat-ugv-new-poster.jpg" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface">
+            <video id="catClip" muted loop playsinline preload="metadata" poster="assets/display/cat-ugv-new-poster.jpg" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface">
               <source src="assets/cat-ugv.mp4" type="video/mp4">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · CAT UGV — Orbit</span>
@@ -1032,8 +999,8 @@
           </div>
         </div>
         <div class="side">
-          <figure><img src="assets/cat-ugv-poster.jpg" alt="CAT UGV — front three-quarter still" loading="lazy"></figure>
-          <figure><img src="assets/cat-still-b.jpg" alt="CAT UGV — rear three-quarter still" loading="lazy"></figure>
+          <figure><img src="assets/display/cat-ugv-poster.jpg" alt="CAT UGV — front three-quarter still" loading="lazy"></figure>
+          <figure><img src="assets/display/cat-still-b.jpg" alt="CAT UGV — rear three-quarter still" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1046,10 +1013,10 @@
       </div>
       <p class="line"><strong>The lead vehicle.</strong> A hybrid UTV concept — stance, packaging, and surface worked out as one machine.</p>
       <div class="gal">
-        <div class="main"><img src="assets/spar-a.jpg" alt="SPAR X2 Hybrid UTV — main view" loading="lazy"></div>
+        <div class="main"><img src="assets/display/spar-a.jpg" alt="SPAR X2 Hybrid UTV — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/spar-b.jpg" alt="SPAR X2 Hybrid UTV — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/spar-c.jpg" alt="SPAR X2 Hybrid UTV — detail view" loading="lazy"></figure>
+          <figure><img src="assets/display/spar-b.jpg" alt="SPAR X2 Hybrid UTV — alternate view" loading="lazy"></figure>
+          <figure><img src="assets/display/spar-c.jpg" alt="SPAR X2 Hybrid UTV — detail view" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1063,7 +1030,7 @@
          full 4K. The rear NIGHT still and the salt-flat SIDE view
          are NOT displayed here. All four Honda stills share one
          Honda lightbox set: Next from the
-         daytime rear view crossfades day into night over 0.75s, and
+         daytime rear view steps into the night still like every step, and
          every still carries its 4K download in the lightbox. There
          is no row underneath the gallery and no separate section
          below it. Muted loop in the gallery; click the animation to
@@ -1073,9 +1040,9 @@
         <span class="num">04</span><h3>Honda Transporter</h3><span class="cat">Concept Vehicle</span>
       </div>
       <div class="gal">
-        <div class="main is-video" id="hondaClipFigure" data-poster="assets/honda-transporter-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Honda Transporter video in a lightbox">
+        <div class="main is-video" id="hondaClipFigure" data-poster="assets/display/honda-transporter-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Honda Transporter video in a lightbox">
           <div class="video-wrap">
-            <video id="hondaClip" muted loop playsinline preload="none" poster="assets/honda-transporter-poster.jpg" aria-label="Honda transporter concept orbiting on a wet track at night">
+            <video id="hondaClip" muted loop playsinline preload="metadata" poster="assets/display/honda-transporter-poster.jpg" aria-label="Honda transporter concept orbiting on a wet track at night">
               <source src="assets/honda-transporter.mp4" type="video/mp4">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · Honda Transporter — Orbit</span>
@@ -1089,19 +1056,18 @@
           </div>
         </div>
         <div class="side honda-side">
-          <figure><img src="assets/honda-shot6-rear-day-display.jpg" alt="Honda Orion transporter — Shot 6 rear view in daytime, blue and black truck on the freeway with DTLA behind" loading="lazy"><a class="still-dl" href="assets/honda-shot6-rear-day-4k.jpg" download aria-label="Download the Shot 6 rear view daytime 4K final">↓ Day 4K</a></figure>
-          <figure><img src="assets/honda-desert-front-display.jpg" alt="Honda Orion transporter — front three-quarter in the desert at sunset, purple cab on cracked playa" loading="lazy"><a class="still-dl" href="assets/honda-desert-front-4k.jpg" download aria-label="Download the desert front view 4K final">↓ Desert 4K</a></figure>
-          <!-- TWO stills are displayed here, exactly like the other
-               projects: the single Shot 6 rear DAY view and the front
-               desert shot — each shown as a recompressed 1600px
-               display copy (so the gallery loads light next to the
-               animation) with its full 4K behind the download pill
-               and in the lightbox. The rear NIGHT still and the
-               salt-flat SIDE view are deliberately NOT displayed:
-               both stay in the Honda lightbox only, reached
-               by Next / Previous — open the daytime rear view and step
-               Next, and the 0.75s day-to-night crossfade lands on the
-               night still, downloads included. -->
+          <figure><img src="assets/honda-salt-flat-front-display.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset, purple cab on cracked playa" loading="lazy"><a class="still-dl" href="assets/honda-salt-flat-front-4k.jpg" download aria-label="Download the lake bed front three-quarter 4K final">↓ Lake Bed 4K</a></figure>
+          <figure><img src="assets/display/honda-salt-flat-side.jpg" alt="Honda Orion transporter — side view at speed on the lake bed, salt dust plume behind" loading="lazy"><a class="still-dl" href="assets/honda-salt-flat-side-4k.jpg" download aria-label="Download the lake bed side view 4K final">↓ Side 4K</a></figure>
+          <!-- The gallery is exactly THREE pieces: the big playing
+               animation plus these TWO lake bed stills — the front
+               3/4 lake bed shot, then the side view lake bed shot —
+               each a display copy with its full 4K behind the
+               download pill and in the lightbox. ALL other Honda
+               images (the Shot 6 rear day and night stills) live in
+               the lightbox only, reached by Next / Previous / swipe
+               — step from the daytime rear view straight onto
+               the night still,
+               downloads included. Nothing extra shows in this row. -->
         </div>
       </div>
     </figure>
@@ -1114,9 +1080,9 @@
       </div>
       <p class="line"><strong>Tactical kitbash &amp; concept design</strong> for The Corps! — built from parts, resolved into a production direction.</p>
       <div class="gal">
-        <div class="main is-video" id="gunClipFigure" data-poster="assets/gunslinger-snow-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Gunslinger snow run video in a lightbox">
+        <div class="main is-video" id="gunClipFigure" data-poster="assets/display/gunslinger-snow-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Gunslinger snow run video in a lightbox">
           <div class="video-wrap">
-            <video id="gunClip" muted loop playsinline preload="none" poster="assets/gunslinger-snow-poster.jpg" aria-label="Gunslinger tactical vehicle driving through snow">
+            <video id="gunClip" muted loop playsinline preload="metadata" poster="assets/display/gunslinger-snow-poster.jpg" aria-label="Gunslinger tactical vehicle driving through snow">
               <source src="assets/gunslinger-snow.mp4" type="video/mp4">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · Gunslinger — Snow run</span>
@@ -1130,8 +1096,8 @@
           </div>
         </div>
         <div class="side">
-          <figure><img src="assets/gunslinger-b.jpg" alt="Gunslinger — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/gunslinger-c.jpg" alt="Gunslinger — detail view" loading="lazy"></figure>
+          <figure><img src="assets/display/gunslinger-b.jpg" alt="Gunslinger — alternate view" loading="lazy"></figure>
+          <figure><img src="assets/display/gunslinger-c.jpg" alt="Gunslinger — detail view" loading="lazy"></figure>
         </div>
       </div>
       <!-- The snow-run animation is the big main image of this gallery —
@@ -1149,10 +1115,10 @@
       </div>
       <p class="line"><strong>Heavy assault ground attack vehicle</strong> — designed end-to-end as a collectible, concept through final sample.</p>
       <div class="gal">
-        <div class="main"><img src="assets/bomber-a.jpg" alt="Mad Bomber heavy assault ground attack vehicle — main view" loading="lazy"></div>
+        <div class="main"><img src="assets/display/bomber-a.jpg" alt="Mad Bomber heavy assault ground attack vehicle — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/bomber-b.jpg" alt="Mad Bomber — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/bomber-c.jpg" alt="Mad Bomber — detail view" loading="lazy"></figure>
+          <figure><img src="assets/display/bomber-b.jpg" alt="Mad Bomber — alternate view" loading="lazy"></figure>
+          <figure><img src="assets/display/bomber-c.jpg" alt="Mad Bomber — detail view" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1165,10 +1131,10 @@
       </div>
       <p class="line"><strong>Xenomorph Attack battle set</strong> — the M577 APC as a full playset vehicle, interior and all.</p>
       <div class="gal">
-        <div class="main"><img src="assets/m577-a.jpg" alt="M577 Armored Personnel Carrier battle set — main view" loading="lazy"></div>
+        <div class="main"><img src="assets/display/m577-a.jpg" alt="M577 Armored Personnel Carrier battle set — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/m577-b.jpg" alt="M577 APC — alternate view" loading="lazy"></figure>
-          <figure><img src="assets/m577-c.jpg" alt="M577 APC — detail view" loading="lazy"></figure>
+          <figure><img src="assets/display/m577-b.jpg" alt="M577 APC — alternate view" loading="lazy"></figure>
+          <figure><img src="assets/display/m577-c.jpg" alt="M577 APC — detail view" loading="lazy"></figure>
         </div>
       </div>
     </article>
@@ -1181,13 +1147,12 @@
       </div>
       <p class="line"><strong>Heavy armored assault vehicle</strong> for The Corps! — the big bruiser of the line.</p>
       <div class="gal">
-        <div class="main"><img src="assets/crusher-a.jpg" alt="The Crusher heavy armored assault vehicle — main view" loading="lazy"></div>
+        <div class="main"><img src="assets/display/crusher-a.jpg" alt="The Crusher heavy armored assault vehicle — main view" loading="lazy"></div>
         <div class="side">
-          <figure><img src="assets/crusher-b.jpg" alt="The Crusher — alternate view" loading="lazy"></figure>
+          <figure><img src="assets/display/crusher-b.jpg" alt="The Crusher — alternate view" loading="lazy"></figure>
         </div>
       </div>
     </article>
-
 
 
     <!-- 09 WORKFLOWS -->
@@ -1198,7 +1163,7 @@
       </div>
       <p class="line"><strong>Hard surface &amp; vehicles</strong> — the process behind the work: sketch, blockout, surface, resolve. Building digitally and by hand.</p>
       <div class="gal single">
-        <div class="main"><img src="assets/workflows.jpg" alt="Industrial workflows — hard surface and vehicle design process" loading="lazy"></div>
+        <div class="main"><img src="assets/display/workflows.jpg" alt="Industrial workflows — hard surface and vehicle design process" loading="lazy"></div>
       </div>
     </article>
 
@@ -1230,7 +1195,7 @@
         <p>Building digitally and by hand is a must for the designer — its importance can’t be overstated. The computer keeps it precise and efficient.</p>
       </div>
       <div class="facts" aria-label="Key facts">
-        <div><span class="k">Based</span><span class="v">Lakewood, California</span></div>
+        <div><span class="k">Based</span><span class="v">Los Angeles, California</span></div>
         <div><span class="k">Focus</span><span class="v">Vehicles · Collectibles · Worlds</span></div>
         <div><span class="k">Tools</span><span class="v">3DS Max · Sketch · Gouache · Marker</span></div>
         <div><span class="k">Current</span><span class="v">Chief Creative Director, Studio Uchuu</span></div>
@@ -1283,13 +1248,13 @@
       <h3>Let’s build <em>something real.</em></h3>
       <p>Vehicle programs, collectibles, or worlds — if it starts as a sketch and ends as a machine, that’s the work. Email is fastest.</p>
       <div class="contact-actions">
-        <a href="mailto:kevincu@muse.ai?subject=Portfolio%20inquiry" class="primary">Email — kevincu@muse.ai</a>
+        <a href="mailto:kevincu@muse.ai?subject=Portfolio%20inquiry" class="primary" id="emailLink">Email — kevincu@muse.ai</a>
         <a href="https://drive.google.com/file/d/1Bu6Jvl35d3A5dCeQ7XMOlcF2QJ5ITwER/view?usp=drivesdk" target="_blank" rel="noopener">Résumé <span aria-hidden="true">→</span></a>
         <a href="https://www.linkedin.com/in/kevin-cunningham-49b444" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a>
         <a href="https://www.instagram.com/black_lab_la" target="_blank" rel="noopener">Instagram <span aria-hidden="true">→</span></a>
         <a href="https://www.artstation.com/kevincu" target="_blank" rel="noopener">ArtStation <span aria-hidden="true">→</span></a>
       </div>
-      <p class="phone">Phone <b>(562) 666-2402</b> &nbsp;·&nbsp; Lakewood, CA</p>
+      <p class="phone">Phone <b>(562) 666-2402</b> &nbsp;·&nbsp; Los Angeles, CA</p>
     </div>
   </section>
 
@@ -1406,43 +1371,6 @@
   </div>
 </div>
 
-<!-- ============ MESSAGE BOOPY ============ -->
-<button class="boopy-fab" id="boopyFab" aria-expanded="false" aria-controls="boopyPanel">
-  <span class="dot">✦</span> Message Boopy
-</button>
-<div class="boopy-panel" id="boopyPanel" role="dialog" aria-label="Message Boopy about this mockup">
-  <header>
-    <h3>Message Boopy</h3>
-    <p>Tell me what to change on this full-site mockup — order, copy, pace, anything. No need to re-explain which page you’re on.</p>
-  </header>
-  <div class="ctx">Context loaded <b>· Full Site Mockup · STAR fading hero (unchanged) · 9 projects in order — Samsung STAR (01) at the top, SPAR (02), SPAR X2 (03), Honda Transporter (04), Gunslinger (05), Mad Bomber (06), M577 (07), Crusher (08), Workflows (09) · Per-project lightboxes restored to the original site's full sets — STAR bordered main + 7 more, each image once (8) · SPAR 2 CAT stills · SPAR X2 6 · Mad Bomber 6 · Gunslinger 4 images + snow-run video · M577 5 · Crusher 2 · Workflows 1 · per-project lightbox (nav stays inside the project; on every open and every slide change the image animates in, the caption slides in word by word, and Previous / Close / Next — all one size, close under the image — animate in in that order; every lightbox also carries a filmstrip of thumbnails directly above Previous / Close / Next — current slide lit, video slides badged — springing in one at a time on open, and all lightbox and gallery motion runs on Apple's standard spring curve with a soft fade on close) · CAT UGV motion clip (muted, loop — the full new 7.4-sec orbit clip, black CAT Autonomous Robotics end card included, never trimmed) as the SPAR (02) section's main big image, two CAT stills stacked beside it — click it to open the video lightbox, where the clip waits on its poster frame behind a big Play button and plays with sound once Play is pressed (Previous / Close / Next tight under the media, cycling the SPAR slides — the video plus its two stills; Mute/Unmute; one shared recompressed file keeps the original audio) · Honda Transporter motion clip (muted, loop — the big main slot of the Honda Transporter project gallery, SPAR layout, with two stills displayed beside it) between SPAR X2 and the toys — click it to open the Honda lightbox, which cycles the whole project like SPAR — the clip first, then all four stills — with Previous / Close / Next tight under the media stepping through every slide and wrapping, a filmstrip of all five slides, the clip waiting on its poster behind a big Play button and playing with sound once Play is pressed, with a Mute toggle, and a 4K download on each still (one recompressed file carrying the original audio track serves both the muted gallery loop and the sound lightbox) · Honda stills: two are displayed inside the one Honda Transporter gallery, stacked beside the transporter animation exactly like the other projects — the single Shot 6 rear day view first, then the front desert shot (each a recompressed display copy with a download pill for its full 4K, and Next crossfades day into night over 0.75s in the lightbox); all four stills are in the one Honda lightbox set — the rear night still and the salt-flat side view are NOT displayed in the grid but are reached by Next / Previous, each with its 4K download in the lightbox, and the sunset front 3/4 image appears exactly once in the set, as the desert front slide; there is no row underneath the gallery and no separate salt-flat section below it · Gallery clips play only while on screen, one at a time — the most-visible clip wins — and every lightbox pauses all gallery clips behind it, so no video ever fights another for the decoder · A small play bar (play/pause, orange scrub track, time readout, restart) sits tight under the SPAR, Honda and Gunslinger clips in the gallery and under every clip in its lightbox; all three animations are single small recompressed files (CAT 2.0 MB — the full new clip with its end card, Gunslinger 986 KB, Honda 1.7 MB — standard limited-range color, fast-start, original audio kept): both files are shared by their gallery loops and sound lightboxes, every video is preload none, and each file loads only as its own clip nears the screen — promoted with an explicit load() call, since flipping the preload attribute alone never restarted the Honda fetch and was the transporter hang, and the Gunslinger gallery clip is promoted the same way as its own clip nears the screen, while its lightbox slide starts loading the moment it is selected — the gallery click, or Next / Previous landing on it — and plays only when its Play button is pressed (posters paint instantly) — no lightbox video autoplays anywhere: every animation slide in every lightbox (SPAR / Caterpillar, Honda Transporter, Gunslinger) opens on its poster frame behind a big Play button, its file already loading from that click / selection, and it plays with sound only on Play, the play bar with pause appears once it is playing, and Next / Previous / Close stop and unload the video so the next slide starts clean behind its own Play button — then loop with end-of-clip insurance, and a stall watchdog plus a reload-grade restart mean no clip can hang on a frame with no way back · The Gunslinger snow-run video is the big main image in its gallery — muted loop with its play bar and the two stills beside it, SPAR/Honda layout — and it stays in the Gunslinger lightbox set as the last slide; clicking the gallery animation opens the lightbox on that video slide · Gallery previews hold an aspect-ratio box from the first paint and only start their rise once the poster frame has loaded — no load jump · Headings and images slide up into place — gallery images rise from the bottom one at a time, staggered per project, and text animates word by word (hero words on open; section headings, project titles, intro lines and captions as you scroll), everything visible by default if animation does not run · Industrial-design band beneath the gallery · About · Clients &amp; Studios logo wall (the real logos from the live site, grouped Automotive / Games &amp; Play / Aerospace &amp; Robotics / Brands &amp; Published, grey monochrome in equal 5-column cells) · Experience · Contact</b></div>
-  <div class="boopy-msgs" id="boopyMsgs"></div>
-  <form class="boopy-form" id="boopyForm">
-    <textarea id="boopyText" placeholder="e.g. Move Mad Bomber up, shorten the About…" aria-label="Your note for Boopy"></textarea>
-    <div class="boopy-actions">
-      <button type="submit" class="btn-add">Add note</button>
-      <button type="button" class="btn-copy" id="boopyCopy">Copy notes</button>
-    </div>
-    <p class="boopy-note" id="boopyStatus">Notes stay in this tab for this session. Copy them to send them on.</p>
-  </form>
-</div>
-
-<script>
-/* GitHub Pages copy: binary assets are delivered as base64 .js files (window.__B).
-   Rewrite any attribute whose value is an original assets/ path to its data URL. */
-(function(){
-  if(!window.__B) return;
-  var els=document.querySelectorAll('*');
-  for(var i=0;i<els.length;i++){
-    var el=els[i], attrs=el.attributes;
-    if(!attrs) continue;
-    for(var j=0;j<attrs.length;j++){
-      var v=attrs[j].value;
-      if(v && Object.prototype.hasOwnProperty.call(__B,v)){ el.setAttribute(attrs[j].name, __B[v]); }
-    }
-  }
-})();
-</script>
 <script>
 (function(){
   /* Failsafe: never load in a scroll-locked state (a lightbox class left on <body> freezes scrolling) */
@@ -1463,6 +1391,11 @@
     }
   });
 
+  /* Async decode for below-fold imagery: decoding then happens off the
+     critical path instead of blocking a scroll frame when a lazy image
+     first paints mid-scroll. */
+  Array.prototype.slice.call(document.querySelectorAll('img[loading="lazy"]')).forEach(function(im){ im.decoding = 'async'; });
+
   /* One-shot animations: when a reveal or word animation finishes, strip it
      so it can never re-trigger or fight a later one. The resting state is
      identical to each animation's end state, so nothing visibly changes. */
@@ -1473,7 +1406,39 @@
     else if(t.classList.contains('w')){ t.style.animation = 'none'; }
   });
 
-  var NAMES = ["Clean side view","Rear three-quarter","Module open"];
+  /* Landing hero — a four-project rotation, in Kevin's order:
+     1) Samsung STAR (its three views, with the slightly faster,
+     stronger pans), 2) Honda Transporter (three images), 3) SPAR
+     (three images), 4) SPAR X2 (three images) — then it loops.
+     Every slide gets the same clear turn (DURATION, matched to the
+     progress bar); project changes are a plain crossfade, and the
+     on-screen title block (kicker / title / sub / meta) swaps to the
+     incoming project's text in sync with the change. */
+  var NAMES = [
+    "Clean side view","Rear three-quarter","Module open",
+    "Lake Bed — Front 3/4","Lake Bed — Side View","Shot 6 Rear — Day",
+    "Front three-quarter","Rear three-quarter","Front three-quarter — still",
+    "Forward Thinking Solutions","Gods Eye surveillance","Open equipment bay"
+  ];
+  var PROJ_STARTS = [0, 3, 6, 9];
+  var HERO_PROJECTS = [
+    { kicker:'Hiero Tech &nbsp;·&nbsp; Samsung Techwin',
+      title:'Samsung <span>STAR UGV</span>',
+      sub:'<strong>Vehicles. Collectibles. Worlds.</strong> — led by the STAR: an autonomous ground vehicle taken from concept through to a working program.',
+      meta:'<span>Role <b>VP of Design, Hiero Tech</b></span><span>Partner <b>Rickey Newmayer</b></span><span>Hero <b>4 projects, rotating</b></span>' },
+    { kicker:'Honda &nbsp;·&nbsp; Concept Vehicle',
+      title:'Honda <span>Transporter</span>',
+      sub:'A concept transporter for Honda — a wet-track orbit animation and lake bed stills, designed as one machine.',
+      meta:'<span>Type <b>Concept Vehicle</b></span><span>Hero <b>Project 02 / 04</b></span>' },
+    { kicker:'Caterpillar &nbsp;·&nbsp; UGV',
+      title:'SPAR <span>CAT UGV</span>',
+      sub:'<strong>The Caterpillar UGV, in motion.</strong> The orbit animation takes the main slot, with stills from the same turntable stacked alongside.',
+      meta:'<span>Type <b>Caterpillar UGV</b></span><span>Hero <b>Project 03 / 04</b></span>' },
+    { kicker:'Hybrid UTV &nbsp;·&nbsp; Concept',
+      title:'SPAR X2 <span>Hybrid UTV</span>',
+      sub:'<strong>The lead vehicle.</strong> A hybrid UTV concept — stance, packaging, and surface worked out as one machine.',
+      meta:'<span>Type <b>Vehicle</b></span><span>Hero <b>Project 04 / 04</b></span>' }
+  ];
   var DURATION = 6200;
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var segBtns = Array.prototype.slice.call(document.querySelectorAll('.seg button'));
@@ -1483,10 +1448,54 @@
   var progress = document.getElementById('progress');
   var hero = document.getElementById('hero');
   var playBtn = document.getElementById('playBtn');
+  var heroContent = hero.querySelector('.hero-content');
+  var heroKicker = hero.querySelector('.hero-kicker');
+  var heroTitle = hero.querySelector('.hero-title');
+  var heroSub = hero.querySelector('.hero-sub');
+  var heroMeta = hero.querySelector('.hero-meta');
   var current = 0, timer = null, playing = true;
+  var heroProj = 0, heroSwapT = null;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function projOf(i){
+    var p = 0;
+    PROJ_STARTS.forEach(function(s, k){ if(i >= s) p = k; });
+    return p;
+  }
+  function applyHeroText(p){
+    var d = HERO_PROJECTS[p];
+    heroKicker.innerHTML = d.kicker;
+    heroTitle.innerHTML = d.title;
+    heroSub.innerHTML = d.sub;
+    heroMeta.innerHTML = d.meta;
+    restartTitleZoom();
+  }
+  /* Restart the title's slight zoom so each project's title starts at
+     scale 1 and pushes in gently across its turn. No-op under reduced
+     motion. Added only after the entrance rise has played (see init). */
+  function restartTitleZoom(){
+    if(reduced || !heroTitle) return;
+    heroTitle.classList.remove('tz');
+    void heroTitle.offsetWidth;
+    heroTitle.classList.add('tz');
+  }
+  /* Title swap — a short fade of the text block while its words are
+     replaced, timed to land with the slide crossfade; instant under
+     reduced motion. Runs only when the project actually changes, so
+     stepping between a project's own views never touches the title. */
+  function swapHeroText(p){
+    if(reduced){ applyHeroText(p); return; }
+    heroContent.classList.add('txt-swap');
+    if(heroSwapT) clearTimeout(heroSwapT);
+    heroSwapT = setTimeout(function(){
+      applyHeroText(p);
+      heroContent.classList.remove('txt-swap');
+    }, 190);
+  }
+  function heroCountText(){
+    return 'Project 0' + (heroProj+1) + ' / 04 — ' + (playing ? 'Auto-rotating' : 'Paused');
+  }
   function restartProgress(){
     progress.classList.remove('run');
     void progress.offsetWidth;
@@ -1495,10 +1504,12 @@
   function show(i, user){
     current = (i + slides.length) % slides.length;
     slides.forEach(function(s, k){ s.classList.toggle('active', k === current); });
-    segBtns.forEach(function(b, k){ b.classList.toggle('on', k === current); });
+    var p = projOf(current);
+    segBtns.forEach(function(b, k){ b.classList.toggle('on', k === p); });
     thumbs.forEach(function(t, k){ t.classList.toggle('sel', k === current); });
+    if(p !== heroProj){ heroProj = p; swapHeroText(p); }
     viewName.textContent = NAMES[current];
-    viewCount.textContent = 'View 0' + (current+1) + ' / 03 — ' + (playing ? 'Auto-fading' : 'Paused');
+    viewCount.textContent = heroCountText();
     restartProgress();
     if(user && playing) restartTimer();
   }
@@ -1512,7 +1523,7 @@
     hero.classList.toggle('paused', !playing);
     playBtn.textContent = playing ? '❚❚' : '▶';
     playBtn.setAttribute('aria-label', playing ? 'Pause the slideshow' : 'Play the slideshow');
-    viewCount.textContent = 'View 0' + (current+1) + ' / 03 — ' + (playing ? 'Auto-fading' : 'Paused');
+    viewCount.textContent = heroCountText();
     restartProgress();
     restartTimer();
   }
@@ -1535,7 +1546,7 @@
   });
 
   if(reduced){ setPlaying(false); playBtn.textContent = '▶'; }
-  else { show(0, false); restartTimer(); }
+  else { show(0, false); restartTimer(); setTimeout(restartTitleZoom, 1300); }
 
   /* ---------- Lightbox — per project: Previous / Next stay inside the project ---------- */
   /* Full original per-project inventories (from the live site) for the projects
@@ -1543,65 +1554,65 @@
      the open project. */
   var GALLERY = [
     /* SPAR — CAT UGV stills (the orbit animation is the section's main slot) — 2 */
-    {src:__B["assets/cat-ugv-poster.jpg"], proj:'SPAR', view:'Front three-quarter — still', alt:'CAT UGV — front three-quarter still'},
-    {src:__B["assets/cat-still-b.jpg"], proj:'SPAR', view:'Rear three-quarter — still', alt:'CAT UGV — rear three-quarter still'},
+    {src:'assets/cat-ugv-poster.jpg', proj:'SPAR', view:'Front three-quarter — still', alt:'CAT UGV — front three-quarter still'},
+    {src:'assets/cat-still-b.jpg', proj:'SPAR', view:'Rear three-quarter — still', alt:'CAT UGV — rear three-quarter still'},
     /* SPAR X2 — 6 */
-    {src:__B["assets/spar-a.jpg"], proj:'SPAR X2 Hybrid UTV', view:'Forward Thinking Solutions poster', alt:'SPAR X2 Forward Thinking Solutions poster'},
-    {src:__B["assets/spar-b.jpg"], proj:'SPAR X2 Hybrid UTV', view:'Gods Eye surveillance poster', alt:'SPAR X2 Gods Eye surveillance poster'},
-    {src:__B["assets/spar-c.jpg"], proj:'SPAR X2 Hybrid UTV', view:'Open equipment bay', alt:'SPAR X2 open equipment bay close-up'},
-    {src:__B["assets/spar-d.jpg"], proj:'SPAR X2 Hybrid UTV', view:'Engine bay panel', alt:'SPAR X2 engine bay access panel'},
-    {src:__B["assets/spar-e.jpg"], proj:'SPAR X2 Hybrid UTV', view:'Multi-function charger', alt:'SPAR X2 multi-function charger in cargo bed'},
-    {src:__B["assets/spar-f.jpg"], proj:'SPAR X2 Hybrid UTV', view:'Chassis comparison', alt:'SPAR X2 chassis comparison, dual drive vs all electric'},
+    {src:'assets/spar-a.jpg', proj:'SPAR X2 Hybrid UTV', view:'Forward Thinking Solutions poster', alt:'SPAR X2 Forward Thinking Solutions poster'},
+    {src:'assets/spar-b.jpg', proj:'SPAR X2 Hybrid UTV', view:'Gods Eye surveillance poster', alt:'SPAR X2 Gods Eye surveillance poster'},
+    {src:'assets/spar-c.jpg', proj:'SPAR X2 Hybrid UTV', view:'Open equipment bay', alt:'SPAR X2 open equipment bay close-up'},
+    {src:'assets/spar-d.jpg', proj:'SPAR X2 Hybrid UTV', view:'Engine bay panel', alt:'SPAR X2 engine bay access panel'},
+    {src:'assets/spar-e.jpg', proj:'SPAR X2 Hybrid UTV', view:'Multi-function charger', alt:'SPAR X2 multi-function charger in cargo bed'},
+    {src:'assets/spar-f.jpg', proj:'SPAR X2 Hybrid UTV', view:'Chassis comparison', alt:'SPAR X2 chassis comparison, dual drive vs all electric'},
     /* Samsung STAR — 8 distinct images, each shown once. The bordered side
        view (also the gallery main) is the only copy of that shot in this set:
        the same side-view photograph also exists as star-1.jpg and star-a.jpg,
        and those duplicate entries are deliberately NOT listed here, so the
        first image never shows twice and the counter / dots read the real 8. */
-    {src:__B["assets/star-side-new.jpg"], proj:'Samsung STAR UGV', view:'Side view — bordered edition', alt:'Samsung STAR UGV — blue-bordered side view with Rotiform wheels'},
-    {src:__B["assets/star-2.jpg"], proj:'Samsung STAR UGV', view:'Rear view — sensor mast', alt:'Blue Samsung STAR UGV rear view with sensor mast'},
-    {src:__B["assets/star-3.jpg"], proj:'Samsung STAR UGV', view:'Shell opened — module bay', alt:'Samsung STAR UGV with shell opened, module bay'},
-    {src:__B["assets/star-4.jpg"], proj:'Samsung STAR UGV', view:'Tactical UGV infographic', alt:'Tactical UGV system infographic in desert terrain'},
-    {src:__B["assets/star-5.jpg"], proj:'Samsung STAR UGV', view:'Full-scale prototype — workshop', alt:'Full-scale Samsung STAR prototype in workshop'},
-    {src:__B["assets/star-6.jpg"], proj:'Samsung STAR UGV', view:'Prototype — front', alt:'Samsung STAR prototype front view in workshop'},
-    {src:__B["assets/star-7.jpg"], proj:'Samsung STAR UGV', view:'Prototype — rear', alt:'Samsung STAR prototype rear view in workshop'},
-    {src:__B["assets/star-8.jpg"], proj:'Samsung STAR UGV', view:'Bare chassis — tube frame', alt:'Samsung STAR chassis and powertrain, bare tube frame'},
+    {src:'assets/star-side-new.jpg', proj:'Samsung STAR UGV', view:'Side view — bordered edition', alt:'Samsung STAR UGV — blue-bordered side view with Rotiform wheels'},
+    {src:'assets/star-2.jpg', proj:'Samsung STAR UGV', view:'Rear view — sensor mast', alt:'Blue Samsung STAR UGV rear view with sensor mast'},
+    {src:'assets/star-3.jpg', proj:'Samsung STAR UGV', view:'Shell opened — module bay', alt:'Samsung STAR UGV with shell opened, module bay'},
+    {src:'assets/star-4.jpg', proj:'Samsung STAR UGV', view:'Tactical UGV infographic', alt:'Tactical UGV system infographic in desert terrain'},
+    {src:'assets/star-5.jpg', proj:'Samsung STAR UGV', view:'Full-scale prototype — workshop', alt:'Full-scale Samsung STAR prototype in workshop'},
+    {src:'assets/star-6.jpg', proj:'Samsung STAR UGV', view:'Prototype — front', alt:'Samsung STAR prototype front view in workshop'},
+    {src:'assets/star-7.jpg', proj:'Samsung STAR UGV', view:'Prototype — rear', alt:'Samsung STAR prototype rear view in workshop'},
+    {src:'assets/star-8.jpg', proj:'Samsung STAR UGV', view:'Bare chassis — tube frame', alt:'Samsung STAR chassis and powertrain, bare tube frame'},
     /* Mad Bomber — 6 */
-    {src:__B["assets/bomber-a.jpg"], proj:'Mad Bomber', view:'Technical datasheet — three views', alt:'Mad Bomber technical datasheet, three views'},
-    {src:__B["assets/bomber-b.jpg"], proj:'Mad Bomber', view:'Sniper cannon — close-up datasheet', alt:'Mad Bomber sniper cannon close-up datasheet'},
-    {src:__B["assets/bomber-c.jpg"], proj:'Mad Bomber', view:'Cannon on gun-shield base', alt:'Mad Bomber sniper cannon on gun-shield base'},
-    {src:__B["assets/bomber-d.jpg"], proj:'Mad Bomber', view:'Cannon + twin La Bombas', alt:'Mad Bomber sniper cannon and twin La Bombas'},
-    {src:__B["assets/bomber-e.jpg"], proj:'Mad Bomber', view:'Twin La Bombas — datasheet', alt:'Twin La Bombas technical datasheet'},
-    {src:__B["assets/bomber-f.jpg"], proj:'Mad Bomber', view:'Finished toy / build photos', alt:'Mad Bomber finished toy and build photos'},
+    {src:'assets/bomber-a.jpg', proj:'Mad Bomber', view:'Technical datasheet — three views', alt:'Mad Bomber technical datasheet, three views'},
+    {src:'assets/bomber-b.jpg', proj:'Mad Bomber', view:'Sniper cannon — close-up datasheet', alt:'Mad Bomber sniper cannon close-up datasheet'},
+    {src:'assets/bomber-c.jpg', proj:'Mad Bomber', view:'Cannon on gun-shield base', alt:'Mad Bomber sniper cannon on gun-shield base'},
+    {src:'assets/bomber-d.jpg', proj:'Mad Bomber', view:'Cannon + twin La Bombas', alt:'Mad Bomber sniper cannon and twin La Bombas'},
+    {src:'assets/bomber-e.jpg', proj:'Mad Bomber', view:'Twin La Bombas — datasheet', alt:'Twin La Bombas technical datasheet'},
+    {src:'assets/bomber-f.jpg', proj:'Mad Bomber', view:'Finished toy / build photos', alt:'Mad Bomber finished toy and build photos'},
     /* Gunslinger — 4 images + snow-run video */
-    {src:__B["assets/gunslinger-a.jpg"], proj:'Gunslinger', view:'Three views — unit GS-734', alt:'Gunslinger three views, unit GS-734'},
-    {src:__B["assets/gunslinger-b.jpg"], proj:'Gunslinger', view:'Power / firepower module', alt:'Gunslinger power and firepower module'},
-    {src:__B["assets/gunslinger-c.jpg"], proj:'Gunslinger', view:'Heavy harpoon module', alt:'Gunslinger heavy harpoon system module'},
-    {src:__B["assets/gunslinger-d.jpg"], proj:'Gunslinger', view:'Front grappler module', alt:'Gunslinger front grappler system module'},
-    {src:__B["assets/gunslinger-snow.mp4"], type:'video', poster:__B["assets/gunslinger-snow-poster.jpg"], proj:'Gunslinger', view:'Snow run — video', alt:'Gunslinger snow run video'},
+    {src:'assets/gunslinger-a.jpg', proj:'Gunslinger', view:'Three views — unit GS-734', alt:'Gunslinger three views, unit GS-734'},
+    {src:'assets/gunslinger-b.jpg', proj:'Gunslinger', view:'Power / firepower module', alt:'Gunslinger power and firepower module'},
+    {src:'assets/gunslinger-c.jpg', proj:'Gunslinger', view:'Heavy harpoon module', alt:'Gunslinger heavy harpoon system module'},
+    {src:'assets/gunslinger-d.jpg', proj:'Gunslinger', view:'Front grappler module', alt:'Gunslinger front grappler system module'},
+    {src:'assets/gunslinger-snow.mp4', type:'video', poster:'assets/gunslinger-snow-poster.jpg', proj:'Gunslinger', view:'Snow run — video', alt:'Gunslinger snow run video'},
     /* M577 — 5 */
-    {src:__B["assets/m577-a.jpg"], proj:'M577 APC', view:'Battle set', alt:'M577 APC Xenomorph Attack battle set on cutting mat'},
-    {src:__B["assets/m577-b.jpg"], proj:'M577 APC', view:'Dimensions spec', alt:'M577 APC dimensions spec sheet'},
-    {src:__B["assets/m577-c.jpg"], proj:'M577 APC', view:'Sentry gun + weapons package', alt:'UA 571-C sentry gun and infantry weapons package'},
-    {src:__B["assets/m577-d.jpg"], proj:'M577 APC', view:'Pyro flamethrower', alt:'M24 pyro flamethrower weapon model'},
-    {src:__B["assets/m577-e.jpg"], proj:'M577 APC', view:'Sentry gun portrait', alt:'UA-571C sentry gun system portrait spec'},
+    {src:'assets/m577-a.jpg', proj:'M577 APC', view:'Battle set', alt:'M577 APC Xenomorph Attack battle set on cutting mat'},
+    {src:'assets/m577-b.jpg', proj:'M577 APC', view:'Dimensions spec', alt:'M577 APC dimensions spec sheet'},
+    {src:'assets/m577-c.jpg', proj:'M577 APC', view:'Sentry gun + weapons package', alt:'UA 571-C sentry gun and infantry weapons package'},
+    {src:'assets/m577-d.jpg', proj:'M577 APC', view:'Pyro flamethrower', alt:'M24 pyro flamethrower weapon model'},
+    {src:'assets/m577-e.jpg', proj:'M577 APC', view:'Sentry gun portrait', alt:'UA-571C sentry gun system portrait spec'},
     /* The Crusher — 2 (already complete) */
-    {src:__B["assets/crusher-a.jpg"], proj:'The Crusher', view:'Main view', alt:'The Crusher heavy armored assault vehicle — main view'},
-    {src:__B["assets/crusher-b.jpg"], proj:'The Crusher', view:'Alternate view', alt:'The Crusher — alternate view'},
+    {src:'assets/crusher-a.jpg', proj:'The Crusher', view:'Main view', alt:'The Crusher heavy armored assault vehicle — main view'},
+    {src:'assets/crusher-b.jpg', proj:'The Crusher', view:'Alternate view', alt:'The Crusher — alternate view'},
     /* Honda Orion Transporter — four stills in this generic set.
        Two are displayed in the gallery grid beside the animation —
        the single Shot 6 rear day view and the front desert shot. The
        rear night still and the salt-flat side view are lightbox-only,
-       reached by Next / Previous (day -> night keeps its 0.75s
-       crossfade) — 4. The sunset front 3/4 image is the desert
+       reached by Next / Previous (the day -> night step works
+       like every other step) — 4. The sunset front 3/4 image is the desert
        front entry above: it appears exactly once in this set and
        exactly once in the dedicated Honda lightbox set (HLB_SLIDES
        below), so it never shows twice in either filmstrip. */
-    {src:__B["assets/honda-shot6-rear-day-4k.jpg"], proj:'Honda Orion Transporter', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind'},
-    {src:__B["assets/honda-shot6-rear-night-4k.jpg"], proj:'Honda Orion Transporter', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground'},
-    {src:__B["assets/honda-desert-front-4k.jpg"], proj:'Honda Orion Transporter', view:'Desert — Front 3/4 · 4K', alt:'Honda Orion transporter front three-quarter in the desert at sunset, purple cab on cracked playa'},
-    {src:__B["assets/honda-salt-flat-side-4k.jpg"], proj:'Honda Orion Transporter', view:'Salt Flat — Side View · 4K', alt:'Honda Orion transporter salt flat side view at speed, motion blur and white salt dust plume'},
+    {src:'assets/honda-desert-front-4k.jpg', proj:'Honda Orion Transporter', view:'Lake Bed — Front 3/4 · 4K', alt:'Honda Orion transporter front three-quarter on the lake bed at sunset, purple cab on cracked playa'},
+    {src:'assets/honda-salt-flat-side-4k.jpg', proj:'Honda Orion Transporter', view:'Lake Bed — Side View · 4K', alt:'Honda Orion transporter side view at speed on the lake bed, motion blur and white salt dust plume'},
+    {src:'assets/honda-shot6-rear-day-4k.jpg', proj:'Honda Orion Transporter', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind'},
+    {src:'assets/honda-shot6-rear-night-4k.jpg', proj:'Honda Orion Transporter', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground'},
     /* Industrial Workflows — 1 (already complete) */
-    {src:__B["assets/workflows.jpg"], proj:'Industrial Workflows', view:'Process', alt:'Industrial workflows — hard surface and vehicle design process'}
+    {src:'assets/workflows.jpg', proj:'Industrial Workflows', view:'Process', alt:'Industrial workflows — hard surface and vehicle design process'}
   ];
   var lightbox = document.getElementById('lightbox');
   var lbImg = document.getElementById('lbImg');
@@ -1650,6 +1661,76 @@
     box.classList.add('lb-closing');
     setTimeout(function(){ box.classList.remove('lb-closing'); done(); }, 225);
   }
+  /* ---------- Lightbox chrome — fades, never pops ----------
+     The top bar and bottom block of every lightbox are one fade group
+     (.chrome-on, CSS above): shown when the lightbox opens and on any
+     tap / move / press inside the box, hidden after ~2.5s idle, and
+     hidden as a close begins. Per-slide show/hide flips (play bar,
+     download, mute) happen while the group is transparent, so the eye
+     only ever sees the fade. */
+  function chromeShow(box){
+    if(!box) return;
+    if(!box.classList.contains('chrome-on')) box.classList.add('chrome-on');
+    chromeArm(box);
+  }
+  function chromeHide(box){
+    if(!box) return;
+    box.classList.remove('chrome-on');
+    box._chromeArmAt = 0;
+    if(box._chromeT){ clearTimeout(box._chromeT); box._chromeT = null; }
+  }
+  function chromeArm(box){
+    /* Re-arming is throttled: pointermove pokes this on every move
+       event, and a clear/set timer pair per event is wasted work on
+       the same thread that is trying to composite the fade. One arm
+       per 500ms still keeps the chrome up for as long as the user
+       keeps moving, because each re-arm pushes the deadline out. */
+    var now = Date.now();
+    if(box._chromeT && box._chromeArmAt && now - box._chromeArmAt < 500) return;
+    box._chromeArmAt = now;
+    if(box._chromeT) clearTimeout(box._chromeT);
+    box._chromeT = setTimeout(function(){ box._chromeT = null; box.classList.remove('chrome-on'); }, 2500);
+  }
+  function wireChrome(box){
+    if(!box) return;
+    var poke = function(){ if(!box.hidden) chromeShow(box); };
+    box.addEventListener('pointerdown', poke, {passive:true});
+    box.addEventListener('pointermove', poke, {passive:true});
+    box.addEventListener('touchstart', poke, {passive:true});
+  }
+  /* Double-tap to close — on the image / stage area only. Taps on the
+     video itself or any control (big Play, play bar, buttons, links)
+     stay controls: they never count toward a close. A double-tap is
+     two low-movement taps within 320ms; anything that moved >14px is
+     swipe territory and is ignored here, so the two never fight. */
+  function addDoubleTapClose(stageEl, closeFn){
+    if(!stageEl) return;
+    var lastTap = 0, tapX = 0, tapY = 0, startX = null, startY = null;
+    function isControl(t){
+      return !!(t && t.closest && (t.closest('button') || t.closest('a') || t.closest('.clip-bar') || t.closest('.lb-bigplay')));
+    }
+    stageEl.addEventListener('touchstart', function(e){
+      startX = e.changedTouches[0].clientX; startY = e.changedTouches[0].clientY;
+    }, {passive:true});
+    stageEl.addEventListener('touchend', function(e){
+      if(startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      startX = null; startY = null;
+      if(Math.abs(dx) > 14 || Math.abs(dy) > 14){ lastTap = 0; return; } /* a swipe, not a tap */
+      var t = e.target;
+      if(isControl(t) || t.tagName === 'VIDEO'){ lastTap = 0; return; } /* controls first */
+      var now = Date.now();
+      if(now - lastTap < 320){ lastTap = 0; closeFn(); }
+      else { lastTap = now; tapX = e.changedTouches[0].clientX; tapY = e.changedTouches[0].clientY; }
+    }, {passive:true});
+    stageEl.addEventListener('dblclick', function(e){
+      var t = e.target;
+      if(isControl(t) || t.tagName === 'VIDEO') return;
+      closeFn();
+    });
+  }
+
   /* Split a caption into word spans so it can slide in word by word */
   function lbSplitCaption(el, text){
     el.textContent = '';
@@ -1661,6 +1742,15 @@
       s.textContent = word;
       el.appendChild(s);
     });
+  }
+
+  /* Display copies — grids, thumbs and filmstrips load the right-sized
+     file (assets/display/, max 1280w, generated from the full-res
+     original); the full-res file itself loads only when its slide is
+     actually viewed in a lightbox, or behind a 4K download link. */
+  function dispSrc(s){
+    if(!s || s.indexOf('assets/') !== 0 || !/\.jpg$/.test(s) || s.indexOf('assets/display/') === 0) return s;
+    return 'assets/display/' + s.slice(7);
   }
 
   /* Build the filmstrip for the open project: one thumbnail per slide
@@ -1676,7 +1766,7 @@
       b.style.setProperty('--fi', pos);
       b.setAttribute('aria-label', 'Show slide ' + (pos+1) + ' of ' + lbGroup.length + ' in ' + item.proj + ': ' + item.view);
       var im = document.createElement('img');
-      im.src = item.type === 'video' ? item.poster : item.src;
+      im.src = dispSrc(item.type === 'video' ? item.poster : item.src);
       im.alt = '';
       im.loading = 'lazy';
       b.appendChild(im);
@@ -1737,18 +1827,32 @@
       lbVid.preload = 'auto';
       try{ lbVid.load(); }catch(err){}
     }
-    /* The snow-run file has a real audio track — play it with sound. */
+    /* The snow-run file has a real audio track — play it with sound.
+       If the browser refuses unmuted playback (the open tap can
+       outlast the click's gesture window), fall back to muted rather than
+       freezing the picture; if even that fails, restore the Play
+       gate so there is always a way in. */
     lbVid.muted = false;
     lbVid.defaultMuted = false;
     lbVid.volume = 1;
     var vp = lbVid.play();
-    if(vp && vp.catch) vp.catch(function(){});
+    if(vp && vp.catch) vp.catch(function(){
+      lbVid.muted = true;
+      var vp2 = lbVid.play();
+      if(vp2 && vp2.catch) vp2.catch(function(){
+        lbVidStarted = false;
+        if(lbBigPlay) lbBigPlay.hidden = false;
+        if(lbBar) lbBar.hidden = true;
+      });
+    });
     lbVidStarted = true;
+    lightbox.classList.add('video-live');
     if(lbBigPlay) lbBigPlay.hidden = true;
     if(lbBar) lbBar.hidden = false;
   }
   function lbStopVideo(){
     lbVid.pause();
+    lightbox.classList.remove('video-live');
     if(lbVid.getAttribute('src')){
       lbVid.removeAttribute('src');
       lbVid.preload = 'none';
@@ -1758,26 +1862,23 @@
     if(lbBigPlay) lbBigPlay.hidden = true;
   }
 
-  var lbFadeT1 = null, lbFadeT2 = null;
+  /* lbShow — every slide change (Prev / Next buttons, arrow keys,
+     filmstrip, AND swipes, which all call this) swaps the slide
+     directly: no zoom transition. Landing on the animation starts
+     loading it at the click / selection (inside lbShowNow), and it
+     waits on its poster frame behind the big Play button — playback
+     starts only when Play is pressed. No slide is a special case —
+     the last Honda (Shot 6 rear night) and the day<->night step
+     behave exactly like the rest. */
   function lbShow(pos){
+    lbShowNow(pos);
+    if(!lightbox.hidden) chromeShow(lightbox);
+  }
+  function lbShowNow(pos){
     if(!lbGroup.length) return;
-    /* Kill any crossfade still in flight: its delayed swap must never
-       overwrite the slide this call is showing (a fast Next tap during
-       the day<->night fade used to land back on the faded-out image,
-       so Next looked dead). */
-    if(lbFadeT1){ clearTimeout(lbFadeT1); lbFadeT1 = null; }
-    if(lbFadeT2){ clearTimeout(lbFadeT2); lbFadeT2 = null; }
-    lbImg.classList.remove('lb-xfade');
-    lbImg.style.opacity = '';
-    var prevItem = GALLERY[lbIndex];
     lbPos = (pos + lbGroup.length) % lbGroup.length;
     lbIndex = lbGroup[lbPos];
     var item = GALLERY[lbIndex];
-    /* Shot 6 rear day <-> night gets a 0.75s crossfade instead of the
-       standard slide-in — the Frame 3 Display 3 pair behavior. */
-    var pairMove = !!(prevItem && item && prevItem.src !== item.src &&
-      ((prevItem.src === __B["assets/honda-shot6-rear-day-4k.jpg"] && item.src === __B["assets/honda-shot6-rear-night-4k.jpg"]) ||
-       (prevItem.src === __B["assets/honda-shot6-rear-night-4k.jpg"] && item.src === __B["assets/honda-shot6-rear-day-4k.jpg"])));
     if(item.type === 'video'){
       /* Poster + big Play, no autoplay — but loading starts right
          here, in the same click / selection that landed on this
@@ -1795,24 +1896,8 @@
       lbVid.hidden = true;
       if(lbBar) lbBar.hidden = true;
       lbImg.style.display = '';
-      if(pairMove && !lightbox.hidden && lbImg.getAttribute('src')){
-        /* Crossfade: kill the slide-in animation fill so the opacity
-           fade can run, fade the day still out, swap to night mid-fade,
-           and fade back in — 0.75s on the .lb-xfade transition. */
-        lightbox.classList.remove('lb-play');
-        lbImg.classList.add('lb-xfade');
-        lbImg.style.opacity = '0';
-        var fadeItem = item;
-        lbFadeT1 = setTimeout(function(){
-          lbImg.src = fadeItem.src;
-          lbImg.alt = fadeItem.alt;
-          lbImg.style.opacity = '1';
-        }, 380);
-        lbFadeT2 = setTimeout(function(){ lbImg.classList.remove('lb-xfade'); lbImg.style.opacity = ''; }, 1250);
-      } else {
-        lbImg.src = item.src;
-        lbImg.alt = item.alt;
-      }
+      lbImg.src = item.src;
+      lbImg.alt = item.alt;
     }
     /* Download follows the slide: every still — the Honda salt-flat
        side included — downloads its own full file from the lightbox;
@@ -1839,7 +1924,7 @@
       if(nextItem.type !== 'video'){ var pre1 = new Image(); pre1.src = nextItem.src; }
       if(prevItem.type !== 'video'){ var pre2 = new Image(); pre2.src = prevItem.src; }
     }
-    if(!pairMove) lbRetrigger(lightbox);
+    lbRetrigger(lightbox);
   }
   function lbOpen(i){
     lbLastFocus = document.activeElement;
@@ -1853,20 +1938,31 @@
     lbBuildStrip();
     lbShow(lbGroup.indexOf(i));
     lightbox.hidden = false;
+    chromeHide(lightbox);
     document.body.classList.add('lb-open');
     stripIn(lbStrip);
     pauseAllGalleryClips();
     heroHold(true);
     document.getElementById('lbClose').focus();
+    /* Plain open — no zoom flight in. The click already started any
+       animation loading (lbShow above); the box simply fades in and
+       the chrome fades up with it. */
+    chromeShow(lightbox);
   }
   function lbCloseFn(){
+    if(lightbox.hidden) return;
+    chromeHide(lightbox);
     lbStopVideo();
-    lbAnimateClose(lightbox, function(){
-      lightbox.hidden = true;
+    function finish(){
       document.body.classList.remove('lb-open');
       heroHold(false);
       if(!reduced) resumeGalleryClips();
       if(lbLastFocus && lbLastFocus.focus) lbLastFocus.focus();
+    }
+    /* Plain close — a short fade out, no zoom back into the gallery. */
+    lbAnimateClose(lightbox, function(){
+      lightbox.hidden = true;
+      finish();
     });
   }
   /* The video slide gets the same play bar as the other clips (it used
@@ -1875,6 +1971,7 @@
   wireClipBar(lbVid, lbBar, null);
   if(lbBigPlay) lbBigPlay.addEventListener('click', lbStartVideo);
   lbVid.addEventListener('click', function(){
+    if(Date.now() - lbSwipeAt < 350) return; /* that tap was a swipe */
     if(!lbVidStarted){ lbStartVideo(); return; }
     if(lbVid.paused){ var p4 = lbVid.play(); if(p4 && p4.catch) p4.catch(function(){}); }
     else lbVid.pause();
@@ -1887,13 +1984,26 @@
      original views inside the STAR lightbox set (rear view / shell opened). */
   (function(){
     function gIdx(src){ for(var k=0;k<GALLERY.length;k++){ if(GALLERY[k].src===src) return k; } return -1; }
-    var iRear = gIdx(__B["assets/star-2.jpg"]); if(iRear >= 0) srcToIndex[__B["assets/star-b.jpg"]] = iRear;
-    var iOpen = gIdx(__B["assets/star-3.jpg"]); if(iOpen >= 0) srcToIndex[__B["assets/star-c.jpg"]] = iOpen;
+    var iRear = gIdx('assets/star-2.jpg'); if(iRear >= 0) srcToIndex['assets/star-b.jpg'] = iRear;
+    var iOpen = gIdx('assets/star-3.jpg'); if(iOpen >= 0) srcToIndex['assets/star-c.jpg'] = iOpen;
     /* Honda gallery stills are recompressed display copies; they open
        the matching full-4K slide inside the Honda lightbox set. */
-    var iHDay = gIdx(__B["assets/honda-shot6-rear-day-4k.jpg"]); if(iHDay >= 0) srcToIndex[__B["assets/honda-shot6-rear-day-display.jpg"]] = iHDay;
-    var iHDesert = gIdx(__B["assets/honda-desert-front-4k.jpg"]); if(iHDesert >= 0) srcToIndex[__B["assets/honda-desert-front-display.jpg"]] = iHDesert;
+    var iHDay = gIdx('assets/honda-shot6-rear-day-4k.jpg'); if(iHDay >= 0) srcToIndex['assets/honda-shot6-rear-day-display.jpg'] = iHDay;
+    var iHDesert = gIdx('assets/honda-desert-front-4k.jpg'); if(iHDesert >= 0) srcToIndex['assets/honda-desert-front-display.jpg'] = iHDesert;
+    /* The two DISPLAYED Honda stills are the lake bed pair: the front
+       3/4 display copy opens the lake bed front slide (the same sunset
+       front shot), and the side display copy opens the lake bed side
+       slide. The Shot 6 rear pair lives in the lightbox only. */
+    if(iHDesert >= 0) srcToIndex['assets/honda-salt-flat-front-display.jpg'] = iHDesert;
+    var iHSide = gIdx('assets/honda-salt-flat-side-4k.jpg'); if(iHSide >= 0) srcToIndex['assets/honda-salt-flat-side.jpg'] = iHSide;
   })();
+  /* Display copies map back to the same full-res slide, so a tap on a
+     right-sized grid image opens the identical lightbox entry. */
+  Object.keys(srcToIndex).forEach(function(k){
+    var d = dispSrc(k);
+    if(d !== k && !(d in srcToIndex)) srcToIndex[d] = srcToIndex[k];
+  });
+  /* Gallery images open the generic lightbox on their own slide. */
   Array.prototype.slice.call(document.querySelectorAll('.gal .main, .gal .side figure')).forEach(function(el){
     var img = el.querySelector('img');
     if(!img) return;
@@ -1903,9 +2013,9 @@
     el.setAttribute('tabindex','0');
     el.setAttribute('aria-label','Open in lightbox: ' + (img.getAttribute('alt') || ''));
     el.setAttribute('title','Open in lightbox');
-    el.addEventListener('click', function(){ lbOpen(srcToIndex[src]); });
+    el.addEventListener('click', function(){ lbOpen(srcToIndex[src], src, el); });
     el.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); lbOpen(srcToIndex[src]); }
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); lbOpen(srcToIndex[src], src, el); }
     });
   });
 
@@ -1916,8 +2026,7 @@
      Next / Previous steps through those four. The sunset front
      3/4 image is the desert front entry — exactly one copy in
      this group and exactly one copy in the dedicated Honda
-     lightbox (HLB_SLIDES), so neither filmstrip shows it twice.
-     day <-> night crossfades in lbShow. */
+     lightbox (HLB_SLIDES), so neither filmstrip shows it twice. */
   /* Download pills inside clickable stills — the two displayed Honda
      pills — download the full 4K file only; they never open the
      lightbox. The lightbox-only stills carry their downloads in the
@@ -1948,18 +2057,28 @@
     if(e.key === 'ArrowRight') lbShow(lbPos+1);
     if(e.key === 'ArrowLeft') lbShow(lbPos-1);
   });
-  /* Touch swipe on the lightbox image */
-  var touchX = null;
-  lbImg.addEventListener('touchstart', function(e){ touchX = e.changedTouches[0].clientX; }, {passive:true});
-  lbImg.addEventListener('touchend', function(e){
+  /* Touch swipe on the lightbox stage — left = Next, right = Previous,
+     in addition to the buttons and arrow keys (which are unchanged).
+     Swipes call lbShow, so they follow the same plain slide swap and
+     the same video rules as every other way of changing slides. One
+     stage-level handler covers stills and the video slide alike. */
+  var touchX = null, lbSwipeAt = 0;
+  var lbStageEl = document.getElementById('lbStage');
+  lbStageEl.addEventListener('touchstart', function(e){
+    if(e.target.closest && e.target.closest('button')){ touchX = null; return; }
+    touchX = e.changedTouches[0].clientX;
+  }, {passive:true});
+  lbStageEl.addEventListener('touchend', function(e){
     if(touchX === null) return;
     var dx = e.changedTouches[0].clientX - touchX;
-    if(Math.abs(dx) > 48){ if(dx < 0) lbShow(lbPos+1); else lbShow(lbPos-1); }
+    if(Math.abs(dx) > 48){ lbSwipeAt = Date.now(); if(dx < 0) lbShow(lbPos+1); else lbShow(lbPos-1); }
     touchX = null;
   }, {passive:true});
+  /* Double-tap on the image / stage closes — same as Close. */
+  addDoubleTapClose(lbStageEl, lbCloseFn);
 
   /* ---------- Gallery clips — SPAR (CAT UGV) + Honda Transporter + Gunslinger ----------
-     Every clip is preload="none" in the markup, so the first paint is
+     Every clip rests at preload="metadata" in the markup, so the first paint is
      just the poster frames and the page opens immediately. NO clip
      loads at page open: the CAT and Honda files (each a single small
      file shared by its gallery loop and its sound lightbox) start
@@ -2132,7 +2251,7 @@
           v.preload = 'auto';
           /* The load() call IS the hang fix: flipping the preload
              attribute alone never restarts resource selection on a
-             clip that began as preload="none" — its <source> was
+             clip that began unpromoted — its <source> was
              already passed over — so the Honda transporter sat on
              its poster with no metadata loaded (its play bar read
              0:00 / 0:00) and hung. Calling load() starts the fetch
@@ -2259,10 +2378,27 @@
      frozen. A manual pause from the play bar is never overridden, and
      nothing is touched while a lightbox is open. */
   if(!reduced){
+    /* Park a clip whose recovery budget is spent: pause it, drop it
+       back to preload="metadata" and re-run load() so the stuck
+       decoder session is released and the element settles back on
+       its poster / first frame, and mark it user-paused so nothing
+       auto-plays it again. Its play bar then reads Play, and one tap
+       restarts it cleanly (the bar's own handler hard-restarts on a
+       media error). A dead clip must NEVER keep load()-storming in
+       the background — that loop was able to freeze the whole page
+       around a single hung animation. */
+    function parkClip(v){
+      if(!v) return;
+      v.pause();
+      if(v === catClipV) catUserPaused = true;
+      else if(v === hondaClip) hondaUserPaused = true;
+      else if(v === gunClipV) gunUserPaused = true;
+      try{ v.preload = 'metadata'; v.load(); }catch(err){}
+    }
     var watchers = [
-      {v: catClipV, lastT: -1, stalls: 0, ok: function(){ return catInView && !catUserPaused && activeClip === catClipV; }},
-      {v: hondaClip, lastT: -1, stalls: 0, ok: function(){ return hondaInView && !hondaUserPaused && activeClip === hondaClip; }},
-      {v: gunClipV, lastT: -1, stalls: 0, ok: function(){ return gunInView && !gunUserPaused && activeClip === gunClipV; }}
+      {v: catClipV, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return catInView && !catUserPaused && activeClip === catClipV; }},
+      {v: hondaClip, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return hondaInView && !hondaUserPaused && activeClip === hondaClip; }},
+      {v: gunClipV, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return gunInView && !gunUserPaused && activeClip === gunClipV; }}
     ];
     setInterval(function(){
       var anyBoxOpen = !document.getElementById('videoLightbox').hidden ||
@@ -2271,12 +2407,23 @@
       watchers.forEach(function(w){
         var v = w.v; if(!v) return;
         if(anyBoxOpen || document.hidden || !w.ok()){ w.lastT = v.currentTime; w.stalls = 0; return; }
-        if(v.paused || v.ended){ clipPlay(v); w.lastT = v.currentTime; return; }
+        if(v.paused || v.ended){
+          if(v.error){
+            w.restarts++;
+            if(w.restarts <= 2) hardRestart(v); else parkClip(v);
+          }
+          else clipPlay(v);
+          w.lastT = v.currentTime; return;
+        }
         if(v.readyState >= 2 && v.currentTime === w.lastT){
           w.stalls++;
-          if(w.stalls >= 3){ w.stalls = 0; hardRestart(v); }
+          if(w.stalls >= 3){
+            w.stalls = 0;
+            w.restarts++;
+            if(w.restarts <= 2) hardRestart(v); else parkClip(v);
+          }
           else if(w.stalls === 2){ v.pause(); clipPlay(v); }
-        } else w.stalls = 0;
+        } else { w.stalls = 0; w.restarts = 0; }
         w.lastT = v.currentTime;
       });
     }, 1800);
@@ -2428,8 +2575,8 @@
   var vlbCaption = document.getElementById('vlbCaption');
   var VLB_SLIDES = [
     {type:'video', view:'Orbit — video with sound', caption:'CAT UGV — Orbit. Press Play to watch — sound is on, use Mute to turn it off. Tap the video to pause or play.'},
-    {type:'img', src:__B["assets/cat-ugv-poster.jpg"], view:'Front three-quarter — still', alt:'CAT UGV — front three-quarter still', caption:'CAT UGV — front three-quarter still.'},
-    {type:'img', src:__B["assets/cat-still-b.jpg"], view:'Rear three-quarter — still', alt:'CAT UGV — rear three-quarter still', caption:'CAT UGV — rear three-quarter still.'}
+    {type:'img', src:'assets/cat-ugv-poster.jpg', view:'Front three-quarter — still', alt:'CAT UGV — front three-quarter still', caption:'CAT UGV — front three-quarter still.'},
+    {type:'img', src:'assets/cat-still-b.jpg', view:'Rear three-quarter — still', alt:'CAT UGV — rear three-quarter still', caption:'CAT UGV — rear three-quarter still.'}
   ];
   var vlbPos = 0;
   /* CAT filmstrip — same theme as every lightbox: one thumb per SPAR
@@ -2445,7 +2592,7 @@
       b.style.setProperty('--fi', pos);
       b.setAttribute('aria-label', 'Show slide ' + (pos+1) + ' of ' + VLB_SLIDES.length + ' in SPAR: ' + s.view);
       var im = document.createElement('img');
-      im.src = s.type === 'video' ? __B["assets/cat-ugv-new-poster.jpg"] : s.src;
+      im.src = dispSrc(s.type === 'video' ? 'assets/cat-ugv-new-poster.jpg' : s.src);
       im.alt = '';
       im.loading = 'lazy';
       b.appendChild(im);
@@ -2493,18 +2640,30 @@
     }
     /* Re-apply the sound state immediately before every play, so the
        element can never be stuck silently muted while the button
-       reads "Sound on". */
+       reads "Sound on". If unmuted playback is refused, fall back
+       to muted; if that fails too, restore the Play gate. */
     lbVideo.muted = vlbUserMuted;
     lbVideo.volume = 1;
     var p = lbVideo.play();
-    if(p && p.catch) p.catch(function(){});
+    if(p && p.catch) p.catch(function(){
+      lbVideo.muted = true;
+      var p2 = lbVideo.play();
+      if(p2 && p2.catch) p2.catch(function(){
+        vlbStarted = false;
+        if(vlbBigPlay) vlbBigPlay.hidden = false;
+        var barF = document.getElementById('vlbBar');
+        if(barF) barF.hidden = true;
+      });
+    });
     vlbStarted = true;
+    videoLightbox.classList.add('video-live');
     if(vlbBigPlay) vlbBigPlay.hidden = true;
     var bar = document.getElementById('vlbBar');
     if(bar) bar.hidden = false;
   }
   function vlbStopVideo(){
     lbVideo.pause();
+    videoLightbox.classList.remove('video-live');
     if(lbVideo.getAttribute('src')){
       lbVideo.removeAttribute('src');
       lbVideo.preload = 'none';
@@ -2514,7 +2673,15 @@
     if(vlbBigPlay) vlbBigPlay.hidden = true;
   }
   if(vlbBigPlay) vlbBigPlay.addEventListener('click', vlbStartVideo);
+  /* vlbShow — same plain rules as every lightbox: buttons, keys,
+     filmstrip and swipes all land here and swap the slide directly,
+     no zoom transition. Landing on the CAT clip starts loading it at
+     the click; it waits on its poster behind Play. */
   function vlbShow(pos){
+    vlbShowNow(pos);
+    if(!videoLightbox.hidden) chromeShow(videoLightbox);
+  }
+  function vlbShowNow(pos){
     vlbPos = (pos + VLB_SLIDES.length) % VLB_SLIDES.length;
     var s = VLB_SLIDES[vlbPos];
     if(s.type === 'video'){
@@ -2554,19 +2721,29 @@
     lbVideo.volume = 1;
     try{ lbVideo.currentTime = 0; }catch(err){}
     videoLightbox.hidden = false;
+    chromeHide(videoLightbox);
     document.body.classList.add('lb-open');
-    vlbShow(0);
+    vlbShowNow(0);
     stripIn(vlbStrip);
     vlbCloseBtn.focus();
+    /* Plain open — no zoom flight in; the click already started the
+       clip loading (vlbShowNow above) behind its Play button. */
+    chromeShow(videoLightbox);
   }
   function vlbCloseFn(){
+    if(videoLightbox.hidden) return;
+    chromeHide(videoLightbox);
     vlbStopVideo();
-    lbAnimateClose(videoLightbox, function(){
-      videoLightbox.hidden = true;
+    function finish(){
       document.body.classList.remove('lb-open');
       heroHold(false);
       if(!reduced) resumeGalleryClips();
       if(vlbLastFocus && vlbLastFocus.focus) vlbLastFocus.focus();
+    }
+    /* Plain close — a short fade out, no zoom back into the gallery. */
+    lbAnimateClose(videoLightbox, function(){
+      videoLightbox.hidden = true;
+      finish();
     });
   }
   if(catFigure){
@@ -2592,7 +2769,7 @@
   document.getElementById('vlbNext').addEventListener('click', function(){ vlbShow(vlbPos+1); });
   /* Touch swipe on the CAT lightbox stage — cycles the SPAR slides */
   var vlbTouchX = null, vlbSwipeAt = 0;
-  document.getElementById('vlbStage').addEventListener('touchstart', function(e){ vlbTouchX = e.changedTouches[0].clientX; }, {passive:true});
+  document.getElementById('vlbStage').addEventListener('touchstart', function(e){ if(e.target.closest && e.target.closest('button')){ vlbTouchX = null; return; } vlbTouchX = e.changedTouches[0].clientX; }, {passive:true});
   document.getElementById('vlbStage').addEventListener('touchend', function(e){
     if(vlbTouchX === null) return;
     var dx = e.changedTouches[0].clientX - vlbTouchX;
@@ -2640,13 +2817,12 @@
   var hlbLastFocus = null;
   var HLB_SLIDES = [
     {type:'video', view:'Wet-Track Orbit — video with sound', caption:'Honda Transporter — Wet-Track Orbit. Press Play to watch — sound is on, use Mute to turn it off. Tap the video to pause or play.'},
-    {type:'img', src:__B["assets/honda-shot6-rear-day-4k.jpg"], view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind', caption:'Honda Orion transporter — Shot 6 rear view, daytime final. Download gives the full 4K file.'},
-    {type:'img', src:__B["assets/honda-shot6-rear-night-4k.jpg"], view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground', caption:'Honda Orion transporter — Shot 6 rear view, nighttime final. Download gives the full 4K file.'},
-    {type:'img', src:__B["assets/honda-desert-front-4k.jpg"], view:'Desert — Front 3/4 · 4K', alt:'Honda Orion transporter front three-quarter in the desert at sunset, purple cab on cracked playa', caption:'Honda Orion transporter — front three-quarter in the desert at sunset. Download gives the full 4K file.'},
-    {type:'img', src:__B["assets/honda-salt-flat-side-4k.jpg"], view:'Salt Flat — Side View · 4K', alt:'Honda Orion transporter salt flat side view at speed, motion blur and white salt dust plume', caption:'Honda Orion transporter — salt flat side view. Download gives the full 4K file.'}
+    {type:'img', src:'assets/honda-desert-front-4k.jpg', view:'Lake Bed — Front 3/4 · 4K', alt:'Honda Orion transporter front three-quarter on the lake bed at sunset, purple cab on cracked playa', caption:'Honda Orion transporter — front three-quarter on the lake bed at sunset. Download gives the full 4K file.'},
+    {type:'img', src:'assets/honda-salt-flat-side-4k.jpg', view:'Lake Bed — Side View · 4K', alt:'Honda Orion transporter side view at speed on the lake bed, motion blur and white salt dust plume', caption:'Honda Orion transporter — side view at speed on the lake bed. Download gives the full 4K file.'},
+    {type:'img', src:'assets/honda-shot6-rear-day-4k.jpg', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind', caption:'Honda Orion transporter — Shot 6 rear view, daytime final. Download gives the full 4K file.'},
+    {type:'img', src:'assets/honda-shot6-rear-night-4k.jpg', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground', caption:'Honda Orion transporter — Shot 6 rear view, nighttime final. Download gives the full 4K file.'}
   ];
   var hlbPos = 0;
-  var hlbFadeT1 = null, hlbFadeT2 = null;
   /* Honda filmstrip — same theme as every lightbox: one thumb per slide
      (the video first, poster frame + play badge), built once, highlight
      updated on every slide change. */
@@ -2660,7 +2836,7 @@
       b.style.setProperty('--fi', pos);
       b.setAttribute('aria-label', 'Show slide ' + (pos+1) + ' of ' + HLB_SLIDES.length + ' in Honda Transporter: ' + s.view);
       var im = document.createElement('img');
-      im.src = s.type === 'video' ? __B["assets/honda-transporter-poster.jpg"] : s.src;
+      im.src = dispSrc(s.type === 'video' ? 'assets/honda-transporter-poster.jpg' : s.src);
       im.alt = '';
       im.loading = 'lazy';
       b.appendChild(im);
@@ -2709,14 +2885,25 @@
     hlbVideo.muted = hlbUserMuted;
     hlbVideo.volume = 1;
     var p = hlbVideo.play();
-    if(p && p.catch) p.catch(function(){});
+    if(p && p.catch) p.catch(function(){
+      hlbVideo.muted = true;
+      var p2 = hlbVideo.play();
+      if(p2 && p2.catch) p2.catch(function(){
+        hlbStarted = false;
+        if(hlbBigPlay) hlbBigPlay.hidden = false;
+        var barF = document.getElementById('hlbBar');
+        if(barF) barF.hidden = true;
+      });
+    });
     hlbStarted = true;
+    hondaLightbox.classList.add('video-live');
     if(hlbBigPlay) hlbBigPlay.hidden = true;
     var bar = document.getElementById('hlbBar');
     if(bar) bar.hidden = false;
   }
   function hlbStopVideo(){
     hlbVideo.pause();
+    hondaLightbox.classList.remove('video-live');
     if(hlbVideo.getAttribute('src')){
       hlbVideo.removeAttribute('src');
       hlbVideo.preload = 'none';
@@ -2726,20 +2913,19 @@
     if(hlbBigPlay) hlbBigPlay.hidden = true;
   }
   if(hlbBigPlay) hlbBigPlay.addEventListener('click', hlbStartVideo);
+  /* hlbShow — same plain rules as every lightbox: buttons, keys,
+     filmstrip and swipes all land here and swap the slide directly,
+     no zoom transition. Landing on the Honda clip starts loading it
+     at the click; it waits on its poster behind Play. No slide is a
+     special case — the last Honda (Shot 6 rear night) and the
+     day<->night step behave exactly like the rest. */
   function hlbShow(pos){
-    /* Kill any crossfade still in flight, so a fast Next tap can never
-       be overwritten by the previous slide's delayed swap. */
-    if(hlbFadeT1){ clearTimeout(hlbFadeT1); hlbFadeT1 = null; }
-    if(hlbFadeT2){ clearTimeout(hlbFadeT2); hlbFadeT2 = null; }
-    hlbImg.classList.remove('lb-xfade');
-    hlbImg.style.opacity = '';
-    var prevSlide = HLB_SLIDES[hlbPos];
+    hlbShowNow(pos);
+    if(!hondaLightbox.hidden) chromeShow(hondaLightbox);
+  }
+  function hlbShowNow(pos){
     hlbPos = (pos + HLB_SLIDES.length) % HLB_SLIDES.length;
     var s = HLB_SLIDES[hlbPos];
-    /* Shot 6 rear day <-> night keeps its 0.75s crossfade. */
-    var pairMove = !!(prevSlide && s && prevSlide.type === 'img' && s.type === 'img' && prevSlide.src !== s.src &&
-      ((prevSlide.src === __B["assets/honda-shot6-rear-day-4k.jpg"] && s.src === __B["assets/honda-shot6-rear-night-4k.jpg"]) ||
-       (prevSlide.src === __B["assets/honda-shot6-rear-night-4k.jpg"] && s.src === __B["assets/honda-shot6-rear-day-4k.jpg"])));
     if(s.type === 'video'){
       /* Poster + big Play, no autoplay — but loading starts right
          here, in the same click / selection that landed on this
@@ -2766,21 +2952,8 @@
         hlbDownload.setAttribute('aria-label', 'Download this image: ' + s.view);
       }
       hlbImg.style.display = '';
-      if(pairMove && !hondaLightbox.hidden && hlbImg.getAttribute('src')){
-        hondaLightbox.classList.remove('lb-play');
-        hlbImg.classList.add('lb-xfade');
-        hlbImg.style.opacity = '0';
-        var fadeSlide = s;
-        hlbFadeT1 = setTimeout(function(){
-          hlbImg.src = fadeSlide.src;
-          hlbImg.alt = fadeSlide.alt;
-          hlbImg.style.opacity = '1';
-        }, 380);
-        hlbFadeT2 = setTimeout(function(){ hlbImg.classList.remove('lb-xfade'); hlbImg.style.opacity = ''; }, 1250);
-      } else {
-        hlbImg.src = s.src;
-        hlbImg.alt = s.alt;
-      }
+      hlbImg.src = s.src;
+      hlbImg.alt = s.alt;
     }
     hlbCounter.innerHTML = '<b>' + String(hlbPos+1).padStart(2,'0') + '</b> / ' + HLB_SLIDES.length;
     hlbView.textContent = s.view;
@@ -2790,7 +2963,7 @@
     var prevSlide2 = HLB_SLIDES[(hlbPos-1+HLB_SLIDES.length) % HLB_SLIDES.length];
     if(nextSlide.type !== 'video'){ var hpre1 = new Image(); hpre1.src = nextSlide.src; }
     if(prevSlide2.type !== 'video'){ var hpre2 = new Image(); hpre2.src = prevSlide2.src; }
-    if(!pairMove) lbRetrigger(hondaLightbox);
+    lbRetrigger(hondaLightbox);
   }
 
   /* The lightbox plays the sound version of the clip (the original
@@ -2825,19 +2998,29 @@
     hlbVideo.volume = 1;
     try{ hlbVideo.currentTime = 0; }catch(err){}
     hondaLightbox.hidden = false;
+    chromeHide(hondaLightbox);
     document.body.classList.add('lb-open');
-    hlbShow(0);
+    hlbShowNow(0);
     stripIn(hlbStrip);
     hlbCloseBtn.focus();
+    /* Plain open — no zoom flight in; the click already started the
+       clip loading (hlbShowNow above) behind its Play button. */
+    chromeShow(hondaLightbox);
   }
   function hlbCloseFn(){
+    if(hondaLightbox.hidden) return;
+    chromeHide(hondaLightbox);
     hlbStopVideo();
-    lbAnimateClose(hondaLightbox, function(){
-      hondaLightbox.hidden = true;
+    function finish(){
       document.body.classList.remove('lb-open');
       heroHold(false);
       if(!reduced) resumeGalleryClips();
       if(hlbLastFocus && hlbLastFocus.focus) hlbLastFocus.focus();
+    }
+    /* Plain close — a short fade out, no zoom back into the gallery. */
+    lbAnimateClose(hondaLightbox, function(){
+      hondaLightbox.hidden = true;
+      finish();
     });
   }
   if(hondaFigure){
@@ -2859,15 +3042,15 @@
   if(gunFigure){
     gunFigure.addEventListener('click', function(e){
       if(e.target.closest && e.target.closest('.clip-bar')) return;
-      var idx = srcToIndex[__B["assets/gunslinger-snow.mp4"]];
-      if(typeof idx === 'number') lbOpen(idx);
+      var idx = srcToIndex['assets/gunslinger-snow.mp4'];
+      if(typeof idx === 'number') lbOpen(idx, 'assets/gunslinger-snow-poster.jpg', gunFigure);
     });
     gunFigure.addEventListener('keydown', function(e){
       if(e.target.closest && e.target.closest('.clip-bar')) return;
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
-        var idx = srcToIndex[__B["assets/gunslinger-snow.mp4"]];
-        if(typeof idx === 'number') lbOpen(idx);
+        var idx = srcToIndex['assets/gunslinger-snow.mp4'];
+        if(typeof idx === 'number') lbOpen(idx, 'assets/gunslinger-snow-poster.jpg', gunFigure);
       }
     });
   }
@@ -2883,7 +3066,7 @@
   document.getElementById('hlbNext').addEventListener('click', function(){ hlbShow(hlbPos+1); });
   /* Touch swipe on the Honda lightbox stage — cycles the slides */
   var hlbTouchX = null, hlbSwipeAt = 0;
-  document.getElementById('hlbStage').addEventListener('touchstart', function(e){ hlbTouchX = e.changedTouches[0].clientX; }, {passive:true});
+  document.getElementById('hlbStage').addEventListener('touchstart', function(e){ if(e.target.closest && e.target.closest('button')){ hlbTouchX = null; return; } hlbTouchX = e.changedTouches[0].clientX; }, {passive:true});
   document.getElementById('hlbStage').addEventListener('touchend', function(e){
     if(hlbTouchX === null) return;
     var dx = e.changedTouches[0].clientX - hlbTouchX;
@@ -2902,14 +3085,12 @@
     if(hlbVideo.paused){ var p3 = hlbVideo.play(); if(p3 && p3.catch) p3.catch(function(){}); }
     else hlbVideo.pause();
   });
-  /* Swipe on a still in the Honda lightbox cycles too */
-  hlbImg.addEventListener('touchstart', function(e){ hlbTouchX = e.changedTouches[0].clientX; }, {passive:true});
-  hlbImg.addEventListener('touchend', function(e){
-    if(hlbTouchX === null) return;
-    var dx = e.changedTouches[0].clientX - hlbTouchX;
-    if(Math.abs(dx) > 48){ hlbSwipeAt = Date.now(); if(dx < 0) hlbShow(hlbPos+1); else hlbShow(hlbPos-1); }
-    hlbTouchX = null;
-  }, {passive:true});
+  /* (Still swipes are covered by the stage handler above — touches on
+     the image bubble to it, so there is deliberately no second handler
+     on the image itself: one swipe, one slide change.) */
+  /* Double-tap on the image / stage closes — same as Close. */
+  addDoubleTapClose(document.getElementById('hlbStage'), hlbCloseFn);
+  addDoubleTapClose(document.getElementById('vlbStage'), vlbCloseFn);
   document.addEventListener('keydown', function(e){
     if(hondaLightbox.hidden) return;
     if(e.key === 'Escape') hlbCloseFn();
@@ -2918,43 +3099,162 @@
     if(e.key === 'm' || e.key === 'M') hlbSetMuted(!hlbVideo.muted);
   });
 
-  /* Message Boopy — in-session notes only */
-  var fab = document.getElementById('boopyFab');
-  var panel = document.getElementById('boopyPanel');
-  var form = document.getElementById('boopyForm');
-  var text = document.getElementById('boopyText');
-  var msgs = document.getElementById('boopyMsgs');
-  var status = document.getElementById('boopyStatus');
-  var notes = [];
-  fab.addEventListener('click', function(){
-    var open = panel.classList.toggle('open');
-    fab.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open) text.focus();
-  });
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var v = text.value.trim();
-    if(!v) return;
-    notes.push(v);
-    var d = document.createElement('div');
-    d.className = 'bmsg'; d.textContent = v;
-    msgs.appendChild(d);
-    text.value = '';
-    status.textContent = notes.length + (notes.length === 1 ? ' note' : ' notes') + ' in this session — copy them to send them on.';
-  });
-  document.getElementById('boopyCopy').addEventListener('click', function(){
-    if(!notes.length){ status.textContent = 'Nothing to copy yet — add a note first.'; return; }
-    var payload = 'Full Site Mockup — notes:\n' + notes.map(function(n,i){ return (i+1) + '. ' + n; }).join('\n');
-    function done(){ status.textContent = 'Copied — paste it wherever you talk to Boopy.'; }
-    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(payload).then(done, function(){ fallback(); }); }
-    else fallback();
-    function fallback(){
-      var ta = document.createElement('textarea');
-      ta.value = payload; document.body.appendChild(ta); ta.select();
-      try{ document.execCommand('copy'); done(); }catch(err){ status.textContent = 'Copy didn’t work here — your notes are listed above.'; }
-      document.body.removeChild(ta);
+  /* Chrome fade triggers — any tap, press or move inside a lightbox
+     brings its controls back and re-arms the idle fade-out. */
+  wireChrome(lightbox);
+  wireChrome(videoLightbox);
+  wireChrome(hondaLightbox);
+
+  /* ---------- Scroll-driven zoom — the landing page fly-through feel ----------
+     A pure function of scroll position, exactly like the mockup's
+     painter: as an image travels up through the viewport it pushes IN
+     toward its focal point; scrolling back reverses the same frames —
+     no direction-dependent path, nothing to flip. Applied to the hero
+     renders and every gallery main + side image (transform only, on
+     the media element itself, so it composes with the hero's pans and
+     the galleries' rise-in). Reduced motion: never runs. */
+  var szEls = [];
+  if(!reduced){
+    /* IMAGES ONLY — never videos. The old selector included the three
+       gallery <video> elements, so every scroll frame re-scaled a
+       playing video: iPad Safari then re-composites decoded frames at
+       a changing size instead of handing the layer to the GPU, which
+       was a direct cause of BOTH the scroll choppiness (worst on
+       scroll-up, when a scaled clip re-enters) and clips hanging
+       mid-frame. The still slots keep the full zoom effect; the video
+       slots keep their aspect box and play untouched. Zoom depths are
+       also trimmed (hero .16→.10, mains .13→.08, sides .09→.05): the
+       feel is the same, the repainted area per frame is far smaller. */
+    Array.prototype.slice.call(document.querySelectorAll('.hero .slide img')).forEach(function(el){
+      el.style.willChange = 'transform';
+      szEls.push({el: el, max: 0.10, origin: '52% 38%'});
+    });
+    Array.prototype.slice.call(document.querySelectorAll('.gal .main img')).forEach(function(el){
+      el.style.willChange = 'transform';
+      szEls.push({el: el, max: 0.08, origin: '50% 42%'});
+    });
+    Array.prototype.slice.call(document.querySelectorAll('.gal .side figure img')).forEach(function(el){
+      szEls.push({el: el, max: 0.05, origin: '50% 42%'});
+    });
+    var szTick = false;
+    /* Layout is measured ONCE (transforms cleared, one read pass) and
+       cached; the per-frame update below does pure scroll math and
+       writes transforms only — no getBoundingClientRect, no
+       innerHeight read, nothing that forces layout in the scroll
+       path. The cache refreshes (debounced, never per-frame) on
+       resize, on window load, and whenever a zoomed image finishes
+       loading, so a late decode can never leave stale tops behind
+       for the scroll math to jump on. */
+    var szVH = window.innerHeight;
+    var szCache = [];
+    var szMeasureT = null;
+    function szMeasure(){
+      szVH = window.innerHeight;
+      szEls.forEach(function(it){
+        it.el.style.transform = '';
+        it.el.style.transformOrigin = it.origin;
+      });
+      szCache = szEls.map(function(it){
+        var r = it.el.getBoundingClientRect();
+        return {it: it, top: r.top + window.scrollY, h: r.height || 1, last: -1};
+      });
+      szUpdate();
     }
-  });
+    function szMeasureSoon(){
+      if(szMeasureT) return;
+      szMeasureT = setTimeout(function(){ szMeasureT = null; szMeasure(); }, 180);
+    }
+    function szUpdate(){
+      szTick = false;
+      if(anyLightboxOpen()) return;
+      var y = window.scrollY;
+      for(var i = 0; i < szCache.length; i++){
+        var c = szCache[i];
+        var top = c.top - y;
+        if(top + c.h < -80 || top > szVH + 80){
+          if(c.last !== 0){ c.last = 0; c.it.el.style.transform = ''; }
+          continue;
+        }
+        var p = (szVH - top) / (szVH + c.h);
+        p = p < 0 ? 0 : (p > 1 ? 1 : p);
+        var s = 1 + p * p * c.it.max;
+        /* Quantized writes: a scale that has not actually changed is
+           never rewritten, so scrolling back UP re-traces the exact
+           values it came down on — same pure function of position in
+           both directions, no style churn and nothing for the scroll
+           to fight when the direction reverses. */
+        if(Math.abs(s - c.last) < 0.0015) continue;
+        c.last = s;
+        c.it.el.style.transform = 'scale3d(' + s.toFixed(4) + ',' + s.toFixed(4) + ',1)';
+      }
+    }
+    window.addEventListener('scroll', function(){
+      if(!szTick){ szTick = true; requestAnimationFrame(szUpdate); }
+    }, {passive:true});
+    window.addEventListener('resize', szMeasureSoon);
+    window.addEventListener('load', szMeasureSoon);
+    szEls.forEach(function(it){
+      if(!it.el.complete) it.el.addEventListener('load', szMeasureSoon);
+    });
+    szMeasure();
+  }
+  /* Fixed chrome drops its backdrop blur while the page is moving
+     (see the .is-scrolling CSS): one tiny class toggle per scroll
+     burst, cleared 160ms after the last scroll event. */
+  (function(){
+    var scT = null;
+    window.addEventListener('scroll', function(){
+      document.documentElement.classList.add('is-scrolling');
+      if(scT) clearTimeout(scT);
+      scT = setTimeout(function(){ document.documentElement.classList.remove('is-scrolling'); }, 160);
+    }, {passive:true});
+  })();
+
+  /* ---------- Predictive preload — anticipate the click ----------
+     The moment the visitor first scrolls DOWN from the landing page,
+     the galleries' animations start loading in the background,
+     staggered so they never fight each other (or the hero) for
+     bandwidth or the decoder: gallery clips are promoted first
+     (explicit load(), the hang fix), then the lightbox copies of the
+     same files are warmed through the HTTP cache, and the Honda
+     lightbox stills pre-decode. By the time a click comes, the
+     buffer is already warm. */
+  var predicted = false;
+  var predictSettle = null;
+  window.addEventListener('scroll', function(){
+    if(predicted || window.scrollY < 30) return;
+    /* Never warm anything WHILE the page is moving. The old version
+       fired off the first scroll event: three gallery-clip loads,
+       three EXTRA hidden <video> elements loading the same three
+       files a second time, and four full-4K image decode()s — a
+       preload storm that fought the scroll itself for bandwidth,
+       decoder sessions and the main thread, and could hang a clip
+       outright. Now the chain starts only after scrolling has been
+       quiet for 600ms, promotes ONE gallery clip at a time 1.4s
+       apart (loadIO already promotes each clip as it nears the
+       screen — this only covers clips not reached yet), and the
+       duplicate hidden videos and the decode() calls are gone
+       entirely. The intent is unchanged — buffers warm before the
+       click — it just never competes with a scroll in progress. */
+    if(predictSettle) clearTimeout(predictSettle);
+    predictSettle = setTimeout(function(){
+      if(predicted) return;
+      predicted = true;
+      [catClipV, hondaClip, gunClipV].forEach(function(v, i){
+        setTimeout(function(){
+          if(!v || anyLightboxOpen()) return;
+          if(v.preload !== 'auto'){ v.preload = 'auto'; try{ v.load(); }catch(err){} }
+        }, i * 1400);
+      });
+    }, 600);
+  }, {passive:true});
+
+  /* Contact — the Email pill is a plain mailto: anchor and nothing on
+     this page intercepts it or copies anything: a tap hands the
+     mailto: straight to the visitor's mail app, which opens a new
+     message addressed to kevincu@muse.ai, ready to send. (There is
+     deliberately no script here — the anchor does the launch.) */
+
 })();
 </script>
 </body>

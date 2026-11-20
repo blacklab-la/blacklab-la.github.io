@@ -9,7 +9,7 @@
 <title>Kevin Cunningham Portfolio — Industrial Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Michroma&display=swap" rel="stylesheet">
 <script>document.documentElement.className += ' js-anim';</script>
 <script>
 /* ---------- Media wrappers — every image and video on this page loads from an
@@ -21,28 +21,24 @@
    lazy order the page always used) and hand the element a blob URL built from
    the inline data. No binary asset is ever requested directly, so the page
    renders identically when only text files are hosted. ---------- */
-window.KC = { reg:{}, pending:{}, blobCache:{}, FILES:{"assets/bomber-a.jpg":"assets/bomber-a.jpg.js","assets/bomber-b.jpg":"assets/bomber-b.jpg.js","assets/bomber-c.jpg":"assets/bomber-c.jpg.js","assets/bomber-d.jpg":"assets/bomber-d.jpg.js","assets/bomber-e.jpg":"assets/bomber-e.jpg.js","assets/bomber-f.jpg":"assets/bomber-f.jpg.js","assets/cat-still-b.jpg":"assets/cat-still-b.jpg.js","assets/cat-ugv-new-poster.jpg":"assets/cat-ugv-new-poster.jpg.js","assets/cat-ugv-poster.jpg":"assets/cat-ugv-poster.jpg.js","assets/cat-ugv.mp4":"assets/cat-ugv.mp4.js","assets/crusher-a.jpg":"assets/crusher-a.jpg.js","assets/crusher-b.jpg":"assets/crusher-b.jpg.js","assets/demon.jpg":"assets/demon.jpg.js","assets/display/bomber-a.jpg":"assets/display/bomber-a.jpg.js","assets/display/bomber-b.jpg":"assets/display/bomber-b.jpg.js","assets/display/bomber-c.jpg":"assets/display/bomber-c.jpg.js","assets/display/bomber-d.jpg":"assets/display/bomber-d.jpg.js","assets/display/bomber-e.jpg":"assets/display/bomber-e.jpg.js","assets/display/bomber-f.jpg":"assets/display/bomber-f.jpg.js","assets/display/cat-still-b.jpg":"assets/display/cat-still-b.jpg.js","assets/display/cat-ugv-new-poster.jpg":"assets/display/cat-ugv-new-poster.jpg.js","assets/display/cat-ugv-poster.jpg":"assets/display/cat-ugv-poster.jpg.js","assets/display/crusher-a.jpg":"assets/display/crusher-a.jpg.js","assets/display/crusher-b.jpg":"assets/display/crusher-b.jpg.js","assets/display/gunslinger-a.jpg":"assets/display/gunslinger-a.jpg.js","assets/display/gunslinger-b.jpg":"assets/display/gunslinger-b.jpg.js","assets/display/gunslinger-c.jpg":"assets/display/gunslinger-c.jpg.js","assets/display/gunslinger-d.jpg":"assets/display/gunslinger-d.jpg.js","assets/display/gunslinger-snow-poster.jpg":"assets/display/gunslinger-snow-poster.jpg.js","assets/display/honda-desert-front-4k.jpg":"assets/display/honda-desert-front-4k.jpg.js","assets/display/honda-salt-flat-side-4k.jpg":"assets/display/honda-salt-flat-side-4k.jpg.js","assets/display/honda-salt-flat-side.jpg":"assets/display/honda-salt-flat-side.jpg.js","assets/display/honda-shot6-rear-day-4k.jpg":"assets/display/honda-shot6-rear-day-4k.jpg.js","assets/display/honda-shot6-rear-night-4k.jpg":"assets/display/honda-shot6-rear-night-4k.jpg.js","assets/display/honda-transporter-poster.jpg":"assets/display/honda-transporter-poster.jpg.js","assets/display/m577-a.jpg":"assets/display/m577-a.jpg.js","assets/display/m577-b.jpg":"assets/display/m577-b.jpg.js","assets/display/m577-c.jpg":"assets/display/m577-c.jpg.js","assets/display/m577-d.jpg":"assets/display/m577-d.jpg.js","assets/display/m577-e.jpg":"assets/display/m577-e.jpg.js","assets/display/orion.jpg":"assets/display/orion.jpg.js","assets/display/spar-a.jpg":"assets/display/spar-a.jpg.js","assets/display/spar-b.jpg":"assets/display/spar-b.jpg.js","assets/display/spar-c.jpg":"assets/display/spar-c.jpg.js","assets/display/spar-d.jpg":"assets/display/spar-d.jpg.js","assets/display/spar-e.jpg":"assets/display/spar-e.jpg.js","assets/display/spar-f.jpg":"assets/display/spar-f.jpg.js","assets/display/star-2.jpg":"assets/display/star-2.jpg.js","assets/display/star-3.jpg":"assets/display/star-3.jpg.js","assets/display/star-4.jpg":"assets/display/star-4.jpg.js","assets/display/star-5.jpg":"assets/display/star-5.jpg.js","assets/display/star-6.jpg":"assets/display/star-6.jpg.js","assets/display/star-7.jpg":"assets/display/star-7.jpg.js","assets/display/star-8.jpg":"assets/display/star-8.jpg.js","assets/display/star-b.jpg":"assets/display/star-b.jpg.js","assets/display/star-c.jpg":"assets/display/star-c.jpg.js","assets/display/star-side-new.jpg":"assets/display/star-side-new.jpg.js","assets/display/workflows.jpg":"assets/display/workflows.jpg.js","assets/gunslinger-a.jpg":"assets/gunslinger-a.jpg.js","assets/gunslinger-b.jpg":"assets/gunslinger-b.jpg.js","assets/gunslinger-c.jpg":"assets/gunslinger-c.jpg.js","assets/gunslinger-d.jpg":"assets/gunslinger-d.jpg.js","assets/gunslinger-snow-poster.jpg":"assets/gunslinger-snow-poster.jpg.js","assets/gunslinger-snow.mp4":"assets/gunslinger-snow.mp4.js","assets/honda-desert-front-4k.jpg":"assets/honda-desert-front-4k.jpg.js","assets/honda-desert-front-display.jpg":"assets/honda-desert-front-display.jpg.js","assets/honda-salt-flat-front-4k.jpg":"assets/honda-salt-flat-front-4k.jpg.js","assets/honda-salt-flat-front-display.jpg":"assets/honda-salt-flat-front-display.jpg.js","assets/honda-salt-flat-front.jpg":"assets/honda-salt-flat-front.jpg.js","assets/honda-salt-flat-side-4k.jpg":"assets/honda-salt-flat-side-4k.jpg.js","assets/honda-salt-flat-side.jpg":"assets/honda-salt-flat-side.jpg.js","assets/honda-shot6-rear-day-4k.jpg":"assets/honda-shot6-rear-day-4k.jpg.js","assets/honda-shot6-rear-day-display.jpg":"assets/honda-shot6-rear-day-display.jpg.js","assets/honda-shot6-rear-night-4k.jpg":"assets/honda-shot6-rear-night-4k.jpg.js","assets/honda-transporter-poster.jpg":"assets/honda-transporter-poster.jpg.js","assets/honda-transporter.mp4":"assets/honda-transporter.mp4.js","assets/logos/activision.png":"assets/logos/activision.png.js","assets/logos/boeing.png":"assets/logos/boeing.png.js","assets/logos/digitaldomain.png":"assets/logos/digitaldomain.png.js","assets/logos/ea.png":"assets/logos/ea.png.js","assets/logos/generalmotors.png":"assets/logos/generalmotors.png.js","assets/logos/hasbro.png":"assets/logos/hasbro.png.js","assets/logos/honda.png":"assets/logos/honda.png.js","assets/logos/imagineering.png":"assets/logos/imagineering.png.js","assets/logos/imaginefx.png":"assets/logos/imaginefx.png.js","assets/logos/jeep.png":"assets/logos/jeep.png.js","assets/logos/lexus.png":"assets/logos/lexus.png.js","assets/logos/mcdonalds.png":"assets/logos/mcdonalds.png.js","assets/logos/nissan.png":"assets/logos/nissan.png.js","assets/logos/popmech.png":"assets/logos/popmech.png.js","assets/logos/samsung.png":"assets/logos/samsung.png.js","assets/logos/teague.png":"assets/logos/teague.png.js","assets/logos/virgin.png":"assets/logos/virgin.png.js","assets/m577-a.jpg":"assets/m577-a.jpg.js","assets/m577-b.jpg":"assets/m577-b.jpg.js","assets/m577-c.jpg":"assets/m577-c.jpg.js","assets/m577-d.jpg":"assets/m577-d.jpg.js","assets/m577-e.jpg":"assets/m577-e.jpg.js","assets/mercury.jpg":"assets/mercury.jpg.js","assets/orion.jpg":"assets/orion.jpg.js","assets/spar-a.jpg":"assets/spar-a.jpg.js","assets/spar-b.jpg":"assets/spar-b.jpg.js","assets/spar-c.jpg":"assets/spar-c.jpg.js","assets/spar-d.jpg":"assets/spar-d.jpg.js","assets/spar-e.jpg":"assets/spar-e.jpg.js","assets/spar-f.jpg":"assets/spar-f.jpg.js","assets/star-1.jpg":"assets/star-1.jpg.js","assets/star-2.jpg":"assets/star-2.jpg.js","assets/star-3.jpg":"assets/star-3.jpg.js","assets/star-4.jpg":"assets/star-4.jpg.js","assets/star-5.jpg":"assets/star-5.jpg.js","assets/star-6.jpg":"assets/star-6.jpg.js","assets/star-7.jpg":"assets/star-7.jpg.js","assets/star-8.jpg":"assets/star-8.jpg.js","assets/star-a.jpg":"assets/star-a.jpg.js","assets/star-b.jpg":"assets/star-b.jpg.js","assets/star-c.jpg":"assets/star-c.jpg.js","assets/star-side-new.jpg":"assets/star-side-new.jpg.js","assets/workflows.jpg":"assets/workflows.jpg.js"} };
+window.KC = { reg:{}, pending:{}, blobCache:{}, FILES:{"assets/bomber-a.jpg":"assets/bomber-a.jpg.js","assets/bomber-b.jpg":"assets/bomber-b.jpg.js","assets/bomber-c.jpg":"assets/bomber-c.jpg.js","assets/bomber-d.jpg":"assets/bomber-d.jpg.js","assets/bomber-e.jpg":"assets/bomber-e.jpg.js","assets/bomber-f.jpg":"assets/bomber-f.jpg.js","assets/cat-still-b.jpg":"assets/cat-still-b.jpg.js","assets/cat-ugv-new-poster.jpg":"assets/cat-ugv-new-poster.jpg.js","assets/cat-ugv-poster.jpg":"assets/cat-ugv-poster.jpg.js","assets/cat-ugv.mp4":"assets/cat-ugv.mp4.js","assets/crusher-a.jpg":"assets/crusher-a.jpg.js","assets/crusher-b.jpg":"assets/crusher-b.jpg.js","assets/demon.jpg":"assets/demon.jpg.js","assets/display/bomber-a.jpg":"assets/display/bomber-a.jpg.js","assets/display/bomber-b.jpg":"assets/display/bomber-b.jpg.js","assets/display/bomber-c.jpg":"assets/display/bomber-c.jpg.js","assets/display/bomber-d.jpg":"assets/display/bomber-d.jpg.js","assets/display/bomber-e.jpg":"assets/display/bomber-e.jpg.js","assets/display/bomber-f.jpg":"assets/display/bomber-f.jpg.js","assets/display/cat-still-b.jpg":"assets/display/cat-still-b.jpg.js","assets/display/cat-ugv-new-poster.jpg":"assets/display/cat-ugv-new-poster.jpg.js","assets/display/cat-ugv-poster.jpg":"assets/display/cat-ugv-poster.jpg.js","assets/display/crusher-a.jpg":"assets/display/crusher-a.jpg.js","assets/display/crusher-b.jpg":"assets/display/crusher-b.jpg.js","assets/display/gunslinger-a.jpg":"assets/display/gunslinger-a.jpg.js","assets/display/gunslinger-b.jpg":"assets/display/gunslinger-b.jpg.js","assets/display/gunslinger-c.jpg":"assets/display/gunslinger-c.jpg.js","assets/display/gunslinger-d.jpg":"assets/display/gunslinger-d.jpg.js","assets/display/gunslinger-snow-poster.jpg":"assets/display/gunslinger-snow-poster.jpg.js","assets/display/honda-desert-front-4k.jpg":"assets/display/honda-desert-front-4k.jpg.js","assets/display/honda-salt-flat-side-4k.jpg":"assets/display/honda-salt-flat-side-4k.jpg.js","assets/display/honda-salt-flat-side.jpg":"assets/display/honda-salt-flat-side.jpg.js","assets/display/honda-shot6-rear-day-4k.jpg":"assets/display/honda-shot6-rear-day-4k.jpg.js","assets/display/honda-shot6-rear-night-4k.jpg":"assets/display/honda-shot6-rear-night-4k.jpg.js","assets/display/honda-transporter-poster.jpg":"assets/display/honda-transporter-poster.jpg.js","assets/display/m577-a.jpg":"assets/display/m577-a.jpg.js","assets/display/m577-b.jpg":"assets/display/m577-b.jpg.js","assets/display/m577-c.jpg":"assets/display/m577-c.jpg.js","assets/display/m577-d.jpg":"assets/display/m577-d.jpg.js","assets/display/m577-e.jpg":"assets/display/m577-e.jpg.js","assets/display/orion.jpg":"assets/display/orion.jpg.js","assets/display/spar-a.jpg":"assets/display/spar-a.jpg.js","assets/display/spar-b.jpg":"assets/display/spar-b.jpg.js","assets/display/spar-c.jpg":"assets/display/spar-c.jpg.js","assets/display/spar-d.jpg":"assets/display/spar-d.jpg.js","assets/display/spar-e.jpg":"assets/display/spar-e.jpg.js","assets/display/spar-f.jpg":"assets/display/spar-f.jpg.js","assets/display/star-2.jpg":"assets/display/star-2.jpg.js","assets/display/star-3.jpg":"assets/display/star-3.jpg.js","assets/display/star-4.jpg":"assets/display/star-4.jpg.js","assets/display/star-5.jpg":"assets/display/star-5.jpg.js","assets/display/star-6.jpg":"assets/display/star-6.jpg.js","assets/display/star-7.jpg":"assets/display/star-7.jpg.js","assets/display/star-8.jpg":"assets/display/star-8.jpg.js","assets/display/star-b.jpg":"assets/display/star-b.jpg.js","assets/display/star-c.jpg":"assets/display/star-c.jpg.js","assets/display/star-side-new.jpg":"assets/display/star-side-new.jpg.js","assets/display/workflows.jpg":"assets/display/workflows.jpg.js","assets/gunslinger-a.jpg":"assets/gunslinger-a.jpg.js","assets/gunslinger-b.jpg":"assets/gunslinger-b.jpg.js","assets/gunslinger-c.jpg":"assets/gunslinger-c.jpg.js","assets/gunslinger-d.jpg":"assets/gunslinger-d.jpg.js","assets/gunslinger-snow-poster.jpg":"assets/gunslinger-snow-poster.jpg.js","assets/gunslinger-snow.mp4":"assets/gunslinger-snow.mp4.js","assets/honda-desert-front-4k.jpg":"assets/honda-desert-front-4k.jpg.js","assets/honda-desert-front-display.jpg":"assets/honda-desert-front-display.jpg.js","assets/honda-salt-flat-front-4k.jpg":"assets/honda-salt-flat-front-4k.jpg.js","assets/honda-salt-flat-front-display.jpg":"assets/honda-salt-flat-front-display.jpg.js","assets/honda-salt-flat-front.jpg":"assets/honda-salt-flat-front.jpg.js","assets/honda-salt-flat-side-4k.jpg":"assets/honda-salt-flat-side-4k.jpg.js","assets/honda-salt-flat-side.jpg":"assets/honda-salt-flat-side.jpg.js","assets/honda-shot6-rear-day-4k.jpg":"assets/honda-shot6-rear-day-4k.jpg.js","assets/honda-shot6-rear-day-display.jpg":"assets/honda-shot6-rear-day-display.jpg.js","assets/honda-shot6-rear-night-4k.jpg":"assets/honda-shot6-rear-night-4k.jpg.js","assets/honda-transporter-poster.jpg":"assets/honda-transporter-poster.jpg.js","assets/honda-transporter.mp4":"assets/honda-transporter.mp4.js","assets/logos/activision.png":"assets/logos/activision.png.js","assets/logos/boeing.png":"assets/logos/boeing.png.js","assets/logos/digitaldomain.png":"assets/logos/digitaldomain.png.js","assets/logos/ea.png":"assets/logos/ea.png.js","assets/logos/generalmotors.png":"assets/logos/generalmotors.png.js","assets/logos/hasbro.png":"assets/logos/hasbro.png.js","assets/logos/honda.png":"assets/logos/honda.png.js","assets/logos/imagineering.png":"assets/logos/imagineering.png.js","assets/logos/imaginefx.png":"assets/logos/imaginefx.png.js","assets/logos/jeep.png":"assets/logos/jeep.png.js","assets/logos/lexus.png":"assets/logos/lexus.png.js","assets/logos/mcdonalds.png":"assets/logos/mcdonalds.png.js","assets/logos/nissan.png":"assets/logos/nissan.png.js","assets/logos/popmech.png":"assets/logos/popmech.png.js","assets/logos/samsung.png":"assets/logos/samsung.png.js","assets/logos/teague.png":"assets/logos/teague.png.js","assets/logos/virgin.png":"assets/logos/virgin.png.js","assets/m577-a.jpg":"assets/m577-a.jpg.js","assets/m577-b.jpg":"assets/m577-b.jpg.js","assets/m577-c.jpg":"assets/m577-c.jpg.js","assets/m577-d.jpg":"assets/m577-d.jpg.js","assets/m577-e.jpg":"assets/m577-e.jpg.js","assets/mercury.jpg":"assets/mercury.jpg.js","assets/orion.jpg":"assets/orion.jpg.js","assets/spar-a.jpg":"assets/spar-a.jpg.js","assets/spar-b.jpg":"assets/spar-b.jpg.js","assets/spar-c.jpg":"assets/spar-c.jpg.js","assets/spar-d.jpg":"assets/spar-d.jpg.js","assets/spar-e.jpg":"assets/spar-e.jpg.js","assets/spar-f.jpg":"assets/spar-f.jpg.js","assets/star-1.jpg":"assets/star-1.jpg.js","assets/star-2.jpg":"assets/star-2.jpg.js","assets/star-3.jpg":"assets/star-3.jpg.js","assets/star-4.jpg":"assets/star-4.jpg.js","assets/star-5.jpg":"assets/star-5.jpg.js","assets/star-6.jpg":"assets/star-6.jpg.js","assets/star-7.jpg":"assets/star-7.jpg.js","assets/star-8.jpg":"assets/star-8.jpg.js","assets/star-9.jpg":"assets/star-9.jpg.js","assets/star-10.jpg":"assets/star-10.jpg.js","assets/star-a.jpg":"assets/star-a.jpg.js","assets/star-b.jpg":"assets/star-b.jpg.js","assets/star-c.jpg":"assets/star-c.jpg.js","assets/star-side-new.jpg":"assets/star-side-new.jpg.js","assets/workflows.jpg":"assets/workflows.jpg.js","assets/workflows-bike.mp4":"assets/workflows-bike.mp4.js","assets/workflows-bike-poster.jpg":"assets/workflows-bike-poster.jpg.js","assets/display/workflows-bike-poster.jpg":"assets/display/workflows-bike-poster.jpg.js"} };
 function kcLoad(path){
   if(!path) return Promise.resolve(null);
   if(window.KC.reg[path]) return Promise.resolve(window.KC.reg[path]);
   if(window.KC.pending[path]) return window.KC.pending[path];
   var src = window.KC.FILES[path] || (path + '.js');
-  /* Wrapper URLs carry a version stamp (?v=2) so no browser can reuse a
-     stale cached response for them — an earlier broken load cached the
-     failure and kept the images missing even after the files were fixed.
-     If a load still fails or arrives without registering its payload,
-     retry once with a one-off cache-buster before giving up. */
   window.KC.pending[path] = new Promise(function(resolve){
-    function attempt(url, last){
+    function attempt(url, isRetry){
       var s = document.createElement('script');
       s.src = url; s.async = true;
       s.onload = function(){
-        if(window.KC.reg[path] || last) resolve(window.KC.reg[path] || path);
-        else attempt(src + '?r=' + Date.now(), true);
+        if(window.KC.reg[path]){ resolve(window.KC.reg[path]); }
+        else if(!isRetry){ attempt(src + '?r=' + Date.now(), true); }
+        else { resolve(path); }
       };
       s.onerror = function(){
-        if(last) resolve(path);
-        else attempt(src + '?r=' + Date.now(), true);
+        if(!isRetry){ attempt(src + '?r=' + Date.now(), true); }
+        else { resolve(path); }
       };
       (document.head || document.documentElement).appendChild(s);
     }
@@ -92,8 +88,12 @@ function kcAttach(v, path){
     --text:#f4f3ef;
     --muted:#a7a7ad;
     --muted2:#6e6e75;
-    --orange:#FF8000;
-    --orange-dim:rgba(255,128,0,.14);
+    /* Accent — Designboom's exact brand yellow: --color-yellow:#FF0
+       (= #FFFF00, 255,255,0) taken from designboom.com's own CSS.
+       Replaces the earlier #FFC800 approximation everywhere the
+       accent appears (all rgba tints use 255,255,0 to match). */
+    --yellow:#FFFF00;
+    --yellow-dim:rgba(255,255,0,.14);
     --radius:14px;
   }
   *{box-sizing:border-box}
@@ -109,14 +109,80 @@ function kcAttach(v, path){
   a{color:inherit}
   button{font-family:inherit; cursor:pointer}
   button, [role="button"]{min-height:44px; min-width:44px}
+  /* Tap response — manipulation removes the double-tap-zoom wait that
+     made taps feel ignored on touch screens: the browser was holding
+     every click on a play control to see whether a second tap was
+     coming (the lightbox stages even run their own double-tap-to-close
+     on top of that). With manipulation, a tap is a tap, immediately. */
+  html{touch-action:manipulation}
+  button, a, [role="button"], .clip-track{touch-action:manipulation; -webkit-tap-highlight-color:rgba(255,255,0,.16)}
+  /* Pressed feedback — every play control answers the press itself,
+     in the same frame, instead of waiting for playback to start. */
+  .clip-play:active, .clip-restart:active, .iconbtn:active, .seg button:active, .lb-nav:active{transform:scale(.93)}
 
   /* ---------- top pill nav — portfolio language ---------- */
   .topbar{
-    position:fixed; inset:14px 16px auto 16px; z-index:50;
-    display:flex; justify-content:center; pointer-events:none;
+    /* Opening state: top offset EQUALS the gap under the name
+       (22px / 22px), so the name sits vertically CENTERED in the
+       space between the top edge of the frame and the menu
+       underneath it — equal space above and below the name.
+       The shrink script keeps top == gap at every scroll
+       progress, so it stays centered as it settles. */
+    position:fixed; inset:22px 16px auto 16px; z-index:50;
+    display:flex; flex-direction:column; align-items:center; gap:22px; pointer-events:none;
   }
+  /* Nameplate — at the very top the name sits big, spanning most
+     of the width, set in Michroma, first name in a lighter tone
+     than the surname.
+     Kevin's settled direction: the name OPENS 10% BIGGER than
+     the size he first settled on, and scrolling settles it on
+     exactly the SAME small size as before — the end size never
+     changed, only the start grew. Later Kevin scaled the whole
+     range down 20% — opening AND settled sizes alike (33.4px
+     max desktop opening, below) — so both ends shrank together.
+     While it shrinks it slides UP, and the pill menu underneath
+     fades in on the same progress. At every point the name is
+     vertically centered between the top edge of the frame and
+     the menu: the space above it always equals the gap below
+     it (see .topbar and the shrink script's metrics).
+     The values below are the opening (top-of-page) state; the
+     shrink itself is driven by the damped scroll script at the end
+     of the body, which interpolates font-size, tracking, the
+     topbar's top offset and gap, and the mock tag's position on a
+     lerped, smootherstep-eased progress — no CSS transition, no
+     1:1 scroll mapping — so the motion glides and settles instead
+     of stepping with the wheel. The vertical travel runs Kevin's
+     way: top offset and gap start EQUAL (22px) and end EQUAL
+     (10px), so scrolling down shrinks the name while the whole
+     band slides UP into its compact spot — the name centered
+     between frame top and menu the entire way — as the menu
+     fades in, and scrolling back up reverses the exact same
+     motion: it grows back to the opening size while sliding
+     back DOWN, the menu fading back out. */
+  .nameplate{
+    font-family:"Michroma", "Barlow Condensed", sans-serif;
+    font-size:clamp(15.8px, 2.16vw, 33.4px);
+    letter-spacing:.14em; text-transform:uppercase; line-height:1.15;
+    color:#fff; white-space:nowrap; text-align:center;
+    padding-left:.14em;
+    max-width:calc(100vw - 24px);
+    text-shadow:0 1px 16px rgba(0,0,0,.6), 0 0 3px rgba(0,0,0,.5);
+    will-change:font-size, letter-spacing, transform;
+  }
+  .nameplate .fn{color:rgba(255,255,255,.68)}
   .pillnav{
-    pointer-events:auto;
+    /* Hidden while the name is big (top of page): the shrink script
+       fades it in on the same damped progress that shrinks the
+       nameplate — opacity 0 / visibility hidden at rest on top,
+       fully visible once the name reaches its small size. Inline
+       styles from that script drive opacity, visibility,
+       pointer-events and the small rise below every frame. */
+    pointer-events:none;
+    /* No vertical offset on the menu: any translateY would move
+       it and break the name's centering between the frame top
+       and the menu. It simply fades in place. */
+    opacity:0; visibility:hidden; transform:translateY(0);
+    will-change:opacity, transform;
     display:flex; align-items:center; gap:2px;
     background:rgba(14,14,16,.72);
     backdrop-filter: blur(14px) saturate(1.2);
@@ -132,7 +198,7 @@ function kcAttach(v, path){
     font-size:11px; letter-spacing:.14em; text-transform:uppercase;
     padding:0 14px 0 12px; color:var(--text); white-space:nowrap;
   }
-  .pillnav .brand b{color:var(--orange); font-weight:500}
+  .pillnav .brand b{color:var(--yellow); font-weight:500}
   .pillnav a{
     text-decoration:none;
     font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
@@ -140,23 +206,29 @@ function kcAttach(v, path){
     padding:10px 14px; border-radius:999px; white-space:nowrap;
     transition:color .2s, background .2s;
   }
-  .pillnav a:hover{color:var(--orange); background:rgba(255,255,255,.05)}
+  .pillnav a:hover{color:var(--yellow); background:rgba(255,255,255,.05)}
   .pillnav a.active{color:#fff; background:rgba(255,255,255,.08)}
   @media (max-width:640px){
-    .topbar{inset:12px 8px auto 8px}
+    /* Opening (top) state on a phone: the same treatment as
+       desktop, scaled to the screen — opening size 10% bigger
+       than before, top offset equal to the gap under the name
+       (18px / 18px) so it is centered between the frame top and
+       the menu, settling on the same small size as before. */
+    .topbar{inset:18px 8px auto 8px; gap:18px}
+    .nameplate{font-size:clamp(8.8px, 2.55vw, 11.4px); letter-spacing:.08em; padding-left:.08em}
     .pillnav{gap:0; padding:4px}
     .pillnav .brand{display:none}
     .pillnav a{padding:10px 7px; font-size:9px; letter-spacing:.05em}
   }
 
   .mocktag{
-    position:fixed; top:76px; right:16px; z-index:49;
+    position:fixed; top:192px; right:16px; z-index:49;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--muted); background:rgba(14,14,16,.72); backdrop-filter:blur(10px);
     border:1px solid var(--line); border-radius:999px; padding:7px 12px;
   }
-  .mocktag i{display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--orange); margin-right:7px; vertical-align:1px}
-  @media (max-width:560px){ .mocktag{top:68px; right:12px} }
+  .mocktag i{display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--yellow); margin-right:7px; vertical-align:1px}
+  @media (max-width:560px){ .mocktag{top:126px; right:12px} }
 
   /* While the page is actually scrolling, blurred surfaces drop their
      backdrop blur (JS toggles .is-scrolling on <html> during scroll and
@@ -177,7 +249,22 @@ function kcAttach(v, path){
   html.is-scrolling .mocktag{ background:rgba(14,14,16,.94); }
   html.is-scrolling .hero-bar{ background:rgba(8,8,9,.88); }
 
-  /* ---------- HERO — unchanged: fade + pan Kevin approved ---------- */
+  /* ---------- HERO — crossfade rotation; ~10% IN, then AUTO ZOOM ----------
+     Kevin's direction: every hero image STARTS about 10% zoomed
+     IN — scale 1.10, not completely zoomed out — and then zooms
+     in further AUTOMATICALLY on its own, a slow push-in while
+     that slide is showing. No scrolling is involved.
+     The fit below is still contain, not cover: cover scaled the
+     picture up to fill the hero box and cropped the sides away
+     (on a portrait phone it threw away most of the frame). Contain
+     letterboxes onto the hero's black, and the 10% starting zoom
+     is a transform on top of that fit. The push-in itself is the
+     .zooming animation under the slide rules: it moves at a
+     CONSTANT rate from scale 1.10 to 1.27 across the slide's
+     whole turn plus its crossfade — no hold at the start, no
+     ease-out slowdown at the end — so the motion never stops,
+     not even across a changeover, and restarts at 1.10 on every
+     slide already moving. */
   .hero{
     position:relative;
     height:min(94svh, 880px);
@@ -192,24 +279,64 @@ function kcAttach(v, path){
   .slide{
     position:absolute; inset:0;
     opacity:0;
-    transition:opacity 1.7s ease;
+    /* Linear, not ease: an eased fade slows to a crawl at both
+       ends, which reads as a stop between images. A constant-rate
+       2.2s fade keeps the changeover moving at one steady pace —
+       the two images truly fade into each other. */
+    transition:opacity 2.2s linear;
     pointer-events:none;
   }
-  .slide.active{opacity:1; z-index:1}
+  .slide.active{opacity:1; z-index:2}
+  /* Crossfade layering (Kevin's rule): the INCOMING slide (.active,
+     z-index 2) fades IN over the OUTGOING slide, which JS marks
+     .leaving for the length of the fade — it stays on its own layer
+     (z-index 1) fading OUT underneath, and it KEEPS ZOOMING the
+     whole time: its .zooming animation is never stopped, paused or
+     restarted by the change, so the first image is still pushing
+     in while it fades out and the second image fades in over it.
+     JS removes .leaving only after the fade has finished. */
+  .slide.leaving{opacity:0; z-index:1}
   .slide-inner{
-    position:absolute; inset:-4%;
-    will-change:transform;
+    position:absolute; inset:0;
   }
   .slide img{
-    width:100%; height:100%; object-fit:cover; display:block;
+    width:100%; height:100%; object-fit:contain; display:block;
+    background:#000;
+    /* Resting state is the ~10%-in start (scale 1.10) — also what
+       a reduced-motion slide sits at, still — and the .zooming
+       animation below takes over from exactly this scale. */
+    transform:scale(1.1);
+    transform-origin:50% 50%;
   }
-  .slide[data-i="0"] .slide-inner{ animation:panA 12s ease-in-out infinite alternate; }
-  .slide[data-i="1"] .slide-inner{ animation:panB 13.5s ease-in-out infinite alternate; }
-  .slide[data-i="2"] .slide-inner{ animation:panC 13s ease-in-out infinite alternate; }
-  /* Rotation slides 3–11 (Honda / SPAR / SPAR X2) cycle the same three pans */
-  .slide[data-i="3"] .slide-inner, .slide[data-i="6"] .slide-inner, .slide[data-i="9"] .slide-inner{ animation:panA 12s ease-in-out infinite alternate; }
-  .slide[data-i="4"] .slide-inner, .slide[data-i="7"] .slide-inner, .slide[data-i="10"] .slide-inner{ animation:panB 13.5s ease-in-out infinite alternate; }
-  .slide[data-i="5"] .slide-inner, .slide[data-i="8"] .slide-inner, .slide[data-i="11"] .slide-inner{ animation:panC 13s ease-in-out infinite alternate; }
+  /* AUTOMATIC PUSH-IN — the hero zoom. JS adds .zooming to a slide
+     the moment it becomes the showing slide (and keeps it on the
+     outgoing .leaving slide until its crossfade has finished, so
+     the outgoing image keeps zooming while it fades out and never
+     snaps back mid-fade). The animation starts at scale 1.10 —
+     the ~10%-zoomed-in start Kevin asked for — and pushes in at
+     a CONSTANT (linear) rate to 1.27, finishing across the
+     slide's 6.2s turn plus its 2.2s crossfade (8.4s total).
+     There is deliberately NO hold keyframe and NO easing: the
+     old version sat still at 1.10 for the first 15% of every
+     slide and eased out to a near-stop at the end, so each
+     changeover visibly stopped. Linear motion never stops —
+     the incoming image is already zooming on the first frame
+     of its fade-in, at the same speed the outgoing image is
+     zooming as it fades out. Pausing the hero (play button,
+     lightbox open, hero off screen, tab hidden — all funnel
+     into .hero.paused) freezes the push with the slideshow.
+     Scrolling does NOT drive this zoom: the old scroll-driven
+     hero zoom (hzUpdate) is removed, so nothing fights the
+     animation for the images' transform. */
+  .slide.zooming img{
+    animation:heroPushIn 8.4s linear both;
+    will-change:transform;
+  }
+  @keyframes heroPushIn{
+    0%{transform:scale(1.1)}
+    100%{transform:scale(1.27)}
+  }
+  .hero.paused .slide.zooming img{animation-play-state:paused}
   /* Project title swap — the hero text block fades out briefly while its
      kicker / title / sub / meta are replaced with the incoming project's,
      then fades back in, in sync with the slide crossfade. */
@@ -217,29 +344,16 @@ function kcAttach(v, path){
   .hero-content.txt-swap{opacity:0}
   /* Title zoom — while a project plays, its title breathes with a SLIGHT
      zoom (scale only, no directional drift), in the same spirit as the
-     image pans: one gentle push across the project's whole turn
+     image zoom: one gentle push across the project's whole turn
      (3 slides × 6.2s), easing back on the alternate pass. JS adds .tz
      after the entrance rise and restarts it on every title swap, and
      the hero's pause state freezes it with the pans. */
   h1.hero-title.tz{animation:titleZoom 18.6s ease-in-out infinite alternate; transform-origin:0% 100%}
   @keyframes titleZoom{ from{transform:scale(1)} to{transform:scale(1.05)} }
   .hero.paused h1.hero-title.tz{animation-play-state:paused}
-  @keyframes panA{
-    from{ transform:scale(1.13) translate(-1.8%, 0.5%); }
-    to  { transform:scale(1.24) translate( 1.8%, -1.0%); }
-  }
-  @keyframes panB{
-    from{ transform:scale(1.24) translate( 1.7%, -0.7%); }
-    to  { transform:scale(1.13) translate(-1.7%,  0.8%); }
-  }
-  @keyframes panC{
-    from{ transform:scale(1.14) translate(0.5%,  1.6%); }
-    to  { transform:scale(1.25) translate(-1.0%, -1.5%); }
-  }
-  .paused .slide-inner{ animation-play-state:paused !important; }
-  /* Only the visible hero slide pans — the two hidden slides sit still
-     instead of burning compositor frames underneath the active one. */
-  .slide:not(.active) .slide-inner{ animation-play-state:paused; }
+  /* The hero IMAGE zoom is the automatic push-in above (.zooming /
+     heroPushIn) — starting ~10% zoomed in on each slide, zooming
+     in further on its own. It is not scroll-driven. */
 
   .hero-shade{
     position:absolute; inset:0; z-index:2; pointer-events:none;
@@ -260,12 +374,12 @@ function kcAttach(v, path){
     font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#d8d8dc;
     display:flex; align-items:center; gap:10px; margin:0 0 10px;
   }
-  .hero-kicker::before{content:""; width:28px; height:1px; background:var(--orange); display:inline-block}
+  .hero-kicker::before{content:""; width:28px; height:1px; background:var(--yellow); display:inline-block}
   h1.hero-title{
-    font-family:"Barlow Condensed", sans-serif;
-    font-weight:700; text-transform:uppercase;
-    font-size:clamp(56px, 10.5vw, 124px);
-    line-height:.88; letter-spacing:.01em;
+    font-family:"Michroma", "Barlow Condensed", sans-serif;
+    font-weight:400; text-transform:uppercase;
+    font-size:clamp(29px, 5.4vw, 64px);
+    line-height:1.12; letter-spacing:.03em;
     margin:0;
   }
   h1.hero-title span{display:block; color:transparent; -webkit-text-stroke:1.5px rgba(255,255,255,.82); }
@@ -297,7 +411,7 @@ function kcAttach(v, path){
     display:block; margin-bottom:2px;
   }
   .view-label .t{
-    font-family:"Barlow Condensed", sans-serif; font-size:20px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    font-family:"Michroma", "Barlow Condensed", sans-serif; font-size:13px; font-weight:400; letter-spacing:.06em; text-transform:uppercase;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;
   }
   .seg{display:flex; gap:6px}
@@ -307,13 +421,13 @@ function kcAttach(v, path){
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.08em;
     transition:all .2s;
   }
-  .seg button:hover{color:var(--orange); border-color:rgba(255,128,0,.55)}
+  .seg button:hover{color:var(--yellow); border-color:rgba(255,255,0,.55)}
   .seg button.on{background:#fff; color:#0a0a0b; border-color:#fff; font-weight:500}
   @media (max-width:640px){
     .hero-bar-in{flex-wrap:wrap; row-gap:10px; column-gap:10px; padding-left:14px; padding-right:14px}
     .view-label{flex:1 1 150px}
     .view-label .n{font-size:9px; letter-spacing:.12em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-    .view-label .t{font-size:17px}
+    .view-label .t{font-size:11px}
     .seg{order:4; margin-left:auto}
     .seg button{padding:0 13px; height:42px; min-height:42px}
     #nextBtn{order:3}
@@ -325,22 +439,28 @@ function kcAttach(v, path){
     display:grid; place-items:center; font-size:14px; line-height:1;
     transition:all .2s;
   }
-  .iconbtn:hover{color:var(--orange); border-color:rgba(255,128,0,.55)}
-  .progress{
-    position:absolute; top:-1px; left:0; height:2px; background:var(--orange);
-    width:0%; z-index:5;
-  }
-  .progress.run{ animation:prog 6.2s linear forwards; }
-  @keyframes prog{ from{width:0%} to{width:100%} }
-  .paused .progress.run{ animation-play-state:paused }
+  .iconbtn:hover{color:var(--yellow); border-color:rgba(255,255,0,.55)}
 
   /* ---------- page body ---------- */
   .wrap{max-width:1280px; margin:0 auto; padding:0 clamp(18px, 4.5vw, 56px)}
   section.block{padding:72px 0 8px}
   .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:26px}
+  /* Section headings carry the site's Michroma treatment — the same
+     face and weight as the KEVIN CUNNINGHAM nameplate and the project
+     titles (Selected Work, Clients & Studios, About, Contact).
+     Michroma runs much wider than the old condensed face, so the size
+     steps down and the leading opens up to match how the nameplate
+     and hero titles sit. */
   .sec-head h2{
-    font-family:"Barlow Condensed", sans-serif; text-transform:uppercase; font-weight:600;
-    font-size:clamp(28px, 4vw, 40px); letter-spacing:.03em; margin:0; line-height:1;
+    font-family:"Michroma", "Barlow Condensed", sans-serif; text-transform:uppercase; font-weight:400;
+    font-size:clamp(18px, 3.2vw, 32px); letter-spacing:.03em; margin:0; line-height:1.3;
+  }
+  @media (max-width:640px){
+    /* Wide face + the mono side note no longer fit one line on a
+       phone — let the note wrap under the heading instead of
+       squeezing or overflowing. */
+    .sec-head{flex-wrap:wrap}
+    .sec-head p{text-align:left}
   }
   .sec-head p{font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0; text-align:right}
   .lede{color:var(--muted); font-size:17px; line-height:1.55; max-width:680px; margin:0 0 28px}
@@ -352,27 +472,27 @@ function kcAttach(v, path){
     font-family:"Barlow Condensed", sans-serif; font-weight:600; text-transform:uppercase;
     font-size:clamp(30px, 4.6vw, 52px); line-height:1.04; letter-spacing:.015em; margin:0; max-width:920px;
   }
-  .intro .big em{font-style:normal; color:var(--orange)}
+  .intro .big em{font-style:normal; color:var(--yellow)}
   .intro p{color:var(--muted); font-size:17px; line-height:1.55; max-width:640px; margin:16px 0 0}
   .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:34px}
   @media (max-width:820px){ .stats{grid-template-columns:repeat(2,1fr)} }
   .stat{border:1px solid var(--line); border-radius:var(--radius); background:var(--panel); padding:18px}
   .stat .v{font-family:"Barlow Condensed", sans-serif; font-size:34px; font-weight:700; line-height:1; display:block}
-  .stat .v i{font-style:normal; color:var(--orange)}
+  .stat .v i{font-style:normal; color:var(--yellow)}
   .stat .k{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); display:block; margin-top:8px; line-height:1.5}
 
   /* project rows */
   .proj{padding:44px 0 10px; border-bottom:1px solid var(--line)}
   .proj:last-of-type{border-bottom:none}
   .proj-head{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:18px}
-  .proj-head .num{font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--orange); letter-spacing:.12em}
-  .proj-head h3{font-family:"Barlow Condensed", sans-serif; font-size:clamp(28px, 3.6vw, 42px); font-weight:600; text-transform:uppercase; letter-spacing:.02em; margin:0; line-height:1}
+  .proj-head .num{font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--yellow); letter-spacing:.12em}
+  .proj-head h3{font-family:"Michroma", "Barlow Condensed", sans-serif; font-size:clamp(16px, 2vw, 24px); font-weight:400; text-transform:uppercase; letter-spacing:.03em; margin:0; line-height:1.25}
   .proj-head .cat{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line-strong); border-radius:999px; padding:6px 11px}
   .proj-head a{
     margin-left:auto; text-decoration:none; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--muted);
     display:inline-flex; align-items:center; gap:7px; min-height:44px;
   }
-  .proj-head a:hover{color:var(--orange)}
+  .proj-head a:hover{color:var(--yellow)}
   .proj .line{color:var(--muted); font-size:16px; line-height:1.5; margin:0 0 20px; max-width:720px}
   .proj .line strong{color:var(--text); font-weight:600}
   .gal{display:grid; grid-template-columns:1.9fr 1fr; gap:14px}
@@ -386,19 +506,45 @@ function kcAttach(v, path){
   .gal .main.is-video::after{content:none; display:none}
   .gal .main .video-wrap{position:relative; height:100%}
   .gal .main.is-video .video-wrap{height:auto; flex:none}
+  /* The video-wrap — NOT the whole tile — is the button: the tile also
+     holds the play bar, and a role="button" wrapping real <button>s
+     made the bar's controls nested interactives, which browsers and
+     touch hit-testing handle erratically (taps on the bar's Play
+     could land on the outer "button" and open the lightbox instead,
+     or do nothing). Now the picture area alone carries the button
+     role, the play bar is its sibling, and each control gets exactly
+     its own taps. Clicks/keydowns still bubble to the tile's existing
+     open handlers, which ignore anything from the bar. */
+  .gal .main.is-video .video-wrap{cursor:pointer}
+  .gal .main.is-video .video-wrap:focus-visible{outline:2px solid var(--yellow); outline-offset:-2px}
   .gal .main video{width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; background:#000}
   .gal .main .video-tag{
     position:absolute; left:12px; top:12px; z-index:2;
     display:inline-flex; align-items:center; gap:8px;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--orange); background:rgba(8,8,9,.88);
-    border:1px solid rgba(255,128,0,.45); border-radius:999px; padding:8px 12px;
+    color:var(--yellow); background:rgba(8,8,9,.88);
+    border:1px solid rgba(255,255,0,.45); border-radius:999px; padding:8px 12px;
     pointer-events:none;
   }
-  .gal .main.is-video:hover .play-badge{border-color:rgba(255,128,0,.65); color:var(--orange)}
   .gal .side{display:grid; gap:14px}
   .gal .side figure{margin:0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line)}
   .gal .side img{width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/8.6}
+  /* HONDA ZOOM — full-bleed scroll zoom on every gallery still.
+     The frame (.main / figure, overflow:hidden above) never moves;
+     the picture itself scales up inside it as it travels through
+     the viewport (JS below drives scale from scroll position, both
+     directions). The image always fills its frame edge to edge —
+     cover, no inset, no letterbox — so the zoom reads as the photo
+     pushing in, not a thumbnail shifting inside a window. The class
+     is added by the zoom script; without JS the images simply rest
+     at their natural full-bleed size. */
+  .gal .main img.honda-zoom, .gal .side figure img.honda-zoom, .thumb img.honda-zoom{
+    transform-origin:50% 42%;
+    will-change:transform;
+  }
+  /* Hero images are NOT part of this scroll zoom — they run the
+     automatic full-frame push-in in the hero rules above, and no
+     script sets their transform. */
   .gal.single{grid-template-columns:1fr}
   .gal.single .main img{aspect-ratio:21/10}
   @media (max-width:720px){
@@ -411,8 +557,8 @@ function kcAttach(v, path){
   .motion-clip{margin-top:14px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:#000}
   .motion-clip video{width:100%; display:block; aspect-ratio:16/9; object-fit:cover; background:#000}
   .motion-meta{display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--panel); padding:13px 16px; border-top:1px solid var(--line)}
-  .motion-tag{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--orange); border:1px solid rgba(255,128,0,.45); border-radius:999px; padding:6px 11px; white-space:nowrap}
-  .motion-title{font-family:"Barlow Condensed", sans-serif; font-size:20px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; line-height:1}
+  .motion-tag{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--yellow); border:1px solid rgba(255,255,0,.45); border-radius:999px; padding:6px 11px; white-space:nowrap}
+  .motion-title{font-family:"Michroma", "Barlow Condensed", sans-serif; font-size:14px; font-weight:400; text-transform:uppercase; letter-spacing:.04em; line-height:1.3}
   .motion-note{margin-left:auto; font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); white-space:nowrap}
   @media (max-width:640px){ .motion-note{margin-left:0} }
 
@@ -448,7 +594,7 @@ function kcAttach(v, path){
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
     transition:color .2s, border-color .2s;
   }
-  .gal .side figure .still-dl:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
+  .gal .side figure .still-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
   .blend-meta{display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:var(--panel); padding:13px 16px; border-top:1px solid var(--line)}
   .blend-dl{
     height:44px; min-height:44px; padding:0 16px; border-radius:999px;
@@ -457,22 +603,17 @@ function kcAttach(v, path){
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
     transition:color .2s, border-color .2s;
   }
-  .blend-dl:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
+  .blend-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
 
   /* CAT clip is clickable — opens the video lightbox with sound */
   .motion-clip.clickable{cursor:pointer; position:relative}
-  .motion-clip.clickable:focus-visible{outline:2px solid var(--orange); outline-offset:3px}
+  .motion-clip.clickable:focus-visible{outline:2px solid var(--yellow); outline-offset:3px}
   .motion-clip.clickable .video-wrap{position:relative}
-  .play-badge{
-    position:absolute; right:12px; bottom:12px; z-index:2;
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-    color:#fff; background:rgba(8,8,9,.88);
-    border:1px solid var(--line-strong); border-radius:999px; padding:9px 13px;
-    pointer-events:none;
-  }
-  .play-badge .tri{font-size:11px; line-height:1; color:var(--orange)}
-  .motion-clip.clickable:hover .play-badge{border-color:rgba(255,128,0,.65); color:var(--orange)}
+  /* No overlay play button on the gallery animations (Kevin's call):
+     the clips play muted and looping with nothing sitting on the
+     picture — no Play pill and no Play-with-sound pill on SPAR,
+     Honda or Gunslinger. The picture itself is still the click
+     target that opens its lightbox. */
 
   /* Gunslinger snow run — the animation is the big main image in its
      gallery (see .gal .main.is-video), like SPAR and Honda; the clip
@@ -487,18 +628,19 @@ function kcAttach(v, path){
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.13em; text-transform:uppercase;
     transition:color .25s cubic-bezier(.32,.72,0,1), border-color .25s cubic-bezier(.32,.72,0,1);
   }
-  .video-open-btn .tri{color:var(--orange); font-size:11px; line-height:1}
+  .video-open-btn .tri{color:var(--yellow); font-size:11px; line-height:1}
   .video-open-btn .video-open-note{color:var(--muted); letter-spacing:.1em}
-  .video-open-btn:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
-  .video-open-btn:hover .video-open-note{color:var(--orange)}
+  .video-open-btn:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
+  .video-open-btn:hover .video-open-note{color:var(--yellow)}
 
-  /* ---------- Small play bar — same language as the hero bar ----------
-     Dark glass strip sitting directly under a clip: round play/pause
-     button, a thin orange scrub track (the hero's 2px progress line,
-     made grabbable), a mono time readout, and a restart button.
-     Gallery version is a strip attached under the SPAR video; the
-     lightbox version is the same bar as a pill in .lb-bottom, directly
-     above Previous / Close / Next. */
+  /* ---------- Small play bar — LIGHTBOX ONLY ----------
+     Dark glass pill in .lb-bottom, directly above Previous / Close /
+     Next: round play/pause button, a thin yellow scrub track, a mono
+     time readout, and a restart button. There is NO play bar in the
+     galleries (Kevin's clarification): gallery animations just play
+     clean — muted, looping, autoplay, no bar under the clip and
+     nothing sitting on the picture. The player controls live in
+     the lightbox, where they fade in and out (see below). */
   .clip-bar{
     display:flex; align-items:center; gap:12px;
     background:rgba(10,10,12,.85); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
@@ -512,6 +654,25 @@ function kcAttach(v, path){
     background:rgba(14,14,16,.94);
     box-shadow:0 10px 26px rgba(0,0,0,.4);
   }
+  /* Player controls fade in / out — in the LIGHTBOX (Kevin's
+     clarification): when you go into the lightbox, its player
+     controls fade in on open and on any interaction / hover /
+     movement inside the box, and fade out after ~2.5s idle,
+     exactly like the rest of the lightbox chrome. The bar
+     (.clip-bar-lb) is part of the chrome group — it fades with
+     .lb-bottom under .chrome-on (wireChrome in JS) — and gets
+     the same explicit fade here so the bar itself, not just its
+     container, is a fading player control. Opacity only, and the
+     bar stays tappable while faded so the first tap on Play /
+     seek is never lost. Gallery clips have no bar at all. */
+  .lightbox .clip-bar-lb{
+    opacity:0;
+    transition:opacity .45s cubic-bezier(.32,.72,0,1);
+  }
+  .lightbox.chrome-on .clip-bar-lb{opacity:1}
+  @media (prefers-reduced-motion: reduce){
+    .lightbox .clip-bar-lb{transition:none}
+  }
   .clip-play, .clip-restart{
     flex:none; width:44px; height:44px; border-radius:50%;
     border:1px solid var(--line-strong); background:rgba(255,255,255,.05); color:#fff;
@@ -519,20 +680,20 @@ function kcAttach(v, path){
     transition:color .2s, border-color .2s;
   }
   .clip-restart{font-size:17px}
-  .clip-play:hover, .clip-restart:hover{color:var(--orange); border-color:rgba(255,128,0,.55)}
+  .clip-play:hover, .clip-restart:hover{color:var(--yellow); border-color:rgba(255,255,0,.55)}
   .clip-track{
     flex:1; min-width:56px; height:30px; display:flex; align-items:center;
     cursor:pointer; touch-action:none; border-radius:6px;
   }
-  .clip-track:focus-visible{outline:2px solid rgba(255,128,0,.7); outline-offset:2px}
+  .clip-track:focus-visible{outline:2px solid rgba(255,255,0,.7); outline-offset:2px}
   .clip-track .rail{position:relative; width:100%; height:3px; border-radius:2px; background:rgba(255,255,255,.18)}
   .clip-fill{
     position:absolute; left:0; top:0; bottom:0; width:0%;
-    background:var(--orange); border-radius:2px;
+    background:var(--yellow); border-radius:2px;
   }
   .clip-fill::after{
     content:""; position:absolute; right:-5px; top:50%;
-    width:11px; height:11px; border-radius:50%; background:var(--orange);
+    width:11px; height:11px; border-radius:50%; background:var(--yellow);
     transform:translateY(-50%);
   }
   .clip-time{
@@ -545,59 +706,68 @@ function kcAttach(v, path){
     .clip-time{font-size:9px; letter-spacing:.05em}
   }
 
-  /* video lightbox */
+  /* video lightbox — CONTAINED in its frame (Kevin's fix):
+     an opened animation must stay inside the stage view, never
+     blow up past it. The stage is the frame: it clips (see
+     .lb-stage overflow below), and the video is capped at 100% of
+     it on both axes with object-fit:contain, so the whole 16/9
+     picture always fits — letterboxed on a tall/portrait stage
+     instead of cropped and enlarged. */
   .lb-stage video{
-    max-width:100%; max-height:100%; width:100%;
-    aspect-ratio:16/9; object-fit:contain; display:block; border-radius:10px; border:1px solid var(--line);
+    position:relative;
+    max-width:100%; max-height:100%; width:100%; height:100%;
+    aspect-ratio:auto; object-fit:contain; display:block; border-radius:10px; border:1px solid var(--line);
     background:#000; cursor:pointer;
   }
   .lb-stage video[hidden]{display:none !important}
-  /* Poster-frame alignment (Nov 18): on a video slide, the poster must
-     sit in EXACTLY the video's frame — as a flex item the video box's
-     aspect broke (width:100% capped by max-height), and iPad Safari
-     painted the poster larger/offset than the video frames, so a second
-     copy of the image peeked out at the edges. While a video slide is
-     live, the video is taken out of flex flow and absolute-filled to
-     the stage (the relative media frame), and the poster — painted by
-     the browser inside that same element box — coincides with the
-     video frame edge for edge. Applies to all three lightboxes
-     (generic, SPAR, Honda), which all share .lb-stage. */
-  .lightbox.video-live .lb-stage video{
-    position:absolute; inset:0;
+  /* The previous rule absolute-filled the video to the stage with
+     object-fit:cover and max-width/max-height:none — on any stage
+     taller than 16/9 (every portrait phone, most iPad views) cover
+     scaled the picture up until it filled the height and cropped
+     the sides away: the "way too big, not staying in the view"
+     blow-up Kevin reported on opening an animation. This override
+     now REPEATS the containment on purpose, for every live video
+     slide in all three lightboxes (generic, SPAR, Honda), so no
+     .video-live state can re-expand it: relative (never absolute
+     fill), capped at the stage on both axes, contain, framed.
+     Poster and video frames share this same element box and the
+     same contain fit, so the poster still coincides with the
+     first frame edge for edge. */
+  .lightbox.video-live .lb-stage video,
+  .lightbox .lb-stage video:not([hidden]){
+    position:relative; inset:auto;
     width:100%; height:100%;
-    max-width:none; max-height:none;
+    max-width:100%; max-height:100%;
     aspect-ratio:auto;
-    object-fit:cover;
-    border:0; border-radius:0;
+    object-fit:contain;
+    border:1px solid var(--line); border-radius:10px;
   }
-  /* Big Play gate — a lightbox video slide opens on its poster frame
-     with this button centered over it; the file starts loading the
-     moment the slide is selected (gallery click or Next / Previous),
-     but it plays only when this button is pressed — no autoplay.
-     Hidden once playing starts. */
-  .lb-bigplay{
-    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:5;
-    width:104px; height:104px; min-width:104px; min-height:104px; border-radius:50%;
-    border:1.5px solid rgba(255,128,0,.85); background:rgba(8,8,9,.9);
-    color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
-    box-shadow:0 18px 44px rgba(0,0,0,.55);
-    transition:border-color .2s, background .2s, transform .2s;
+  /* No Play gate (Kevin's call): a lightbox video slide AUTOPLAYS
+     the moment it opens — there is no big Play button over the
+     picture. The poster frame sits inside the same contained
+     frame until the first frame paints, and the small play bar
+     under the stage is the pause / seek control from then on. */
+  @keyframes bpSpin{ to{ transform:rotate(360deg) } }
+  /* Same answer on the small play-bar buttons: a press that has to
+     wait for the file shows the ring instead of sitting unchanged. */
+  .clip-play.is-loading, .clip-restart.is-loading{color:transparent; position:relative}
+  .clip-play.is-loading::after, .clip-restart.is-loading::after{
+    content:""; position:absolute; inset:0; margin:auto; width:16px; height:16px; border-radius:50%;
+    border:2px solid rgba(255,255,255,.25); border-top-color:var(--yellow);
+    animation:bpSpin .7s linear infinite;
   }
-  .lb-bigplay[hidden]{display:none !important}
-  .lb-bigplay .bp-tri{font-size:32px; line-height:1; color:var(--orange); margin-left:5px}
-  .lb-bigplay .bp-label{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; margin-left:2px}
-  .lb-bigplay:hover{border-color:var(--orange); background:rgba(8,8,9,.88); transform:translate(-50%,-50%) scale(1.05)}
-  .lb-bigplay:focus-visible{outline:2px solid var(--orange); outline-offset:3px}
-  @media (max-width:640px){ .lb-bigplay{width:92px; height:92px; min-width:92px; min-height:92px} .lb-bigplay .bp-tri{font-size:28px} }
+  @media (prefers-reduced-motion: reduce){
+    .clip-play.is-loading::after, .clip-restart.is-loading::after{animation-duration:1.8s}
+  }
   .lb-actions{display:flex; gap:8px; flex:none; flex-wrap:wrap; justify-content:flex-end}
   .lb-sound{
     flex:none; height:46px; border-radius:999px; padding:0 18px;
-    border:1px solid rgba(255,128,0,.55); background:rgba(255,128,0,.14); color:#fff;
+    border:1px solid rgba(255,255,0,.55); background:rgba(255,255,0,.14); color:#fff;
     display:inline-flex; align-items:center; gap:8px;
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
   }
   .lb-sound[hidden]{display:none !important}
-  .lb-sound:hover{color:var(--orange); border-color:rgba(255,128,0,.7)}
+  .lb-sound:hover{color:var(--yellow); border-color:rgba(255,255,0,.7)}
   .lb-sound[aria-pressed="true"]{background:rgba(255,255,255,.05); border-color:var(--line-strong); color:var(--muted)}
   /* Lightbox download — the current still's full file (the Honda 4K
      finals included), so slides that are not displayed in a gallery
@@ -609,7 +779,7 @@ function kcAttach(v, path){
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
   }
   .lb-dl[hidden]{display:none !important}
-  .lb-dl:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
+  .lb-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
   @media (max-width:640px){ .lb-dl{padding:0 13px; height:44px; font-size:10px; letter-spacing:.08em} }
   @media (max-width:640px){
     .lb-actions{gap:6px}
@@ -622,19 +792,19 @@ function kcAttach(v, path){
   .thumb{
     text-align:left; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     overflow:hidden; padding:0; color:var(--text); width:100%;
-    transition:border-color .2s;
+    transition:border-color .2s, outline-color .3s ease;
   }
-  .thumb:hover{border-color:rgba(255,128,0,.6)}
+  .thumb:hover{border-color:rgba(255,255,0,.6)}
   .thumb img{width:100%; aspect-ratio:16/9; object-fit:cover; display:block}
   .thumb .cap{padding:14px 16px 16px; display:block}
-  .thumb .cap .no{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.16em; color:var(--orange); text-transform:uppercase; display:block; margin-bottom:4px}
-  .thumb .cap .name{font-family:"Barlow Condensed", sans-serif; font-size:21px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; display:block}
+  .thumb .cap .no{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.16em; color:var(--yellow); text-transform:uppercase; display:block; margin-bottom:4px}
+  .thumb .cap .name{font-family:"Michroma", "Barlow Condensed", sans-serif; font-size:14px; font-weight:400; text-transform:uppercase; letter-spacing:.04em; line-height:1.35; display:block}
   .thumb .cap .desc{color:var(--muted); font-size:14px; line-height:1.45; display:block; margin-top:4px}
-  .thumb.sel{outline:2px solid var(--orange); outline-offset:-2px}
+  .thumb.sel{outline:2px solid var(--yellow); outline-offset:-2px}
 
   /* project images open the lightbox too */
   .gal .main, .gal .side figure{cursor:pointer; position:relative}
-  .gal .main:focus-visible, .gal .side figure:focus-visible{outline:2px solid var(--orange); outline-offset:3px}
+  .gal .main:focus-visible, .gal .side figure:focus-visible{outline:2px solid var(--yellow); outline-offset:3px}
   .gal .main::after, .gal .side figure::after{
     content:"⤢  View"; position:absolute; right:10px; bottom:10px;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
@@ -670,8 +840,8 @@ function kcAttach(v, path){
   .lb-counter{font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.16em; color:var(--muted); white-space:nowrap}
   .lb-counter b{color:#fff; font-weight:500}
   .lb-title{min-width:0; flex:1; text-align:center}
-  .lb-title .p{display:block; font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--orange); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-  .lb-title .v{display:block; font-family:"Barlow Condensed", sans-serif; font-size:22px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .lb-title .p{display:block; font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--yellow); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .lb-title .v{display:block; font-family:"Michroma", "Barlow Condensed", sans-serif; font-size:15px; font-weight:400; text-transform:uppercase; letter-spacing:.05em; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   .lb-close{
     flex:none; height:46px; border-radius:999px; padding:0 18px;
     border:1px solid var(--line-strong); background:rgba(255,255,255,.05); color:#fff;
@@ -679,9 +849,9 @@ function kcAttach(v, path){
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
   }
   .lb-close .x{font-size:16px; line-height:1}
-  .lb-close:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
+  .lb-close:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
   .lb-stage{
-    flex:1; min-height:0; position:relative;
+    flex:1; min-height:0; position:relative; overflow:hidden;
     display:flex; align-items:flex-end; justify-content:center;
     padding:6px clamp(10px, 3vw, 28px) 2px;
   }
@@ -707,7 +877,7 @@ function kcAttach(v, path){
   }
   .lb-nav .arr{font-size:18px; line-height:1}
   .lb-nav[hidden]{display:none !important}
-  .lb-nav:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
+  .lb-nav:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
   .lb-controls .lb-close{
     width:124px; height:46px; padding:0 10px; justify-content:center;
     border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04);
@@ -716,7 +886,7 @@ function kcAttach(v, path){
     .lb-controls{gap:7px}
     .lb-nav{width:106px; height:44px; padding:0 8px; font-size:10px; letter-spacing:.08em}
     .lb-controls .lb-close{width:106px; height:44px; padding:0 8px; font-size:10px; letter-spacing:.08em}
-    .lb-title .v{font-size:19px}
+    .lb-title .v{font-size:13px}
     .lb-stage{padding-bottom:2px}
   }
   .lb-bottom{
@@ -749,11 +919,11 @@ function kcAttach(v, path){
   .lb-filmstrip .fst img{width:100%; height:100%; object-fit:cover; display:block}
   .lb-filmstrip .fst .fst-tri{
     position:absolute; right:4px; bottom:4px; width:16px; height:16px; border-radius:50%;
-    background:rgba(8,8,9,.82); color:var(--orange); font-size:8px; line-height:1;
+    background:rgba(8,8,9,.82); color:var(--yellow); font-size:8px; line-height:1;
     display:grid; place-items:center; pointer-events:none;
   }
-  .lb-filmstrip .fst:hover{opacity:.85; border-color:rgba(255,128,0,.55)}
-  .lb-filmstrip .fst.on{opacity:1; border-color:var(--orange); transform:scale(1.08)}
+  .lb-filmstrip .fst:hover{opacity:.85; border-color:rgba(255,255,0,.55)}
+  .lb-filmstrip .fst.on{opacity:1; border-color:var(--yellow); transform:scale(1.08)}
   /* No strip-in animation: the thumbs are part of the chrome group and
      arrive with its single opacity fade (see .chrome-on below). The
      .strip-in class is still toggled by JS but animates nothing, so the
@@ -770,12 +940,41 @@ function kcAttach(v, path){
     font-family:"Barlow Condensed", sans-serif; font-size:clamp(24px, 3vw, 32px); font-weight:600;
     line-height:1.15; text-transform:uppercase; letter-spacing:.02em; margin:0 0 14px; color:var(--text);
   }
-  .about .quote em{font-style:normal; color:var(--orange)}
+  .about .quote em{font-style:normal; color:var(--yellow)}
   .facts{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; align-self:start}
   .facts div{display:flex; gap:14px; padding:14px 18px; background:var(--panel); align-items:baseline}
   .facts div + div{border-top:1px solid var(--line)}
-  .facts .k{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--orange); flex:none; width:92px}
+  .facts .k{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--yellow); flex:none; width:92px}
   .facts .v{font-size:15px; font-weight:500}
+
+  /* About reveal — heading stays; the paragraph AND the facts table
+     (both inside .about) stay hidden until opened, then open together.
+     .about-open (JS below) is the ONLY open state — deliberately no
+     :hover / :focus-within open rules here: on touch, a tap leaves a
+     sticky :hover and focuses the heading, so those selectors kept
+     matching after the toggle class was removed and the section
+     could never be closed again (Kevin's stuck-open bug). The JS
+     drives everything instead: hover (fine pointers only) opens,
+     moving away closes, heading tap/click toggles, tap-elsewhere
+     and Escape close. */
+  #about .sec-head{cursor:pointer}
+  #about .sec-head h2::after{
+    content:"▾"; display:inline-block; margin-left:12px;
+    color:var(--yellow); font-size:.62em; vertical-align:.18em;
+    transition:transform .5s cubic-bezier(.32,.72,0,1);
+  }
+  #about.about-open .sec-head h2::after{transform:rotate(180deg)}
+  .about-reveal{
+    display:grid; grid-template-rows:0fr; opacity:0; pointer-events:none;
+    transition:grid-template-rows .65s cubic-bezier(.32,.72,0,1), opacity .45s cubic-bezier(.32,.72,0,1);
+  }
+  .about-reveal-inner{overflow:hidden; min-height:0}
+  .about-reveal .about{padding-top:2px}
+  #about.about-open .about-reveal{grid-template-rows:1fr; opacity:1; pointer-events:auto}
+  @media (prefers-reduced-motion: reduce){
+    .about-reveal{transition:none}
+    #about .sec-head h2::after{transition:none}
+  }
 
   /* logo wall — the real client logos from the live site, in Kevin's formula:
      equal 5-column grid, equal centered cells (88px desktop, 80px mobile),
@@ -819,11 +1018,13 @@ function kcAttach(v, path){
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--muted); line-height:2;
   }
-  .logo-also span{color:var(--orange); letter-spacing:.28em; margin-right:10px}
+  .logo-also span{color:var(--yellow); letter-spacing:.28em; margin-right:10px}
   @media (max-width:760px){
     .logowall{padding:20px 16px 14px}
-    .logo-row{grid-template-columns:repeat(2,1fr); gap:16px}
-    .logo-cell{height:80px}
+    .logo-cycle{height:72px}
+    .logo-row{gap:10px}
+    .logo-cell{height:72px; padding:4px}
+    .logowall .logo-cell img{max-width:94%; height:auto}
   }
 
   /* experience */
@@ -840,18 +1041,26 @@ function kcAttach(v, path){
     border:1px solid var(--line); border-radius:18px; background:var(--anthracite);
     padding:clamp(24px, 4vw, 44px); text-align:left;
   }
-  .contact h3{font-family:"Barlow Condensed", sans-serif; font-size:clamp(32px, 5vw, 54px); text-transform:uppercase; font-weight:700; line-height:.95; margin:0 0 12px}
+  /* "Let's build something real." — same Michroma treatment as the
+     hero title it echoes (wording unchanged), sized down for the
+     wider face so it wraps the same way in the card. */
+  .contact h3{font-family:"Michroma", "Barlow Condensed", sans-serif; font-size:clamp(23px, 4.4vw, 42px); text-transform:uppercase; font-weight:400; letter-spacing:.02em; line-height:1.3; margin:0 0 14px}
   .contact h3 em{font-style:normal; color:transparent; -webkit-text-stroke:1.2px rgba(255,255,255,.8)}
   .contact p{color:var(--muted); font-size:16px; line-height:1.55; max-width:560px; margin:0 0 24px}
   .contact-actions{display:flex; flex-wrap:wrap; gap:10px}
+  /* Contact links (email pill, Résumé, LinkedIn, Instagram,
+     ArtStation) match the headings: Michroma, regular weight —
+     smaller point size because the face runs wide, so the long
+     email pill still fits a phone-width card on one line. */
   .contact-actions a, .contact-actions button{
-    text-decoration:none; font-size:12px; letter-spacing:.13em; text-transform:uppercase; font-weight:600;
+    font-family:"Michroma", "Barlow Condensed", sans-serif;
+    text-decoration:none; font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:400;
     border:1px solid var(--line-strong); border-radius:999px; padding:0 20px; height:48px; min-height:48px;
     display:inline-flex; align-items:center; gap:8px; background:transparent; color:#fff; transition:all .2s;
   }
-  .contact-actions a:hover, .contact-actions button:hover{color:var(--orange); border-color:rgba(255,128,0,.6)}
+  .contact-actions a:hover, .contact-actions button:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
   .contact-actions .primary{background:#fff; color:#0a0a0b; border-color:#fff}
-  .contact-actions .primary:hover{background:transparent; color:var(--orange)}
+  .contact-actions .primary:hover{background:transparent; color:var(--yellow)}
   .contact .phone{margin-top:20px; font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
   .contact .phone b{color:#e8e8ea; font-weight:500}
 
@@ -861,22 +1070,48 @@ function kcAttach(v, path){
      mute) and the bottom block (filmstrip, play bar, Previous / Close /
      Next, caption) fade as one group: in when the lightbox opens and on
      any interaction, out after ~2.5s idle, and out as a close begins.
-     Opacity + pointer-events only, so the fade is what the eye sees —
-     per-slide show/hide flips underneath happen while the group is
-     transparent. (The lightbox itself opens and closes plainly — a
-     simple backdrop fade, no zoom flight in or out.) */
+     Opacity only, so the fade is what the eye sees — per-slide
+     show/hide flips underneath happen while the group is transparent.
+     (The lightbox itself opens and closes plainly — a simple backdrop
+     fade, no zoom flight in or out.)
+     The fade must NOT toggle pointer-events: the top and bottom blocks
+     are layout rows above and below the stage, not overlays, so live
+     hit targets cost nothing — and with pointer-events off while
+     faded, the first tap on Previous / Close / Next after the idle
+     fade passed straight through the button and was lost, so every
+     control needed two taps and read as unresponsive. The buttons
+     stay clickable at any opacity; any press also re-shows the group
+     (wireChrome), so a faded control is visible again by release. */
   .lightbox .lb-top, .lightbox .lb-bottom{
-    opacity:0; pointer-events:none;
+    opacity:0;
     transition:opacity .45s cubic-bezier(.32,.72,0,1);
     will-change:opacity; transform:translateZ(0);
     -webkit-backface-visibility:hidden; backface-visibility:hidden;
   }
-  .lightbox.chrome-on .lb-top, .lightbox.chrome-on .lb-bottom{opacity:1; pointer-events:auto}
-  .lb-bigplay:not([hidden]){animation:bpIn .3s ease both}
-  @keyframes bpIn{ from{opacity:0} to{opacity:1} }
+  .lightbox.chrome-on .lb-top, .lightbox.chrome-on .lb-bottom{opacity:1}
   @media (prefers-reduced-motion: reduce){
     .lightbox .lb-top, .lightbox .lb-bottom{transition:none}
-    .lb-bigplay:not([hidden]){animation:none}
+  }
+
+  /* ---------- Fade, never snap (Kevin's rule) ----------
+     Nothing on the page turns on or just off: anything that
+     appears fades in, anything that leaves fades out first. The
+     lightbox's per-slide controls (play bar, sound pill, download
+     pill) fade through .fading-out, driven by the fadeShow /
+     fadeHide helpers in JS — an element is only removed from
+     layout once its fade has finished. A slide change crossfades
+     the stage media: the stage fades out (.swap-out), the slide
+     swaps while transparent, then fades back in. The hero bar's
+     view label fades the same way while its text changes. */
+  .fading-out{opacity:0 !important}
+  .lb-sound, .lb-dl{transition:opacity .3s cubic-bezier(.32,.72,0,1)}
+  .lb-stage img, .lb-stage video{transition:opacity .2s ease}
+  .lb-stage.swap-out img, .lb-stage.swap-out video{opacity:0}
+  .view-label{transition:opacity .22s ease}
+  .view-label.txt-swap{opacity:0}
+  @media (prefers-reduced-motion: reduce){
+    .lb-sound, .lb-dl, .view-label{transition:none}
+    .lb-stage img, .lb-stage video{transition:none}
   }
   .lb-stage video{will-change:transform}
   /* Smooth playback on iPad: while a lightbox animation is the live item,
@@ -911,6 +1146,44 @@ function kcAttach(v, path){
     to{opacity:1; transform:translateY(0)}
   }
 
+  /* Logo wall — ONE row, Whipsaw-style cycle. A single row of five
+     logos lives in a fixed-height stage (.logo-cycle); four sets of
+     five take turns in it. A set's cells start hidden (opacity 0,
+     dropped 16px, nudged left) — the .logo-item class that hides
+     them is added by JS at setup, far below the fold, so nothing can
+     sit blank if JS never runs: the first set is .on in the markup
+     and simply shows. When a set's turn comes, its cells slide up a
+     little and fade in left to right (--logo-delay = column × 260ms,
+     set by JS — half the previous speed, so the fade takes twice as
+     long), hold, then leave by the mirror image of the entrance
+     (.leaving: slide down to the lower right, fading out right to
+     left) as the next set swaps in — looping for as long as the
+     wall is on screen. */
+  .logo-cycle{position:relative; height:96px}
+  .logo-set{position:absolute; inset:0; display:none}
+  .logo-set.on{display:grid}
+  .js-anim .logo-cell.logo-item{
+    opacity:0;
+    transform:translate(-10px, 16px);
+    transition:opacity 1.2s cubic-bezier(.32,.72,0,1), transform 1.2s cubic-bezier(.32,.72,0,1);
+    transition-delay:var(--logo-delay, 0ms);
+    will-change:opacity, transform;
+  }
+  .js-anim .logo-cell.logo-item.in{opacity:1; transform:translate(0,0)}
+  /* Outro — the exact mirror of the intro (Kevin's direction):
+     a set's cells enter sliding UP from the lower left, fading in
+     left to right; they leave sliding DOWN to the lower right,
+     fading out in the reverse sweep, right to left — the exit
+     stagger runs in reverse column order via --logo-out-delay
+     (set by JS), and the exit takes as long as the entrance's
+     stagger + fade, so nothing is cut off mid-fade. */
+  .js-anim .logo-set.leaving .logo-cell.logo-item{
+    opacity:0;
+    transform:translate(10px, 16px);
+    transition-duration:1s;
+    transition-delay:var(--logo-out-delay, 0ms);
+  }
+
   /* Text — CapCut-style word-by-word touches, restrained and quick.
      Words stay visible by default: the .w spans only animate once their
      parent gets .in from the observer (hero words fire on open), so text
@@ -929,14 +1202,15 @@ function kcAttach(v, path){
   .js-anim .hero .txt-anim.txt-fast.in .w{animation-delay:calc(.32s + var(--wi, 0) * 24ms)}
 
   @media (prefers-reduced-motion: reduce){
-    .slide-inner{animation:none !important; transform:scale(1.08)}
+    .slide-inner{animation:none !important; transform:none}
+    .hero .slide img{transform:none !important; animation:none !important}
     .slide{transition:opacity .3s ease}
-    .progress.run{animation:none; width:100%}
     html{scroll-behavior:auto}
     .js-anim .hero-kicker, .js-anim .hero-title, .js-anim .hero-sub,
     .js-anim .hero-meta, .js-anim .hero-bar{animation:none !important}
     .js-anim .rv.in{animation:none !important}
     .js-anim .rv.gal-item.in{animation:none !important}
+    .js-anim .logo-cell.logo-item{opacity:1 !important; transform:none !important; transition:none !important; animation:none !important}
     .js-anim .txt-anim.in .w{animation:none !important}
     .lightbox.lb-play .lb-stage img, .lightbox.lb-play .lb-stage video,
     .lightbox.lb-play .lb-caption .w,
@@ -952,12 +1226,11 @@ function kcAttach(v, path){
 <body>
 
 <div class="topbar">
+  <div class="nameplate"><span class="fn">Kevin</span> Cunningham</div>
   <nav class="pillnav" aria-label="Kevin Cunningham Portfolio">
-    <span class="brand">Kevin Cunningham <b>Portfolio</b></span>
     <a href="#hero" class="active">Hero</a>
     <a href="#work">Work</a>
     <a href="#about">About</a>
-    <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
   </nav>
 </div>
@@ -1014,13 +1287,11 @@ function kcAttach(v, path){
     <p class="hero-sub"><strong>Vehicles. Collectibles. Worlds.</strong> — led by the STAR: an autonomous ground vehicle taken from concept through to a working program.</p>
     <div class="hero-meta">
       <span>Role <b>VP of Design, Hiero Tech</b></span>
-      <span>Partner <b>Rickey Newmayer</b></span>
       <span>Hero <b>4 projects, rotating</b></span>
     </div>
   </div>
 
   <div class="hero-bar">
-    <div class="progress" id="progress"></div>
     <div class="hero-bar-in">
       <button class="iconbtn" id="playBtn" aria-label="Pause the slideshow">❚❚</button>
       <div class="view-label">
@@ -1053,7 +1324,7 @@ function kcAttach(v, path){
         <span class="num">01</span><h3>Samsung STAR UGV</h3><span class="cat">Autonomous Vehicle</span>
         <a href="https://kevincu.artstation.com/projects/oOG5J" target="_blank" rel="noopener">View on ArtStation <span aria-hidden="true">→</span></a>
       </div>
-      <p class="line"><strong>The hero up top.</strong> Autonomous ground vehicle for Samsung Techwin, led as VP of Design at Hiero Tech with partner Rickey Newmayer.</p>
+      <p class="line"><strong>The hero up top.</strong> Autonomous ground vehicle for Samsung Techwin, led as VP of Design at Hiero Tech.</p>
       <div class="gal">
         <div class="main"><img data-kc="assets/display/star-side-new.jpg" alt="Samsung STAR UGV — clean side view" loading="lazy"></div>
         <div class="side">
@@ -1071,19 +1342,14 @@ function kcAttach(v, path){
       </div>
       <p class="line"><strong>The Caterpillar UGV, in motion.</strong> The orbit animation takes the main slot, with stills from the same turntable stacked alongside.</p>
       <div class="gal">
-        <div class="main is-video" id="catClipFigure" data-poster="assets/display/cat-ugv-new-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Play CAT UGV orbit video with sound in a lightbox">
-          <div class="video-wrap">
+        <div class="main is-video" id="catClipFigure" data-poster="assets/display/cat-ugv-new-poster.jpg">
+          <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open CAT UGV orbit video in a lightbox">
             <video id="catClip" data-kc="assets/cat-ugv.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/cat-ugv-new-poster.jpg" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · CAT UGV — Orbit</span>
-            <span class="play-badge" aria-hidden="true"><span class="tri">▶</span> Play with sound</span>
           </div>
-          <div class="clip-bar" id="catBar">
-            <button type="button" class="clip-play" aria-label="Pause the SPAR animation">❚❚</button>
-            <div class="clip-track" role="slider" tabindex="0" aria-label="Seek — SPAR CAT UGV orbit" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="rail"><div class="clip-fill"></div></div></div>
-            <span class="clip-time">0:00 / 0:07</span>
-            <button type="button" class="clip-restart" aria-label="Restart the SPAR animation">↺</button>
-          </div>
+          <!-- No player controls in the gallery — the clip just
+               plays clean. Controls live in the lightbox. -->
         </div>
         <div class="side">
           <figure><img data-kc="assets/display/cat-ugv-poster.jpg" alt="CAT UGV — front three-quarter still" loading="lazy"></figure>
@@ -1127,19 +1393,14 @@ function kcAttach(v, path){
         <span class="num">04</span><h3>Honda Transporter</h3><span class="cat">Concept Vehicle</span>
       </div>
       <div class="gal">
-        <div class="main is-video" id="hondaClipFigure" data-poster="assets/display/honda-transporter-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Honda Transporter video in a lightbox">
-          <div class="video-wrap">
+        <div class="main is-video" id="hondaClipFigure" data-poster="assets/display/honda-transporter-poster.jpg">
+          <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Honda Transporter video in a lightbox">
             <video id="hondaClip" data-kc="assets/honda-transporter.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/honda-transporter-poster.jpg" aria-label="Honda transporter concept orbiting on a wet track at night">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · Honda Transporter — Orbit</span>
-            <span class="play-badge" aria-hidden="true"><span class="tri">▶</span> Open in lightbox</span>
           </div>
-          <div class="clip-bar" id="hondaBar">
-            <button type="button" class="clip-play" aria-label="Pause the Honda Transporter animation">❚❚</button>
-            <div class="clip-track" role="slider" tabindex="0" aria-label="Seek — Honda Transporter orbit" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="rail"><div class="clip-fill"></div></div></div>
-            <span class="clip-time">0:00 / 0:10</span>
-            <button type="button" class="clip-restart" aria-label="Restart the Honda Transporter animation">↺</button>
-          </div>
+          <!-- No player controls in the gallery — the clip just
+               plays clean. Controls live in the lightbox. -->
         </div>
         <div class="side honda-side">
           <figure><img data-kc="assets/honda-salt-flat-front-display.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset, purple cab on cracked playa" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-front-4k.jpg" download aria-label="Download the lake bed front three-quarter 4K final">↓ Lake Bed 4K</a></figure>
@@ -1166,19 +1427,14 @@ function kcAttach(v, path){
       </div>
       <p class="line"><strong>Tactical kitbash &amp; concept design</strong> for The Corps! — built from parts, resolved into a production direction.</p>
       <div class="gal">
-        <div class="main is-video" id="gunClipFigure" data-poster="assets/display/gunslinger-snow-poster.jpg" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Gunslinger snow run video in a lightbox">
-          <div class="video-wrap">
+        <div class="main is-video" id="gunClipFigure" data-poster="assets/display/gunslinger-snow-poster.jpg">
+          <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Gunslinger snow run video in a lightbox">
             <video id="gunClip" data-kc="assets/gunslinger-snow.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/gunslinger-snow-poster.jpg" aria-label="Gunslinger tactical vehicle driving through snow">
             </video>
             <span class="video-tag" aria-hidden="true">In motion · Gunslinger — Snow run</span>
-            <span class="play-badge" aria-hidden="true"><span class="tri">▶</span> Open in lightbox</span>
           </div>
-          <div class="clip-bar" id="gunBar">
-            <button type="button" class="clip-play" aria-label="Pause the Gunslinger snow run animation">❚❚</button>
-            <div class="clip-track" role="slider" tabindex="0" aria-label="Seek — Gunslinger snow run" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="rail"><div class="clip-fill"></div></div></div>
-            <span class="clip-time">0:00 / 0:08</span>
-            <button type="button" class="clip-restart" aria-label="Restart the Gunslinger snow run animation">↺</button>
-          </div>
+          <!-- No player controls in the gallery — the clip just
+               plays clean. Controls live in the lightbox. -->
         </div>
         <div class="side">
           <figure><img data-kc="assets/display/gunslinger-b.jpg" alt="Gunslinger — alternate view" loading="lazy"></figure>
@@ -1240,7 +1496,20 @@ function kcAttach(v, path){
     </article>
 
 
-    <!-- 09 WORKFLOWS -->
+    <!-- 09 WORKFLOWS — the bike animation is the main slot, replacing the
+         old black-and-white process still. Muted loop in the gallery,
+         exactly like SPAR, Honda and Gunslinger; click the animation to
+         open it in the lightbox, where it autoplays with its play bar.
+         The clip itself is a BOOMERANG: the file is the 7.5s ride
+         forward followed by the same ride in reverse (14.93s total,
+         endpoints not duplicated), so it ping-pongs back and forth —
+         both turnaround points sit in the near-still opening/closing
+         shot, the loop restart lands on the frame it starts on, and
+         there is no jump back to frame 1. It is also encoded for
+         smooth playback: limited-range yuv420p (hardware-decodable),
+         a keyframe every second plus one exactly at the turnaround,
+         and faststart. The same file feeds the lightbox slide, so
+         the boomerang plays there too. -->
     <article class="proj">
       <div class="proj-head">
         <span class="num">09</span><h3>Industrial Workflows</h3><span class="cat">Process</span>
@@ -1248,35 +1517,47 @@ function kcAttach(v, path){
       </div>
       <p class="line"><strong>Hard surface &amp; vehicles</strong> — the process behind the work: sketch, blockout, surface, resolve. Building digitally and by hand.</p>
       <div class="gal single">
-        <div class="main"><img data-kc="assets/display/workflows.jpg" alt="Industrial workflows — hard surface and vehicle design process" loading="lazy"></div>
+        <div class="main is-video" id="workClipFigure" data-poster="assets/display/workflows-bike-poster.jpg">
+          <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Industrial Workflows bike video in a lightbox">
+            <video id="workClip" data-kc="assets/workflows-bike.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/workflows-bike-poster.jpg" aria-label="Silver and black futuristic motorcycle in side profile, wheels turning before a motion-blur surge — the clip plays forward, then in reverse, looping back and forth">
+            </video>
+            <span class="video-tag" aria-hidden="true">In motion · Industrial Workflows — Bike</span>
+          </div>
+          <!-- No player controls in the gallery — the clip just
+               plays clean. Controls live in the lightbox. -->
+        </div>
       </div>
     </article>
 
   </section>
 
-  <!-- ============ INTRO — beneath the gallery ============ -->
-  <section class="intro" aria-label="Introduction">
-    <h2 class="big">Industrial design for machines that <em>actually get built.</em></h2>
-    <p>I take hardware from the first sketch to a real, working machine — concept, surface, and program, end to end. Thirty years of it: half in vehicles, half leading art and design in games.</p>
-    <div class="stats">
-      <div class="stat"><span class="v">30 <i>yrs</i></span><span class="k">Design total</span></div>
-      <div class="stat"><span class="v">15 <i>/</i> 15</span><span class="k">Vehicles / Games &amp; art direction</span></div>
-      <div class="stat"><span class="v">Art Center</span><span class="k">B.S. Transportation Design, 1994</span></div>
-      <div class="stat"><span class="v">VP <i>×2</i></span><span class="k">VP of Design — Hiero Tech &amp; Land Systems</span></div>
+  <!-- ============ LOGO WALL ============ -->
+  <section class="block" id="clients">
+    <div class="sec-head">
+      <h2>Clients &amp; Studios</h2>
+      <p>Thirty years of badges</p>
+    </div>
+    <div class="logowall" aria-label="Client logos">
+      <div class="logo-cycle"><div class="logo-row logo-set on"><div class="logo-cell"><img data-kc="assets/logos/honda.png" data-logo="honda" alt="Honda" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/jeep.png" data-logo="jeep" alt="Jeep" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/generalmotors.png" data-logo="generalmotors" alt="GM" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/nissan.png" data-logo="nissan" alt="Nissan" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/lexus.png" data-logo="lexus" alt="Lexus" loading="lazy"></div></div>
+      <div class="logo-row logo-set"><div class="logo-cell"><img data-kc="assets/logos/activision.png" data-logo="activision" alt="Activision" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/ea.png" data-logo="ea" alt="EA" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/digitaldomain.png" data-logo="digitaldomain" alt="Digital Domain" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/hasbro.png" data-logo="hasbro" alt="Hasbro" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/imagineering.png" data-logo="imagineering" alt="Disney Imagineering" loading="lazy"></div></div>
+      <div class="logo-row logo-set"><div class="logo-cell"><img data-kc="assets/logos/boeing.png" data-logo="boeing" alt="Boeing" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/teague.png" data-logo="teague" alt="Teague" loading="lazy"></div><div class="logo-cell"><span class="logo-text">Carnegie Mellon Robotics</span></div><div class="logo-cell"><span class="logo-text">Metalcrafters</span></div><div class="logo-cell"><span class="logo-text">Lanard Toys</span></div></div>
+      <div class="logo-row logo-set"><div class="logo-cell"><img data-kc="assets/logos/samsung.png" data-logo="samsung" alt="Samsung" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/mcdonalds.png" data-logo="mcdonalds" alt="McDonald&apos;s" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/virgin.png" data-logo="virgin" alt="Virgin" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/popmech.png" data-logo="popmech" alt="Popular Mechanics" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/imaginefx.png" data-logo="imaginefx" alt="ImagineFX" loading="lazy"></div></div></div>
+      <div class="logo-also"><span>Also:</span> Carnegie Mellon Robotics · Metalcrafters · Automobile Magazine · Car Styling · Mechanical Engineering · Ballistic Publishing Concept Book</div>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
   <section class="block" id="about">
-    <div class="sec-head">
+    <div class="sec-head" id="aboutHead" role="button" tabindex="0" aria-expanded="false" aria-controls="aboutReveal" title="Tap or click to open / close About">
       <h2>About</h2>
       <p>Kevin Cunningham</p>
     </div>
+    <div class="about-reveal" id="aboutReveal"><div class="about-reveal-inner">
     <div class="about">
       <div>
         <p class="quote">“Take time from creating to <em>think, research,</em> then refine and build.”</p>
         <p><strong>Art Center is me.</strong> B.S. in Transportation Design, 1994 — and thirty years since, split evenly: <strong>15 years in vehicles, 15 years in art direction and video games.</strong></p>
-        <p>Motorcycles at <strong>Honda R&amp;D</strong>. VP of Design twice over — <strong>Hiero Tech</strong>, where the Samsung STAR UGV went from concept to a working program with partner Rickey Newmayer, and <strong>Land Systems</strong>, on autonomous ground vehicles. Toy design end-to-end at <strong>Lanard</strong> — concept through final on-shelf sample — and concept work for <strong>Hasbro</strong>. Lead artist at <strong>Activision</strong>, senior artist at <strong>Savage Entertainment</strong> (James Bond, Star Wars, Transformers), freelance concept design for <strong>Sega of America</strong>, and Chief Creative Director at <strong>Studio Uchuu</strong>.</p>
+        <p>Motorcycles at <strong>Honda R&amp;D</strong>. VP of Design twice over — <strong>Hiero Tech</strong>, where the Samsung STAR UGV went from concept to a working program, and <strong>Land Systems</strong>, on autonomous ground vehicles. Toy design end-to-end at <strong>Lanard</strong> — concept through final on-shelf sample — and concept work for <strong>Hasbro</strong>. Lead artist at <strong>Activision</strong>, senior artist at <strong>Savage Entertainment</strong> (James Bond, Star Wars, Transformers), freelance concept design for <strong>Sega of America</strong>, and Chief Creative Director at <strong>Studio Uchuu</strong>.</p>
         <p>Building digitally and by hand is a must for the designer — its importance can’t be overstated. The computer keeps it precise and efficient.</p>
       </div>
       <div class="facts" aria-label="Key facts">
@@ -1287,40 +1568,7 @@ function kcAttach(v, path){
         <div><span class="k">Portfolio</span><span class="v">Kevin Cunningham — Industrial Design</span></div>
       </div>
     </div>
-  </section>
-
-  <!-- ============ LOGO WALL ============ -->
-  <section class="block" id="clients">
-    <div class="sec-head">
-      <h2>Clients &amp; Studios</h2>
-      <p>Thirty years of badges</p>
-    </div>
-    <div class="logowall" aria-label="Client logos">
-      <div class="logo-group"><h5>Automotive</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/honda.png" data-logo="honda" alt="Honda" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/jeep.png" data-logo="jeep" alt="Jeep" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/generalmotors.png" data-logo="generalmotors" alt="GM" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/nissan.png" data-logo="nissan" alt="Nissan" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/lexus.png" data-logo="lexus" alt="Lexus" loading="lazy"></div></div></div>
-      <div class="logo-group"><h5>Games &amp; Play</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/activision.png" data-logo="activision" alt="Activision" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/ea.png" data-logo="ea" alt="EA" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/digitaldomain.png" data-logo="digitaldomain" alt="Digital Domain" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/hasbro.png" data-logo="hasbro" alt="Hasbro" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/imagineering.png" data-logo="imagineering" alt="Disney Imagineering" loading="lazy"></div></div></div>
-      <div class="logo-group"><h5>Aerospace &amp; Robotics</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/boeing.png" data-logo="boeing" alt="Boeing" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/teague.png" data-logo="teague" alt="Teague" loading="lazy"></div><div class="logo-cell"><span class="logo-text">Carnegie Mellon Robotics</span></div><div class="logo-cell"><span class="logo-text">Metalcrafters</span></div><div class="logo-cell"><span class="logo-text">Lanard Toys</span></div></div></div>
-      <div class="logo-group"><h5>Brands &amp; Published</h5><div class="logo-row"><div class="logo-cell"><img data-kc="assets/logos/samsung.png" data-logo="samsung" alt="Samsung" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/mcdonalds.png" data-logo="mcdonalds" alt="McDonald&apos;s" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/virgin.png" data-logo="virgin" alt="Virgin" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/popmech.png" data-logo="popmech" alt="Popular Mechanics" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/imaginefx.png" data-logo="imaginefx" alt="ImagineFX" loading="lazy"></div></div></div>
-      <div class="logo-also"><span>Also:</span> Carnegie Mellon Robotics · Metalcrafters · Automobile Magazine · Car Styling · Mechanical Engineering · Ballistic Publishing Concept Book</div>
-    </div>
-  </section>
-
-  <!-- ============ EXPERIENCE ============ -->
-  <section class="block" id="experience">
-    <div class="sec-head">
-      <h2>Experience</h2>
-      <p>The short version</p>
-    </div>
-    <div class="xplist">
-      <div><span class="role">Chief Creative Director</span><span class="org">Studio Uchuu</span><span class="note">2022 — present</span></div>
-      <div><span class="role">VP of Design</span><span class="org">Land Systems</span><span class="note">Autonomous ground vehicles</span></div>
-      <div><span class="role">Founder / VP of Design</span><span class="org">Hiero Tech</span><span class="note">Samsung STAR UGV · with Rickey Newmayer</span></div>
-      <div><span class="role">Product Designer</span><span class="org">Lanard Toys</span><span class="note">Concept through final on-shelf sample</span></div>
-      <div><span class="role">Concept Designer</span><span class="org">Hasbro</span><span class="note">Spider-Man vehicles, concept phase</span></div>
-      <div><span class="role">Senior Artist</span><span class="org">Savage Entertainment</span><span class="note">James Bond · Star Wars · Transformers</span></div>
-      <div><span class="role">Lead Artist</span><span class="org">Activision</span><span class="note">Art direction, video games</span></div>
-      <div><span class="role">Designer</span><span class="org">Honda R&amp;D</span><span class="note">Motorcycles</span></div>
-      <div><span class="role">Freelance Concept Designer</span><span class="org">Sega of America</span><span class="note">1996–97 · unreleased Dreamcast title</span></div>
-    </div>
+    </div></div>
   </section>
 
   <!-- ============ CONTACT ============ -->
@@ -1363,8 +1611,7 @@ function kcAttach(v, path){
   </div>
   <div class="lb-stage" id="lbStage">
     <img id="lbImg" alt="">
-    <video id="lbSlideVideo" hidden playsinline loop preload="none" data-kcposter="assets/gunslinger-snow-poster.jpg" aria-label="Gunslinger — snow run video"></video>
-    <button type="button" class="lb-bigplay" id="lbBigPlay" hidden aria-label="Play the Gunslinger snow run video"><span class="bp-tri" aria-hidden="true">▶</span><span class="bp-label">Play</span></button>
+    <video id="lbSlideVideo" hidden autoplay playsinline loop preload="none" data-kcposter="assets/gunslinger-snow-poster.jpg" aria-label="Gunslinger — snow run video"></video>
   </div>
   <div class="lb-bottom">
     <div class="clip-bar clip-bar-lb" id="lbBar" hidden>
@@ -1396,8 +1643,7 @@ function kcAttach(v, path){
     </div>
   </div>
   <div class="lb-stage" id="vlbStage">
-    <video id="lbVideo" data-src="assets/cat-ugv.mp4" data-kcposter="assets/cat-ugv-new-poster.jpg" playsinline loop preload="none" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface — with sound"></video>
-    <button type="button" class="lb-bigplay" id="vlbBigPlay" hidden aria-label="Play the CAT UGV orbit video"><span class="bp-tri" aria-hidden="true">▶</span><span class="bp-label">Play</span></button>
+    <video id="lbVideo" data-src="assets/cat-ugv.mp4" data-kcposter="assets/cat-ugv-new-poster.jpg" autoplay playsinline loop preload="none" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface — with sound"></video>
     <img id="vlbImg" data-kc="assets/cat-ugv-poster.jpg" alt="" style="display:none">
   </div>
   <div class="lb-bottom">
@@ -1413,7 +1659,7 @@ function kcAttach(v, path){
       <button type="button" class="lb-close" id="vlbClose" aria-label="Close video lightbox"><span class="x" aria-hidden="true">✕</span> Close</button>
       <button type="button" class="lb-nav next" id="vlbNext" aria-label="Next slide in SPAR"><span class="lbl">Next</span><span class="arr" aria-hidden="true">→</span></button>
     </div>
-    <p class="lb-caption" id="vlbCaption">CAT UGV — Orbit. Press Play to watch — sound is on, use Mute to turn it off. Tap the video to pause or play.</p>
+    <p class="lb-caption" id="vlbCaption">CAT UGV — Orbit. Sound is on, use Mute to turn it off. Tap the video to pause or play.</p>
   </div>
 </div>
 
@@ -1435,8 +1681,7 @@ function kcAttach(v, path){
     </div>
   </div>
   <div class="lb-stage" id="hlbStage">
-    <video id="hlbVideo" data-src="assets/honda-transporter.mp4" data-kcposter="assets/honda-transporter-poster.jpg" playsinline loop preload="none" aria-label="Honda transporter concept orbiting on a wet track at night — with sound"></video>
-    <button type="button" class="lb-bigplay" id="hlbBigPlay" hidden aria-label="Play the Honda Transporter video"><span class="bp-tri" aria-hidden="true">▶</span><span class="bp-label">Play</span></button>
+    <video id="hlbVideo" data-src="assets/honda-transporter.mp4" data-kcposter="assets/honda-transporter-poster.jpg" autoplay playsinline loop preload="none" aria-label="Honda transporter concept orbiting on a wet track at night — with sound"></video>
     <img id="hlbImg" alt="" style="display:none">
   </div>
   <div class="lb-bottom">
@@ -1452,7 +1697,7 @@ function kcAttach(v, path){
       <button type="button" class="lb-close" id="hlbClose" aria-label="Close Honda lightbox"><span class="x" aria-hidden="true">✕</span> Close</button>
       <button type="button" class="lb-nav next" id="hlbNext" aria-label="Next slide in Honda Transporter"><span class="lbl">Next</span><span class="arr" aria-hidden="true">→</span></button>
     </div>
-    <p class="lb-caption" id="hlbCaption">Honda Transporter — Wet-Track Orbit. Press Play to watch — sound is on, use Mute to turn it off. Tap the video to pause or play.</p>
+    <p class="lb-caption" id="hlbCaption">Honda Transporter — Wet-Track Orbit. Sound is on, use Mute to turn it off. Tap the video to pause or play.</p>
   </div>
 </div>
 <script>
@@ -1538,8 +1783,8 @@ function kcAttach(v, path){
      1) Samsung STAR (its three views, with the slightly faster,
      stronger pans), 2) Honda Transporter (three images), 3) SPAR
      (three images), 4) SPAR X2 (three images) — then it loops.
-     Every slide gets the same clear turn (DURATION, matched to the
-     progress bar); project changes are a plain crossfade, and the
+     Every slide gets the same clear turn (DURATION); project
+     changes are a plain crossfade, and the
      on-screen title block (kicker / title / sub / meta) swaps to the
      incoming project's text in sync with the change. */
   var NAMES = [
@@ -1553,7 +1798,7 @@ function kcAttach(v, path){
     { kicker:'Hiero Tech &nbsp;·&nbsp; Samsung Techwin',
       title:'Samsung <span>STAR UGV</span>',
       sub:'<strong>Vehicles. Collectibles. Worlds.</strong> — led by the STAR: an autonomous ground vehicle taken from concept through to a working program.',
-      meta:'<span>Role <b>VP of Design, Hiero Tech</b></span><span>Partner <b>Rickey Newmayer</b></span><span>Hero <b>4 projects, rotating</b></span>' },
+      meta:'<span>Role <b>VP of Design, Hiero Tech</b></span><span>Hero <b>4 projects, rotating</b></span>' },
     { kicker:'Honda &nbsp;·&nbsp; Concept Vehicle',
       title:'Honda <span>Transporter</span>',
       sub:'A concept transporter for Honda — a wet-track orbit animation and lake bed stills, designed as one machine.',
@@ -1573,7 +1818,6 @@ function kcAttach(v, path){
   var thumbs  = Array.prototype.slice.call(document.querySelectorAll('.thumb'));
   var viewName = document.getElementById('viewName');
   var viewCount = document.getElementById('viewCount');
-  var progress = document.getElementById('progress');
   var hero = document.getElementById('hero');
   var playBtn = document.getElementById('playBtn');
   var heroContent = hero.querySelector('.hero-content');
@@ -1624,21 +1868,82 @@ function kcAttach(v, path){
   function heroCountText(){
     return 'Project 0' + (heroProj+1) + ' / 04 — ' + (playing ? 'Auto-rotating' : 'Paused');
   }
-  function restartProgress(){
-    progress.classList.remove('run');
-    void progress.offsetWidth;
-    if(playing && !reduced) progress.classList.add('run');
+  /* The hero bar's view label fades out, swaps its text, and fades
+     back in on every slide change — text never pops (Kevin's fade
+     rule). The swap reads `current` when it lands, so rapid steps
+     always settle on the latest slide's label. */
+  var viewLabel = document.querySelector('.view-label');
+  var viewSwapT = null;
+  function updateViewLabel(){
+    if(reduced || !viewLabel){
+      viewName.textContent = NAMES[current];
+      viewCount.textContent = heroCountText();
+      return;
+    }
+    viewLabel.classList.add('txt-swap');
+    if(viewSwapT) clearTimeout(viewSwapT);
+    viewSwapT = setTimeout(function(){
+      viewSwapT = null;
+      viewName.textContent = NAMES[current];
+      viewCount.textContent = heroCountText();
+      viewLabel.classList.remove('txt-swap');
+    }, 160);
+  }
+  /* Automatic hero zoom — restart the push-in on the slide that is
+     now showing, and let the outgoing slide KEEP ZOOMING until its
+     2.2s crossfade has fully finished (removing .zooming earlier
+     would snap it back to its resting scale mid-fade).
+     No-op under reduced motion: slides sit still at the ~10%-in
+     resting scale (1.10, set in the .slide img CSS). */
+  function startHeroZoom(slideEl){
+    if(!slideEl) return;
+    if(slideEl._zoomClearT){ clearTimeout(slideEl._zoomClearT); slideEl._zoomClearT = null; }
+    if(reduced) return;
+    slideEl.classList.remove('zooming');
+    void slideEl.offsetWidth;
+    slideEl.classList.add('zooming');
+  }
+  function releaseHeroZoom(slideEl){
+    if(!slideEl || !slideEl.classList.contains('zooming')) return;
+    if(slideEl._zoomClearT) clearTimeout(slideEl._zoomClearT);
+    slideEl._zoomClearT = setTimeout(function(){
+      slideEl.classList.remove('zooming');
+      slideEl._zoomClearT = null;
+    }, 2350);
+  }
+  /* Crossfade bookkeeping (Kevin's rule): the outgoing slide is
+     marked .leaving for the length of the fade. Under .leaving it
+     keeps its own layer under the incoming slide and fades OUT,
+     while its push-in animation — untouched here — keeps zooming
+     it in for the whole fade. The incoming slide fades IN over it
+     as .active. .leaving is removed only once the fade is done
+     (or at once if the slide is called back early). */
+  function markLeaving(slideEl){
+    if(!slideEl) return;
+    if(slideEl._leaveT) clearTimeout(slideEl._leaveT);
+    slideEl.classList.add('leaving');
+    slideEl._leaveT = setTimeout(function(){
+      slideEl.classList.remove('leaving');
+      slideEl._leaveT = null;
+    }, 2350);
+  }
+  function clearLeaving(slideEl){
+    if(!slideEl) return;
+    if(slideEl._leaveT){ clearTimeout(slideEl._leaveT); slideEl._leaveT = null; }
+    slideEl.classList.remove('leaving');
   }
   function show(i, user){
+    var prevSlide = slides[current];
     current = (i + slides.length) % slides.length;
     slides.forEach(function(s, k){ s.classList.toggle('active', k === current); });
+    clearLeaving(slides[current]);
+    if(prevSlide && prevSlide !== slides[current]){ markLeaving(prevSlide); releaseHeroZoom(prevSlide); }
+    startHeroZoom(slides[current]);
     var p = projOf(current);
     segBtns.forEach(function(b, k){ b.classList.toggle('on', k === p); });
     thumbs.forEach(function(t, k){ t.classList.toggle('sel', k === current); });
     if(p !== heroProj){ heroProj = p; swapHeroText(p); }
-    viewName.textContent = NAMES[current];
-    viewCount.textContent = heroCountText();
-    restartProgress();
+    updateViewLabel();
     if(user && playing) restartTimer();
   }
   function next(){ show(current + 1, false); }
@@ -1652,7 +1957,6 @@ function kcAttach(v, path){
     playBtn.textContent = playing ? '❚❚' : '▶';
     playBtn.setAttribute('aria-label', playing ? 'Pause the slideshow' : 'Play the slideshow');
     viewCount.textContent = heroCountText();
-    restartProgress();
     restartTimer();
   }
 
@@ -1691,11 +1995,14 @@ function kcAttach(v, path){
     {src:'assets/spar-d.jpg', proj:'SPAR X2 Hybrid UTV', view:'Engine bay panel', alt:'SPAR X2 engine bay access panel'},
     {src:'assets/spar-e.jpg', proj:'SPAR X2 Hybrid UTV', view:'Multi-function charger', alt:'SPAR X2 multi-function charger in cargo bed'},
     {src:'assets/spar-f.jpg', proj:'SPAR X2 Hybrid UTV', view:'Chassis comparison', alt:'SPAR X2 chassis comparison, dual drive vs all electric'},
-    /* Samsung STAR — 8 distinct images, each shown once. The bordered side
+    /* Samsung STAR — 10 distinct images, each shown once. The bordered side
        view (also the gallery main) is the only copy of that shot in this set:
        the same side-view photograph also exists as star-1.jpg and star-a.jpg,
        and those duplicate entries are deliberately NOT listed here, so the
-       first image never shows twice and the counter / dots read the real 8. */
+       first image never shows twice and the counter / dots read the real 10.
+       The last two are the Metalcrafters build images Kevin added: Body
+       Suspension, then Rear Detail — final slides of this set, in that
+       order; no existing STAR entry moved. */
     {src:'assets/star-side-new.jpg', proj:'Samsung STAR UGV', view:'Side view — bordered edition', alt:'Samsung STAR UGV — blue-bordered side view with Rotiform wheels'},
     {src:'assets/star-2.jpg', proj:'Samsung STAR UGV', view:'Rear view — sensor mast', alt:'Blue Samsung STAR UGV rear view with sensor mast'},
     {src:'assets/star-3.jpg', proj:'Samsung STAR UGV', view:'Shell opened — module bay', alt:'Samsung STAR UGV with shell opened, module bay'},
@@ -1704,6 +2011,8 @@ function kcAttach(v, path){
     {src:'assets/star-6.jpg', proj:'Samsung STAR UGV', view:'Prototype — front', alt:'Samsung STAR prototype front view in workshop'},
     {src:'assets/star-7.jpg', proj:'Samsung STAR UGV', view:'Prototype — rear', alt:'Samsung STAR prototype rear view in workshop'},
     {src:'assets/star-8.jpg', proj:'Samsung STAR UGV', view:'Bare chassis — tube frame', alt:'Samsung STAR chassis and powertrain, bare tube frame'},
+    {src:'assets/star-9.jpg', proj:'Samsung STAR UGV', view:'Build image — Body Suspension', alt:'Samsung STAR build image — black body shell on yellow Metalcrafters fixtures, body suspension'},
+    {src:'assets/star-10.jpg', proj:'Samsung STAR UGV', view:'Build image — Rear Detail', alt:'Samsung STAR build image — rear detail, red taillight and rear bumper'},
     /* Mad Bomber — 6 */
     {src:'assets/bomber-a.jpg', proj:'Mad Bomber', view:'Technical datasheet — three views', alt:'Mad Bomber technical datasheet, three views'},
     {src:'assets/bomber-b.jpg', proj:'Mad Bomber', view:'Sniper cannon — close-up datasheet', alt:'Mad Bomber sniper cannon close-up datasheet'},
@@ -1739,8 +2048,11 @@ function kcAttach(v, path){
     {src:'assets/honda-salt-flat-side-4k.jpg', proj:'Honda Orion Transporter', view:'Lake Bed — Side View · 4K', alt:'Honda Orion transporter side view at speed on the lake bed, motion blur and white salt dust plume'},
     {src:'assets/honda-shot6-rear-day-4k.jpg', proj:'Honda Orion Transporter', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind'},
     {src:'assets/honda-shot6-rear-night-4k.jpg', proj:'Honda Orion Transporter', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground'},
-    /* Industrial Workflows — 1 (already complete) */
-    {src:'assets/workflows.jpg', proj:'Industrial Workflows', view:'Process', alt:'Industrial workflows — hard surface and vehicle design process'}
+    /* Industrial Workflows — 1 video: the bike clip that replaced the
+       old black-and-white process still. It is the project's only
+       slide, so the lightbox opens straight onto the animation,
+       which autoplays there like Gunslinger's snow run. */
+    {src:'assets/workflows-bike.mp4', type:'video', poster:'assets/workflows-bike-poster.jpg', proj:'Industrial Workflows', view:'Bike — video', alt:'Silver and black futuristic motorcycle in side profile, wheels turning before a motion-blur surge — the clip plays forward, then in reverse, looping back and forth'}
   ];
   var lightbox = document.getElementById('lightbox');
   var lbImg = document.getElementById('lbImg');
@@ -1789,6 +2101,59 @@ function kcAttach(v, path){
     box.classList.add('lb-closing');
     setTimeout(function(){ box.classList.remove('lb-closing'); done(); }, 225);
   }
+  /* ---------- Fade, never snap — show / hide helpers ----------
+     Kevin's rule: nothing turns on or just off, everything fades
+     in and fades out. fadeShow / fadeHide replace the bare
+     `el.hidden = …` flips for the lightboxes' per-slide controls
+     (play bar, sound pill, download pill): showing starts the
+     element transparent and fades it in; hiding fades it out
+     first and only then removes it from layout, so the eye never
+     sees a pop. Reduced motion flips instantly, as before. */
+  function fadeShow(el){
+    if(!el) return;
+    if(el._fadeT){ clearTimeout(el._fadeT); el._fadeT = null; }
+    if(el.hidden){
+      el.hidden = false;
+      if(!reduced){
+        el.classList.add('fading-out');
+        void el.offsetWidth; /* register the transparent start */
+        el.classList.remove('fading-out');
+      }
+    } else {
+      el.classList.remove('fading-out');
+    }
+  }
+  function fadeHide(el){
+    if(!el || el.hidden) return;
+    if(reduced){ el.hidden = true; return; }
+    el.classList.add('fading-out');
+    if(el._fadeT) clearTimeout(el._fadeT);
+    /* Match the element's own fade: the play bar fades over .45s
+       (its chrome transition), the pills over .3s. */
+    var ms = el.classList.contains('clip-bar') ? 460 : 310;
+    el._fadeT = setTimeout(function(){
+      el._fadeT = null;
+      el.hidden = true;
+      el.classList.remove('fading-out');
+    }, ms);
+  }
+  /* Slide-change crossfade for a lightbox stage: fade the stage
+     media out, run the swap while it is transparent, then fade
+     back in. On open (the box is still hidden) and under reduced
+     motion the swap runs immediately, exactly as before — the
+     box's own fade covers the entrance. Rapid steps collapse to
+     the latest slide, since a pending swap is replaced, not
+     queued. */
+  function stageSwap(box, stage, swapFn){
+    if(reduced || !box || box.hidden || !stage){ swapFn(); return; }
+    if(stage._swapT) clearTimeout(stage._swapT);
+    stage.classList.add('swap-out');
+    stage._swapT = setTimeout(function(){
+      stage._swapT = null;
+      swapFn();
+      stage.classList.remove('swap-out');
+    }, 210);
+  }
   /* ---------- Lightbox chrome — fades, never pops ----------
      The top bar and bottom block of every lightbox are one fade group
      (.chrome-on, CSS above): shown when the lightbox opens and on any
@@ -1827,7 +2192,7 @@ function kcAttach(v, path){
     box.addEventListener('touchstart', poke, {passive:true});
   }
   /* Double-tap to close — on the image / stage area only. Taps on the
-     video itself or any control (big Play, play bar, buttons, links)
+     video itself or any control (play bar, buttons, links)
      stay controls: they never count toward a close. A double-tap is
      two low-movement taps within 320ms; anything that moved >14px is
      swipe territory and is ignored here, so the two never fight. */
@@ -1835,7 +2200,7 @@ function kcAttach(v, path){
     if(!stageEl) return;
     var lastTap = 0, tapX = 0, tapY = 0, startX = null, startY = null;
     function isControl(t){
-      return !!(t && t.closest && (t.closest('button') || t.closest('a') || t.closest('.clip-bar') || t.closest('.lb-bigplay')));
+      return !!(t && t.closest && (t.closest('button') || t.closest('a') || t.closest('.clip-bar')));
     }
     stageEl.addEventListener('touchstart', function(e){
       startX = e.changedTouches[0].clientX; startY = e.changedTouches[0].clientY;
@@ -1912,63 +2277,51 @@ function kcAttach(v, path){
     lbStrip.style.display = lbGroup.length > 1 ? '' : 'none';
   }
 
-  /* ---------- Lightbox video gate — load on selection, play on Play ----------
-     A video slide never autoplays: it opens on its poster frame
-     with a big Play button, and it only PLAYS when Play is pressed.
-     But its file starts loading the moment the slide is selected —
-     lbShow calls lbPreloadVideo() in the same click that opens the
-     lightbox (or lands on this slide via Next / Previous /
-     filmstrip), so the clip is already loading / ready behind the
-     poster instead of cold-loading and hanging after Play.
+  /* ---------- Lightbox video — AUTOPLAY on open, no Play button ----------
+     A video slide plays by itself the moment it is selected: lbShow
+     calls lbStartVideo() in the same click that opens the lightbox
+     (or lands on this slide via Next / Previous / filmstrip), which
+     attaches the file and plays it — with sound, falling back to
+     muted if the browser refuses unmuted autoplay, so the picture
+     always moves. There is no Play gate and no big Play button;
+     the small play bar under the stage is the pause / seek control.
      Leaving the slide or closing the lightbox stops the video and
-     unloads it, so the next video slide starts clean behind its
-     own Play button. The play bar appears once the clip is playing. */
-  var lbBigPlay = document.getElementById('lbBigPlay');
+     unloads it, so the next video slide starts clean. */
   var lbVidSrc = null;
   var lbVidStarted = false;
-  function lbGateVideo(){
-    lbVidStarted = false;
-    if(lbBigPlay) lbBigPlay.hidden = false;
-    if(lbBar) lbBar.hidden = true;
-  }
-  /* Start fetching the current video slide's file NOW — attach the
-     source, promote preload and call load() — without playing it.
-     Called from lbShow the instant a video slide is selected. */
-  function lbPreloadVideo(){
-    if(!lbVidSrc) return;
-    kcAttach(lbVid, lbVidSrc);
-  }
   function lbStartVideo(){
     if(!lbVidSrc) return;
-    /* Already preloading / loaded from selection time — just play;
-       only attach + load() here if the preload somehow did not run,
-       so pressing Play never restarts a fetch already in flight. */
+    /* Attach + load() first if the file is not on the element yet,
+       then play as soon as it lands — autoplay never waits for a
+       separate press. The recall is guarded: if the visitor has
+       already moved to another slide or closed the box, it does
+       not start a hidden video. */
     if(!lbVid.getAttribute('src') || lbVid._kcPath !== lbVidSrc){
-      kcAttach(lbVid, lbVidSrc).then(function(){ if(lbVid.getAttribute('src')) lbStartVideo(); });
+      kcAttach(lbVid, lbVidSrc).then(function(){ if(lbVid.getAttribute('src') && !lbVid.hidden && !lightbox.hidden) lbStartVideo(); });
+      fadeShow(lbBar);
       return;
     }
     /* The snow-run file has a real audio track — play it with sound.
        If the browser refuses unmuted playback (the open tap can
-       outlast the click's gesture window), fall back to muted rather than
-       freezing the picture; if even that fails, restore the Play
-       gate so there is always a way in. */
+       outlast the click's gesture window), fall back to muted rather
+       than freezing the picture; if even that fails, leave the play
+       bar visible so tapping the video or its play button retries. */
     lbVid.muted = false;
     lbVid.defaultMuted = false;
     lbVid.volume = 1;
     var vp = lbVid.play();
     if(vp && vp.catch) vp.catch(function(){
+      if(lbVid.hidden || lightbox.hidden) return;
       lbVid.muted = true;
       var vp2 = lbVid.play();
       if(vp2 && vp2.catch) vp2.catch(function(){
         lbVidStarted = false;
-        if(lbBigPlay) lbBigPlay.hidden = false;
-        if(lbBar) lbBar.hidden = true;
+        fadeShow(lbBar);
       });
     });
     lbVidStarted = true;
     lightbox.classList.add('video-live');
-    if(lbBigPlay) lbBigPlay.hidden = true;
-    if(lbBar) lbBar.hidden = false;
+    fadeShow(lbBar);
   }
   function lbStopVideo(){
     lbVid.pause();
@@ -1979,19 +2332,21 @@ function kcAttach(v, path){
       try{ lbVid.load(); }catch(err){}
     }
     lbVidStarted = false;
-    if(lbBigPlay) lbBigPlay.hidden = true;
   }
 
   /* lbShow — every slide change (Prev / Next buttons, arrow keys,
-     filmstrip, AND swipes, which all call this) swaps the slide
-     directly: no zoom transition. Landing on the animation starts
-     loading it at the click / selection (inside lbShowNow), and it
-     waits on its poster frame behind the big Play button — playback
-     starts only when Play is pressed. No slide is a special case —
-     the last Honda (Shot 6 rear night) and the day<->night step
-     behave exactly like the rest. */
+     filmstrip, AND swipes, which all call this) crossfades the
+     stage through stageSwap: no zoom, and no hard cut either.
+     Landing on the animation AUTOPLAYS
+     it at the click / selection (inside lbShowNow) — no Play button,
+     no extra tap. No slide is a special case — the last Honda
+     (Shot 6 rear night) and the day<->night step behave exactly
+     like the rest. */
   function lbShow(pos){
-    lbShowNow(pos);
+    /* Slide changes crossfade the stage (Kevin's fade rule): the
+       media fades out, the slide swaps while transparent, then
+       fades back in — never a hard cut. */
+    stageSwap(lightbox, document.getElementById('lbStage'), function(){ lbShowNow(pos); });
     if(!lightbox.hidden) chromeShow(lightbox);
   }
   function lbShowNow(pos){
@@ -2000,21 +2355,20 @@ function kcAttach(v, path){
     lbIndex = lbGroup[lbPos];
     var item = GALLERY[lbIndex];
     if(item.type === 'video'){
-      /* Poster + big Play, no autoplay — but loading starts right
-         here, in the same click / selection that landed on this
-         slide, so the file is already on its way before Play. */
+      /* Autoplay right here, in the same click / selection that
+         landed on this slide — the clip starts playing on its own,
+         with no Play button to press first. */
       lbStopVideo();
       lbImg.removeAttribute('src');
       lbImg.style.display = 'none';
       lbVid.hidden = false;
       lbVidSrc = item.src;
       if(item.poster) kcSetPoster(lbVid, item.poster);
-      lbPreloadVideo();
-      lbGateVideo();
+      lbStartVideo();
     } else {
       lbStopVideo();
       lbVid.hidden = true;
-      if(lbBar) lbBar.hidden = true;
+      fadeHide(lbBar);
       lbImg.style.display = '';
       kcSetImg(lbImg, item.src);
       lbImg.alt = item.alt;
@@ -2023,9 +2377,9 @@ function kcAttach(v, path){
        side included — downloads its own full file from the lightbox;
        video slides have no download. */
     if(lbDownload){
-      if(item.type === 'video'){ lbDownload.hidden = true; lbDownload.removeAttribute('href'); }
+      if(item.type === 'video'){ fadeHide(lbDownload); lbDownload.removeAttribute('href'); }
       else {
-        lbDownload.hidden = false;
+        fadeShow(lbDownload);
         kcSetDownload(lbDownload, item.src);
         lbDownload.setAttribute('aria-label', 'Download this image: ' + item.view);
       }
@@ -2051,10 +2405,9 @@ function kcAttach(v, path){
     var proj = GALLERY[i].proj;
     lbGroup = [];
     GALLERY.forEach(function(item, k){ if(item.proj === proj) lbGroup.push(k); });
-    /* A video slide in this project (Gunslinger's snow run) starts
-       loading inside lbShow below — in this same click — while it
-       waits on its poster frame behind its Play button; it plays
-       only when Play is pressed — see lbPreloadVideo above. */
+    /* A video slide in this project (Gunslinger's snow run) AUTOPLAYS
+       inside lbShow below — in this same click — see lbStartVideo
+       above. */
     lbBuildStrip();
     lbShow(lbGroup.indexOf(i));
     lightbox.hidden = false;
@@ -2089,7 +2442,6 @@ function kcAttach(v, path){
      to rely on the browser's native controls), and tapping the video
      itself toggles play/pause, like the CAT and Honda lightboxes. */
   wireClipBar(lbVid, lbBar, null);
-  if(lbBigPlay) lbBigPlay.addEventListener('click', lbStartVideo);
   lbVid.addEventListener('click', function(){
     if(Date.now() - lbSwipeAt < 350) return; /* that tap was a swipe */
     if(!lbVidStarted){ lbStartVideo(); return; }
@@ -2208,18 +2560,22 @@ function kcAttach(v, path){
      promotion; its lightbox slide starts loading the moment the
      slide is selected in the lightbox, and plays only on Play.
      Every clip plays only while actually on screen — pausing when it
-     scrolls away, unless Kevin paused it himself with its play bar,
-     which always wins. The stall watchdog further down still revives
+     scrolls away. (Gallery clips have no play bar and no manual
+     pause; the *UserPaused flags only mark a clip the watchdog
+     parked.) The stall watchdog further down still revives
      any clip that stops advancing mid-loop. */
   var hondaClip = document.getElementById('hondaClip');
   var catClipV = document.getElementById('catClip');
   var gunClipV = document.getElementById('gunClip');
+  var workClipV = document.getElementById('workClip');
   var catInView = false;
   var hondaInView = false;
   var gunInView = false;
-  var catUserPaused = false;   /* set only by the SPAR play bar */
-  var hondaUserPaused = false; /* set only by the Honda play bar */
-  var gunUserPaused = false;   /* set only by the Gunslinger play bar */
+  var workInView = false;
+  var catUserPaused = false;   /* gallery has no play bar — set only if the watchdog parks the clip */
+  var hondaUserPaused = false; /* gallery has no play bar — set only if the watchdog parks the clip */
+  var gunUserPaused = false;   /* gallery has no play bar — set only if the watchdog parks the clip */
+  var workUserPaused = false;  /* gallery has no play bar — set only if the watchdog parks the clip */
   function clipPlay(v){
     if(!v) return;
     var kcPath = v.getAttribute('data-kc');
@@ -2232,6 +2588,7 @@ function kcAttach(v, path){
   if(catClipV) catClipV.muted = true;
   if(hondaClip) hondaClip.muted = true;
   if(gunClipV) gunClipV.muted = true;
+  if(workClipV) workClipV.muted = true;
 
   /* Hard restart — for a clip that has stalled dead (decoder/network
      stuck, readyState collapsed, or a media error). A plain play() call
@@ -2258,8 +2615,9 @@ function kcAttach(v, path){
   }
 
   /* ----- Small play bar — hero-bar language: round play/pause button,
-     thin orange scrub track, mono time readout, restart button.
-     Wires any <video> to a .clip-bar element (gallery + lightbox). ----- */
+     thin yellow scrub track, mono time readout, restart button.
+     Wires a lightbox <video> to its .clip-bar-lb element. (Gallery
+     clips are deliberately NOT wired — they have no controls.) ----- */
   function fmtClipT(s){
     if(!isFinite(s) || s < 0) s = 0;
     s = Math.floor(s);
@@ -2273,6 +2631,10 @@ function kcAttach(v, path){
     var fill = bar.querySelector('.clip-fill');
     var time = bar.querySelector('.clip-time');
     function syncBtn(){
+      /* Playback state changed — any press that was waiting on the
+         file has its answer, so the loading ring clears here. */
+      btn.classList.remove('is-loading');
+      rst.classList.remove('is-loading');
       var pl = !v.paused && !v.ended;
       btn.textContent = pl ? '❚❚' : '▶';
       btn.setAttribute('aria-label', pl ? 'Pause the animation' : 'Play the animation');
@@ -2292,11 +2654,21 @@ function kcAttach(v, path){
     v.addEventListener('ended', syncBtn);
     btn.addEventListener('click', function(e){
       e.stopPropagation();
-      if(v.paused || v.ended){ if(onManual) onManual(false); if(v.error) hardRestart(v); else clipPlay(v); }
+      if(v.paused || v.ended){
+        /* Answer the press NOW: if the clip still has to fetch /
+           decode, the button shows its loading ring until the
+           'play' event lands in syncBtn — it no longer sits
+           unchanged while the file arrives, looking unresponsive. */
+        btn.classList.add('is-loading');
+        setTimeout(function(){ if(v.paused) btn.classList.remove('is-loading'); }, 5000);
+        if(onManual) onManual(false); if(v.error) hardRestart(v); else clipPlay(v);
+      }
       else { v.pause(); if(onManual) onManual(true); }
     });
     rst.addEventListener('click', function(e){
       e.stopPropagation();
+      rst.classList.add('is-loading');
+      setTimeout(function(){ if(v.paused) rst.classList.remove('is-loading'); }, 5000);
       if(onManual) onManual(false);
       hardRestart(v);
     });
@@ -2328,9 +2700,17 @@ function kcAttach(v, path){
     bar.addEventListener('pointerdown', function(e){ e.stopPropagation(); });
     syncBtn(); upd();
   }
-  wireClipBar(catClipV, document.getElementById('catBar'), function(paused){ catUserPaused = paused; evaluateClips(); });
-  wireClipBar(hondaClip, document.getElementById('hondaBar'), function(paused){ hondaUserPaused = paused; evaluateClips(); });
-  wireClipBar(gunClipV, document.getElementById('gunBar'), function(paused){ gunUserPaused = paused; evaluateClips(); });
+  /* No wireClipBar calls for the gallery clips (Kevin's
+     clarification): the gallery animations have NO player
+     controls — no bar under CAT, Honda or Gunslinger; they just
+     play clean, muted and looping, and a tap opens the lightbox.
+     wireClipBar is wired only to the three LIGHTBOX bars (generic
+     Gunslinger, SPAR, Honda), where the controls fade in on
+     interaction and out when idle with the lightbox chrome. The
+     *UserPaused flags below now only ever get set by the stall
+     watchdog parking a dead clip — never by a gallery bar, since
+     there isn't one — so evaluateClips / loopGuard keep working
+     exactly as before with the flags simply staying false. */
 
   /* Loop insurance — if 'loop' is ever ignored and a clip reaches its end
      while it should be playing, restart it instead of hanging on the
@@ -2346,12 +2726,13 @@ function kcAttach(v, path){
   if(catClipV) loopGuard(catClipV, function(){ return catInView && !catUserPaused; });
   if(hondaClip) loopGuard(hondaClip, function(){ return hondaInView && !hondaUserPaused; });
   if(gunClipV) loopGuard(gunClipV, function(){ return gunInView && !gunUserPaused; });
+  if(workClipV) loopGuard(workClipV, function(){ return workInView && !workUserPaused; });
 
   /* The Gunslinger snow run is a gallery clip now too — the big main
      slot of its gallery, wired exactly like SPAR and Honda — and the
      same file stays in the Gunslinger lightbox as its last slide,
      where it starts loading the moment that slide is selected and
-     plays only when its Play button is pressed. */
+     autoplays the moment that slide is selected. */
 
   /* No eager buffering (the Nov 16 fix, re-applied): NO clip loads at
      page open. Every video on the page is preload="none" and stays
@@ -2361,7 +2742,7 @@ function kcAttach(v, path){
      other (or the hero) for bandwidth and the decoder. */
 
   if(reduced){
-    [catClipV, hondaClip, gunClipV].forEach(function(v){
+    [catClipV, hondaClip, gunClipV, workClipV].forEach(function(v){
       if(!v) return;
       v.pause();
     });
@@ -2390,21 +2771,23 @@ function kcAttach(v, path){
         loadIO.unobserve(v);
       });
     }, {rootMargin: '600px 0px 600px 0px'});
-    [catClipV, hondaClip, gunClipV].forEach(function(v){ if(v) loadIO.observe(v); });
+    [catClipV, hondaClip, gunClipV, workClipV].forEach(function(v){ if(v) loadIO.observe(v); });
     var clipIO = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
         clipRatios.set(en.target, en.isIntersecting ? en.intersectionRatio : 0);
         if(en.target === catClipV) catInView = en.isIntersecting;
         if(en.target === hondaClip) hondaInView = en.isIntersecting;
         if(en.target === gunClipV) gunInView = en.isIntersecting;
+        if(en.target === workClipV) workInView = en.isIntersecting;
       });
       evaluateClips();
     }, {threshold: [0, .15, .35, .5, .75]});
     if(catClipV) clipIO.observe(catClipV);
     if(hondaClip) clipIO.observe(hondaClip);
     if(gunClipV) clipIO.observe(gunClipV);
+    if(workClipV) clipIO.observe(workClipV);
   } else {
-    clipPlay(catClipV); clipPlay(hondaClip); clipPlay(gunClipV);
+    clipPlay(catClipV); clipPlay(hondaClip); clipPlay(gunClipV); clipPlay(workClipV);
   }
 
   /* ---------- One clip at a time — the smoothness rule ----------
@@ -2425,11 +2808,12 @@ function kcAttach(v, path){
   function userPausedFor(v){
     if(v === catClipV) return catUserPaused;
     if(v === gunClipV) return gunUserPaused;
+    if(v === workClipV) return workUserPaused;
     return hondaUserPaused;
   }
   function evaluateClips(){
     if(reduced) return;
-    var cand = [catClipV, hondaClip, gunClipV].filter(Boolean);
+    var cand = [catClipV, hondaClip, gunClipV, workClipV].filter(Boolean);
     var winner = null, best = 0;
     cand.forEach(function(v){
       var r = clipRatios.get(v) || 0;
@@ -2451,7 +2835,7 @@ function kcAttach(v, path){
     });
   }
   function pauseAllGalleryClips(){
-    [catClipV, hondaClip, gunClipV].forEach(function(v){ if(v) v.pause(); });
+    [catClipV, hondaClip, gunClipV, workClipV].forEach(function(v){ if(v) v.pause(); });
   }
   function resumeGalleryClips(){ evaluateClips(); }
   /* Hold / release the STAR hero slideshow without touching Kevin's
@@ -2474,7 +2858,6 @@ function kcAttach(v, path){
       hero.classList.add('paused');
     } else if(playing){
       hero.classList.remove('paused');
-      restartProgress();
       restartTimer();
     }
   }
@@ -2504,16 +2887,16 @@ function kcAttach(v, path){
   /* Watchdog — a gallery clip that should be playing but has stopped
      advancing (stalled buffer, an aborted play promise, a loop that
      silently failed) gets nudged back into play instead of sitting
-     frozen. A manual pause from the play bar is never overridden, and
-     nothing is touched while a lightbox is open. */
+     frozen. Nothing is touched while a lightbox is open. */
   if(!reduced){
     /* Park a clip whose recovery budget is spent: pause it, drop it
        back to preload="metadata" and re-run load() so the stuck
        decoder session is released and the element settles back on
        its poster / first frame, and mark it user-paused so nothing
-       auto-plays it again. Its play bar then reads Play, and one tap
-       restarts it cleanly (the bar's own handler hard-restarts on a
-       media error). A dead clip must NEVER keep load()-storming in
+       auto-plays it again. (Gallery clips have no play bar to
+       restart from; a tap on a parked clip still opens its
+       lightbox, where the same animation plays with controls.)
+       A dead clip must NEVER keep load()-storming in
        the background — that loop was able to freeze the whole page
        around a single hung animation. */
     function parkClip(v){
@@ -2522,12 +2905,14 @@ function kcAttach(v, path){
       if(v === catClipV) catUserPaused = true;
       else if(v === hondaClip) hondaUserPaused = true;
       else if(v === gunClipV) gunUserPaused = true;
+      else if(v === workClipV) workUserPaused = true;
       try{ v.preload = 'metadata'; v.load(); }catch(err){}
     }
     var watchers = [
       {v: catClipV, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return catInView && !catUserPaused && activeClip === catClipV; }},
       {v: hondaClip, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return hondaInView && !hondaUserPaused && activeClip === hondaClip; }},
-      {v: gunClipV, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return gunInView && !gunUserPaused && activeClip === gunClipV; }}
+      {v: gunClipV, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return gunInView && !gunUserPaused && activeClip === gunClipV; }},
+      {v: workClipV, lastT: -1, stalls: 0, restarts: 0, ok: function(){ return workInView && !workUserPaused && activeClip === workClipV; }}
     ];
     setInterval(function(){
       var anyBoxOpen = !document.getElementById('videoLightbox').hidden ||
@@ -2562,9 +2947,11 @@ function kcAttach(v, path){
   /* Block-level reveals. Gallery images and word-animated text are handled
      separately below, so they are not in this list. Everything stays visible
      by default — .in only layers the animation on as it scrolls into view. */
+  /* (.logowall is deliberately NOT a block reveal — its logos run their
+     own single-row cycle below instead of rising as one block.) */
   var rvTargets = Array.prototype.slice.call(document.querySelectorAll(
     '.sec-head, .proj-head, .motion-clip, ' +
-    '.stat, .about > div, .logowall, .xplist, .contact'
+    '.stat, .about > div, .xplist, .contact'
   ));
   if(!reduced && 'IntersectionObserver' in window){
     rvTargets.forEach(function(el, i){
@@ -2618,6 +3005,81 @@ function kcAttach(v, path){
       });
     }, {threshold: .12, rootMargin: '0px 0px 8% 0px'});
     galContainers.forEach(function(gal){ galIO.observe(gal); });
+
+    /* ----- Logo wall — ONE row, Whipsaw-style cycle -----
+       A single row of five logos; four sets take turns in the stage.
+       The incoming set's cells slide up a little and fade in left to
+       right (--logo-delay = column × 260ms — half speed, twice the
+       duration, at Kevin's direction), the set holds, then
+       leaves by the mirror image of its entrance — sliding down to
+       the lower right, fading out right to left (--logo-out-delay,
+       reverse column order) — and the next set swaps in, looping
+       for as long as the wall is on screen. Cycling pauses while
+       the wall is off-screen
+       (the observer below) and restarts cleanly from the current set
+       when it returns. All logo images are loaded up front (they are
+       small) so a set never swaps in half-blank, and the first set
+       is .on in the markup, so with no JS the wall is a static row. */
+    var logowall = document.querySelector('.logowall');
+    if(logowall){
+      var logoSets = Array.prototype.slice.call(logowall.querySelectorAll('.logo-set'));
+      logoSets.forEach(function(set){
+        var cellsInSet = Array.prototype.slice.call(set.querySelectorAll('.logo-cell'));
+        cellsInSet.forEach(function(cell, c){
+          cell.classList.add('logo-item');
+          cell.style.setProperty('--logo-delay', (c * 260) + 'ms');
+          /* The outro is the intro's mirror: the exit stagger runs
+             in reverse column order (rightmost cell leaves first),
+             so the set sweeps out right to left. */
+          cell.style.setProperty('--logo-out-delay', ((cellsInSet.length - 1 - c) * 260) + 'ms');
+        });
+      });
+      Array.prototype.slice.call(logowall.querySelectorAll('img[data-kc]')).forEach(function(im){
+        kcSetImg(im, im.getAttribute('data-kc'));
+      });
+      /* LOGO_EXIT covers the full mirrored outro: the reverse
+         right-to-left stagger (4 × 260ms) plus the 1s fade, so the
+         set is never cut away mid-fade. */
+      var LOGO_HOLD = 3400, LOGO_EXIT = 2080;
+      var logoIdx = 0, logoTimer = null, logoRunning = false;
+      function logoShow(i){
+        logoSets.forEach(function(set, k){
+          set.classList.toggle('on', k === i);
+          if(k === i) set.classList.remove('leaving');
+        });
+        var cells = Array.prototype.slice.call(logoSets[i].querySelectorAll('.logo-cell'));
+        cells.forEach(function(cell){ cell.classList.remove('in'); });
+        void logowall.offsetWidth; /* restart the entrance from hidden */
+        cells.forEach(function(cell){ cell.classList.add('in'); });
+      }
+      function logoStep(){
+        var cur = logoSets[logoIdx];
+        cur.classList.add('leaving');
+        Array.prototype.slice.call(cur.querySelectorAll('.logo-cell')).forEach(function(cell){
+          cell.classList.remove('in');
+        });
+        logoTimer = setTimeout(function(){
+          logoIdx = (logoIdx + 1) % logoSets.length;
+          logoShow(logoIdx);
+          logoTimer = setTimeout(logoStep, LOGO_HOLD);
+        }, LOGO_EXIT);
+      }
+      var logoVisIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            if(!logoRunning){
+              logoRunning = true;
+              logoShow(logoIdx);
+              logoTimer = setTimeout(logoStep, LOGO_HOLD);
+            }
+          } else {
+            logoRunning = false;
+            if(logoTimer){ clearTimeout(logoTimer); logoTimer = null; }
+          }
+        });
+      }, {threshold: .25});
+      logoVisIO.observe(logowall);
+    }
 
     /* ----- Text — word-by-word slide-up / fade, CapCut-style -----
        Headings and titles split word by word; longer lines and captions
@@ -2703,7 +3165,7 @@ function kcAttach(v, path){
   var vlbView = document.getElementById('vlbView');
   var vlbCaption = document.getElementById('vlbCaption');
   var VLB_SLIDES = [
-    {type:'video', view:'Orbit — video with sound', caption:'CAT UGV — Orbit. Press Play to watch — sound is on, use Mute to turn it off. Tap the video to pause or play.'},
+    {type:'video', view:'Orbit — video with sound', caption:'CAT UGV — Orbit. Sound is on, use Mute to turn it off. Tap the video to pause or play.'},
     {type:'img', src:'assets/cat-ugv-poster.jpg', view:'Front three-quarter — still', alt:'CAT UGV — front three-quarter still', caption:'CAT UGV — front three-quarter still.'},
     {type:'img', src:'assets/cat-still-b.jpg', view:'Rear three-quarter — still', alt:'CAT UGV — rear three-quarter still', caption:'CAT UGV — rear three-quarter still.'}
   ];
@@ -2737,50 +3199,42 @@ function kcAttach(v, path){
     });
     vlbStripBtns = Array.prototype.slice.call(vlbStrip.querySelectorAll('button'));
   })();
-  /* Load-on-selection gate for the CAT clip — same pattern as the
-     Gunslinger gate: poster frame + big Play button first, no
-     autoplay; the file (kept unattached in data-src) is attached
-     and load()ed the moment the video slide is selected — in the
-     gallery click that opens this lightbox, or when Next /
-     Previous / the filmstrip lands on it — and it PLAYS with sound
-     only when Play is pressed; slide change or close stops it and
-     unloads it, so the slide restarts clean. */
-  var vlbBigPlay = document.getElementById('vlbBigPlay');
+  /* Autoplay for the CAT clip — same pattern as the Gunslinger
+     slide: the file (kept unattached in data-src) is attached and
+     PLAYED with sound the moment the video slide is selected — in
+     the gallery click that opens this lightbox, or when Next /
+     Previous / the filmstrip lands on it. No Play button. Slide
+     change or close stops it and unloads it, so the slide restarts
+     clean. */
   var vlbStarted = false;
-  /* Start fetching the CAT file NOW, without playing it. Called
-     from vlbShow the instant the video slide is selected. */
-  function vlbPreloadVideo(){
-    kcAttach(lbVideo, lbVideo.getAttribute('data-src'));
-  }
   function vlbStartVideo(){
     /* Already preloading / loaded from selection time — just play;
        only attach + load() here if the preload somehow did not run. */
     if(!lbVideo.getAttribute('src')){
-      kcAttach(lbVideo, lbVideo.getAttribute('data-src')).then(function(){ if(lbVideo.getAttribute('src')) vlbStartVideo(); });
+      kcAttach(lbVideo, lbVideo.getAttribute('data-src')).then(function(){ if(lbVideo.getAttribute('src') && !lbVideo.hidden && !videoLightbox.hidden) vlbStartVideo(); });
       return;
     }
     /* Re-apply the sound state immediately before every play, so the
        element can never be stuck silently muted while the button
        reads "Sound on". If unmuted playback is refused, fall back
-       to muted; if that fails too, restore the Play gate. */
+       to muted; if that fails too, leave the play bar visible. */
     lbVideo.muted = vlbUserMuted;
     lbVideo.volume = 1;
     var p = lbVideo.play();
     if(p && p.catch) p.catch(function(){
+      if(lbVideo.hidden || videoLightbox.hidden) return;
       lbVideo.muted = true;
       var p2 = lbVideo.play();
       if(p2 && p2.catch) p2.catch(function(){
         vlbStarted = false;
-        if(vlbBigPlay) vlbBigPlay.hidden = false;
         var barF = document.getElementById('vlbBar');
-        if(barF) barF.hidden = true;
+        if(barF) fadeShow(barF);
       });
     });
     vlbStarted = true;
     videoLightbox.classList.add('video-live');
-    if(vlbBigPlay) vlbBigPlay.hidden = true;
     var bar = document.getElementById('vlbBar');
-    if(bar) bar.hidden = false;
+    if(bar) fadeShow(bar);
   }
   function vlbStopVideo(){
     lbVideo.pause();
@@ -2791,39 +3245,36 @@ function kcAttach(v, path){
       try{ lbVideo.load(); }catch(err){}
     }
     vlbStarted = false;
-    if(vlbBigPlay) vlbBigPlay.hidden = true;
   }
-  if(vlbBigPlay) vlbBigPlay.addEventListener('click', vlbStartVideo);
-  /* vlbShow — same plain rules as every lightbox: buttons, keys,
-     filmstrip and swipes all land here and swap the slide directly,
-     no zoom transition. Landing on the CAT clip starts loading it at
-     the click; it waits on its poster behind Play. */
+  /* vlbShow — same rules as every lightbox: buttons, keys,
+     filmstrip and swipes all land here and crossfade the stage —
+     no zoom, no hard cut. Landing on the CAT clip AUTOPLAYS it at
+     the click — no Play button. */
   function vlbShow(pos){
-    vlbShowNow(pos);
+    /* Same stage crossfade as every lightbox (Kevin's fade rule). */
+    stageSwap(videoLightbox, document.getElementById('vlbStage'), function(){ vlbShowNow(pos); });
     if(!videoLightbox.hidden) chromeShow(videoLightbox);
   }
   function vlbShowNow(pos){
     vlbPos = (pos + VLB_SLIDES.length) % VLB_SLIDES.length;
     var s = VLB_SLIDES[vlbPos];
     if(s.type === 'video'){
-      /* Poster + big Play, no autoplay — but loading starts right
-         here, in the same click / selection that landed on this
-         slide (vlbPreloadVideo), not when Play is pressed. */
+      /* Autoplay right here, in the same click / selection that
+         landed on this slide — no Play button to press first. */
       vlbStopVideo();
       vlbImg.style.display = 'none';
       vlbImg.removeAttribute('src');
       lbVideo.hidden = false;
-      vlbPreloadVideo();
-      lbMuteBtn.hidden = false;
+      fadeShow(lbMuteBtn);
       var vlbBarEl = document.getElementById('vlbBar');
-      if(vlbBarEl) vlbBarEl.hidden = true;
-      if(vlbBigPlay) vlbBigPlay.hidden = false;
+      if(vlbBarEl) fadeShow(vlbBarEl);
+      vlbStartVideo();
     } else {
       vlbStopVideo();
       lbVideo.hidden = true;
-      lbMuteBtn.hidden = true;
+      fadeHide(lbMuteBtn);
       var vlbBarEl2 = document.getElementById('vlbBar');
-      if(vlbBarEl2) vlbBarEl2.hidden = true;
+      if(vlbBarEl2) fadeHide(vlbBarEl2);
       vlbImg.style.display = '';
       kcSetImg(vlbImg, s.src);
       vlbImg.alt = s.alt;
@@ -2848,7 +3299,7 @@ function kcAttach(v, path){
     stripIn(vlbStrip);
     vlbCloseBtn.focus();
     /* Plain open — no zoom flight in; the click already started the
-       clip loading (vlbShowNow above) behind its Play button. */
+       clip AUTOPLAYING (vlbShowNow above). */
     chromeShow(videoLightbox);
   }
   function vlbCloseFn(){
@@ -2937,7 +3388,7 @@ function kcAttach(v, path){
   var hondaFigure = document.getElementById('hondaClipFigure');
   var hlbLastFocus = null;
   var HLB_SLIDES = [
-    {type:'video', view:'Wet-Track Orbit — video with sound', caption:'Honda Transporter — Wet-Track Orbit. Press Play to watch — sound is on, use Mute to turn it off. Tap the video to pause or play.'},
+    {type:'video', view:'Wet-Track Orbit — video with sound', caption:'Honda Transporter — Wet-Track Orbit. Sound is on, use Mute to turn it off. Tap the video to pause or play.'},
     {type:'img', src:'assets/honda-desert-front-4k.jpg', view:'Lake Bed — Front 3/4 · 4K', alt:'Honda Orion transporter front three-quarter on the lake bed at sunset, purple cab on cracked playa', caption:'Honda Orion transporter — front three-quarter on the lake bed at sunset. Download gives the full 4K file.'},
     {type:'img', src:'assets/honda-salt-flat-side-4k.jpg', view:'Lake Bed — Side View · 4K', alt:'Honda Orion transporter side view at speed on the lake bed, motion blur and white salt dust plume', caption:'Honda Orion transporter — side view at speed on the lake bed. Download gives the full 4K file.'},
     {type:'img', src:'assets/honda-shot6-rear-day-4k.jpg', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind', caption:'Honda Orion transporter — Shot 6 rear view, daytime final. Download gives the full 4K file.'},
@@ -2973,46 +3424,38 @@ function kcAttach(v, path){
     });
     hlbStripBtns = Array.prototype.slice.call(hlbStrip.querySelectorAll('button'));
   })();
-  /* Load-on-selection gate for the Honda clip — same pattern as
-     the other lightboxes: poster frame + big Play button first, no
-     autoplay; the file (kept unattached in data-src) is attached
-     and load()ed the moment the video slide is selected — in the
-     gallery click that opens this lightbox, or when Next /
-     Previous / the filmstrip lands on it — and it PLAYS with sound
-     only when Play is pressed; slide change or close stops it and
-     unloads it, so the slide restarts clean. */
-  var hlbBigPlay = document.getElementById('hlbBigPlay');
+  /* Autoplay for the Honda clip — same pattern as the other
+     lightboxes: the file (kept unattached in data-src) is attached
+     and PLAYED with sound the moment the video slide is selected —
+     in the gallery click that opens this lightbox, or when Next /
+     Previous / the filmstrip lands on it. No Play button. Slide
+     change or close stops it and unloads it, so the slide restarts
+     clean. */
   var hlbStarted = false;
-  /* Start fetching the Honda file NOW, without playing it. Called
-     from hlbShow the instant the video slide is selected. */
-  function hlbPreloadVideo(){
-    kcAttach(hlbVideo, hlbVideo.getAttribute('data-src'));
-  }
   function hlbStartVideo(){
     /* Already preloading / loaded from selection time — just play;
        only attach + load() here if the preload somehow did not run. */
     if(!hlbVideo.getAttribute('src')){
-      kcAttach(hlbVideo, hlbVideo.getAttribute('data-src')).then(function(){ if(hlbVideo.getAttribute('src')) hlbStartVideo(); });
+      kcAttach(hlbVideo, hlbVideo.getAttribute('data-src')).then(function(){ if(hlbVideo.getAttribute('src') && !hlbVideo.hidden && !hondaLightbox.hidden) hlbStartVideo(); });
       return;
     }
     hlbVideo.muted = hlbUserMuted;
     hlbVideo.volume = 1;
     var p = hlbVideo.play();
     if(p && p.catch) p.catch(function(){
+      if(hlbVideo.hidden || hondaLightbox.hidden) return;
       hlbVideo.muted = true;
       var p2 = hlbVideo.play();
       if(p2 && p2.catch) p2.catch(function(){
         hlbStarted = false;
-        if(hlbBigPlay) hlbBigPlay.hidden = false;
         var barF = document.getElementById('hlbBar');
-        if(barF) barF.hidden = true;
+        if(barF) fadeShow(barF);
       });
     });
     hlbStarted = true;
     hondaLightbox.classList.add('video-live');
-    if(hlbBigPlay) hlbBigPlay.hidden = true;
     var bar = document.getElementById('hlbBar');
-    if(bar) bar.hidden = false;
+    if(bar) fadeShow(bar);
   }
   function hlbStopVideo(){
     hlbVideo.pause();
@@ -3023,44 +3466,41 @@ function kcAttach(v, path){
       try{ hlbVideo.load(); }catch(err){}
     }
     hlbStarted = false;
-    if(hlbBigPlay) hlbBigPlay.hidden = true;
   }
-  if(hlbBigPlay) hlbBigPlay.addEventListener('click', hlbStartVideo);
-  /* hlbShow — same plain rules as every lightbox: buttons, keys,
-     filmstrip and swipes all land here and swap the slide directly,
-     no zoom transition. Landing on the Honda clip starts loading it
-     at the click; it waits on its poster behind Play. No slide is a
-     special case — the last Honda (Shot 6 rear night) and the
-     day<->night step behave exactly like the rest. */
+  /* hlbShow — same rules as every lightbox: buttons, keys,
+     filmstrip and swipes all land here and crossfade the stage —
+     no zoom, no hard cut. Landing on the Honda clip AUTOPLAYS it at
+     the click — no Play button. No slide is a special case — the
+     last Honda (Shot 6 rear night) and the day<->night step behave
+     exactly like the rest. */
   function hlbShow(pos){
-    hlbShowNow(pos);
+    /* Same stage crossfade as every lightbox (Kevin's fade rule). */
+    stageSwap(hondaLightbox, document.getElementById('hlbStage'), function(){ hlbShowNow(pos); });
     if(!hondaLightbox.hidden) chromeShow(hondaLightbox);
   }
   function hlbShowNow(pos){
     hlbPos = (pos + HLB_SLIDES.length) % HLB_SLIDES.length;
     var s = HLB_SLIDES[hlbPos];
     if(s.type === 'video'){
-      /* Poster + big Play, no autoplay — but loading starts right
-         here, in the same click / selection that landed on this
-         slide (hlbPreloadVideo), not when Play is pressed. */
+      /* Autoplay right here, in the same click / selection that
+         landed on this slide — no Play button to press first. */
       hlbStopVideo();
       hlbImg.style.display = 'none';
       hlbImg.removeAttribute('src');
       hlbVideo.hidden = false;
-      hlbPreloadVideo();
-      hlbMuteBtn.hidden = false;
-      if(hlbDownload) hlbDownload.hidden = true;
+      fadeShow(hlbMuteBtn);
+      if(hlbDownload) fadeHide(hlbDownload);
       var hlbBarEl = document.getElementById('hlbBar');
-      if(hlbBarEl) hlbBarEl.hidden = true;
-      if(hlbBigPlay) hlbBigPlay.hidden = false;
+      if(hlbBarEl) fadeShow(hlbBarEl);
+      hlbStartVideo();
     } else {
       hlbStopVideo();
       hlbVideo.hidden = true;
-      hlbMuteBtn.hidden = true;
+      fadeHide(hlbMuteBtn);
       var hlbBarEl2 = document.getElementById('hlbBar');
-      if(hlbBarEl2) hlbBarEl2.hidden = true;
+      if(hlbBarEl2) fadeHide(hlbBarEl2);
       if(hlbDownload){
-        hlbDownload.hidden = false;
+        fadeShow(hlbDownload);
         kcSetDownload(hlbDownload, s.src);
         hlbDownload.setAttribute('aria-label', 'Download this image: ' + s.view);
       }
@@ -3117,7 +3557,7 @@ function kcAttach(v, path){
     stripIn(hlbStrip);
     hlbCloseBtn.focus();
     /* Plain open — no zoom flight in; the click already started the
-       clip loading (hlbShowNow above) behind its Play button. */
+       clip AUTOPLAYING (hlbShowNow above). */
     chromeShow(hondaLightbox);
   }
   function hlbCloseFn(){
@@ -3149,7 +3589,7 @@ function kcAttach(v, path){
   /* Gunslinger gallery animation — clicking the big main clip (but
      not its play bar) opens the Gunslinger lightbox directly on its
      video slide, where Previous / Close / Next and the filmstrip sit
-     tight underneath and the clip waits behind its big Play button,
+     tight underneath and the clip autoplays on open,
      exactly like SPAR and Honda open their lightboxes. */
   var gunFigure = document.getElementById('gunClipFigure');
   if(gunFigure){
@@ -3164,6 +3604,26 @@ function kcAttach(v, path){
         e.preventDefault();
         var idx = srcToIndex['assets/gunslinger-snow.mp4'];
         if(typeof idx === 'number') lbOpen(idx, 'assets/gunslinger-snow-poster.jpg', gunFigure);
+      }
+    });
+  }
+  /* Industrial Workflows gallery animation — same pattern as
+     Gunslinger: clicking the big main clip opens the generic
+     lightbox directly on its video slide, where the bike clip
+     autoplays with the small play bar underneath. */
+  var workFigure = document.getElementById('workClipFigure');
+  if(workFigure){
+    workFigure.addEventListener('click', function(e){
+      if(e.target.closest && e.target.closest('.clip-bar')) return;
+      var idx = srcToIndex['assets/workflows-bike.mp4'];
+      if(typeof idx === 'number') lbOpen(idx, 'assets/workflows-bike-poster.jpg', workFigure);
+    });
+    workFigure.addEventListener('keydown', function(e){
+      if(e.target.closest && e.target.closest('.clip-bar')) return;
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        var idx = srcToIndex['assets/workflows-bike.mp4'];
+        if(typeof idx === 'number') lbOpen(idx, 'assets/workflows-bike-poster.jpg', workFigure);
       }
     });
   }
@@ -3218,58 +3678,80 @@ function kcAttach(v, path){
   wireChrome(videoLightbox);
   wireChrome(hondaLightbox);
 
-  /* ---------- Scroll-driven zoom — the landing page fly-through feel ----------
-     A pure function of scroll position, exactly like the mockup's
-     painter: as an image travels up through the viewport it pushes IN
-     toward its focal point; scrolling back reverses the same frames —
-     no direction-dependent path, nothing to flip. Applied to the hero
-     renders and every gallery main + side image (transform only, on
-     the media element itself, so it composes with the hero's pans and
-     the galleries' rise-in). Reduced motion: never runs. */
+  /* ---------- Scroll-driven zoom — the HONDA ZOOM on every gallery ----------
+     A pure function of scroll position: as an image travels up
+     through the viewport it pushes IN toward its focal point,
+     full-bleed; scrolling back reverses the exact same frames — no
+     direction-dependent path, nothing to flip. Applied — as the
+     HONDA ZOOM — to EVERY gallery main + side still (STAR, SPAR X2,
+     Honda's two lake-bed stills, Gunslinger, Mad Bomber, M577,
+     Crusher, Workflows) and STAR thumbs: transform only, on the
+     image itself, so it composes with the galleries' rise-in.
+     Reduced motion: never runs.
+
+     HERO images are NOT part of this system any more. Kevin's call:
+     the hero zoom is AUTOMATIC, not scroll-driven — each slide
+     starts ~10% zoomed in (object-fit:contain at scale 1.10) and
+     pushes in on its own via the .zooming / heroPushIn animation
+     in the hero CSS and the hero rotation script. Nothing in this
+     scroll script touches a hero image's transform, so the two
+     can never fight.
+
+     Why Kevin called this lost, and what changed: the previous
+     version squared its progress (p*p), so an image centred in the
+     viewport — where you actually look at it — sat at only ~3%
+     zoom on a main and ~2% on a side still: invisible. It also
+     only re-measured on image load when the image was incomplete
+     at setup, but these images start with no src (they load lazily
+     from their wrappers), and an src-less image reports complete,
+     so the re-measure never fired and stale positions stuck. Now:
+     smoothstep progress (50% of the zoom is already in at centre),
+     full depths (mains .22, sides .16, thumbs .14), positions
+     measured from layout offsets (immune to the rise-in animation
+     transforms that polluted getBoundingClientRect), and a
+     re-measure on every image load, on fonts ready, on resize,
+     on window load, and on two settle timers. */
   var szEls = [];
   if(!reduced){
-    /* IMAGES ONLY — never videos. The old selector included the three
-       gallery <video> elements, so every scroll frame re-scaled a
-       playing video: iPad Safari then re-composites decoded frames at
-       a changing size instead of handing the layer to the GPU, which
-       was a direct cause of BOTH the scroll choppiness (worst on
-       scroll-up, when a scaled clip re-enters) and clips hanging
-       mid-frame. The still slots keep the full zoom effect; the video
-       slots keep their aspect box and play untouched. Zoom depths are
-       also trimmed (hero .16→.10, mains .13→.08, sides .09→.05): the
-       feel is the same, the repainted area per frame is far smaller. */
-    Array.prototype.slice.call(document.querySelectorAll('.hero .slide img')).forEach(function(el){
-      el.style.willChange = 'transform';
-      szEls.push({el: el, max: 0.10, origin: '52% 38%'});
-    });
+    /* IMAGES ONLY — never videos. Scaling a playing <video> every
+       scroll frame forces iPad Safari to re-composite decoded
+       frames at a changing size instead of handing the layer to
+       the GPU, which caused scroll choppiness and clips hanging
+       mid-frame. The still slots keep the full zoom; the video
+       slots (SPAR / Honda / Gunslinger mains) keep their aspect
+       box and play untouched — their neighbouring stills zoom. */
+    /* Hero images deliberately absent here — their zoom is the
+       automatic push-in (see the header note). Galleries only. */
     Array.prototype.slice.call(document.querySelectorAll('.gal .main img')).forEach(function(el){
-      el.style.willChange = 'transform';
-      szEls.push({el: el, max: 0.08, origin: '50% 42%'});
+      el.classList.add('honda-zoom');
+      szEls.push({el: el, max: 0.22, origin: '50% 42%'});
     });
     Array.prototype.slice.call(document.querySelectorAll('.gal .side figure img')).forEach(function(el){
-      szEls.push({el: el, max: 0.05, origin: '50% 42%'});
+      el.classList.add('honda-zoom');
+      szEls.push({el: el, max: 0.16, origin: '50% 42%'});
+    });
+    Array.prototype.slice.call(document.querySelectorAll('.thumb img')).forEach(function(el){
+      el.classList.add('honda-zoom');
+      szEls.push({el: el, max: 0.14, origin: '50% 42%'});
     });
     var szTick = false;
-    /* Layout is measured ONCE (transforms cleared, one read pass) and
-       cached; the per-frame update below does pure scroll math and
-       writes transforms only — no getBoundingClientRect, no
-       innerHeight read, nothing that forces layout in the scroll
-       path. The cache refreshes (debounced, never per-frame) on
-       resize, on window load, and whenever a zoomed image finishes
-       loading, so a late decode can never leave stale tops behind
-       for the scroll math to jump on. */
     var szVH = window.innerHeight;
     var szCache = [];
     var szMeasureT = null;
+    /* Layout position from the offset chain — transforms (the
+       galleries' rise-in, this zoom itself) never move offsetTop,
+       so a measurement taken mid-animation is still the true
+       resting position the scroll math needs. */
+    function szLayoutTop(el){
+      var t = 0, n = el;
+      while(n){ t += n.offsetTop || 0; n = n.offsetParent; }
+      return t;
+    }
     function szMeasure(){
       szVH = window.innerHeight;
-      szEls.forEach(function(it){
-        it.el.style.transform = '';
-        it.el.style.transformOrigin = it.origin;
-      });
+      szEls.forEach(function(it){ it.el.style.transformOrigin = it.origin; });
       szCache = szEls.map(function(it){
-        var r = it.el.getBoundingClientRect();
-        return {it: it, top: r.top + window.scrollY, h: r.height || 1, last: -1};
+        return {it: it, top: szLayoutTop(it.el), h: it.el.offsetHeight || 1, last: -1};
       });
       szUpdate();
     }
@@ -3290,13 +3772,14 @@ function kcAttach(v, path){
         }
         var p = (szVH - top) / (szVH + c.h);
         p = p < 0 ? 0 : (p > 1 ? 1 : p);
-        var s = 1 + p * p * c.it.max;
-        /* Quantized writes: a scale that has not actually changed is
-           never rewritten, so scrolling back UP re-traces the exact
-           values it came down on — same pure function of position in
-           both directions, no style churn and nothing for the scroll
-           to fight when the direction reverses. */
-        if(Math.abs(s - c.last) < 0.0015) continue;
+        /* Smoothstep, not p*p: half the zoom is in by the time the
+           image reaches the centre of the screen, so the push-in
+           is unmistakable while the image is actually being looked
+           at — and it keeps growing to the full depth as the image
+           leaves at the top. Same curve both directions. */
+        var e = p * p * (3 - 2 * p);
+        var s = 1 + e * c.it.max;
+        if(Math.abs(s - c.last) < 0.0008) continue;
         c.last = s;
         c.it.el.style.transform = 'scale3d(' + s.toFixed(4) + ',' + s.toFixed(4) + ',1)';
       }
@@ -3306,9 +3789,18 @@ function kcAttach(v, path){
     }, {passive:true});
     window.addEventListener('resize', szMeasureSoon);
     window.addEventListener('load', szMeasureSoon);
+    /* Every zoomed image re-measures when it actually loads —
+       unconditionally: these images begin src-less (lazy wrapper
+       loads), and an src-less image reports complete === true, so
+       the old !complete guard silently skipped every one of them. */
     szEls.forEach(function(it){
-      if(!it.el.complete) it.el.addEventListener('load', szMeasureSoon);
+      it.el.addEventListener('load', szMeasureSoon);
     });
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(szMeasureSoon);
+    /* Settle passes for late wrapper / blob loads that shift nothing
+       but should still be measured in their final state. */
+    setTimeout(szMeasureSoon, 700);
+    setTimeout(szMeasureSoon, 2000);
     szMeasure();
   }
   /* Fixed chrome drops its backdrop blur while the page is moving
@@ -3353,7 +3845,7 @@ function kcAttach(v, path){
     predictSettle = setTimeout(function(){
       if(predicted) return;
       predicted = true;
-      [catClipV, hondaClip, gunClipV].forEach(function(v, i){
+      [catClipV, hondaClip, gunClipV, workClipV].forEach(function(v, i){
         setTimeout(function(){
           if(!v || anyLightboxOpen()) return;
           if(v.preload !== 'auto'){ v.preload = 'auto'; kcAttach(v, v.getAttribute('data-kc')); try{ v.load(); }catch(err){} }
@@ -3368,6 +3860,230 @@ function kcAttach(v, path){
      message addressed to kevincu@muse.ai, ready to send. (There is
      deliberately no script here — the anchor does the launch.) */
 
+})();
+</script>
+
+<script>
+/* ---------- Nameplate shrink — the smooth version ----------
+   The name starts big at the top and shrinks as you scroll; here
+   KEVIN CUNNINGHAM does the same, but subtly — Kevin's updated
+   direction: the name OPENS 10% BIGGER than the size he first
+   settled on and scrolling settles it on exactly the SAME small
+   size as before (the old opening size × 0.90) — the end size
+   was unchanged, only the start grew. Kevin later scaled the
+   whole range down 20% overall — opening AND settled sizes
+   alike (33.4px max desktop opening, 11.4px max on phones). While it shrinks it slides UP and the
+   pill menu fades in underneath it, and at every scroll point
+   the name stays vertically CENTERED between the top edge of
+   the frame and the menu: the metrics keep the topbar's top
+   offset equal to the gap under the name at both ends of the
+   glide (22→10 desktop, 18→8 phone), and neither the name nor
+   the menu carries any extra vertical offset of its own. Two things make this one smoother than the reference:
+   1) the scroll fraction is run through a smootherstep curve, so the
+      shrink eases in at the first pixels and eases out as it lands
+      on the final size — no hard start, no hard stop; and
+   2) the displayed value never follows the scroll position directly:
+      it lerps toward the target every animation frame with an
+      exponential damping (90ms time constant), so wheel steps, track-
+      pad bursts and touch flings all come out as one continuous glide
+      that catches up and settles softly. Font-size, letter-spacing,
+      the topbar's top offset and gap, and the mock tag's top are all
+      interpolated from the same eased value. The pill nav rides the
+      same value as a fade: absent while the name is at its opening
+      size, fading in during the shrink, fully visible once the name
+      has settled. The whole thing is one damped value run in both
+      directions: scrolling down, the name shrinks ~10% and slides
+      UP into its higher settled spot; scrolling back to the top, it
+      grows back to its opening size and slides DOWN — the exact
+      reverse — with the pill nav fading back out on the same
+      progress. Nothing snaps, in either direction. Reduced-
+      motion visitors get the size applied instantly, with no glide. */
+(function(){
+  var plate = document.querySelector('.nameplate');
+  var bar = document.querySelector('.topbar');
+  var tag = document.querySelector('.mocktag');
+  var nav = document.querySelector('.pillnav');
+  if(!plate || !bar) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function metrics(){
+    var w = window.innerWidth;
+    var mobile = w <= 640;
+    /* Sizes at Kevin's direction: baseSize is the opening size he
+       first settled on, width-scaled between its caps. The name
+       OPENS 10% bigger than that (baseSize × 1.10), and the
+       SETTLED size is baseSize × 0.90. Kevin later scaled the
+       whole range down 20% overall — baseSize carries that cut
+       (30.4px max on desktop, 10.4px max on phones), so the
+       opening and settled sizes both shrank together, on phones
+       exactly as on desktop. */
+    var baseSize = mobile ? Math.min(10.4, Math.max(8, w * 0.0232)) : Math.min(30.4, Math.max(14.4, w * 0.0196));
+    var openLS = mobile ? 0.08 : 0.14;
+    var m = {
+      largeSize: baseSize * 1.10,
+      smallSize: baseSize * 0.90,
+      largeLS: openLS,
+      smallLS: openLS + 0.03,
+      /* Centering at Kevin's direction: the name is vertically
+         centered in the space between the top edge of the frame
+         and the menu underneath it — the space ABOVE the name
+         (the topbar's top offset) always equals the space BELOW
+         it (the topbar's gap, name to menu). Both start at the
+         same value and end at the same value, so the name stays
+         centered through the whole glide: scrolling down, the
+         band shrinks and slides UP around the centered name as
+         the menu fades in; scrolling back up reverses it exactly,
+         the name growing and sliding back DOWN, still centered,
+         the menu fading back out. Neither direction snaps. */
+      largeTop: mobile ? 18 : 22,
+      smallTop: mobile ? 8 : 10,
+      largeGap: mobile ? 18 : 22,
+      smallGap: mobile ? 8 : 10,
+      largeTagTop: w <= 640 ? 126 : 192,
+      smallTagTop: w <= 560 ? 108 : 122,
+      range: mobile ? 220 : 300
+    };
+    return m;
+  }
+  function smootherstep(t){ return t * t * t * (t * (t * 6 - 15) + 10); }
+  function targetProgress(){
+    var m = metrics();
+    var raw = window.scrollY / m.range;
+    if(raw < 0) raw = 0; else if(raw > 1) raw = 1;
+    return smootherstep(raw);
+  }
+  function lerp(a, b, p){ return a + (b - a) * p; }
+  function apply(p){
+    var m = metrics();
+    var ls = lerp(m.largeLS, m.smallLS, p);
+    plate.style.fontSize = lerp(m.largeSize, m.smallSize, p).toFixed(2) + 'px';
+    plate.style.letterSpacing = ls.toFixed(4) + 'em';
+    plate.style.paddingLeft = ls.toFixed(4) + 'em';
+    /* No extra slide on the name itself: the slide UP is the
+       topbar's own rise (top offset 22→10, with the gap shrinking
+       by the same amount underneath), and any separate offset on
+       the name would push it off-center between the frame top
+       and the menu. The name stays exactly where the centered
+       band puts it; one eased value drives size, tracking and
+       bar position, so the reverse is exact and nothing snaps. */
+    plate.style.transform = 'translateY(0px)';
+    bar.style.top = lerp(m.largeTop, m.smallTop, p).toFixed(2) + 'px';
+    bar.style.gap = lerp(m.largeGap, m.smallGap, p).toFixed(2) + 'px';
+    if(tag) tag.style.top = lerp(m.largeTagTop, m.smallTagTop, p).toFixed(2) + 'px';
+    /* Pill nav (Hero / Work / About / Contact) — not there at all
+       while the name is at its opening size: its fade is remapped
+       from the same damped, smootherstep-eased progress p as the
+       shrink (starting once the shrink is under way, at p = .15),
+       so the menu fades in as the name shrinks and slides up, is
+       fully visible exactly when the name settles (p = 1), and
+       fades back out on the way back to the top. visibility +
+       pointer-events keep the hidden menu out of tab order and
+       click handling while it is faded out. */
+    if(nav){
+      var navO = (p - 0.15) / 0.85;
+      if(navO < 0) navO = 0; else if(navO > 1) navO = 1;
+      nav.style.opacity = navO.toFixed(3);
+      /* The menu fades in PLACE — no rise: moving it would move
+         the bottom edge of the name's band and break its
+         centering between the frame top and the menu. */
+      nav.style.transform = 'translateY(0px)';
+      if(navO <= 0.001){
+        nav.style.visibility = 'hidden';
+        nav.style.pointerEvents = 'none';
+        nav.setAttribute('aria-hidden', 'true');
+      } else {
+        nav.style.visibility = 'visible';
+        nav.style.pointerEvents = navO >= 0.999 ? 'auto' : 'none';
+        nav.removeAttribute('aria-hidden');
+      }
+    }
+  }
+
+  var current = targetProgress();
+  var running = false;
+  var lastT = 0;
+  function frame(now){
+    var dt = lastT ? Math.min(50, now - lastT) : 16;
+    lastT = now;
+    var target = targetProgress();
+    var alpha = 1 - Math.exp(-dt / 90);
+    current += (target - current) * alpha;
+    if(Math.abs(target - current) < 0.0004){
+      current = target;
+      apply(current);
+      running = false;
+      lastT = 0;
+      return;
+    }
+    apply(current);
+    requestAnimationFrame(frame);
+  }
+  function kick(){
+    if(reduced.matches){
+      current = targetProgress();
+      apply(current);
+      return;
+    }
+    if(!running){ running = true; lastT = 0; requestAnimationFrame(frame); }
+  }
+  apply(current);
+  window.addEventListener('scroll', kick, {passive:true});
+  window.addEventListener('resize', function(){ apply(current); kick(); }, {passive:true});
+  window.addEventListener('load', function(){ apply(current); });
+})();
+</script>
+<script>
+(function(){
+  var sec = document.getElementById('about');
+  var head = document.getElementById('aboutHead');
+  if(!sec || !head) return;
+  var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+  /* Set when the heading is used to CLOSE while the pointer is still
+     over the section, so the hover-open below doesn't instantly
+     re-open what the visitor just closed. Cleared when the pointer
+     leaves the section. */
+  var suppressHover = false;
+  function isOpen(){ return sec.classList.contains('about-open'); }
+  function setOpen(open){
+    sec.classList.toggle('about-open', open);
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  /* Heading tap / click toggles — open AND close. */
+  head.addEventListener('click', function(){
+    var willOpen = !isOpen();
+    suppressHover = !willOpen;
+    setOpen(willOpen);
+  });
+  head.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); setOpen(!isOpen()); }
+  });
+  /* Hover opens — real mice / trackpads only. Touch taps synthesize
+     mouseenter right before click, which would open-then-toggle-shut
+     in one tap, so synthesized hover never opens. */
+  sec.addEventListener('mouseenter', function(){
+    if(fineHover.matches && !suppressHover) setOpen(true);
+  });
+  /* Moving away closes, whatever opened it. */
+  sec.addEventListener('mouseleave', function(){
+    suppressHover = false;
+    setOpen(false);
+  });
+  /* Tapping / clicking anywhere outside the section closes it. */
+  document.addEventListener('click', function(e){
+    if(isOpen() && !sec.contains(e.target)) setOpen(false);
+  });
+  /* Focus moving outside the section closes it too, and Escape
+     closes from anywhere (returning focus to the heading if it was
+     inside the section). */
+  document.addEventListener('focusin', function(e){
+    if(isOpen() && !sec.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && isOpen()){
+      setOpen(false);
+      if(sec.contains(document.activeElement) && document.activeElement !== head) head.focus();
+    }
+  });
 })();
 </script>
 </body>

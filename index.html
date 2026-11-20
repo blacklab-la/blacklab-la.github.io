@@ -95,6 +95,13 @@ function kcAttach(v, path){
     --yellow:#FFFF00;
     --yellow-dim:rgba(255,255,0,.14);
     --radius:14px;
+    /* Apple touch springs — press-in is near-instant (the control
+       answers in the same frame), release overshoots slightly and
+       settles, like UIKit / SwiftUI spring animations. Used for
+       every gallery / lightbox touch control below. */
+    --spring-bounce:cubic-bezier(.34,1.45,.64,1);
+    --spring-press:cubic-bezier(.32,.72,0,1);
+    --spring-slide:cubic-bezier(.32,.85,.35,1);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -115,10 +122,69 @@ function kcAttach(v, path){
      coming (the lightbox stages even run their own double-tap-to-close
      on top of that). With manipulation, a tap is a tap, immediately. */
   html{touch-action:manipulation}
-  button, a, [role="button"], .clip-track{touch-action:manipulation; -webkit-tap-highlight-color:rgba(255,255,0,.16)}
-  /* Pressed feedback — every play control answers the press itself,
-     in the same frame, instead of waiting for playback to start. */
-  .clip-play:active, .clip-restart:active, .iconbtn:active, .seg button:active, .lb-nav:active{transform:scale(.93)}
+  button, a, [role="button"], .clip-track{touch-action:manipulation; -webkit-tap-highlight-color:transparent}
+  /* ---------- Apple-feel press system ----------
+     Android-feel is: no answer until the action fires, then a flat
+     linear change. Apple-feel is the opposite: the control itself
+     answers the finger instantly — a quick squash on press-down
+     (120ms, no overshoot) — then springs back past 1.0 a touch on
+     release and settles (550ms bounce curve). The squash uses the
+     independent `scale` property, NOT `transform`, so it never
+     fights the transforms already at work (gallery rise-in, the
+     Honda scroll zoom, the filmstrip's selected grow, the hero
+     push-in). JS mirrors :active with .is-pressed on pointerdown
+     so the feedback lands on the touch itself on iOS, where
+     :active alone can arrive late or stick. */
+  .iconbtn, .seg button, .lb-nav, .lb-close, .lb-dl, .lb-sound,
+  .clip-play, .clip-restart, .pillnav a, .thumb, .fst,
+  .still-dl, .blend-dl, .contact-actions a, .contact-actions button,
+  .video-open-btn{
+    transition:scale .55s var(--spring-bounce), transform .55s var(--spring-bounce),
+      background-color .22s var(--spring-press), color .22s var(--spring-press),
+      border-color .22s var(--spring-press), opacity .3s var(--spring-press),
+      filter .22s var(--spring-press), box-shadow .3s var(--spring-press);
+  }
+  .iconbtn:active, .iconbtn.is-pressed,
+  .seg button:active, .seg button.is-pressed,
+  .clip-play:active, .clip-play.is-pressed,
+  .clip-restart:active, .clip-restart.is-pressed{
+    scale:.88; transition-duration:.12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s; transition-timing-function:var(--spring-press);
+  }
+  .lb-nav:active, .lb-nav.is-pressed,
+  .lb-close:active, .lb-close.is-pressed,
+  .lb-dl:active, .lb-dl.is-pressed,
+  .lb-sound:active, .lb-sound.is-pressed,
+  .pillnav a:active, .pillnav a.is-pressed,
+  .still-dl:active, .still-dl.is-pressed,
+  .blend-dl:active, .blend-dl.is-pressed,
+  .contact-actions a:active, .contact-actions a.is-pressed,
+  .contact-actions button:active, .contact-actions button.is-pressed,
+  .video-open-btn:active, .video-open-btn.is-pressed{
+    scale:.94; transition-duration:.12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s; transition-timing-function:var(--spring-press);
+  }
+  .fst:active, .fst.is-pressed{scale:.90; transition-duration:.12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s; transition-timing-function:var(--spring-press)}
+  /* Gallery tiles — a large surface shouldn't squash like a button.
+     It dips just 1.5% and brightens a breath, so the tap reads as
+     the photo itself responding under the finger, then springs
+     back. Inner picture gets a subtle counter-push via filter. */
+  .gal .main, .gal .side figure, .thumb{
+    transition:scale .55s var(--spring-bounce), border-color .22s var(--spring-press), filter .22s var(--spring-press);
+  }
+  .gal .main:active, .gal .main.is-pressed,
+  .gal .side figure:active, .gal .side figure.is-pressed{
+    scale:.985; filter:brightness(1.07); transition-duration:.14s,.14s,.14s; transition-timing-function:var(--spring-press);
+  }
+  .thumb:active, .thumb.is-pressed{
+    scale:.97; filter:brightness(1.06); transition-duration:.14s,.14s,.14s; transition-timing-function:var(--spring-press);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .iconbtn, .seg button, .lb-nav, .lb-close, .lb-dl, .lb-sound,
+    .clip-play, .clip-restart, .pillnav a, .thumb, .fst,
+    .gal .main, .gal .side figure{transition:none}
+    .iconbtn:active, .seg button:active, .lb-nav:active, .lb-close:active,
+    .clip-play:active, .clip-restart:active, .gal .main:active,
+    .gal .side figure:active, .thumb:active, .fst:active{scale:1; filter:none}
+  }
 
   /* ---------- top pill nav — portfolio language ---------- */
   .topbar{
@@ -131,6 +197,13 @@ function kcAttach(v, path){
     position:fixed; inset:22px 16px auto 16px; z-index:50;
     display:flex; flex-direction:column; align-items:center; gap:22px; pointer-events:none;
   }
+  /* Top row — a symmetric 1fr / auto / 1fr grid keeps the
+     nameplate dead-center on the page. */
+  .toprow{
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+    width:100%; align-self:stretch;
+  }
+  .toprow .nameplate{grid-column:2; grid-row:1; justify-self:center}
   /* Nameplate — at the very top the name sits big, spanning most
      of the width, set in Michroma, first name in a lighter tone
      than the surname.
@@ -148,7 +221,7 @@ function kcAttach(v, path){
      The values below are the opening (top-of-page) state; the
      shrink itself is driven by the damped scroll script at the end
      of the body, which interpolates font-size, tracking, the
-     topbar's top offset and gap, and the mock tag's position on a
+     topbar's top offset and gap, and the Active pill's size on a
      lerped, smootherstep-eased progress — no CSS transition, no
      1:1 scroll mapping — so the motion glides and settles instead
      of stepping with the wheel. The vertical travel runs Kevin's
@@ -170,6 +243,109 @@ function kcAttach(v, path){
     will-change:font-size, letter-spacing, transform;
   }
   .nameplate .fn{color:rgba(255,255,255,.68)}
+  /* Settled-state divider — a little vertical yellow line between
+     Kevin and Cunningham that DOES NOT EXIST in the big opening
+     name: zero width, zero height-growth, fully transparent, and
+     only the word-space margins remain. Once the name has shrunk
+     and locked into its small settled place, the shrink script
+     fades the wrapper in while the inner bar grows OUTWARD FROM
+     ITS CENTER (scaleY from 0, transform-origin dead center) to
+     full height; after that it just keeps pulsating gently —
+     alive — on the pill dot's own liveDotPulse animation (same
+     1.6s timing, started at the same page load, so the two stay
+     in sync). The script drives the wrapper's opacity / width /
+     margins and the bar's scaleY from a late-remapped slice of
+     the same scroll progress; the pulse lives on the inner bar
+     so its keyframed opacity never fights the script's fade.
+     Scrolling back up reverses it exactly: it shrinks back into
+     its center, fades out, and is gone from the big name again.
+     CENTERED BOTH WAYS (Kevin's fix): horizontally it sits
+     exactly midway between the two words — the left margin is
+     the right margin MINUS the name's letter-spacing, because
+     the trailing letter-spacing after "Kevin" already adds
+     space on the left side only (the script sets the two
+     margins separately on every frame; the values here are the
+     pre-script state at the CSS letter-spacing). Vertically it
+     is centered on the LETTERING, not the line box: Michroma's
+     cap height is 0.75em, so the caps' center sits 0.375em
+     above the baseline, and with a .86em bar that puts
+     vertical-align at 0.375 − .43 = −.055em. The old −.14em
+     left the bar's center ~.085em below the caps' center —
+     a little low, its top lined up with the top of the words. */
+  .namediv{
+    display:inline-block; width:0; height:.86em; margin:0 .15em 0 .01em;
+    vertical-align:-.055em; opacity:0; visibility:hidden;
+    will-change:opacity, width, margin;
+  }
+  .namediv i{
+    display:block; width:100%; height:100%; border-radius:1px;
+    background:var(--yellow);
+    transform:scaleY(0); transform-origin:50% 50%;
+    will-change:transform;
+    animation:liveDotPulse 1.6s ease-in-out infinite;
+  }
+  /* Family shield — BACK at Kevin's direction, as a yellow
+     OUTLINE at the END of the name (after Cunningham), not
+     between the words. TALLER than the lettering and 20%
+     BIGGER than a cap-height badge: 1.44em tall (1.20em × 1.20)
+     against Michroma's 0.75em cap height, so it stands proud
+     of the name above and below. CENTERED ON THE NAME both
+     ways: the whole nameplate (name + shield) stays dead-center
+     in the top row's grid, and the shield itself is centered
+     vertically on the LETTERING — cap center sits 0.375em above
+     the baseline, the shield's half-height is 0.72em, so
+     vertical-align is 0.375 − 0.72 = −0.345em — then nudged
+     DOWN 1px net and LEFT 5px (translate(-5px, 1px): the
+     original ~1px down fix, plus one more, plus two more down
+     = 4px down, then ~3px LEFT toward the M and 1px back UP,
+     then 2px further LEFT at Kevin's direction, then pushed
+     UP 2px at Kevin's direction, for a net
+     1px down / 5px left from the original centered spot).
+     Because its size
+     is in em it scales with the nameplate's font-size, so it
+     rides the scroll shrink with the name, in proportion, at
+     the end of the name in both the big opening state and the
+     small settled state.
+     THE EMBLEM (Kevin's correction — the first drawing was
+     totally wrong, a bare chevron over a dot): the shield is
+     the Cunningham crest from his photo — flat top, straight
+     sides curving to a bottom point, holding a big bold Y
+     (a pall: two diagonal arms meeting over a vertical stem
+     that ends in a point) and THREE five-pointed stars — one
+     centered at the top, sitting in the fork of the Y, and
+     two larger ones below, flanking the stem left and right.
+     The shield itself is a yellow outline; inside it the Y
+     and ALL THREE stars are solid yellow fill.
+     HORIZONTAL SCALE (Kevin's direction): the whole shield is
+     stretched wider in proportion — first to a 31-wide viewBox
+     (28 × 1.10 ≈ 31), then stretched ANOTHER ~10% horizontally
+     because it still read too narrow (34.1 / 36), then two
+     further ~10% stretches on top of that (to 41.3 / 36), and
+     finally pulled BACK a little because that read too wide:
+     the box is now 37.5 / 36 at the same 1.44em height, and
+     the SVG uses preserveAspectRatio="none" so the drawing
+     itself — outline, Y and all three stars — scales
+     proportionally across that wider box instead of
+     letterboxing inside it. The gap between the final M of
+     Cunningham and the shield is tightened (margin-left
+     .30em → .16em). The Y and all three stars are SOLID
+     yellow fill; the two bottom stars also sit ~1px higher
+     than before (their path Y coordinates shifted up 0.75
+     units ≈ 1px at the opening name size).
+     NO PULSE on the shield (Kevin's direction): it sits steady.
+     The blinking / pulsating yellow line is the divider
+     BETWEEN Kevin and Cunningham (.namediv above) — that one
+     keeps its pulse, untouched. */
+  .nameshield{
+    display:inline-block; height:1.44em; aspect-ratio:37.5 / 36;
+    margin-left:.16em;
+    vertical-align:-.345em;
+    transform:translate(-5px, 1px);
+  }
+  .nameshield svg{
+    display:block; width:100%; height:100%; overflow:visible;
+    filter:drop-shadow(0 1px 6px rgba(0,0,0,.55));
+  }
   .pillnav{
     /* Hidden while the name is big (top of page): the shrink script
        fades it in on the same damped progress that shrinks the
@@ -184,13 +360,24 @@ function kcAttach(v, path){
     opacity:0; visibility:hidden; transform:translateY(0);
     will-change:opacity, transform;
     display:flex; align-items:center; gap:2px;
-    background:rgba(14,14,16,.72);
-    backdrop-filter: blur(14px) saturate(1.2);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    border:1px solid var(--line);
+    /* Tinted glass (Kevin's direction, strengthened): the menu
+       under the name is a real smoked-glass pill. The tint is
+       LIGHTER than before so the imagery underneath actually
+       shows through, and the backdrop does the glass work — a
+       deep 30px blur with heavy saturation, a lift in brightness
+       and a touch of contrast, so colors bleed through frosted
+       and edges bend like refraction instead of reading as a
+       flat dark bar. The rim is a bright 1px edge, lit from
+       above by a strong inset top highlight with a faint lit
+       lower edge under it, over a deep drop shadow that floats
+       the pill off the picture. */
+    background:linear-gradient(180deg, rgba(255,255,255,.17), rgba(255,255,255,.05) 42%, rgba(255,255,255,.015) 62%, rgba(0,0,0,.10)), rgba(13,13,17,.36);
+    backdrop-filter: blur(30px) saturate(1.85) brightness(1.09) contrast(1.06);
+    -webkit-backdrop-filter: blur(30px) saturate(1.85) brightness(1.09) contrast(1.06);
+    border:1px solid rgba(255,255,255,.34);
     border-radius:999px;
     padding:5px;
-    box-shadow:0 12px 32px rgba(0,0,0,.45);
+    box-shadow:0 16px 40px rgba(0,0,0,.50), inset 0 1px 0 rgba(255,255,255,.38), inset 0 -1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.04);
     max-width:100%;
   }
   .pillnav .brand{
@@ -204,10 +391,15 @@ function kcAttach(v, path){
     font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
     color:var(--muted);
     padding:10px 14px; border-radius:999px; white-space:nowrap;
-    transition:color .2s, background .2s;
+    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), background-color .2s var(--spring-press);
   }
-  .pillnav a:hover{color:var(--yellow); background:rgba(255,255,255,.05)}
-  .pillnav a.active{color:#fff; background:rgba(255,255,255,.08)}
+  .pillnav a:hover{color:var(--yellow); background:rgba(255,255,255,.10)}
+  .pillnav a.active{color:#fff; background:rgba(255,255,255,.15); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 0 0 1px rgba(255,255,255,.08), 0 2px 8px rgba(0,0,0,.25)}
+  /* No backdrop-filter support: fall back to a near-opaque smoked
+     fill so the menu still reads as a dark pill instead of clear. */
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .pillnav{background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03) 55%), rgba(13,13,17,.92)}
+  }
   @media (max-width:640px){
     /* Opening (top) state on a phone: the same treatment as
        desktop, scaled to the screen — opening size 10% bigger
@@ -221,14 +413,13 @@ function kcAttach(v, path){
     .pillnav a{padding:10px 7px; font-size:9px; letter-spacing:.05em}
   }
 
-  .mocktag{
-    position:fixed; top:192px; right:16px; z-index:49;
-    font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--muted); background:rgba(14,14,16,.72); backdrop-filter:blur(10px);
-    border:1px solid var(--line); border-radius:999px; padding:7px 12px;
+  @keyframes liveDotPulse{
+    0%, 100%{opacity:1; box-shadow:0 0 0 0 rgba(255,255,0,.45)}
+    50%{opacity:.35; box-shadow:0 0 0 4px rgba(255,255,0,0)}
   }
-  .mocktag i{display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--yellow); margin-right:7px; vertical-align:1px}
-  @media (max-width:560px){ .mocktag{top:126px; right:12px} }
+  @media (prefers-reduced-motion: reduce){
+    .namediv i{animation:none}
+  }
 
   /* While the page is actually scrolling, blurred surfaces drop their
      backdrop blur (JS toggles .is-scrolling on <html> during scroll and
@@ -239,14 +430,23 @@ function kcAttach(v, path){
      worst on scroll-up, when the blurred hero bar and hero re-enter.
      The panels go near-opaque instead, so they read the same at rest
      and in motion, and the blur returns the moment scrolling stops. */
-  html.is-scrolling .pillnav,
-  html.is-scrolling .mocktag,
   html.is-scrolling .hero-bar,
   html.is-scrolling .clip-bar{
     backdrop-filter:none; -webkit-backdrop-filter:none;
   }
-  html.is-scrolling .pillnav{ background:rgba(14,14,16,.94); }
-  html.is-scrolling .mocktag{ background:rgba(14,14,16,.94); }
+  /* The pill menu is EXEMPT from the blur drop above (Kevin's fix):
+     it is a small fixed pill, cheap to blur, and it lives its whole
+     life over moving imagery — stripping its blur while scrolling
+     turned it into a flat opaque bar exactly when it was on screen,
+     which is why the glass never read as glass. While scrolling it
+     keeps a slightly cheaper 18px version of the same glass and a
+     touch more tint for legibility; the full 30px glass returns
+     the moment scrolling stops. */
+  html.is-scrolling .pillnav{
+    background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.04) 45%, rgba(255,255,255,.01) 65%, rgba(0,0,0,.08)), rgba(13,13,17,.52);
+    backdrop-filter:blur(18px) saturate(1.7) brightness(1.07) contrast(1.05);
+    -webkit-backdrop-filter:blur(18px) saturate(1.7) brightness(1.07) contrast(1.05);
+  }
   html.is-scrolling .hero-bar{ background:rgba(8,8,9,.88); }
 
   /* ---------- HERO — crossfade rotation; ~10% IN, then AUTO ZOOM ----------
@@ -419,7 +619,7 @@ function kcAttach(v, path){
     border:1px solid var(--line-strong); background:rgba(255,255,255,.04); color:var(--muted);
     border-radius:999px; padding:0 16px; height:44px;
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.08em;
-    transition:all .2s;
+    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), background-color .2s var(--spring-press), border-color .2s var(--spring-press);
   }
   .seg button:hover{color:var(--yellow); border-color:rgba(255,255,0,.55)}
   .seg button.on{background:#fff; color:#0a0a0b; border-color:#fff; font-weight:500}
@@ -437,7 +637,7 @@ function kcAttach(v, path){
     flex:none; width:44px; height:44px; border-radius:50%;
     border:1px solid var(--line-strong); background:rgba(255,255,255,.05); color:#fff;
     display:grid; place-items:center; font-size:14px; line-height:1;
-    transition:all .2s;
+    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), background-color .2s var(--spring-press), border-color .2s var(--spring-press);
   }
   .iconbtn:hover{color:var(--yellow); border-color:rgba(255,255,0,.55)}
 
@@ -592,7 +792,7 @@ function kcAttach(v, path){
     border:1px solid var(--line-strong); background:rgba(8,8,9,.88); color:#fff;
     display:inline-flex; align-items:center;
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
-    transition:color .2s, border-color .2s;
+    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), border-color .2s var(--spring-press);
   }
   .gal .side figure .still-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
   .blend-meta{display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:var(--panel); padding:13px 16px; border-top:1px solid var(--line)}
@@ -601,7 +801,7 @@ function kcAttach(v, path){
     border:1px solid var(--line-strong); background:rgba(255,255,255,.04); color:#fff;
     display:inline-flex; align-items:center; gap:7px;
     font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
-    transition:color .2s, border-color .2s;
+    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), border-color .2s var(--spring-press);
   }
   .blend-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
 
@@ -677,25 +877,32 @@ function kcAttach(v, path){
     flex:none; width:44px; height:44px; border-radius:50%;
     border:1px solid var(--line-strong); background:rgba(255,255,255,.05); color:#fff;
     display:grid; place-items:center; font-size:13px; line-height:1;
-    transition:color .2s, border-color .2s;
+    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), border-color .2s var(--spring-press), background-color .2s var(--spring-press);
   }
   .clip-restart{font-size:17px}
   .clip-play:hover, .clip-restart:hover{color:var(--yellow); border-color:rgba(255,255,0,.55)}
   .clip-track{
-    flex:1; min-width:56px; height:30px; display:flex; align-items:center;
+    flex:1; min-width:56px; height:36px; display:flex; align-items:center;
     cursor:pointer; touch-action:none; border-radius:6px;
   }
   .clip-track:focus-visible{outline:2px solid rgba(255,255,0,.7); outline-offset:2px}
-  .clip-track .rail{position:relative; width:100%; height:3px; border-radius:2px; background:rgba(255,255,255,.18)}
+  .clip-track .rail{position:relative; width:100%; height:3px; border-radius:2px; background:rgba(255,255,255,.18); transition:height .35s var(--spring-bounce)}
   .clip-fill{
     position:absolute; left:0; top:0; bottom:0; width:0%;
     background:var(--yellow); border-radius:2px;
   }
   .clip-fill::after{
-    content:""; position:absolute; right:-5px; top:50%;
-    width:11px; height:11px; border-radius:50%; background:var(--yellow);
+    content:""; position:absolute; right:-6px; top:50%;
+    width:12px; height:12px; border-radius:50%; background:var(--yellow);
     transform:translateY(-50%);
+    box-shadow:0 1px 6px rgba(0,0,0,.45);
+    transition:width .4s var(--spring-bounce), height .4s var(--spring-bounce), right .4s var(--spring-bounce);
   }
+  /* Scrubbing — like iOS: the track thickens and the thumb springs
+     up under the finger the moment a drag starts, and springs back
+     down on release. Driven by .is-scrubbing from wireClipBar. */
+  .clip-track.is-scrubbing .rail, .clip-track:active .rail{height:6px}
+  .clip-track.is-scrubbing .clip-fill::after, .clip-track:active .clip-fill::after{width:22px; height:22px; right:-11px}
   .clip-time{
     font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.1em;
     color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums;
@@ -792,7 +999,7 @@ function kcAttach(v, path){
   .thumb{
     text-align:left; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     overflow:hidden; padding:0; color:var(--text); width:100%;
-    transition:border-color .2s, outline-color .3s ease;
+    transition:scale .55s var(--spring-bounce), border-color .2s var(--spring-press), outline-color .3s ease, filter .2s var(--spring-press);
   }
   .thumb:hover{border-color:rgba(255,255,0,.6)}
   .thumb img{width:100%; aspect-ratio:16/9; object-fit:cover; display:block}
@@ -854,6 +1061,15 @@ function kcAttach(v, path){
     flex:1; min-height:0; position:relative; overflow:hidden;
     display:flex; align-items:flex-end; justify-content:center;
     padding:6px clamp(10px, 3vw, 28px) 2px;
+    /* Double-tap-to-close lives on this stage (all lightboxes):
+       manipulation tells the browser this surface never uses
+       double-tap ZOOM, so a double-tap is delivered as two taps
+       immediately — no 300ms wait, no zoom jump on iOS — and the
+       stage's own swipe handlers (left/right = slide, down =
+       close) get every touch without the browser stealing the
+       gesture for scrolling (the stage never scrolls: the page
+       behind is scroll-locked while a lightbox is open). */
+    touch-action:manipulation;
   }
   /* Media is anchored to the BOTTOM of the stage, so the Previous / Close /
      Next row in .lb-bottom sits directly underneath the image/video —
@@ -863,6 +1079,23 @@ function kcAttach(v, path){
     max-width:100%; max-height:100%; width:auto; height:auto;
     object-fit:contain; display:block; border-radius:10px; border:1px solid var(--line);
     background:#000;
+  }
+  /* Lightbox swipe — the photo follows the finger (JS sets
+     transform while dragging, with .lb-dragging killing the
+     transition so it tracks 1:1) AND fades out as it goes: the
+     further it is dragged, the more transparent it gets, so a
+     swipe reads as the picture dissolving away under the finger.
+     On release JS swaps to .lb-springing and the photo springs:
+     back to centre, fading back in, if the swipe was short /
+     slow; or out to fully transparent as the next slide fades in
+     centred if it passed the distance / flick threshold. That
+     follow + fade + spring is the iOS Photos feel; the old
+     behaviour (nothing moves, then an abrupt change at 48px) is
+     the Android feel Kevin flagged. */
+  .lb-stage img.lb-dragging, .lb-stage video.lb-dragging{transition:none !important; will-change:transform}
+  .lb-stage img.lb-springing, .lb-stage video.lb-springing{transition:transform .55s var(--spring-bounce), opacity .35s ease !important; will-change:transform, opacity}
+  @media (prefers-reduced-motion: reduce){
+    .lb-stage img.lb-springing, .lb-stage video.lb-springing{transition:none !important}
   }
   .lb-controls{
     display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; width:100%;
@@ -914,7 +1147,7 @@ function kcAttach(v, path){
     position:relative; width:58px; height:38px; min-width:58px; min-height:38px; padding:0;
     border-radius:9px; overflow:hidden; border:1px solid var(--line-strong);
     background:#000; opacity:.5; cursor:pointer;
-    transition:opacity .35s cubic-bezier(.32,.72,0,1), border-color .35s cubic-bezier(.32,.72,0,1), transform .5s cubic-bezier(.34,1.3,.64,1);
+    transition:scale .55s var(--spring-bounce), opacity .35s var(--spring-press), border-color .35s var(--spring-press), transform .55s var(--spring-bounce);
   }
   .lb-filmstrip .fst img{width:100%; height:100%; object-fit:cover; display:block}
   .lb-filmstrip .fst .fst-tri{
@@ -1056,7 +1289,8 @@ function kcAttach(v, path){
     font-family:"Michroma", "Barlow Condensed", sans-serif;
     text-decoration:none; font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:400;
     border:1px solid var(--line-strong); border-radius:999px; padding:0 20px; height:48px; min-height:48px;
-    display:inline-flex; align-items:center; gap:8px; background:transparent; color:#fff; transition:all .2s;
+    display:inline-flex; align-items:center; gap:8px; background:transparent; color:#fff;
+    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), background-color .2s var(--spring-press), border-color .2s var(--spring-press);
   }
   .contact-actions a:hover, .contact-actions button:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
   .contact-actions .primary{background:#fff; color:#0a0a0b; border-color:#fff}
@@ -1104,8 +1338,8 @@ function kcAttach(v, path){
      swaps while transparent, then fades back in. The hero bar's
      view label fades the same way while its text changes. */
   .fading-out{opacity:0 !important}
-  .lb-sound, .lb-dl{transition:opacity .3s cubic-bezier(.32,.72,0,1)}
-  .lb-stage img, .lb-stage video{transition:opacity .2s ease}
+  .lb-sound, .lb-dl{transition:scale .55s var(--spring-bounce), opacity .3s var(--spring-press), color .2s var(--spring-press), border-color .2s var(--spring-press), background-color .2s var(--spring-press)}
+  .lb-stage img, .lb-stage video{transition:opacity .3s ease}
   .lb-stage.swap-out img, .lb-stage.swap-out video{opacity:0}
   .view-label{transition:opacity .22s ease}
   .view-label.txt-swap{opacity:0}
@@ -1133,17 +1367,63 @@ function kcAttach(v, path){
   }
   /* Reveal is an animation layered on the visible default — content is NEVER
      hidden waiting for the observer, so nothing can render blank. */
-  .js-anim .rv.in{animation:rvIn .75s cubic-bezier(.32,.72,0,1) both}
+  .js-anim .rv.in:not(.gal-item){animation:rvIn .75s cubic-bezier(.32,.72,0,1) both}
   @keyframes rvIn{
     from{opacity:0; transform:translateY(30px)}
     to{opacity:1; transform:translateY(0)}
   }
-  /* Gallery images — rise up from the bottom one at a time, staggered
-     per gallery (delay set in JS by position inside each .gal). */
-  .js-anim .rv.gal-item.in{animation:galIn .9s cubic-bezier(.32,.72,0,1) both}
-  @keyframes galIn{
-    from{opacity:0; transform:translateY(54px)}
-    to{opacity:1; transform:translateY(0)}
+  /* Gallery images — rise in smooth, one at a time: the big main
+     image first, then the small side stills top to bottom.
+     WHY THIS SHAPE (the glitch, fixed): the failed entrance was a
+     keyframe switched on while the item was ALREADY painted on
+     screen at full opacity — it snapped to opacity 0 / 56px down /
+     slightly scaled and jumped back up. That visible→hidden snap
+     is what read as a glitch, and the scale pop made it jumpy.
+     This entrance can never do that, for two reasons:
+       · OPACITY IS NEVER TOUCHED. A gallery item rests fully
+         visible at opacity 1 — before, during and after its
+         entrance — so no reveal path (observer, scroll sweep,
+         capture, restored scroll) can ever leave a black tile.
+       · THE GLIDE IS TRANSFORM-ONLY AND STARTS OFF-SCREEN. The
+         observer's root is extended 30% below the viewport, so
+         .in lands while the item is still below the fold, and the
+         item glides up 22px on one continuous .95s Apple ease-out
+         (cubic-bezier(.22,1,.36,1)) — no fade snap, no scale pop,
+         no stutter. By the time the eye reaches it, it is rising
+         smoothly or already landed.
+     The stagger is assigned at reveal time (see galReveal in JS):
+     items arriving together in one gallery get 190ms steps in
+     gallery order — main (delay 0) first, then the small stills
+     top to bottom — and a video main's poster gate holds the
+     whole batch, so the smalls can never overtake the big one.
+     An item arriving on its own (stacked phone layout) gets no
+     delay and rises as it arrives. .in is never removed from a
+     gallery item, so a landed image stays landed.
+     An item jumped clean over (anchor leap, restored scroll) is
+     marked .in with .gal-skip: shown instantly, no glide. */
+  .js-anim .rv.gal-item{will-change:transform}
+  .js-anim .rv.gal-item.in{
+    animation:galGlide .95s cubic-bezier(.22,1,.36,1) both;
+    animation-delay:var(--gal-delay, 0ms);
+  }
+  .js-anim .rv.gal-item.in.gal-skip{animation:none}
+  @keyframes galGlide{
+    from{transform:translateY(22px)}
+    to{transform:translateY(0)}
+  }
+  /* The press dip runs on the independent `scale` property with
+     the Apple spring (see the press system up top), so it composes
+     with the entrance's transform instead of fighting it — the
+     transition list here covers only those press properties, never
+     transform, which the keyframes own while landing. */
+  .js-anim .rv.gal-item{
+    transition:scale .55s var(--spring-bounce), filter .25s var(--spring-press), border-color .22s var(--spring-press);
+  }
+  .js-anim .rv.gal-item:active, .js-anim .rv.gal-item.is-pressed{
+    transition:scale .14s var(--spring-press), filter .14s var(--spring-press), border-color .14s var(--spring-press);
+  }
+  @media print{
+    .js-anim .rv.gal-item{opacity:1 !important; transform:none !important; transition:none !important; animation:none !important}
   }
 
   /* Logo wall — ONE row, Whipsaw-style cycle. A single row of five
@@ -1209,7 +1489,7 @@ function kcAttach(v, path){
     .js-anim .hero-kicker, .js-anim .hero-title, .js-anim .hero-sub,
     .js-anim .hero-meta, .js-anim .hero-bar{animation:none !important}
     .js-anim .rv.in{animation:none !important}
-    .js-anim .rv.gal-item.in{animation:none !important}
+    .js-anim .rv.gal-item{opacity:1 !important; transform:none !important; transition:none !important; animation:none !important}
     .js-anim .logo-cell.logo-item{opacity:1 !important; transform:none !important; transition:none !important; animation:none !important}
     .js-anim .txt-anim.in .w{animation:none !important}
     .lightbox.lb-play .lb-stage img, .lightbox.lb-play .lb-stage video,
@@ -1226,7 +1506,9 @@ function kcAttach(v, path){
 <body>
 
 <div class="topbar">
-  <div class="nameplate"><span class="fn">Kevin</span> Cunningham</div>
+  <div class="toprow">
+    <div class="nameplate" aria-label="Kevin Cunningham"><span class="fn">Kevin</span><span class="namediv" aria-hidden="true"><i></i></span>Cunningham<span class="nameshield" aria-hidden="true"><svg viewBox="0 0 31 36" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3.2 H26 V15.8 C26 23.9 21.2 30.1 15.5 34 C9.8 30.1 5 23.9 5 15.8 Z" fill="rgba(255,255,0,.05)" stroke="#FFFF00" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 8.5 H11 L15.5 13.8 L20 8.5 H24 V11.8 L17.2 18.2 V28.4 L15.5 30 L13.8 28.4 V18.2 L7 11.8 Z" fill="#FFFF00" stroke="#FFFF00" stroke-width="1.05" stroke-linejoin="round"/><path d="M15.5 4.0 L16.15 6.0 L18.26 6.0 L16.56 7.24 L17.2 9.25 L15.5 8.01 L13.8 9.25 L14.44 7.24 L12.74 6.0 L14.85 6.0 Z" fill="#FFFF00" stroke="#FFFF00" stroke-width=".85" stroke-linejoin="round"/><path d="M9.6 19.45 L10.36 21.8 L12.83 21.8 L10.84 23.25 L11.6 25.6 L9.6 24.15 L7.6 25.6 L8.36 23.25 L6.37 21.8 L8.84 21.8 Z" fill="#FFFF00" stroke="#FFFF00" stroke-width=".85" stroke-linejoin="round"/><path d="M21.4 19.45 L22.16 21.8 L24.63 21.8 L22.64 23.25 L23.4 25.6 L21.4 24.15 L19.4 25.6 L20.16 23.25 L18.17 21.8 L20.64 21.8 Z" fill="#FFFF00" stroke="#FFFF00" stroke-width=".85" stroke-linejoin="round"/></svg></span></div>
+  </div>
   <nav class="pillnav" aria-label="Kevin Cunningham Portfolio">
     <a href="#hero" class="active">Hero</a>
     <a href="#work">Work</a>
@@ -1234,7 +1516,6 @@ function kcAttach(v, path){
     <a href="#contact">Contact</a>
   </nav>
 </div>
-<div class="mocktag"><i></i>Full site mockup — not live</div>
 
 <!-- ============ HERO — four-project rotation: Samsung STAR first,
      Honda Transporter second, then SPAR (3 images) and SPAR X2
@@ -1404,7 +1685,7 @@ function kcAttach(v, path){
         </div>
         <div class="side honda-side">
           <figure><img data-kc="assets/honda-salt-flat-front-display.jpg" alt="Honda Orion transporter — front three-quarter on the lake bed at sunset, purple cab on cracked playa" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-front-4k.jpg" download aria-label="Download the lake bed front three-quarter 4K final">↓ Lake Bed 4K</a></figure>
-          <figure><img data-kc="assets/display/honda-salt-flat-side.jpg" alt="Honda Orion transporter — side view at speed on the lake bed, salt dust plume behind" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-side-4k.jpg" download aria-label="Download the lake bed side view 4K final">↓ Side 4K</a></figure>
+          <figure><img data-kc="assets/display/honda-salt-flat-side.jpg" alt="Honda Orion transporter — side view at speed on the lake bed, salt dust plume behind" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-side.jpg" download aria-label="Download the lake bed side view with dust plume — full file">↓ Side Plume</a></figure>
           <!-- The gallery is exactly THREE pieces: the big playing
                animation plus these TWO lake bed stills — the front
                3/4 lake bed shot, then the side view lake bed shot —
@@ -1534,7 +1815,7 @@ function kcAttach(v, path){
   <!-- ============ LOGO WALL ============ -->
   <section class="block" id="clients">
     <div class="sec-head">
-      <h2>Clients &amp; Studios</h2>
+      <h2>Clients <span style="color:var(--yellow)">&amp;</span> Studios</h2>
       <p>Thirty years of badges</p>
     </div>
     <div class="logowall" aria-label="Client logos">
@@ -1593,7 +1874,7 @@ function kcAttach(v, path){
 
   <footer>
     Kevin Cunningham Portfolio — Industrial / Transportation Design<br>
-    Vehicles. Collectibles. Worlds. · Full site mockup only — live site unchanged
+    Vehicles. Collectibles. Worlds.
   </footer>
 </main>
 
@@ -1664,13 +1945,14 @@ function kcAttach(v, path){
 </div>
 
 <!-- ============ HONDA LIGHTBOX — cycles the whole Honda project, like SPAR:
-     the Transporter clip first, then all four stills (the two displayed
-     beside the animation, plus the lightbox-only rear night and
-     salt-flat side stills). The sunset front 3/4 appears once only.
+     the Transporter clip first, then all five stills (the two displayed
+     beside the animation — front 3/4 and the dust-plume side view —
+     plus the clean side view and the Shot 6 rear day and night stills).
+     The sunset front 3/4 appears once only.
      Previous / Next step through every slide and wrap around. ============ -->
 <div class="lightbox video-lightbox" id="hondaLightbox" role="dialog" aria-modal="true" aria-label="Honda Transporter — video and stills" hidden>
   <div class="lb-top">
-    <span class="lb-counter" id="hlbCounter"><b>01</b> / 05</span>
+    <span class="lb-counter" id="hlbCounter"><b>01</b> / 06</span>
     <div class="lb-title">
       <span class="p">Honda Transporter</span>
       <span class="v" id="hlbView">Wet-Track Orbit — video with sound</span>
@@ -1746,6 +2028,26 @@ function kcAttach(v, path){
 </script>
 <script>
 (function(){
+  /* Apple press — mirror :active with .is-pressed the instant a
+     finger / pointer lands, so every gallery and lightbox control
+     squashes in the same frame as the touch (iOS :active alone can
+     land late or stick after the tap). Release clears it and the
+     CSS spring (above) bounces the control back with a slight
+     overshoot. A real button / link inside a gallery tile gets the
+     press itself; otherwise the tile gets it. */
+  (function(){
+    function clearPressed(){
+      Array.prototype.slice.call(document.querySelectorAll('.is-pressed')).forEach(function(el){ el.classList.remove('is-pressed'); });
+    }
+    document.addEventListener('pointerdown', function(e){
+      if(!e.target || !e.target.closest) return;
+      var t = e.target.closest('a, button') || e.target.closest('.gal .main, .gal .side figure, .thumb') || e.target.closest('[role="button"]');
+      if(t) t.classList.add('is-pressed');
+    }, {passive:true});
+    document.addEventListener('pointerup', clearPressed, {passive:true});
+    document.addEventListener('pointercancel', clearPressed, {passive:true});
+    window.addEventListener('blur', clearPressed);
+  })();
   /* Failsafe: never load in a scroll-locked state (a lightbox class left on <body> freezes scrolling) */
   document.body.classList.remove('lb-open');
   document.documentElement.style.overflow = '';
@@ -1775,7 +2077,8 @@ function kcAttach(v, path){
   document.addEventListener('animationend', function(e){
     var t = e.target;
     if(!t || !t.classList) return;
-    if(t.classList.contains('rv')){ t.classList.remove('in'); t.style.animationDelay = ''; }
+    if(t.classList.contains('gal-item')){ /* gallery entrances keep .in permanently — never strip it, or the item would lose its landed state */ }
+    else if(t.classList.contains('rv')){ t.classList.remove('in'); t.style.animationDelay = ''; }
     else if(t.classList.contains('w')){ t.style.animation = 'none'; }
   });
 
@@ -2035,17 +2338,20 @@ function kcAttach(v, path){
     /* The Crusher — 2 (already complete) */
     {src:'assets/crusher-a.jpg', proj:'The Crusher', view:'Main view', alt:'The Crusher heavy armored assault vehicle — main view'},
     {src:'assets/crusher-b.jpg', proj:'The Crusher', view:'Alternate view', alt:'The Crusher — alternate view'},
-    /* Honda Orion Transporter — four stills in this generic set.
+    /* Honda Orion Transporter — five stills in this generic set.
        Two are displayed in the gallery grid beside the animation —
-       the single Shot 6 rear day view and the front desert shot. The
-       rear night still and the salt-flat side view are lightbox-only,
-       reached by Next / Previous (the day -> night step works
-       like every other step) — 4. The sunset front 3/4 image is the desert
+       the front desert shot (top) and the dust-plume side view
+       (bottom right, assets/honda-salt-flat-side.jpg — a different
+       photograph from the clean 4K side view, with its own slide
+       below). The clean side view and the Shot 6 rear day and night
+       stills are lightbox-only, reached by Next / Previous (the
+       day -> night step works like every other step) — 5. The sunset front 3/4 image is the desert
        front entry above: it appears exactly once in this set and
        exactly once in the dedicated Honda lightbox set (HLB_SLIDES
        below), so it never shows twice in either filmstrip. */
     {src:'assets/honda-desert-front-4k.jpg', proj:'Honda Orion Transporter', view:'Lake Bed — Front 3/4 · 4K', alt:'Honda Orion transporter front three-quarter on the lake bed at sunset, purple cab on cracked playa'},
     {src:'assets/honda-salt-flat-side-4k.jpg', proj:'Honda Orion Transporter', view:'Lake Bed — Side View · 4K', alt:'Honda Orion transporter side view at speed on the lake bed, motion blur and white salt dust plume'},
+    {src:'assets/honda-salt-flat-side.jpg', proj:'Honda Orion Transporter', view:'Lake Bed — Side View · Dust Plume', alt:'Honda Orion transporter side view at speed on the lake bed, salt dust plume behind'},
     {src:'assets/honda-shot6-rear-day-4k.jpg', proj:'Honda Orion Transporter', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind'},
     {src:'assets/honda-shot6-rear-night-4k.jpg', proj:'Honda Orion Transporter', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground'},
     /* Industrial Workflows — 1 video: the bike clip that replaced the
@@ -2152,7 +2458,7 @@ function kcAttach(v, path){
       stage._swapT = null;
       swapFn();
       stage.classList.remove('swap-out');
-    }, 210);
+    }, 280);
   }
   /* ---------- Lightbox chrome — fades, never pops ----------
      The top bar and bottom block of every lightbox are one fade group
@@ -2222,6 +2528,103 @@ function kcAttach(v, path){
       if(isControl(t) || t.tagName === 'VIDEO') return;
       closeFn();
     });
+  }
+
+  /* Spring swipe — iOS Photos feel for every lightbox stage.
+     The photo FOLLOWS the finger 1:1 while dragging (with a
+     slight scale dip and rubber-band resistance past ~55% of the
+     stage width) and FADES OUT as it goes — opacity tracks the
+     drag distance, so the picture dissolves under the finger
+     instead of sliding away solid. On release it springs: a
+     short or slow swipe springs back to centre, fading back in
+     on the bounce curve; a swipe past 72px — or a flick past
+     26px with real velocity — commits: the dragged photo
+     finishes fading to transparent as it springs out, the slide
+     swaps while the stage is transparent (stageSwap), and the
+     incoming slide fades in centred. No swipe ever hard-cuts.
+     Vertical-dominant movement is ignored, so this never fights
+     scrolling or the double-tap-to-close above (taps never move
+     enough to drag). A pull / swipe down still does NOT close —
+     unchanged. */
+  function wireSpringSwipe(stageEl, nextFn, prevFn, markSwipe){
+    if(!stageEl) return;
+    var sx = null, sy = null, lastX = 0, lastT = 0, vel = 0, media = null, moved = false;
+    function visibleMedia(){
+      var kids = stageEl.children;
+      for(var i = 0; i < kids.length; i++){
+        var el = kids[i];
+        if(el.hidden) continue;
+        if(el.style && el.style.display === 'none') continue;
+        if(el.tagName === 'IMG' || el.tagName === 'VIDEO') return el;
+      }
+      return null;
+    }
+    stageEl.addEventListener('touchstart', function(e){
+      if(e.target.closest && e.target.closest('button')){ sx = null; return; }
+      sx = e.changedTouches[0].clientX; sy = e.changedTouches[0].clientY;
+      lastX = sx; lastT = Date.now(); vel = 0; moved = false; media = visibleMedia();
+    }, {passive:true});
+    stageEl.addEventListener('touchmove', function(e){
+      if(sx === null || !media) return;
+      var x = e.changedTouches[0].clientX, y = e.changedTouches[0].clientY;
+      var dx = x - sx, dy = y - sy;
+      var now = Date.now(), dt = now - lastT;
+      if(dt > 0){ vel = 0.7 * vel + 0.3 * ((x - lastX) / dt); lastX = x; lastT = now; }
+      if(!moved && Math.abs(dx) < 9) return;
+      if(!moved && Math.abs(dy) > Math.abs(dx) * 1.15) return;
+      moved = true;
+      var w = stageEl.clientWidth || window.innerWidth || 320;
+      var adx = Math.abs(dx), follow = dx;
+      if(adx > w * 0.55){ var ex = adx - w * 0.55; follow = (w * 0.55 + ex * 0.32) * (dx < 0 ? -1 : 1); }
+      var dip = 1 - Math.min(adx / 1600, 0.028);
+      media.classList.add('lb-dragging');
+      media.classList.remove('lb-springing');
+      media.style.transform = 'translateX(' + follow.toFixed(1) + 'px) scale(' + dip.toFixed(3) + ')';
+      /* Fade out with the drag: up to ~55% transparent at a full
+         drag, tracked 1:1 like the position (.lb-dragging has no
+         transition, so the fade follows the finger exactly). */
+      media.style.opacity = (1 - Math.min(adx / (w * 0.9), 0.55)).toFixed(3);
+    }, {passive:true});
+    stageEl.addEventListener('touchend', function(e){
+      if(sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx;
+      var wasMoved = moved, el = media;
+      sx = null; media = null; moved = false;
+      if(!el) return;
+      if(!wasMoved){ el.classList.remove('lb-dragging'); el.style.transform = ''; el.style.opacity = ''; return; }
+      if(markSwipe) markSwipe();
+      var commit = Math.abs(dx) > 72 || (Math.abs(dx) > 26 && Math.abs(vel) > 0.45);
+      el.classList.remove('lb-dragging');
+      el.classList.add('lb-springing');
+      if(commit){
+        /* Finish the fade the drag started: the photo springs a
+           little further out while dissolving to fully
+           transparent, THEN the slide changes — stageSwap holds
+           the stage transparent while it swaps and fades the
+           incoming slide back in, so out and in are both fades,
+           never a cut. The inline transform / opacity are cleared
+           just before navigating, while the stage is still
+           transparent, so nothing flashes back. */
+        el.style.transform = 'translateX(' + (dx < 0 ? -84 : 84) + 'px) scale(.98)';
+        el.style.opacity = '0';
+        var goNext = dx < 0;
+        setTimeout(function(){
+          el.style.transform = '';
+          el.style.opacity = '';
+          if(goNext) nextFn(); else prevFn();
+          setTimeout(function(){ el.classList.remove('lb-springing'); }, 620);
+        }, 190);
+      } else {
+        /* Spring back to centre and fade back in with it. */
+        el.style.transform = '';
+        el.style.opacity = '';
+        setTimeout(function(){ el.classList.remove('lb-springing'); }, 580);
+      }
+    }, {passive:true});
+    stageEl.addEventListener('touchcancel', function(){
+      if(media){ media.classList.remove('lb-dragging'); media.classList.add('lb-springing'); media.style.transform = ''; media.style.opacity = ''; }
+      sx = null; media = null; moved = false;
+    }, {passive:true});
   }
 
   /* Split a caption into word spans so it can slide in word by word */
@@ -2467,7 +2870,13 @@ function kcAttach(v, path){
        front shot), and the side display copy opens the lake bed side
        slide. The Shot 6 rear pair lives in the lightbox only. */
     if(iHDesert >= 0) srcToIndex['assets/honda-salt-flat-front-display.jpg'] = iHDesert;
-    var iHSide = gIdx('assets/honda-salt-flat-side-4k.jpg'); if(iHSide >= 0) srcToIndex['assets/honda-salt-flat-side.jpg'] = iHSide;
+    /* The bottom-right gallery still is the DUST-PLUME side photo
+       (assets/honda-salt-flat-side.jpg) — a DIFFERENT photograph from
+       the clean 4K side view above, not a display copy of it. Its
+       display copy (assets/display/honda-salt-flat-side.jpg) opens
+       its OWN slide, so the exact image shown in the gallery is the
+       one that appears in the lightbox. */
+    var iHPlume = gIdx('assets/honda-salt-flat-side.jpg'); if(iHPlume >= 0) srcToIndex['assets/display/honda-salt-flat-side.jpg'] = iHPlume;
   })();
   /* Display copies map back to the same full-res slide, so a tap on a
      right-sized grid image opens the identical lightbox entry. */
@@ -2529,23 +2938,16 @@ function kcAttach(v, path){
     if(e.key === 'ArrowRight') lbShow(lbPos+1);
     if(e.key === 'ArrowLeft') lbShow(lbPos-1);
   });
-  /* Touch swipe on the lightbox stage — left = Next, right = Previous,
-     in addition to the buttons and arrow keys (which are unchanged).
-     Swipes call lbShow, so they follow the same plain slide swap and
-     the same video rules as every other way of changing slides. One
-     stage-level handler covers stills and the video slide alike. */
-  var touchX = null, lbSwipeAt = 0;
+  /* Spring swipe on the lightbox stage — the photo follows the
+     finger and springs to the next / previous slide or back to
+     centre (wireSpringSwipe above), in addition to the buttons
+     and arrow keys (which are unchanged). Closing is by the Close
+     button, Escape, backdrop tap, or double-tap on the image /
+     stage — a pull / swipe down does NOT close. One stage-level
+     handler covers stills and the video slide alike. */
+  var lbSwipeAt = 0;
   var lbStageEl = document.getElementById('lbStage');
-  lbStageEl.addEventListener('touchstart', function(e){
-    if(e.target.closest && e.target.closest('button')){ touchX = null; return; }
-    touchX = e.changedTouches[0].clientX;
-  }, {passive:true});
-  lbStageEl.addEventListener('touchend', function(e){
-    if(touchX === null) return;
-    var dx = e.changedTouches[0].clientX - touchX;
-    if(Math.abs(dx) > 48){ lbSwipeAt = Date.now(); if(dx < 0) lbShow(lbPos+1); else lbShow(lbPos-1); }
-    touchX = null;
-  }, {passive:true});
+  wireSpringSwipe(lbStageEl, function(){ lbShow(lbPos+1); }, function(){ lbShow(lbPos-1); }, function(){ lbSwipeAt = Date.now(); });
   /* Double-tap on the image / stage closes — same as Close. */
   addDoubleTapClose(lbStageEl, lbCloseFn);
 
@@ -2682,12 +3084,13 @@ function kcAttach(v, path){
     var dragging = false;
     track.addEventListener('pointerdown', function(e){
       e.stopPropagation(); dragging = true;
+      track.classList.add('is-scrubbing');
       try{ track.setPointerCapture(e.pointerId); }catch(err){}
       seekEvt(e);
     });
     track.addEventListener('pointermove', function(e){ if(dragging) seekEvt(e); });
-    track.addEventListener('pointerup', function(){ dragging = false; });
-    track.addEventListener('pointercancel', function(){ dragging = false; });
+    track.addEventListener('pointerup', function(){ dragging = false; track.classList.remove('is-scrubbing'); });
+    track.addEventListener('pointercancel', function(){ dragging = false; track.classList.remove('is-scrubbing'); });
     track.addEventListener('click', function(e){ e.stopPropagation(); });
     track.addEventListener('keydown', function(e){
       if(!v.duration) return;
@@ -2964,16 +3367,19 @@ function kcAttach(v, path){
        The frame's box is reserved by aspect-ratio from the first paint and
        every reveal animates transform/opacity only — no layout property
        ever moves, so there is no reflow to jump with. */
-    function revealIn(el){
+    function revealIn(el, cb){
       var poster = el.getAttribute('data-poster');
-      if(!poster){ el.classList.add('in'); return; }
+      if(!poster){ el.classList.add('in'); if(cb) cb(); return; }
       var done = false;
-      function go(){ if(done) return; done = true; el.classList.add('in'); }
+      function go(){ if(done) return; done = true; el.classList.add('in'); if(cb) cb(); }
+      /* Never hold an entrance hostage to a slow poster frame: if
+         it has not painted within 900ms, the item rises anyway. */
+      var wait = setTimeout(go, 900);
       var probe = new Image();
-      probe.onload = go;
-      probe.onerror = go;
+      probe.onload = function(){ clearTimeout(wait); go(); };
+      probe.onerror = function(){ clearTimeout(wait); go(); };
       kcSetImg(probe, poster);
-      if(probe.complete && probe.naturalWidth) go();
+      if(probe.complete && probe.naturalWidth){ clearTimeout(wait); go(); }
     }
     var rvIO = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
@@ -2982,29 +3388,127 @@ function kcAttach(v, path){
     }, {threshold: .1, rootMargin: '0px 0px 12% 0px'});
     rvTargets.forEach(function(el){ rvIO.observe(el); });
 
-    /* ----- Gallery images — rise from the bottom one at a time -----
-       Each .gal is observed as a group; when it scrolls into view its
-       images get .in together and the per-image delay (main first, then
-       each side still) staggers them into a one-at-a-time sequence. */
-    var galContainers = Array.prototype.slice.call(document.querySelectorAll('.gal'));
-    galContainers.forEach(function(gal){
+    /* ----- Gallery images — smooth glide, big first, then smalls -----
+       Each gallery item is observed on its own, and nothing is ever
+       hidden: items rest fully visible (opacity is never touched),
+       so no missed reveal can leave a black tile. The observer's
+       root extends 30% BELOW the viewport, so .in — and with it the
+       transform-only galGlide (up 22px, .95s Apple ease-out) —
+       lands while the item is still off-screen under the fold; the
+       old entrance switched its keyframes on while the item sat
+       fully painted at threshold .12, snapping it to invisible and
+       dropping it 56px in plain sight, which is what read as a
+       jumpy glitch. revealIn still gates a video main on its
+       poster frame (max 900ms), exactly as for block reveals. */
+    var galItems = [];
+    Array.prototype.slice.call(document.querySelectorAll('.gal')).forEach(function(gal){
       var items = Array.prototype.slice.call(gal.querySelectorAll('.main, .side figure'));
+      var grp = {last:0, count:0, main:items[0] || null, mainBegan:false, queue:[], flushT:null};
       items.forEach(function(el, k){
         el.classList.add('rv');
         el.classList.add('gal-item');
-        el.style.animationDelay = (k * 180) + 'ms';
+        el._galGrp = grp;
+        el.style.setProperty('--gal-delay', '0ms');
+        galItems.push(el);
       });
     });
+    /* Start one item's glide with the next stagger step of its
+       gallery batch: items arriving together step 190ms apart in
+       gallery order; an item arriving well after its gallery-mates
+       (stacked phone layout) starts a fresh count at 0ms. */
+    function galStart(el){
+      var grp = el._galGrp, now = performance.now(), delay = 0;
+      if(grp){
+        if(now - grp.last < 700){ grp.count++; } else { grp.count = 0; }
+        grp.last = now;
+        delay = grp.count * 190;
+      }
+      el.style.setProperty('--gal-delay', delay + 'ms');
+      revealIn(el);
+    }
+    /* Flush smalls that were held for their gallery's main: they
+       start in queue order (gallery order — small top, then small
+       bottom) with fresh stagger steps counted from the main's
+       start, so the big one visibly rises first, always. */
+    function galFlush(grp){
+      if(grp.flushT){ clearTimeout(grp.flushT); grp.flushT = null; }
+      var q = grp.queue; grp.queue = [];
+      grp.last = performance.now(); grp.count = 0;
+      q.forEach(function(el){ galStart(el); });
+    }
+    function galReveal(el){
+      galIO.unobserve(el);
+      var grp = el._galGrp;
+      if(!grp || el === grp.main){
+        /* The big main goes first. A video main is gated on its
+           poster frame inside revealIn; the callback marks the
+           moment its glide actually begins and releases the smalls
+           held behind it, so a slow poster can never let a small
+           image overtake the big one. */
+        if(grp && grp.main && el === grp.main && grp.main.getAttribute('data-poster')){
+          el.style.setProperty('--gal-delay', '0ms');
+          grp.last = performance.now(); grp.count = 0;
+          revealIn(el, function(){ grp.mainBegan = true; galFlush(grp); });
+        } else {
+          if(grp){ grp.mainBegan = true; }
+          galStart(el);
+          if(grp) galFlush(grp);
+        }
+        return;
+      }
+      if(grp.mainBegan){ galStart(el); return; }
+      /* A small arrived before its main began (or before the main
+         was even seen): hold it — fully visible, simply not yet
+         gliding — until the main starts. The 1.4s fallback releases
+         the hold no matter what, so nothing can wait forever. */
+      grp.queue.push(el);
+      if(!grp.flushT){
+        grp.flushT = setTimeout(function(){ grp.mainBegan = true; galFlush(grp); }, 1400);
+      }
+    }
     var galIO = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
-        if(!en.isIntersecting) return;
-        Array.prototype.slice.call(en.target.querySelectorAll('.main, .side figure')).forEach(function(el){
-          revealIn(el);
-        });
-        galIO.unobserve(en.target);
+        if(en.isIntersecting) galReveal(en.target);
       });
-    }, {threshold: .12, rootMargin: '0px 0px 8% 0px'});
-    galContainers.forEach(function(gal){ galIO.observe(gal); });
+    }, {threshold: 0, rootMargin: '0px 0px 30% 0px'});
+    galItems.forEach(function(el){ galIO.observe(el); });
+    /* Jumped-over items ONLY — the one safety that remains, and
+       it can no longer steal an entrance: the old timed sweeps
+       (staged timeouts at 1.4s / 2.8s, a 500ms poll, a scroll-settle
+       sweep reaching to the viewport's bottom edge) revealed
+       galleries seconds after load or the moment a scroll paused,
+       so the rise-up played off-screen and Kevin, arriving a
+       moment later, saw images simply sitting there — the "scroll
+       animation doesn't work" report. Now nothing reveals an item
+       that is below or inside the viewport except the observer
+       above. An item that ends up entirely ABOVE the viewport
+       without ever being seen (an anchor leap, a restored scroll
+       position) is marked .in with .gal-skip once scrolling
+       settles: no animation, just present — so scrolling back up
+       finds it in place, never black, and no entrance is ever
+       spent where nobody could watch it. */
+    function galDocTop(el){
+      var t = 0, n = el;
+      while(n){ t += n.offsetTop || 0; n = n.offsetParent; }
+      return t;
+    }
+    function galSkipPassed(){
+      var y = window.scrollY;
+      galItems.forEach(function(el){
+        if(el.classList.contains('in')) return;
+        if(galDocTop(el) + (el.offsetHeight || 0) < y - 40){
+          el.classList.add('gal-skip');
+          galIO.unobserve(el);
+          el.classList.add('in');
+        }
+      });
+    }
+    var galSkipT = null;
+    window.addEventListener('scroll', function(){
+      if(galSkipT) clearTimeout(galSkipT);
+      galSkipT = setTimeout(galSkipPassed, 800);
+    }, {passive:true});
+    window.addEventListener('load', galSkipPassed);
 
     /* ----- Logo wall — ONE row, Whipsaw-style cycle -----
        A single row of five logos; four sets take turns in the stage.
@@ -3339,15 +3843,13 @@ function kcAttach(v, path){
   vlbCloseBtn.addEventListener('click', vlbCloseFn);
   document.getElementById('vlbPrev').addEventListener('click', function(){ vlbShow(vlbPos-1); });
   document.getElementById('vlbNext').addEventListener('click', function(){ vlbShow(vlbPos+1); });
-  /* Touch swipe on the CAT lightbox stage — cycles the SPAR slides */
-  var vlbTouchX = null, vlbSwipeAt = 0;
-  document.getElementById('vlbStage').addEventListener('touchstart', function(e){ if(e.target.closest && e.target.closest('button')){ vlbTouchX = null; return; } vlbTouchX = e.changedTouches[0].clientX; }, {passive:true});
-  document.getElementById('vlbStage').addEventListener('touchend', function(e){
-    if(vlbTouchX === null) return;
-    var dx = e.changedTouches[0].clientX - vlbTouchX;
-    if(Math.abs(dx) > 48){ vlbSwipeAt = Date.now(); if(dx < 0) vlbShow(vlbPos+1); else vlbShow(vlbPos-1); }
-    vlbTouchX = null;
-  }, {passive:true});
+  /* Spring swipe on the CAT lightbox stage — the photo follows
+     the finger and springs between the SPAR slides
+     (wireSpringSwipe). Closing is by the Close button, backdrop
+     tap, or double-tap on the image / stage — a pull / swipe
+     down does NOT close. */
+  var vlbSwipeAt = 0;
+  wireSpringSwipe(document.getElementById('vlbStage'), function(){ vlbShow(vlbPos+1); }, function(){ vlbShow(vlbPos-1); }, function(){ vlbSwipeAt = Date.now(); });
   document.getElementById('vlbStage').addEventListener('click', function(e){
     if(e.target === e.currentTarget) vlbCloseFn();
   });
@@ -3370,9 +3872,9 @@ function kcAttach(v, path){
 
   /* ---------- Honda Transporter lightbox — cycles the whole project ----------
      Same pattern as the SPAR video lightbox: the orbit clip first, then
-     all four Honda stills (Shot 6 rear day, rear night, desert front —
-     the single sunset front 3/4 — and the lightbox-only salt-flat
-     side still).
+     all five Honda stills (desert front — the single sunset front 3/4 —
+     the clean salt-flat side view, the dust-plume side view shown at
+     bottom right in the gallery, and Shot 6 rear day and night).
      Previous / Next step through every slide and wrap around; the
      filmstrip jumps straight to a slide. The inline gallery clip
      stays muted and looping exactly as it is. */
@@ -3391,6 +3893,7 @@ function kcAttach(v, path){
     {type:'video', view:'Wet-Track Orbit — video with sound', caption:'Honda Transporter — Wet-Track Orbit. Sound is on, use Mute to turn it off. Tap the video to pause or play.'},
     {type:'img', src:'assets/honda-desert-front-4k.jpg', view:'Lake Bed — Front 3/4 · 4K', alt:'Honda Orion transporter front three-quarter on the lake bed at sunset, purple cab on cracked playa', caption:'Honda Orion transporter — front three-quarter on the lake bed at sunset. Download gives the full 4K file.'},
     {type:'img', src:'assets/honda-salt-flat-side-4k.jpg', view:'Lake Bed — Side View · 4K', alt:'Honda Orion transporter side view at speed on the lake bed, motion blur and white salt dust plume', caption:'Honda Orion transporter — side view at speed on the lake bed. Download gives the full 4K file.'},
+    {type:'img', src:'assets/honda-salt-flat-side.jpg', view:'Lake Bed — Side View · Dust Plume', alt:'Honda Orion transporter side view at speed on the lake bed, salt dust plume behind', caption:'Honda Orion transporter — side view at speed on the lake bed, salt dust plume behind — the bottom-right gallery still. Download gives the full file.'},
     {type:'img', src:'assets/honda-shot6-rear-day-4k.jpg', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion transporter Shot 6 rear view final in daytime, freeway with DTLA behind', caption:'Honda Orion transporter — Shot 6 rear view, daytime final. Download gives the full 4K file.'},
     {type:'img', src:'assets/honda-shot6-rear-night-4k.jpg', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground', caption:'Honda Orion transporter — Shot 6 rear view, nighttime final. Download gives the full 4K file.'}
   ];
@@ -3637,15 +4140,13 @@ function kcAttach(v, path){
   });
   document.getElementById('hlbPrev').addEventListener('click', function(){ hlbShow(hlbPos-1); });
   document.getElementById('hlbNext').addEventListener('click', function(){ hlbShow(hlbPos+1); });
-  /* Touch swipe on the Honda lightbox stage — cycles the slides */
-  var hlbTouchX = null, hlbSwipeAt = 0;
-  document.getElementById('hlbStage').addEventListener('touchstart', function(e){ if(e.target.closest && e.target.closest('button')){ hlbTouchX = null; return; } hlbTouchX = e.changedTouches[0].clientX; }, {passive:true});
-  document.getElementById('hlbStage').addEventListener('touchend', function(e){
-    if(hlbTouchX === null) return;
-    var dx = e.changedTouches[0].clientX - hlbTouchX;
-    if(Math.abs(dx) > 48){ hlbSwipeAt = Date.now(); if(dx < 0) hlbShow(hlbPos+1); else hlbShow(hlbPos-1); }
-    hlbTouchX = null;
-  }, {passive:true});
+  /* Spring swipe on the Honda lightbox stage — the photo follows
+     the finger and springs between the slides (wireSpringSwipe).
+     Closing is by the Close button, Escape, backdrop tap, or
+     double-tap on the image / stage — a pull / swipe down does
+     NOT close. */
+  var hlbSwipeAt = 0;
+  wireSpringSwipe(document.getElementById('hlbStage'), function(){ hlbShow(hlbPos+1); }, function(){ hlbShow(hlbPos-1); }, function(){ hlbSwipeAt = Date.now(); });
   document.getElementById('hlbStage').addEventListener('click', function(e){
     if(e.target === e.currentTarget) hlbCloseFn();
   });
@@ -3887,8 +4388,18 @@ function kcAttach(v, path){
       exponential damping (90ms time constant), so wheel steps, track-
       pad bursts and touch flings all come out as one continuous glide
       that catches up and settles softly. Font-size, letter-spacing,
-      the topbar's top offset and gap, and the mock tag's top are all
-      interpolated from the same eased value. The pill nav rides the
+      the topbar's top offset and gap are all
+      interpolated from the same eased value. The Full Site Active
+      pill rides that value too: it sits in the top row, aligned
+      at the name's height (see .toprow), opens bigger in
+      proportion with the big opening name, and its font-size,
+      padding, dot and (on the shared row) height are lerped
+      from the same eased value, so pill and name shrink — and
+      grow back — together, in sync. And once the name has
+      locked into its small settled size, a little vertical
+      yellow divider fades in between Kevin and Cunningham,
+      growing outward from its center, then pulsating gently
+      on the pill dot's own pulse timing. The pill nav rides the
       same value as a fade: absent while the name is at its opening
       size, fading in during the shrink, fully visible once the name
       has settled. The whole thing is one damped value run in both
@@ -3901,7 +4412,8 @@ function kcAttach(v, path){
 (function(){
   var plate = document.querySelector('.nameplate');
   var bar = document.querySelector('.topbar');
-  var tag = document.querySelector('.mocktag');
+  var div = plate.querySelector('.namediv');
+  var divBar = div ? div.querySelector('i') : null;
   var nav = document.querySelector('.pillnav');
   if(!plate || !bar) return;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -3939,8 +4451,6 @@ function kcAttach(v, path){
       smallTop: mobile ? 8 : 10,
       largeGap: mobile ? 18 : 22,
       smallGap: mobile ? 8 : 10,
-      largeTagTop: w <= 640 ? 126 : 192,
-      smallTagTop: w <= 560 ? 108 : 122,
       range: mobile ? 220 : 300
     };
     return m;
@@ -3969,7 +4479,36 @@ function kcAttach(v, path){
     plate.style.transform = 'translateY(0px)';
     bar.style.top = lerp(m.largeTop, m.smallTop, p).toFixed(2) + 'px';
     bar.style.gap = lerp(m.largeGap, m.smallGap, p).toFixed(2) + 'px';
-    if(tag) tag.style.top = lerp(m.largeTagTop, m.smallTagTop, p).toFixed(2) + 'px';
+    /* Settled divider — the little vertical yellow line between
+       Kevin and Cunningham. It does not exist in the big opening
+       name: its slice of the progress only starts at p = .55,
+       once the name has shrunk and is locking into its small
+       settled place. Across that last stretch (smootherstepped
+       again, so it lands softly) the wrapper fades in and opens
+       up — width 0 → 2px, margins widening to give it room —
+       while the inner bar grows OUTWARD FROM ITS CENTER,
+       scaleY 0 → 1 around its middle. At p = 1 it stands at
+       full height and from then on only its liveDotPulse
+       animation moves it, gently pulsating in sync with the
+       pill's dot. Scrolling back up runs the same values in
+       reverse: it shrinks into its center, fades, and is gone. */
+    if(div){
+      var divO = (p - 0.55) / 0.45;
+      if(divO < 0) divO = 0; else if(divO > 1) divO = 1;
+      divO = smootherstep(divO);
+      div.style.opacity = divO.toFixed(3);
+      div.style.visibility = divO <= 0.001 ? 'hidden' : 'visible';
+      div.style.width = lerp(0, 2, divO).toFixed(2) + 'px';
+      /* Exactly midway between the words: the right margin is
+         the gap after the divider, and the left margin is that
+         same gap MINUS the current letter-spacing (ls, computed
+         above) — the trailing letter-spacing after "Kevin"
+         already pads the left side, so equal margins would push
+         the divider right of center by half the letter-spacing. */
+      var divM = lerp(0.15, 0.30, divO);
+      div.style.margin = '0 ' + divM.toFixed(3) + 'em 0 ' + (divM - ls).toFixed(3) + 'em';
+      if(divBar) divBar.style.transform = 'scaleY(' + lerp(0, 1, divO).toFixed(3) + ')';
+    }
     /* Pill nav (Hero / Work / About / Contact) — not there at all
        while the name is at its opening size: its fade is remapped
        from the same damped, smootherstep-eased progress p as the

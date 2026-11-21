@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://blacklab-la.github.io/</loc>
+    <loc>https://kevincunninghamdesign.github.io/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/star-a.jpg</image:loc>
+      <image:title>Samsung STAR UGV autonomous ground vehicle — side view</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/honda-transporter-poster.jpg</image:loc>
+      <image:title>Honda Transporter concept vehicle</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/honda-salt-flat-front.jpg</image:loc>
+      <image:title>Honda Transporter concept vehicle — front three-quarter on the lake bed</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/cat-ugv-poster.jpg</image:loc>
+      <image:title>SPAR — Caterpillar UGV concept</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/spar-a.jpg</image:loc>
+      <image:title>SPAR X2 Hybrid UTV — Forward Thinking Solutions poster</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/gunslinger-a.jpg</image:loc>
+      <image:title>Gunslinger toy vehicle for The Corps! by Lanard — three views</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/bomber-a.jpg</image:loc>
+      <image:title>Mad Bomber heavy assault ground attack vehicle — technical datasheet</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/crusher-a.jpg</image:loc>
+      <image:title>The Crusher heavy armored assault vehicle — main view</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/demon.jpg</image:loc>
+      <image:title>Screamin' Demon vehicle concept</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevincunninghamdesign.github.io/assets/m577-a.jpg</image:loc>
+      <image:title>M577 Battle Set — Armored Personnel Carrier</image:title>
+    </image:image>
   </url>
 </urlset>

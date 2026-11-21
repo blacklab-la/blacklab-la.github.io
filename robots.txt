@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blacklab-la.github.io/sitemap.xml
+Sitemap: https://kevincunninghamdesign.github.io/sitemap.xml

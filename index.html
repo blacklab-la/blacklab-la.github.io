@@ -92,10 +92,10 @@ function kcUrl(path){
 }
 function kcSetImg(img, path){ if(!img || !path) return; kcUrl(path).then(function(u){ if(u) img.src = u; }); }
 function kcSetPoster(el, path){ if(!el || !path) return; kcUrl(path).then(function(u){ if(u) el.poster = u; }); }
-function kcSetDownload(a, path){
-  if(!a || !path) return Promise.resolve();
-  return kcUrl(path).then(function(u){ if(u){ a.href = u; a._kcReady = true; } });
-}
+/* No downloads (Kevin's rule): visitors are not allowed to download
+   anything — images and animations are view-only. There is no
+   download helper: nothing on the page turns a stored file into a
+   saveable link. */
 function kcAttach(v, path){
   if(!v || !path) return Promise.resolve();
   if(v.getAttribute('src') && v._kcPath === path) return Promise.resolve();
@@ -165,9 +165,9 @@ function kcAttach(v, path){
      push-in). JS mirrors :active with .is-pressed on pointerdown
      so the feedback lands on the touch itself on iOS, where
      :active alone can arrive late or stick. */
-  .iconbtn, .seg button, .lb-nav, .lb-close, .lb-dl, .lb-sound,
+  .iconbtn, .seg button, .lb-nav, .lb-close, .lb-sound,
   .clip-play, .clip-restart, .pillnav a, .thumb, .fst,
-  .still-dl, .blend-dl, .contact-actions a, .contact-actions button,
+  .contact-actions a, .contact-actions button,
   .video-open-btn{
     transition:scale .55s var(--spring-bounce), transform .55s var(--spring-bounce),
       background-color .22s var(--spring-press), color .22s var(--spring-press),
@@ -182,11 +182,8 @@ function kcAttach(v, path){
   }
   .lb-nav:active, .lb-nav.is-pressed,
   .lb-close:active, .lb-close.is-pressed,
-  .lb-dl:active, .lb-dl.is-pressed,
   .lb-sound:active, .lb-sound.is-pressed,
   .pillnav a:active, .pillnav a.is-pressed,
-  .still-dl:active, .still-dl.is-pressed,
-  .blend-dl:active, .blend-dl.is-pressed,
   .contact-actions a:active, .contact-actions a.is-pressed,
   .contact-actions button:active, .contact-actions button.is-pressed,
   .video-open-btn:active, .video-open-btn.is-pressed{
@@ -208,7 +205,7 @@ function kcAttach(v, path){
     scale:.97; filter:brightness(1.06); transition-duration:.14s,.14s,.14s; transition-timing-function:var(--spring-press);
   }
   @media (prefers-reduced-motion: reduce){
-    .iconbtn, .seg button, .lb-nav, .lb-close, .lb-dl, .lb-sound,
+    .iconbtn, .seg button, .lb-nav, .lb-close, .lb-sound,
     .clip-play, .clip-restart, .pillnav a, .thumb, .fst,
     .gal .main, .gal .side figure{transition:none}
     .iconbtn:active, .seg button:active, .lb-nav:active, .lb-close:active,
@@ -724,7 +721,7 @@ function kcAttach(v, path){
   .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:1px solid var(--line); padding-bottom:10px; margin-bottom:18px}
   /* Section headings carry the site's Michroma treatment — the same
      face and weight as the KEVIN CUNNINGHAM nameplate and the project
-     titles (Selected Work, Clients & Studios, About, Contact).
+     titles (Selected Work, Clients & Studios, Contact).
      Michroma runs much wider than the old condensed face, so the size
      steps down and the leading opens up to match how the nameplate
      and hero titles sit. */
@@ -795,14 +792,10 @@ function kcAttach(v, path){
   .gal .main.is-video .video-wrap{cursor:pointer}
   .gal .main.is-video .video-wrap:focus-visible{outline:2px solid var(--yellow); outline-offset:-2px}
   .gal .main video{width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; background:#000}
-  .gal .main .video-tag{
-    position:absolute; left:12px; top:12px; z-index:2;
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--yellow); background:rgba(8,8,9,.88);
-    border:1px solid rgba(255,255,0,.45); border-radius:999px; padding:8px 12px;
-    pointer-events:none;
-  }
+  /* No pill on the clips (Kevin's direction): the "In motion · …"
+     tag that sat on the top-left of every gallery animation is
+     removed entirely — the clips play clean with nothing over
+     the picture. */
   .gal .side{display:grid; gap:14px}
   .gal .side figure{margin:0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line)}
   .gal .side img{width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/8.6}
@@ -842,12 +835,11 @@ function kcAttach(v, path){
   /* Honda Orion Transporter project — one gallery, one row, exactly like
      the other projects: the animation is the big main slot, and TWO
      stills are displayed beside it, stacked — the single Shot 6 rear
-     day view and the front desert shot, each with a download pill
-     for its full 4K. All four Honda stills live in the one Honda
+     day view and the front desert shot, sitting clean with nothing
+     over them. All four Honda stills live in the one Honda
      lightbox set: the rear night still and the salt-flat side view
      are NOT displayed in the grid — they are reached by Next /
-     Previous, each with
-     its download in the lightbox. The sunset front 3/4 image appears
+     Previous in the lightbox. The sunset front 3/4 image appears
      exactly once in the set, as the desert front slide. There is no
      row underneath the gallery and no separate section below it. */
   .honda-proj{margin:30px 0 2px}
@@ -857,30 +849,14 @@ function kcAttach(v, path){
   .gal .side.honda-side figure img{aspect-ratio:auto; height:100%}
   @media (max-width:720px){
     /* Phone: the gallery stacks, the two displayed stills sit under
-       the animation; drop the View badge so it can't collide with the
-       download pill (the cell still opens the lightbox). */
-    .gal .side.honda-side figure::after{display:none}
-    .gal .side.honda-side figure .still-dl{padding:0 10px}
+       the animation (the cells still open the lightbox). */
     .gal .side.honda-side figure img{aspect-ratio:16/10}
   }
-  .gal .side figure .still-dl{
-    position:absolute; left:10px; bottom:10px; z-index:2;
-    height:44px; min-height:44px; padding:0 14px; border-radius:999px;
-    border:1px solid var(--line-strong); background:rgba(8,8,9,.88); color:#fff;
-    display:inline-flex; align-items:center;
-    font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
-    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), border-color .2s var(--spring-press);
-  }
-  .gal .side figure .still-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
+  /* No downloads anywhere (Kevin's rule): the "↓ Lake Bed 4K" /
+     "↓ Side Plume" pills that sat on the Honda gallery stills are
+     removed and there is no download control in the lightbox
+     either — images and animations are view-only. */
   .blend-meta{display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:var(--panel); padding:13px 16px; border-top:1px solid var(--line)}
-  .blend-dl{
-    height:44px; min-height:44px; padding:0 16px; border-radius:999px;
-    border:1px solid var(--line-strong); background:rgba(255,255,255,.04); color:#fff;
-    display:inline-flex; align-items:center; gap:7px;
-    font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
-    transition:scale .55s var(--spring-bounce), color .2s var(--spring-press), border-color .2s var(--spring-press);
-  }
-  .blend-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
 
   /* CAT clip is clickable — opens the video lightbox with sound */
   .motion-clip.clickable{cursor:pointer; position:relative}
@@ -1053,18 +1029,8 @@ function kcAttach(v, path){
   .lb-sound[hidden]{display:none !important}
   .lb-sound:hover{color:var(--yellow); border-color:rgba(255,255,0,.7)}
   .lb-sound[aria-pressed="true"]{background:rgba(255,255,255,.05); border-color:var(--line-strong); color:var(--muted)}
-  /* Lightbox download — the current still's full file (the Honda 4K
-     finals included), so slides that are not displayed in a gallery
-     grid still carry their download here. Hidden on video slides. */
-  .lb-dl{
-    flex:none; height:46px; border-radius:999px; padding:0 18px;
-    border:1px solid var(--line-strong); background:rgba(255,255,255,.05); color:#fff;
-    display:inline-flex; align-items:center; gap:8px; text-decoration:none;
-    font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-  }
-  .lb-dl[hidden]{display:none !important}
-  .lb-dl:hover{color:var(--yellow); border-color:rgba(255,255,0,.6)}
-  @media (max-width:640px){ .lb-dl{padding:0 13px; height:44px; font-size:10px; letter-spacing:.08em} }
+  /* No lightbox download control (Kevin's rule): the lightbox is
+     view-only — no Download button for any slide, still or video. */
   @media (max-width:640px){
     .lb-actions{gap:6px}
     .lb-sound, .video-lightbox .lb-close{padding:0 13px; height:44px; font-size:10px; letter-spacing:.08em}
@@ -1089,16 +1055,10 @@ function kcAttach(v, path){
   /* project images open the lightbox too */
   .gal .main, .gal .side figure{cursor:pointer; position:relative}
   .gal .main:focus-visible, .gal .side figure:focus-visible{outline:2px solid var(--yellow); outline-offset:3px}
-  .gal .main::after, .gal .side figure::after{
-    content:"⤢  View"; position:absolute; right:10px; bottom:10px;
-    font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-    color:#fff; background:rgba(8,8,9,.85);
-    border:1px solid var(--line-strong); border-radius:999px; padding:7px 11px;
-    opacity:0; transition:opacity .2s; pointer-events:none;
-  }
-  .gal .main:hover::after, .gal .side figure:hover::after,
-  .gal .main:focus-visible::after, .gal .side figure:focus-visible::after{opacity:1}
-  @media (hover:none){ .gal .main::after, .gal .side figure::after{opacity:1} }
+  /* No View pill on the pictures (Kevin's direction): the
+     "⤢ View" badge that sat on the bottom-right of every gallery
+     tile is removed entirely — the tiles still open the lightbox
+     on tap/click, they just carry nothing over the artwork. */
 
 
   /* ---------- LIGHTBOX ---------- */
@@ -1246,51 +1206,6 @@ function kcAttach(v, path){
      visual design is unchanged. */
   .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0}
 
-  /* about */
-  .about{display:grid; grid-template-columns:1.15fr .85fr; gap:26px}
-  @media (max-width:820px){ .about{grid-template-columns:1fr} }
-  .about p{color:var(--muted); font-size:15px; line-height:1.55; margin:0 0 12px}
-  .about p strong{color:var(--text); font-weight:600}
-  .about .quote{
-    font-family:"Barlow Condensed", sans-serif; font-size:clamp(20px, 2.4vw, 26px); font-weight:600;
-    line-height:1.15; text-transform:uppercase; letter-spacing:.02em; margin:0 0 10px; color:var(--text);
-  }
-  .about .quote em{font-style:normal; color:var(--yellow)}
-  .facts{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; align-self:start}
-  .facts div{display:flex; gap:14px; padding:11px 14px; background:var(--panel); align-items:baseline}
-  .facts div + div{border-top:1px solid var(--line)}
-  .facts .k{font-family:"IBM Plex Mono", monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--yellow); flex:none; width:92px}
-  .facts .v{font-size:14px; font-weight:500}
-
-  /* About reveal — heading stays; the paragraph AND the facts table
-     (both inside .about) stay hidden until opened, then open together.
-     .about-open (JS below) is the ONLY open state — deliberately no
-     :hover / :focus-within open rules here: on touch, a tap leaves a
-     sticky :hover and focuses the heading, so those selectors kept
-     matching after the toggle class was removed and the section
-     could never be closed again (Kevin's stuck-open bug). The JS
-     drives everything instead: hover (fine pointers only) opens,
-     moving away closes, heading tap/click toggles, tap-elsewhere
-     and Escape close. */
-  #about .sec-head{cursor:pointer}
-  #about .sec-head h2::after{
-    content:"▾"; display:inline-block; margin-left:12px;
-    color:var(--yellow); font-size:.62em; vertical-align:.18em;
-    transition:transform .5s cubic-bezier(.32,.72,0,1);
-  }
-  #about.about-open .sec-head h2::after{transform:rotate(180deg)}
-  .about-reveal{
-    display:grid; grid-template-rows:0fr; opacity:0; pointer-events:none;
-    transition:grid-template-rows .65s cubic-bezier(.32,.72,0,1), opacity .45s cubic-bezier(.32,.72,0,1);
-  }
-  .about-reveal-inner{overflow:hidden; min-height:0}
-  .about-reveal .about{padding-top:2px}
-  #about.about-open .about-reveal{grid-template-rows:1fr; opacity:1; pointer-events:auto}
-  @media (prefers-reduced-motion: reduce){
-    .about-reveal{transition:none}
-    #about .sec-head h2::after{transition:none}
-  }
-
   /* logo wall — the real client logos from the live site, in Kevin's formula:
      equal 5-column grid, equal centered cells (88px desktop, 80px mobile),
      same grey monochrome, no space-between stretching, logos cropped to
@@ -1382,8 +1297,8 @@ function kcAttach(v, path){
 
   footer{padding:56px 0 64px; color:var(--muted2); font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-align:center; line-height:2}
 
-  /* Lightbox chrome NEVER pops — the top bar (counter, title, download /
-     mute) and the bottom block (filmstrip, play bar, Previous / Close /
+  /* Lightbox chrome NEVER pops — the top bar (counter, title, mute)
+     and the bottom block (filmstrip, play bar, Previous / Close /
      Next, caption) fade as one group: in when the lightbox opens and on
      any interaction, out after ~2.5s idle, and out as a close begins.
      Opacity only, so the fade is what the eye sees — per-slide
@@ -1412,21 +1327,21 @@ function kcAttach(v, path){
   /* ---------- Fade, never snap (Kevin's rule) ----------
      Nothing on the page turns on or just off: anything that
      appears fades in, anything that leaves fades out first. The
-     lightbox's per-slide controls (play bar, sound pill, download
-     pill) fade through .fading-out, driven by the fadeShow /
+     lightbox's per-slide controls (play bar, sound pill) fade
+     through .fading-out, driven by the fadeShow /
      fadeHide helpers in JS — an element is only removed from
      layout once its fade has finished. A slide change crossfades
      the stage media: the stage fades out (.swap-out), the slide
      swaps while transparent, then fades back in. The hero bar's
      view label fades the same way while its text changes. */
   .fading-out{opacity:0 !important}
-  .lb-sound, .lb-dl{transition:scale .55s var(--spring-bounce), opacity .3s var(--spring-press), color .2s var(--spring-press), border-color .2s var(--spring-press), background-color .2s var(--spring-press)}
+  .lb-sound{transition:scale .55s var(--spring-bounce), opacity .3s var(--spring-press), color .2s var(--spring-press), border-color .2s var(--spring-press), background-color .2s var(--spring-press)}
   .lb-stage img, .lb-stage video{transition:opacity .3s ease}
   .lb-stage.swap-out img, .lb-stage.swap-out video{opacity:0}
   .view-label{transition:opacity .22s ease}
   .view-label.txt-swap{opacity:0}
   @media (prefers-reduced-motion: reduce){
-    .lb-sound, .lb-dl, .view-label{transition:none}
+    .lb-sound, .view-label{transition:none}
     .lb-stage img, .lb-stage video{transition:none}
   }
   .lb-stage video{will-change:transform}
@@ -1594,7 +1509,6 @@ function kcAttach(v, path){
   <nav class="pillnav" aria-label="Kevin Cunningham Portfolio">
     <a href="#hero" class="active">Hero</a>
     <a href="#work">Work</a>
-    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 </div>
@@ -1675,8 +1589,8 @@ function kcAttach(v, path){
 <main class="wrap">
 
   <!-- ============ CRAWLABLE SUMMARY — real text in the DOM for search
-       engines and screen readers (the About panel below opens on hover /
-       tap). Visually hidden; the approved layout is unchanged. ============ -->
+       engines and screen readers. Visually hidden; the approved
+       layout is unchanged. ============ -->
   <section class="sr-only" aria-label="About Kevin Cunningham — industrial designer in Los Angeles">
     <h2>Kevin Cunningham — Industrial Designer in Los Angeles</h2>
     <p>Kevin Cunningham is an industrial designer in Los Angeles, California, leading with industrial design and product design, with deep work in transportation design and entertainment design. Across thirty years — fifteen years in art direction and video games, and fifteen years in vehicles and toys — he has worked as an art director and creative director as well as a designer, spanning vehicle design and toy design from first sketch through production.</p>
@@ -1719,7 +1633,6 @@ function kcAttach(v, path){
           <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open CAT UGV orbit video in a lightbox">
             <video id="catClip" data-kc="assets/cat-ugv.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/cat-ugv-new-poster.jpg" aria-label="Caterpillar yellow UGV concept orbiting on a dark reflective surface">
             </video>
-            <span class="video-tag" aria-hidden="true">In motion · CAT UGV — Orbit</span>
           </div>
           <!-- No player controls in the gallery — the clip just
                plays clean. Controls live in the lightbox. -->
@@ -1752,12 +1665,11 @@ function kcAttach(v, path){
          the transporter animation is the big main image, and TWO
          stills are displayed beside it, stacked — the single Shot 6
          rear DAY view first, then the front desert shot, each shown
-         as a recompressed display copy with a download pill for its
-         full 4K. The rear NIGHT still and the salt-flat SIDE view
+         as a recompressed display copy. The rear NIGHT still and
+         the salt-flat SIDE view
          are NOT displayed here. All four Honda stills share one
          Honda lightbox set: Next from the
-         daytime rear view steps into the night still like every step, and
-         every still carries its 4K download in the lightbox. There
+         daytime rear view steps into the night still like every step. There
          is no row underneath the gallery and no separate section
          below it. Muted loop in the gallery; click the animation to
          open it in the Honda Orion Transporter lightbox. Watermark as-is. -->
@@ -1770,24 +1682,22 @@ function kcAttach(v, path){
           <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Honda Orion Transporter video in a lightbox">
             <video id="hondaClip" data-kc="assets/honda-transporter.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/honda-transporter-poster.jpg" aria-label="Honda Orion Transporter concept orbiting on a wet track at night">
             </video>
-            <span class="video-tag" aria-hidden="true">In motion · Honda Orion Transporter — Orbit</span>
           </div>
           <!-- No player controls in the gallery — the clip just
                plays clean. Controls live in the lightbox. -->
         </div>
         <div class="side honda-side">
-          <figure><img data-kc="assets/honda-salt-flat-front-display.jpg" alt="Honda Orion Transporter — front three-quarter on the lake bed at sunset, purple cab on cracked playa" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-front-4k.jpg" download aria-label="Download the lake bed front three-quarter 4K final">↓ Lake Bed 4K</a></figure>
-          <figure><img data-kc="assets/display/honda-salt-flat-side.jpg" alt="Honda Orion Transporter — side view at speed on the lake bed, salt dust plume behind" loading="lazy"><a class="still-dl" href="#" data-kcdl="assets/honda-salt-flat-side.jpg" download aria-label="Download the lake bed side view with dust plume — full file">↓ Side Plume</a></figure>
+          <figure><img data-kc="assets/honda-salt-flat-front-display.jpg" alt="Honda Orion Transporter — front three-quarter on the lake bed at sunset, purple cab on cracked playa" loading="lazy"></figure>
+          <figure><img data-kc="assets/display/honda-salt-flat-side.jpg" alt="Honda Orion Transporter — side view at speed on the lake bed, salt dust plume behind" loading="lazy"></figure>
           <!-- The gallery is exactly THREE pieces: the big playing
                animation plus these TWO lake bed stills — the front
                3/4 lake bed shot, then the side view lake bed shot —
-               each a display copy with its full 4K behind the
-               download pill and in the lightbox. ALL other Honda
+               each a display copy with its full 4K in the lightbox.
+               ALL other Honda
                images (the Shot 6 rear day and night stills) live in
                the lightbox only, reached by Next / Previous / swipe
                — step from the daytime rear view straight onto
-               the night still,
-               downloads included. Nothing extra shows in this row. -->
+               the night still. Nothing extra shows in this row. -->
         </div>
       </div>
     </figure>
@@ -1804,7 +1714,6 @@ function kcAttach(v, path){
           <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Gunslinger snow run video in a lightbox">
             <video id="gunClip" data-kc="assets/gunslinger-snow.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/gunslinger-snow-poster.jpg" aria-label="Gunslinger tactical vehicle driving through snow">
             </video>
-            <span class="video-tag" aria-hidden="true">In motion · Gunslinger — Snow run</span>
           </div>
           <!-- No player controls in the gallery — the clip just
                plays clean. Controls live in the lightbox. -->
@@ -1893,7 +1802,6 @@ function kcAttach(v, path){
           <div class="video-wrap" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Autonomous Pursuit Interceptor video in a lightbox">
             <video id="interceptorClip" data-kc="assets/interceptor-studio.mp4" muted loop playsinline preload="metadata" data-kcposter="assets/display/interceptor-studio-poster.jpg" aria-label="Autonomous Pursuit Interceptor — autonomous police motorcycle, gyroscopic self-balancing, fully electric, two-wheel drive, powered by high-capacity supercapacitors, no batteries, fully reactive suspension — in profile in a white studio, wheels turning before a motion-blur surge">
             </video>
-            <span class="video-tag" aria-hidden="true">In motion · Autonomous Pursuit Interceptor — Studio profile</span>
           </div>
           <!-- No player controls in the gallery — the clip just
                plays clean. Controls live in the lightbox. -->
@@ -1916,31 +1824,6 @@ function kcAttach(v, path){
       <div class="logo-row logo-set"><div class="logo-cell"><img data-kc="assets/logos/samsung.png" data-logo="samsung" alt="Samsung" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/mcdonalds.png" data-logo="mcdonalds" alt="McDonald&apos;s" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/virgin.png" data-logo="virgin" alt="Virgin" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/popmech.png" data-logo="popmech" alt="Popular Mechanics" loading="lazy"></div><div class="logo-cell"><img data-kc="assets/logos/imaginefx.png" data-logo="imaginefx" alt="ImagineFX" loading="lazy"></div></div></div>
       <div class="logo-also"><span>Also:</span> Carnegie Mellon Robotics · Metalcrafters · Automobile Magazine · Car Styling · Mechanical Engineering · Ballistic Publishing Concept Book</div>
     </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="block" id="about">
-    <div class="sec-head" id="aboutHead" role="button" tabindex="0" aria-expanded="false" aria-controls="aboutReveal" title="Tap or click to open / close About">
-      <h2>About</h2>
-      <p>Kevin Cunningham</p>
-    </div>
-    <div class="about-reveal" id="aboutReveal"><div class="about-reveal-inner">
-    <div class="about">
-      <div>
-        <p class="quote">“Take time from creating to <em>think, research,</em> then refine and build.”</p>
-        <p><strong>Art Center is me.</strong> B.S. in Transportation Design, 1994 — and thirty years since, split evenly: <strong>15 years in vehicles, 15 years in art direction and video games.</strong></p>
-        <p>Motorcycles at <strong>Honda R&amp;D</strong>. VP of Design twice over — <strong>Hiero Tech</strong>, where the Samsung STAR UGV went from concept to a working program, and <strong>Land Systems</strong>, on autonomous ground vehicles. Toy design end-to-end at <strong>Lanard</strong> — concept through final on-shelf sample — and concept work for <strong>Hasbro</strong>. Lead artist at <strong>Activision</strong>, senior artist at <strong>Savage Entertainment</strong> (James Bond, Star Wars, Transformers), freelance concept design for <strong>Sega of America</strong>, and Chief Creative Director at <strong>Studio Uchuu</strong>.</p>
-        <p>Building digitally and by hand is a must for the designer — its importance can’t be overstated. The computer keeps it precise and efficient.</p>
-      </div>
-      <div class="facts" aria-label="Key facts">
-        <div><span class="k">Based</span><span class="v">Los Angeles, California</span></div>
-        <div><span class="k">Focus</span><span class="v">Vehicles · Collectibles · Worlds</span></div>
-        <div><span class="k">Tools</span><span class="v">3DS Max · Sketch · Gouache · Marker</span></div>
-        <div><span class="k">Current</span><span class="v">Chief Creative Director, Studio Uchuu</span></div>
-        <div><span class="k">Portfolio</span><span class="v">Kevin Cunningham — Industrial Design</span></div>
-      </div>
-    </div>
-    </div></div>
   </section>
 
   <!-- ============ CONTACT ============ -->
@@ -1978,9 +1861,6 @@ function kcAttach(v, path){
     <div class="lb-title">
       <span class="p" id="lbProject">SPAR X2 Hybrid UTV</span>
       <span class="v" id="lbView">Main view</span>
-    </div>
-    <div class="lb-actions">
-      <a class="lb-dl" id="lbDownload" href="#" download aria-label="Download this image">↓ Download</a>
     </div>
   </div>
   <div class="lb-stage" id="lbStage">
@@ -2051,7 +1931,6 @@ function kcAttach(v, path){
       <span class="v" id="hlbView">Wet-Track Orbit — video with sound</span>
     </div>
     <div class="lb-actions">
-      <a class="lb-dl" id="hlbDownload" href="#" download aria-label="Download this image" hidden>↓ Download</a>
       <button type="button" class="lb-sound" id="hlbMuteBtn" aria-pressed="false" aria-label="Mute the video">Sound on · Mute</button>
     </div>
   </div>
@@ -2078,8 +1957,7 @@ function kcAttach(v, path){
 <script>
 /* Hydrate the static markup from the media wrappers: hero slides load first,
    in rotation order; posters (small) right away; every other image as it
-   nears the screen; the two 4K download pills get their real file as they
-   approach — and a tap before that loads the wrapper first, then downloads.
+   nears the screen.
    Layout is untouched: every box is reserved by the same aspect-ratio CSS. */
 (function(){
   var heroImgs = Array.prototype.slice.call(document.querySelectorAll('.hero .slide img[data-kc]'));
@@ -2090,18 +1968,8 @@ function kcAttach(v, path){
   var rest = Array.prototype.slice.call(document.querySelectorAll('img[data-kc]')).filter(function(im){
     return heroImgs.indexOf(im) === -1;
   });
-  var dls = Array.prototype.slice.call(document.querySelectorAll('a[data-kcdl]'));
-  dls.forEach(function(a){
-    a.addEventListener('click', function(e){
-      if(!a._kcReady){
-        e.preventDefault();
-        kcSetDownload(a, a.getAttribute('data-kcdl')).then(function(){ a.click(); });
-      }
-    });
-  });
   function arm(t){
-    if(t.tagName === 'A') kcSetDownload(t, t.getAttribute('data-kcdl'));
-    else kcSetImg(t, t.getAttribute('data-kc'));
+    kcSetImg(t, t.getAttribute('data-kc'));
   }
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
@@ -2112,10 +1980,8 @@ function kcAttach(v, path){
       });
     }, {rootMargin:'900px 0px 900px 0px'});
     rest.forEach(function(im){ io.observe(im); });
-    dls.forEach(function(a){ io.observe(a); });
   } else {
     rest.forEach(arm);
-    dls.forEach(arm);
   }
 })();
 </script>
@@ -2467,7 +2333,6 @@ function kcAttach(v, path){
   var lbCaption = document.getElementById('lbCaption');
   var lbStrip = document.getElementById('lbStrip');
   var lbBar = document.getElementById('lbBar');
-  var lbDownload = document.getElementById('lbDownload');
   var lbIndex = 0, lbLastFocus = null;
   var lbGroup = [];   /* global indices belonging to the open image's project */
   var lbPos = 0;      /* position of the current image inside lbGroup */
@@ -2509,7 +2374,7 @@ function kcAttach(v, path){
      Kevin's rule: nothing turns on or just off, everything fades
      in and fades out. fadeShow / fadeHide replace the bare
      `el.hidden = …` flips for the lightboxes' per-slide controls
-     (play bar, sound pill, download pill): showing starts the
+     (play bar, sound pill): showing starts the
      element transparent and fades it in; hiding fades it out
      first and only then removes it from layout, so the eye never
      sees a pop. Reduced motion flips instantly, as before. */
@@ -2563,7 +2428,7 @@ function kcAttach(v, path){
      (.chrome-on, CSS above): shown when the lightbox opens and on any
      tap / move / press inside the box, hidden after ~2.5s idle, and
      hidden as a close begins. Per-slide show/hide flips (play bar,
-     download, mute) happen while the group is transparent, so the eye
+     mute) happen while the group is transparent, so the eye
      only ever sees the fade. */
   function chromeShow(box){
     if(!box) return;
@@ -2741,7 +2606,7 @@ function kcAttach(v, path){
   /* Display copies — grids, thumbs and filmstrips load the right-sized
      file (assets/display/, max 1280w, generated from the full-res
      original); the full-res file itself loads only when its slide is
-     actually viewed in a lightbox, or behind a 4K download link. */
+     actually viewed in a lightbox. */
   function dispSrc(s){
     if(!s || s.indexOf('assets/') !== 0 || !/\.jpg$/.test(s) || s.indexOf('assets/display/') === 0) return s;
     return 'assets/display/' + s.slice(7);
@@ -2894,17 +2759,8 @@ function kcAttach(v, path){
       kcSetImg(lbImg, item.src);
       lbImg.alt = item.alt;
     }
-    /* Download follows the slide: every still — the Honda salt-flat
-       side included — downloads its own full file from the lightbox;
-       video slides have no download. */
-    if(lbDownload){
-      if(item.type === 'video'){ fadeHide(lbDownload); lbDownload.removeAttribute('href'); }
-      else {
-        fadeShow(lbDownload);
-        kcSetDownload(lbDownload, item.src);
-        lbDownload.setAttribute('aria-label', 'Download this image: ' + item.view);
-      }
-    }
+    /* View-only (Kevin's rule): no download control in the lightbox —
+       slides are looked at, never saved. */
     lbCounter.innerHTML = '<b>' + String(lbPos+1).padStart(2,'0') + '</b> / ' + lbGroup.length;
     lbProject.textContent = item.proj;
     lbView.textContent = item.view;
@@ -3026,15 +2882,6 @@ function kcAttach(v, path){
      3/4 image is the desert front entry — exactly one copy in
      this group and exactly one copy in the dedicated Honda
      lightbox (HLB_SLIDES), so neither filmstrip shows it twice. */
-  /* Download pills inside clickable stills — the two displayed Honda
-     pills — download the full 4K file only; they never open the
-     lightbox. The lightbox-only stills carry their downloads in the
-     lightbox itself (lbDownload, set per slide in lbShow). */
-  Array.prototype.slice.call(document.querySelectorAll('.still-dl')).forEach(function(a){
-    a.addEventListener('click', function(e){ e.stopPropagation(); });
-    a.addEventListener('keydown', function(e){ e.stopPropagation(); });
-  });
-
   lbVid.addEventListener('ended', function(){
     if(lightbox.hidden) return;
     if(lbVid.readyState < 2 || lbVid.error){ hardRestart(lbVid); return; }
@@ -3273,7 +3120,7 @@ function kcAttach(v, path){
       v.pause();
     });
   } else if('IntersectionObserver' in window){
-    /* Load promotion — a clip's file starts downloading only when
+    /* Load promotion — a clip's file starts loading only when
        that clip is within ~600px of the viewport, so it is buffered
        and ready by the time it scrolls into view without competing
        at page open. Both gallery clips (CAT and Honda) go through
@@ -3482,7 +3329,7 @@ function kcAttach(v, path){
      own single-row cycle below instead of rising as one block.) */
   var rvTargets = Array.prototype.slice.call(document.querySelectorAll(
     '.sec-head, .proj-head, .motion-clip, ' +
-    '.stat, .about > div, .xplist, .contact'
+    '.stat, .xplist, .contact'
   ));
   if(!reduced && 'IntersectionObserver' in window){
     rvTargets.forEach(function(el, i){
@@ -3750,7 +3597,7 @@ function kcAttach(v, path){
       var txtEls = [];
       Array.prototype.slice.call(document.querySelectorAll(
         '.hero-kicker, .hero-title, .sec-head h2, .proj-head h3, ' +
-        '.intro .big, .contact h3, .about .quote, .thumb .cap .name'
+        '.intro .big, .contact h3, .thumb .cap .name'
       )).forEach(function(el){ el.classList.add('txt-anim'); splitWords(el); txtEls.push(el); });
       Array.prototype.slice.call(document.querySelectorAll(
         '.hero-sub, .proj .line, .intro p, .thumb .cap .desc'
@@ -4012,18 +3859,17 @@ function kcAttach(v, path){
   var hlbCounter = document.getElementById('hlbCounter');
   var hlbView = document.getElementById('hlbView');
   var hlbCaption = document.getElementById('hlbCaption');
-  var hlbDownload = document.getElementById('hlbDownload');
   var hlbCloseBtn = document.getElementById('hlbClose');
   var hlbMuteBtn = document.getElementById('hlbMuteBtn');
   var hondaFigure = document.getElementById('hondaClipFigure');
   var hlbLastFocus = null;
   var HLB_SLIDES = [
     {type:'video', view:'Wet-Track Orbit — video with sound', caption:'Honda Orion Transporter — Wet-Track Orbit. Sound is on, use Mute to turn it off. Tap the video to pause or play.'},
-    {type:'img', src:'assets/honda-desert-front-4k.jpg', view:'Lake Bed — Front 3/4 · 4K', alt:'Honda Orion Transporter front three-quarter on the lake bed at sunset, purple cab on cracked playa', caption:'Honda Orion Transporter — front three-quarter on the lake bed at sunset. Download gives the full 4K file.'},
-    {type:'img', src:'assets/honda-salt-flat-side-4k.jpg', view:'Lake Bed — Side View · 4K', alt:'Honda Orion Transporter side view at speed on the lake bed, motion blur and white salt dust plume', caption:'Honda Orion Transporter — side view at speed on the lake bed. Download gives the full 4K file.'},
-    {type:'img', src:'assets/honda-salt-flat-side.jpg', view:'Lake Bed — Side View · Dust Plume', alt:'Honda Orion Transporter side view at speed on the lake bed, salt dust plume behind', caption:'Honda Orion Transporter — side view at speed on the lake bed, salt dust plume behind — the bottom-right gallery still. Download gives the full file.'},
-    {type:'img', src:'assets/honda-shot6-rear-day-4k.jpg', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion Transporter Shot 6 rear view final in daytime, freeway with DTLA behind', caption:'Honda Orion Transporter — Shot 6 rear view, daytime final. Download gives the full 4K file.'},
-    {type:'img', src:'assets/honda-shot6-rear-night-4k.jpg', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion Transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground', caption:'Honda Orion Transporter — Shot 6 rear view, nighttime final. Download gives the full 4K file.'}
+    {type:'img', src:'assets/honda-desert-front-4k.jpg', view:'Lake Bed — Front 3/4 · 4K', alt:'Honda Orion Transporter front three-quarter on the lake bed at sunset, purple cab on cracked playa', caption:'Honda Orion Transporter — front three-quarter on the lake bed at sunset.'},
+    {type:'img', src:'assets/honda-salt-flat-side-4k.jpg', view:'Lake Bed — Side View · 4K', alt:'Honda Orion Transporter side view at speed on the lake bed, motion blur and white salt dust plume', caption:'Honda Orion Transporter — side view at speed on the lake bed.'},
+    {type:'img', src:'assets/honda-salt-flat-side.jpg', view:'Lake Bed — Side View · Dust Plume', alt:'Honda Orion Transporter side view at speed on the lake bed, salt dust plume behind', caption:'Honda Orion Transporter — side view at speed on the lake bed, salt dust plume behind — the bottom-right gallery still.'},
+    {type:'img', src:'assets/honda-shot6-rear-day-4k.jpg', view:'Shot 6 Rear — Day · 4K', alt:'Honda Orion Transporter Shot 6 rear view final in daytime, freeway with DTLA behind', caption:'Honda Orion Transporter — Shot 6 rear view, daytime final.'},
+    {type:'img', src:'assets/honda-shot6-rear-night-4k.jpg', view:'Shot 6 Rear — Night · 4K', alt:'Honda Orion Transporter Shot 6 rear view final at night, brighter with contrast kept, lights on wet ground', caption:'Honda Orion Transporter — Shot 6 rear view, nighttime final.'}
   ];
   var hlbPos = 0;
   /* Honda filmstrip — same theme as every lightbox: one thumb per slide
@@ -4120,7 +3966,6 @@ function kcAttach(v, path){
       hlbImg.removeAttribute('src');
       hlbVideo.hidden = false;
       fadeShow(hlbMuteBtn);
-      if(hlbDownload) fadeHide(hlbDownload);
       var hlbBarEl = document.getElementById('hlbBar');
       if(hlbBarEl) fadeShow(hlbBarEl);
       hlbStartVideo();
@@ -4130,11 +3975,6 @@ function kcAttach(v, path){
       fadeHide(hlbMuteBtn);
       var hlbBarEl2 = document.getElementById('hlbBar');
       if(hlbBarEl2) fadeHide(hlbBarEl2);
-      if(hlbDownload){
-        fadeShow(hlbDownload);
-        kcSetDownload(hlbDownload, s.src);
-        hlbDownload.setAttribute('aria-label', 'Download this image: ' + s.view);
-      }
       hlbImg.style.display = '';
       kcSetImg(hlbImg, s.src);
       hlbImg.alt = s.alt;
@@ -4641,7 +4481,7 @@ function kcAttach(v, path){
       div.style.margin = '0 ' + divM.toFixed(3) + 'em 0 ' + (divM - ls).toFixed(3) + 'em';
       if(divBar) divBar.style.transform = 'scaleY(' + lerp(0, 1, divO).toFixed(3) + ')';
     }
-    /* Pill nav (Hero / Work / About / Contact) — not there at all
+    /* Pill nav (Hero / Work / Contact) — not there at all
        while the name is at its opening size: its fade is remapped
        from the same damped, smootherstep-eased progress p as the
        shrink (starting once the shrink is under way, at p = .15),
@@ -4731,60 +4571,6 @@ function kcAttach(v, path){
     pinRO.observe(plate);
     if(nav) pinRO.observe(nav);
   }
-})();
-</script>
-<script>
-(function(){
-  var sec = document.getElementById('about');
-  var head = document.getElementById('aboutHead');
-  if(!sec || !head) return;
-  var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)');
-  /* Set when the heading is used to CLOSE while the pointer is still
-     over the section, so the hover-open below doesn't instantly
-     re-open what the visitor just closed. Cleared when the pointer
-     leaves the section. */
-  var suppressHover = false;
-  function isOpen(){ return sec.classList.contains('about-open'); }
-  function setOpen(open){
-    sec.classList.toggle('about-open', open);
-    head.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-  /* Heading tap / click toggles — open AND close. */
-  head.addEventListener('click', function(){
-    var willOpen = !isOpen();
-    suppressHover = !willOpen;
-    setOpen(willOpen);
-  });
-  head.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); setOpen(!isOpen()); }
-  });
-  /* Hover opens — real mice / trackpads only. Touch taps synthesize
-     mouseenter right before click, which would open-then-toggle-shut
-     in one tap, so synthesized hover never opens. */
-  sec.addEventListener('mouseenter', function(){
-    if(fineHover.matches && !suppressHover) setOpen(true);
-  });
-  /* Moving away closes, whatever opened it. */
-  sec.addEventListener('mouseleave', function(){
-    suppressHover = false;
-    setOpen(false);
-  });
-  /* Tapping / clicking anywhere outside the section closes it. */
-  document.addEventListener('click', function(e){
-    if(isOpen() && !sec.contains(e.target)) setOpen(false);
-  });
-  /* Focus moving outside the section closes it too, and Escape
-     closes from anywhere (returning focus to the heading if it was
-     inside the section). */
-  document.addEventListener('focusin', function(e){
-    if(isOpen() && !sec.contains(e.target)) setOpen(false);
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && isOpen()){
-      setOpen(false);
-      if(sec.contains(document.activeElement) && document.activeElement !== head) head.focus();
-    }
-  });
 })();
 </script>
 </body>
